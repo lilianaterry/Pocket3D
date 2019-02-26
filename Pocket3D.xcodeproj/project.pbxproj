@@ -16,6 +16,10 @@
 		8300E7E82225FF0C004DA31C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E62225FF0C004DA31C /* LaunchScreen.storyboard */; };
 		8300E7F32225FF0C004DA31C /* Pocket3DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7F22225FF0C004DA31C /* Pocket3DTests.swift */; };
 		8300E7FE2225FF0C004DA31C /* Pocket3DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7FD2225FF0C004DA31C /* Pocket3DUITests.swift */; };
+		8300E80D2225FF4D004DA31C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E80C2225FF4D004DA31C /* API.swift */; };
+		B0F94C24ACDDF997EA7B3475 /* Pods_Pocket3D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */; };
+		F76D79F31FF9E34944F726EB /* Pods_Pocket3DTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F265130983652F3D43D16F7 /* Pods_Pocket3DTests.framework */; };
+		FFA16124A32EF6B49F6DCE38 /* Pods_Pocket3DUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F265130983652F3D43D16F7 /* Pods_Pocket3DTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3DTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		324C801A375BE291DD9C1A9F /* Pods-Pocket3DUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests.release.xcconfig"; sourceTree = "<group>"; };
+		642CFEBD14E025ACDF76CC6A /* Pods-Pocket3D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3D.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D.debug.xcconfig"; sourceTree = "<group>"; };
+		7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3DUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7D62225FF0B004DA31C /* Pocket3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7D92225FF0B004DA31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8300E7DB2225FF0B004DA31C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +60,11 @@
 		8300E7F92225FF0C004DA31C /* Pocket3DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pocket3DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7FD2225FF0C004DA31C /* Pocket3DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocket3DUITests.swift; sourceTree = "<group>"; };
 		8300E7FF2225FF0C004DA31C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8300E80C2225FF4D004DA31C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CCA0722FDBF771048CF69280 /* Pods-Pocket3DTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EAB6F072A660FDD343D6E992 /* Pods-Pocket3D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D.release.xcconfig"; sourceTree = "<group>"; };
+		EE5BE617055E6F8A20F9E253 /* Pods-Pocket3DTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.release.xcconfig"; sourceTree = "<group>"; };
+		FF6A78D9265D9A6EB825877D /* Pods-Pocket3DUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0F94C24ACDDF997EA7B3475 /* Pods_Pocket3D.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F76D79F31FF9E34944F726EB /* Pods_Pocket3DTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +88,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA16124A32EF6B49F6DCE38 /* Pods_Pocket3DUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		371B95191B3A7BCDCE79FE12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */,
+				2F265130983652F3D43D16F7 /* Pods_Pocket3DTests.framework */,
+				7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A92BE4221788CB4EA37CFAF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				642CFEBD14E025ACDF76CC6A /* Pods-Pocket3D.debug.xcconfig */,
+				EAB6F072A660FDD343D6E992 /* Pods-Pocket3D.release.xcconfig */,
+				CCA0722FDBF771048CF69280 /* Pods-Pocket3DTests.debug.xcconfig */,
+				EE5BE617055E6F8A20F9E253 /* Pods-Pocket3DTests.release.xcconfig */,
+				FF6A78D9265D9A6EB825877D /* Pods-Pocket3DUITests.debug.xcconfig */,
+				324C801A375BE291DD9C1A9F /* Pods-Pocket3DUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8300E7CD2225FF0B004DA31C = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +125,8 @@
 				8300E7F12225FF0C004DA31C /* Pocket3DTests */,
 				8300E7FC2225FF0C004DA31C /* Pocket3DUITests */,
 				8300E7D72225FF0B004DA31C /* Products */,
+				3A92BE4221788CB4EA37CFAF /* Pods */,
+				371B95191B3A7BCDCE79FE12 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +143,7 @@
 		8300E7D82225FF0B004DA31C /* Pocket3D */ = {
 			isa = PBXGroup;
 			children = (
+				8300E80B2225FF21004DA31C /* API */,
 				8300E7D92225FF0B004DA31C /* AppDelegate.swift */,
 				8300E7DB2225FF0B004DA31C /* RootViewController.swift */,
 				8300E7DD2225FF0B004DA31C /* DataViewController.swift */,
@@ -131,6 +174,14 @@
 			path = Pocket3DUITests;
 			sourceTree = "<group>";
 		};
+		8300E80B2225FF21004DA31C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8300E80C2225FF4D004DA31C /* API.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,9 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8300E8022225FF0C004DA31C /* Build configuration list for PBXNativeTarget "Pocket3D" */;
 			buildPhases = (
+				7D884C159B0BF2E05032110E /* [CP] Check Pods Manifest.lock */,
 				8300E7D22225FF0B004DA31C /* Sources */,
 				8300E7D32225FF0B004DA31C /* Frameworks */,
 				8300E7D42225FF0B004DA31C /* Resources */,
+				D9C648486D800F78C1A3A420 /* [CP] Embed Pods Frameworks */,
+				BF4F9C101DAA7A5F801E2638 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -155,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8300E8052225FF0C004DA31C /* Build configuration list for PBXNativeTarget "Pocket3DTests" */;
 			buildPhases = (
+				1D9B06EA4FD6B6E8DFA96CEE /* [CP] Check Pods Manifest.lock */,
 				8300E7EA2225FF0C004DA31C /* Sources */,
 				8300E7EB2225FF0C004DA31C /* Frameworks */,
 				8300E7EC2225FF0C004DA31C /* Resources */,
+				DAA238CD28BC2F5AF8AE0E9F /* [CP] Embed Pods Frameworks */,
+				0D145D1BC417980E68C80602 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,9 +230,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8300E8082225FF0C004DA31C /* Build configuration list for PBXNativeTarget "Pocket3DUITests" */;
 			buildPhases = (
+				7DDD0F71973431916479C3E8 /* [CP] Check Pods Manifest.lock */,
 				8300E7F52225FF0C004DA31C /* Sources */,
 				8300E7F62225FF0C004DA31C /* Frameworks */,
 				8300E7F72225FF0C004DA31C /* Resources */,
+				83054AAC2678C6AF4176719C /* [CP] Embed Pods Frameworks */,
+				C393EA57E4A9CB6CE69D0CA0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,6 +317,158 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D145D1BC417980E68C80602 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1D9B06EA4FD6B6E8DFA96CEE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pocket3DTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D884C159B0BF2E05032110E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pocket3D-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DDD0F71973431916479C3E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pocket3DUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83054AAC2678C6AF4176719C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF4F9C101DAA7A5F801E2638 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C393EA57E4A9CB6CE69D0CA0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9C648486D800F78C1A3A420 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAA238CD28BC2F5AF8AE0E9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8300E7D22225FF0B004DA31C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -266,6 +478,7 @@
 				8300E7E02225FF0B004DA31C /* ModelController.swift in Sources */,
 				8300E7DE2225FF0B004DA31C /* DataViewController.swift in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,
+				8300E80D2225FF4D004DA31C /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,15 +651,13 @@
 		};
 		8300E8032225FF0C004DA31C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 642CFEBD14E025ACDF76CC6A /* Pods-Pocket3D.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -456,15 +667,13 @@
 		};
 		8300E8042225FF0C004DA31C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAB6F072A660FDD343D6E992 /* Pods-Pocket3D.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -474,17 +683,14 @@
 		};
 		8300E8062225FF0C004DA31C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA0722FDBF771048CF69280 /* Pods-Pocket3DTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -495,17 +701,14 @@
 		};
 		8300E8072225FF0C004DA31C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE5BE617055E6F8A20F9E253 /* Pods-Pocket3DTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -516,16 +719,13 @@
 		};
 		8300E8092225FF0C004DA31C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF6A78D9265D9A6EB825877D /* Pods-Pocket3DUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -536,16 +736,13 @@
 		};
 		8300E80A2225FF0C004DA31C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 324C801A375BE291DD9C1A9F /* Pods-Pocket3DUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

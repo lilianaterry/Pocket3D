@@ -1,0 +1,6 @@
+framework module Pods_Pocket3D {
+  umbrella header "Pods-Pocket3D-umbrella.h"
+
+  export *
+  module * { export * }
+}
