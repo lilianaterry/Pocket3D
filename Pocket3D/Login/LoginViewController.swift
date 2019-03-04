@@ -10,20 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var dataLabel: UILabel!
-    var dataObject: String = ""
-    
+    let ui = UIExtensions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = ui.header_backgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.dataLabel!.text = dataObject
     }
-    
-    
 }
 
