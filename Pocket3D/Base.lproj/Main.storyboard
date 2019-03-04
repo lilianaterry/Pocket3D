@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
         <array key="SF-Pro-Display-Heavy.otf">
             <string>SFProDisplay-Heavy</string>
         </array>
@@ -177,7 +180,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="73" translatesAutoresizingMaskIntoConstraints="NO" id="e9d-bj-p8V">
-                                <rect key="frame" x="25" y="130.5" width="325" height="406"/>
+                                <rect key="frame" x="25" y="120.5" width="325" height="426"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mmh-rv-Scq">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="90"/>
@@ -185,13 +188,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1i9-D7-MiL">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="41"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Heavy" family="SF Pro Display" pointSize="34"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sign in to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlX-Ge-KhH">
                                                 <rect key="frame" x="0.0" y="49" width="325" height="41"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="34"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -222,9 +225,19 @@
                                             <constraint firstAttribute="width" constant="325" id="vXc-VY-TaV"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1B-kd-MGh">
-                                        <rect key="frame" x="143.5" y="376" width="38" height="30"/>
-                                        <state key="normal" title="Login"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1B-kd-MGh" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
+                                        <rect key="frame" x="87.5" y="376" width="150" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="lVC-SU-ZAj"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="myb-c8-RA9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="24"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginSelected:" destination="6Sp-Qt-7It" eventType="touchUpInside" id="Qi7-k0-ENf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -232,14 +245,27 @@
                                     <constraint firstItem="Mmh-rv-Scq" firstAttribute="leading" secondItem="e9d-bj-p8V" secondAttribute="leading" id="qWu-si-iet"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGh-QO-KV1">
+                                <rect key="frame" x="187.5" y="571.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jGh-QO-KV1" firstAttribute="centerX" secondItem="1wY-eB-BOj" secondAttribute="centerX" id="85h-bZ-KSd"/>
                             <constraint firstItem="e9d-bj-p8V" firstAttribute="centerX" secondItem="1wY-eB-BOj" secondAttribute="centerX" id="WFT-n7-9IM"/>
+                            <constraint firstItem="jGh-QO-KV1" firstAttribute="top" secondItem="e9d-bj-p8V" secondAttribute="bottom" constant="25" id="YqV-w0-qTb"/>
                             <constraint firstItem="e9d-bj-p8V" firstAttribute="centerY" secondItem="1wY-eB-BOj" secondAttribute="centerY" id="tdy-0H-reo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B0N-dH-pNk"/>
                     </view>
+                    <connections>
+                        <outlet property="apiKeyField" destination="6uI-86-nWt" id="4eD-gq-2g2"/>
+                        <outlet property="errorLabel" destination="jGh-QO-KV1" id="gkF-a6-ubL"/>
+                        <outlet property="ipAddressField" destination="GpU-3o-eV1" id="pOP-tl-MQZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWu-KL-I5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

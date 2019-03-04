@@ -10,20 +10,21 @@ import UIKit
 
 class UIExtensions {
     // dark color pallete
-    let header_backgroundColor = UIColor.init(hex: 0x1C2937)
-    let header_textColor = UIColor.init(hex: 0x1B88CB)
-    let header_shadowColor = UIColor.init(hex: 0x000000)
+    let headerBackgroundColor = UIColor.init(hex: 0x1C2937)
+    let headerTextColor = UIColor.init(hex: 0x1B88CB)
+    let headerShadowColor = UIColor.init(hex: 0x000000)
     
     let backgroundColor = UIColor.init(hex: 0x15202B)
     let titleColor = UIColor.init(hex: 0xFFFFFF)
     let textColor = UIColor.init(hex: 0x8899A6)
     
     // text
-    let header_title = UIFont(name: "SF-Pro-Display-Bold", size: 34.0)
-    let textfield_title = UIFont(name: "SF-Pro-Display-Bold", size: 24.0)
+    let headerTitleFont = UIFont(name: "SFProDisplay-Bold", size: 34.0)
+    let textFieldTitleFont = UIFont(name: "SFProDisplay-Medium", size: 22.0)
+    let buttonTitleFont = UIFont(name: "SFProDisplay-Bold", size: 24.0)
+    
     let titleSize = 24.0 as CGFloat
     let textSize = 18.0 as CGFloat
-    
 }
 
 // create UI color from hex code

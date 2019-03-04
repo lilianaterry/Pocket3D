@@ -24,6 +24,8 @@ open class TextFieldView: UITextField {
     }
     
     func setup() {
+        self.clearsOnBeginEditing = true
+        
         setupBackground()
         setupFont()
     }
@@ -44,7 +46,7 @@ open class TextFieldView: UITextField {
     }
     
     func setupFont() {
-        self.font = ui.textfield_title
-        self.textColor = ui.titleColor
+        self.font = ui.textFieldTitleFont
+        self.textColor = ui.textColor
     }
 }
