@@ -8,6 +8,8 @@ target 'Pocket3D' do
   # Pods for Pocket3D
   pod 'Alamofire', '~> 4.7'
   pod 'SwiftyJSON', '~> 4.0'
+  pod "MJPEGStreamLib"
+  pod "Starscream"
 
   target 'Pocket3DTests' do
     inherit! :search_paths
