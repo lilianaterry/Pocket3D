@@ -167,19 +167,19 @@
 		8300E7D82225FF0B004DA31C /* Pocket3D */ = {
 			isa = PBXGroup;
 			children = (
-				CEB020BD222CCC2F008AE843 /* Status */,
+				8300E80B2225FF21004DA31C /* API */,
 				CEB020BC222CCC23008AE843 /* Files */,
 				CEB020B7222CC605008AE843 /* GlobalUI */,
 				CEB020B3222CC4E5008AE843 /* Login */,
-				8300E80B2225FF21004DA31C /* API */,
+				CEB020BD222CCC2F008AE843 /* Status */,
 				8300E7D92225FF0B004DA31C /* AppDelegate.swift */,
-				8300E7DB2225FF0B004DA31C /* RootViewController.swift */,
-				8300E7DD2225FF0B004DA31C /* DataViewController.swift */,
-				8300E7DF2225FF0B004DA31C /* ModelController.swift */,
-				8300E7E12225FF0B004DA31C /* Main.storyboard */,
 				8300E7E42225FF0C004DA31C /* Assets.xcassets */,
-				8300E7E62225FF0C004DA31C /* LaunchScreen.storyboard */,
+				8300E7DD2225FF0B004DA31C /* DataViewController.swift */,
 				8300E7E92225FF0C004DA31C /* Info.plist */,
+				8300E7E62225FF0C004DA31C /* LaunchScreen.storyboard */,
+				8300E7E12225FF0B004DA31C /* Main.storyboard */,
+				8300E7DF2225FF0B004DA31C /* ModelController.swift */,
+				8300E7DB2225FF0B004DA31C /* RootViewController.swift */,
 			);
 			path = Pocket3D;
 			sourceTree = "<group>";

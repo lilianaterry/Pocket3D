@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class StatusViewController: UIViewController {
 
@@ -14,6 +15,12 @@ class StatusViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //Push.instance.current.subscribe(self)
+    }
+    
+    func websocketPush(data: JSON) {
+        
     }
     
 

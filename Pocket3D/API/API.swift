@@ -20,23 +20,32 @@ final class API {
         }
     }
     
-    typealias JsonCallback = (JSON) -> Void
+    typealias JsonCallback = (Status, JSON) -> Void
     typealias Callback = (Status) -> Void
     
     static let instance = API()
     
-    var orig_url: URL!
-    var url: URL!
-    var api_key: String!
+    private var orig_url: URL!
+    private var url: URL!
+    private var api_key: String!
     
-    var headers: [String: String] {
+    private var headers: [String: String] {
         return ["X-Api-Key": self.api_key]
     }
     
     func setup(url: String, key: String) {
         self.orig_url = URL(string: url)
         self.url = URL(string: url)!.appendingPathComponent("api")
-        self.api_key = key
+        self.api_key = "80943D305E7F428DAB19A6EF4B675007"
+    }
+    
+    func login(callback: @escaping JsonCallback) {
+        performPost(path: "login", parameters: ["passive": true]).responseJSON { (res) in
+            let json = JSON(res.data as Any)
+            NSLog("Got session key \(json["session"])")
+            callback(res.response?.statusCode == 204 ? .Ok : .Fail, json)
+            //TODO: pass session key to websocket api and connect
+        }
     }
     
     func stream() -> URL? {
@@ -109,7 +118,8 @@ final class API {
     func files(callback: @escaping JsonCallback) {
         Alamofire.request(self.url.appendingPathComponent("files"),
                           headers: self.headers).responseJSON { data in
-            callback(JSON(data))
+                            callback(data.response?.statusCode == 200 ? .Ok : .Fail,
+                                     JSON(data))
         }
     }
     
@@ -125,23 +135,28 @@ final class API {
                                 callback: callback)
     }
     
-    func performPost(path: String, parameters: [String: Any] = [:]) -> DataRequest {
+    private func performPost(path: String, parameters: [String: Any] = [:]) -> DataRequest {
         return self.performPost(paths: [path], parameters: parameters)
     }
     
-    func performPost(paths: [String], parameters: [String: Any] = [:]) -> DataRequest {
-        return Alamofire.request(self.buildMultipath(paths), parameters: parameters, encoding: JSONEncoding.default, headers: self.headers)
+    private func performPost(paths: [String], parameters: [String: Any] = [:]) -> DataRequest {
+        return Alamofire.request(self.buildMultipath(paths), method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: self.headers)
     }
     
-    func performPostDefault(paths: [String],
+    private func performPostDefault(paths: [String],
                             parameters: [String: Any] = [:],
                             callback: @escaping Callback) {
         self.performPost(paths: paths, parameters: parameters).response(completionHandler: { ddr in
-            callback(ddr.response?.statusCode == 204 ? .Ok : .Fail)
+            if ddr.response?.statusCode == 204 {
+                callback(.Ok)
+            } else {
+                print("Request against \(String(describing: ddr.request?.url)) failed: \(String(describing: ddr.response?.statusCode))")
+                callback(.Fail)
+            }
         })
     }
     
-    func buildMultipath(_ paths: [String]) -> URL {
+    private func buildMultipath(_ paths: [String]) -> URL {
         return paths.reduce(self.url, { acc, x in acc!.appendingPathComponent(x) })!
     }
 }
