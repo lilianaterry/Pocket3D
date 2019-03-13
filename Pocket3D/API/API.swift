@@ -34,7 +34,7 @@ final class API {
     }
     
     func setup(url: String, key: String) {
-        self.orig_url = URL(string: "http://octopi.local")
+        self.orig_url = URL(string: "http://70.122.32.48")
         self.url = self.orig_url.appendingPathComponent("api")
         self.api_key = "B7714E03A6524843BBB26F946D59AE70"
     }

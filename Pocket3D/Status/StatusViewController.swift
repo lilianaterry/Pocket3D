@@ -10,7 +10,15 @@ import UIKit
 import SwiftyJSON
 import MJPEGStreamLib
 
-class StatusViewController: UIViewController {
+class StatusViewController: UIViewController, Observer {
+    
+    func notify(message: Notification) {
+        let json = message.object! as! JSON
+        updateStatus(status: json["state"]["text"].stringValue,
+                     filename: json["state"]["file"]["name"].stringValue)
+        updateProgress(progress: json["progress"]["completion"].doubleValue)
+        updateTimeRemaining(timeRemain: json["progress"]["printTimeLeft"].intValue)
+    }
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerTitle: UILabel!
@@ -28,18 +36,18 @@ class StatusViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setup()
-        dummyData()
+        
+        Push.instance.observe(who: self as Observer, topic: Push.current)
         
         stream = MJPEGStreamLib(imageView: self.webcamImageView)
         stream.contentURL = API.instance.stream()
+        stream.didStartLoading = {
+            print("MJPEG stream loading...")
+        }
+        stream.didFinishLoading = {
+            print("MJPEG stream loaded!")
+        }
         stream.play()
-    }
-    
-    // remove this once API is connected to this view controller
-    func dummyData() {
-        updateStatus(printing: true, filename: "Toilet.obj")
-        updateProgress(progress: 72)
-        updateTimeRemaining(timeRemain: 200)
     }
     
     // set font and background colors
@@ -55,15 +63,9 @@ class StatusViewController: UIViewController {
         timeRemainingLabel.textColor = ui.textColor
     }
     
-    func updateStatus(printing: Bool, filename: String) {
-        if printing {
-            statusLabel.text = "Printing"
-            filenameLabel.text = filename
-            filenameLabel.sizeToFit()
-        } else {
-            statusLabel.text = "Idle"
-            filenameLabel.text = ""
-        }
+    func updateStatus(status: String, filename: String) {
+        filenameLabel.text = status
+        filenameLabel.sizeToFit()
     }
     
     func updateProgress(progress: Double) {

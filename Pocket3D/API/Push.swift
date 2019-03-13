@@ -18,7 +18,7 @@ import SwiftyJSON
 // TODO: make sure to set the throttle argument
 
 @objc protocol Observer {
-    func notify(message: String)
+    func notify(message: Notification)
 }
 
 typealias Topic = NSNotification.Name
@@ -106,7 +106,7 @@ final class Push: WebSocketDelegate {
                         // there isn't much we need from a connected response
                         break
                     case "current":
-                        break
+                        NotificationCenter.default.post(name: Push.current, object: value)
                     case "history": break
                     case "event": break
                     case "slicingProgress": break
