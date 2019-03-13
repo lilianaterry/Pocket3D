@@ -311,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="527"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="XKH-pd-U96">
-                                        <rect key="frame" x="16" y="32" width="343" height="383"/>
+                                        <rect key="frame" x="16" y="32" width="343" height="372.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="VpL-G3-fac">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="129.5"/>
@@ -379,8 +379,11 @@
                                                     <constraint firstItem="loH-xe-0j0" firstAttribute="leading" secondItem="VpL-G3-fac" secondAttribute="leading" id="w6f-uh-qQI"/>
                                                 </constraints>
                                             </stackView>
-                                            <imageView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlJ-xK-qHn">
-                                                <rect key="frame" x="0.0" y="182" width="343" height="201"/>
+                                            <imageView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlJ-xK-qHn">
+                                                <rect key="frame" x="0.0" y="179.5" width="343" height="193"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="hlJ-xK-qHn" secondAttribute="height" multiplier="16:9" id="Do4-D9-9Vl"/>
+                                                </constraints>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -391,7 +394,6 @@
                                             <constraint firstItem="hlJ-xK-qHn" firstAttribute="leading" secondItem="XKH-pd-U96" secondAttribute="leading" id="bTb-G9-aFv"/>
                                             <constraint firstItem="hlJ-xK-qHn" firstAttribute="centerX" secondItem="XKH-pd-U96" secondAttribute="centerX" id="dni-Wh-TUp"/>
                                             <constraint firstAttribute="trailing" secondItem="VpL-G3-fac" secondAttribute="trailing" id="m5c-wl-aQA"/>
-                                            <constraint firstItem="hlJ-xK-qHn" firstAttribute="top" secondItem="XKH-pd-U96" secondAttribute="top" constant="182" id="whq-Mn-kM9"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

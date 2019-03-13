@@ -39,8 +39,11 @@ class StatusViewController: UIViewController, Observer {
         
         Push.instance.observe(who: self as Observer, topic: Push.current)
         
+        // TODO: apply settings for imageview mirroring
+        self.webcamImageView.transform = CGAffineTransform(scaleX: -1, y: -1)
         stream = MJPEGStreamLib(imageView: self.webcamImageView)
         stream.contentURL = API.instance.stream()
+        print("Playing mjpeg stream \(stream.contentURL)")
         stream.didStartLoading = {
             print("MJPEG stream loading...")
         }

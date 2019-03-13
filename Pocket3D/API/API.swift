@@ -59,6 +59,7 @@ final class API {
         // TODO: this is the default, add to settings at some point
         qi.append(URLQueryItem(name: "action", value: "stream"))
         qurl.queryItems = qi
+        qurl.path = "/webcam/"
         return qurl.url
     }
     
