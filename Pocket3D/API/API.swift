@@ -43,8 +43,13 @@ final class API {
         performPost(path: "login", parameters: ["passive": true]).responseJSON { (res) in
             let json = JSON(res.data as Any)
             NSLog("Got session key \(json["session"])")
-            callback(res.response?.statusCode == 200 ? .Ok : .Fail, json)
-            //TODO: pass session key to websocket api and connect
+            if (res.response?.statusCode == 200) {
+                Push.instance.connect(baseUrl: self.orig_url, name: json["name"].stringValue,
+                                      sessionKey: json["session"].stringValue)
+                callback(.Ok, json)
+            } else {
+                callback(.Fail, json)
+            }
         }
     }
     
