@@ -33,12 +33,12 @@ class LoginViewController: UIViewController {
             API.instance.login { [unowned self] status, _ in
                 print("Got status \(status) from logging in")
                 
-//                if status == .Ok {
+                if status == .Ok {
                 let defaultVC = self.storyboard!.instantiateViewController(withIdentifier: "StatusViewController")
                 self.present(defaultVC, animated: true, completion: nil)
-//                } else {
-//                    self.errorLabel.text = "Login info incorrect"
-//                }
+                } else {
+                    self.errorLabel.text = "Login info incorrect"
+                }
             }
         } else {
             if (!apiKeyField.hasText || apiKeyField.text == "API Key") &&

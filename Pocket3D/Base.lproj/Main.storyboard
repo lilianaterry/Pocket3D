@@ -51,8 +51,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsU-2R-Lkb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQu-Vy-NJ1">
-                                        <rect key="frame" x="15" y="89.5" width="77" height="38.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Files" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQu-Vy-NJ1">
+                                        <rect key="frame" x="15" y="92" width="72" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="jQu-Vy-NJ1" secondAttribute="height" multiplier="2:1" id="6Na-nu-g7j"/>
                                             <constraint firstAttribute="width" secondItem="jQu-Vy-NJ1" secondAttribute="height" multiplier="2:1" id="qdf-hX-wwV"/>
@@ -83,7 +83,7 @@
                                     <constraint firstAttribute="height" constant="511" id="EL7-EB-Idd"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FileTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ate-Ef-6R5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FileTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FILE_CELL" id="ate-Ef-6R5" customClass="FileTableViewCell" customModule="Pocket3D" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ate-Ef-6R5" id="q5t-Wr-YzL">
@@ -116,6 +116,9 @@
                                                 <constraint firstItem="Z3n-2e-XtE" firstAttribute="leading" secondItem="q5t-Wr-YzL" secondAttribute="leading" constant="10" id="x5C-D1-Jo5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="Z3n-2e-XtE" id="dJT-CI-Rp9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -131,6 +134,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pcr-E9-YPe"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="jG2-1q-bbD" id="Xlq-X3-TAW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zWe-Nx-8hP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -308,19 +314,19 @@
                                         <rect key="frame" x="16" y="32" width="343" height="383"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="VpL-G3-fac">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="129.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="STm-TF-WQb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="26"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvd-ca-xvz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="54" height="26"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="55" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xZ-la-6vh">
-                                                                <rect key="frame" x="289" y="0.0" width="54" height="26"/>
+                                                                <rect key="frame" x="290.5" y="0.0" width="52.5" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="22"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -328,16 +334,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6GB-h8-fzv">
-                                                        <rect key="frame" x="0.0" y="51" width="343" height="26"/>
+                                                        <rect key="frame" x="0.0" y="51.5" width="343" height="26.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMK-WD-ruQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="26"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kh-f5-FLe">
-                                                                <rect key="frame" x="289" y="0.0" width="54" height="26"/>
+                                                                <rect key="frame" x="290.5" y="0.0" width="52.5" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="22"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -345,16 +351,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="loH-xe-0j0">
-                                                        <rect key="frame" x="0.0" y="102" width="343" height="26"/>
+                                                        <rect key="frame" x="0.0" y="103" width="343" height="26.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Remaining:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SU-QH-afc">
-                                                                <rect key="frame" x="0.0" y="0.0" width="165" height="26"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="166" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbT-vo-ufv">
-                                                                <rect key="frame" x="289" y="0.0" width="54" height="26"/>
+                                                                <rect key="frame" x="290.5" y="0.0" width="52.5" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="22"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>

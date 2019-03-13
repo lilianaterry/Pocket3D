@@ -34,16 +34,16 @@ final class API {
     }
     
     func setup(url: String, key: String) {
-        self.orig_url = URL(string: url)
-        self.url = URL(string: url)!.appendingPathComponent("api")
-        self.api_key = "80943D305E7F428DAB19A6EF4B675007"
+        self.orig_url = URL(string: "http://octopi.local")
+        self.url = self.orig_url.appendingPathComponent("api")
+        self.api_key = "B7714E03A6524843BBB26F946D59AE70"
     }
     
     func login(callback: @escaping JsonCallback) {
         performPost(path: "login", parameters: ["passive": true]).responseJSON { (res) in
             let json = JSON(res.data as Any)
             NSLog("Got session key \(json["session"])")
-            callback(res.response?.statusCode == 204 ? .Ok : .Fail, json)
+            callback(res.response?.statusCode == 200 ? .Ok : .Fail, json)
             //TODO: pass session key to websocket api and connect
         }
     }
@@ -119,12 +119,12 @@ final class API {
         Alamofire.request(self.url.appendingPathComponent("files"),
                           headers: self.headers).responseJSON { data in
                             callback(data.response?.statusCode == 200 ? .Ok : .Fail,
-                                     JSON(data))
+                                     JSON(data.data!))
         }
     }
     
     func printFile(file: URL, callback: @escaping Callback) {
-        self.performPostDefault(paths: Array(file.pathComponents[1...]),
+        self.performPostDefault(paths: Array(file.pathComponents[2...]),
                                 parameters: ["command": "select", "print": true],
                                 callback: callback)
     }
