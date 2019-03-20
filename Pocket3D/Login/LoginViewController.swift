@@ -50,5 +50,7 @@ class LoginViewController: UIViewController {
                 errorLabel.text = "Please provide an IP Address"
             }
         }
+        
+        performSegue(withIdentifier: "tempSegue", sender: self)
     }
 }

@@ -43,7 +43,7 @@ final class Push: WebSocketDelegate {
         var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true)!
         components.scheme = "ws"
         components.path = "/sockjs/\(name)/\(sessionKey)/websocket"
-        print("Connecting to \(components.url)")
+        print("Connecting to \(String(describing: components.url))")
         socket = WebSocket(url: components.url!)
         self.sessionKey = sessionKey
         self.name = name
@@ -118,7 +118,7 @@ final class Push: WebSocketDelegate {
             // heartbeat
             print("💓")
         default:
-            print("Unknown message start \(text.first)")
+            print("Unknown message start \(String(describing: text.first))")
         }
     }
 }

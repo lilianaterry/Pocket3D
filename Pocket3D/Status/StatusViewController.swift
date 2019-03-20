@@ -43,7 +43,7 @@ class StatusViewController: UIViewController, Observer {
         self.webcamImageView.transform = CGAffineTransform(scaleX: -1, y: -1)
         stream = MJPEGStreamLib(imageView: self.webcamImageView)
         stream.contentURL = API.instance.stream()
-        print("Playing mjpeg stream \(stream.contentURL)")
+        print("Playing mjpeg stream \(String(describing: stream.contentURL))")
         stream.didStartLoading = {
             print("MJPEG stream loading...")
         }
