@@ -469,7 +469,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FE2-el-ytB">
-                                                <rect key="frame" x="11.5" y="26.5" width="352" height="474.5"/>
+                                                <rect key="frame" x="3.5" y="-23.5" width="368" height="574.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znB-8e-Gp3">
                                                         <rect key="frame" x="0.0" y="0.0" width="81" height="26.5"/>
@@ -478,51 +478,51 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-fv-kMg" customClass="JoystickSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="41.5" width="150" height="150"/>
+                                                        <rect key="frame" x="0.0" y="41.5" width="250" height="250"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" red="0.35915416480000001" green="0.99286979440000001" blue="0.79679876569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="vH0-fv-kMg" secondAttribute="height" multiplier="1:1" id="97o-yh-ve3"/>
-                                                            <constraint firstAttribute="height" constant="150" id="eaW-Om-ng3"/>
-                                                            <constraint firstAttribute="width" constant="150" id="nR8-W6-mef"/>
+                                                            <constraint firstAttribute="height" constant="250" id="eaW-Om-ng3"/>
+                                                            <constraint firstAttribute="width" constant="250" id="nR8-W6-mef"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Z Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGY-ub-poE">
-                                                        <rect key="frame" x="0.0" y="206.5" width="74.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="306.5" width="74.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="he0-QC-YtU" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="242" width="356" height="31"/>
+                                                        <rect key="frame" x="-2" y="342" width="372" height="31"/>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIn-OC-me0">
-                                                        <rect key="frame" x="0.0" y="287" width="127.5" height="26.5"/>
+                                                        <rect key="frame" x="0.0" y="387" width="127.5" height="26.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extruder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI9-6d-rWw">
-                                                        <rect key="frame" x="0.0" y="328.5" width="64.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="428.5" width="64.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="odk-qT-Wyt" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="364" width="355" height="31"/>
+                                                        <rect key="frame" x="-2" y="464" width="371" height="31"/>
                                                         <connections>
                                                             <action selector="extruderTempSlider:" destination="BPN-1a-BoB" eventType="valueChanged" id="20t-uN-lzz"/>
                                                             <action selector="extruderTempSlider:" destination="vCl-gq-8rV" eventType="valueChanged" id="7B1-zs-mzw"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head Bed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQu-wd-HNa">
-                                                        <rect key="frame" x="0.0" y="409" width="73.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="509" width="73.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xJ5-ps-0pM" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="444.5" width="355" height="31"/>
+                                                        <rect key="frame" x="-2" y="544.5" width="371" height="31"/>
                                                         <connections>
                                                             <action selector="extruderTempSlider:" destination="BPN-1a-BoB" eventType="valueChanged" id="wBT-X7-9lh"/>
                                                         </connections>

@@ -32,6 +32,30 @@ class JoystickSlider: UIView {
         setupSliderHead()
     }
     
+    override func draw(_ rect: CGRect) {
+        print("in draw function")
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        
+        let origin = CGPoint(x: self.bounds.origin.x + 3, y: self.bounds.origin.y + 3)
+        let width = self.bounds.width - 6.0
+        
+        let delta = self.bounds.midX / 5.0
+        for i in 0...4 {
+            let currDelta = delta * CGFloat(i)
+            let x = origin.x + currDelta
+            let y = origin.y + currDelta
+            let size = width - currDelta * 2
+            
+            let rect = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: size, height: size))
+            
+            context.setStrokeColor(ui.textColor.cgColor)
+            context.setLineWidth(6.0)
+            context.stroke(rect)
+        }
+    }
+    
     // add slider head and hook up gesture recognizer to be able to drag it
     func setupSliderHead() {
         let frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -40,7 +64,7 @@ class JoystickSlider: UIView {
         // make circle shape
         let circle = CAShapeLayer()
         circle.path = UIBezierPath(roundedRect: frame, cornerRadius: 15).cgPath
-        circle.fillColor = UIColor.black.cgColor
+        circle.fillColor = UIColor.white.cgColor
         sliderHeadView?.layer.addSublayer(circle)
         
         // add gesture recognizer to view so we can move the head around
