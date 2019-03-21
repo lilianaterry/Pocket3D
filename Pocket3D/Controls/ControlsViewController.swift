@@ -15,7 +15,10 @@ class ControlsViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerTitle: UILabel!
     
+    @IBOutlet weak var xyPositionSlider: UIView!
+    @IBOutlet weak var zPositionSlider: HorizontalCustomSlider!
     @IBOutlet weak var extruderSlider: UISlider!
+    @IBOutlet weak var heatbedSlider: UISlider!
     @IBOutlet weak var contentView: UIView!
     
     override func viewDidLoad() {
@@ -34,10 +37,9 @@ class ControlsViewController: UIViewController {
     }
     
     @IBAction func extruderTempSlider(_ sender: Any) {
-        let slider = sender as! TemperatureSlider
-        slider.thumbTextLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.thumbCenterY)
+        let slider = sender as! HorizontalCustomSlider
+        slider.updateLabelPosition()
     }
-
 }
 
 

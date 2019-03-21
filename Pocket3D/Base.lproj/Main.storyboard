@@ -468,55 +468,72 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yup-ol-uV0" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIn-OC-me0">
-                                                <rect key="frame" x="9" y="8" width="127.5" height="26.5"/>
-                                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extruder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI9-6d-rWw">
-                                                <rect key="frame" x="23" y="52.5" width="64.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="l7N-AZ-MQA">
-                                                <rect key="frame" x="24" y="133" width="327" height="21.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FE2-el-ytB">
+                                                <rect key="frame" x="11.5" y="26.5" width="352" height="474.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndd-Y3-YDJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="11.5" height="21.5"/>
-                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znB-8e-Gp3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="81" height="26.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3n-O6-hGD">
-                                                        <rect key="frame" x="293" y="0.0" width="34" height="21.5"/>
-                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-fv-kMg" customClass="JoystickSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="41.5" width="150" height="150"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" red="0.35915416480000001" green="0.99286979440000001" blue="0.79679876569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="vH0-fv-kMg" secondAttribute="height" multiplier="1:1" id="97o-yh-ve3"/>
+                                                            <constraint firstAttribute="height" constant="150" id="eaW-Om-ng3"/>
+                                                            <constraint firstAttribute="width" constant="150" id="nR8-W6-mef"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Z Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGY-ub-poE">
+                                                        <rect key="frame" x="0.0" y="206.5" width="74.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="he0-QC-YtU" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                        <rect key="frame" x="-2" y="242" width="356" height="31"/>
+                                                    </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIn-OC-me0">
+                                                        <rect key="frame" x="0.0" y="287" width="127.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extruder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI9-6d-rWw">
+                                                        <rect key="frame" x="0.0" y="328.5" width="64.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="odk-qT-Wyt" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                        <rect key="frame" x="-2" y="364" width="355" height="31"/>
+                                                        <connections>
+                                                            <action selector="extruderTempSlider:" destination="BPN-1a-BoB" eventType="valueChanged" id="20t-uN-lzz"/>
+                                                            <action selector="extruderTempSlider:" destination="vCl-gq-8rV" eventType="valueChanged" id="7B1-zs-mzw"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head Bed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQu-wd-HNa">
+                                                        <rect key="frame" x="0.0" y="409" width="73.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xJ5-ps-0pM" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                        <rect key="frame" x="-2" y="444.5" width="355" height="31"/>
+                                                        <connections>
+                                                            <action selector="extruderTempSlider:" destination="BPN-1a-BoB" eventType="valueChanged" id="wBT-X7-9lh"/>
+                                                        </connections>
+                                                    </slider>
                                                 </subviews>
                                             </stackView>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="odk-qT-Wyt" customClass="TemperatureSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                <rect key="frame" x="22" y="88" width="331" height="31"/>
-                                                <connections>
-                                                    <action selector="extruderTempSlider:" destination="BPN-1a-BoB" eventType="valueChanged" id="20t-uN-lzz"/>
-                                                    <action selector="extruderTempSlider:" destination="vCl-gq-8rV" eventType="valueChanged" id="7B1-zs-mzw"/>
-                                                </connections>
-                                            </slider>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="nIn-OC-me0" firstAttribute="top" secondItem="yup-ol-uV0" secondAttribute="top" constant="8" id="53h-Mm-8Re"/>
-                                            <constraint firstItem="l7N-AZ-MQA" firstAttribute="centerX" secondItem="odk-qT-Wyt" secondAttribute="centerX" id="6GI-ks-ThG"/>
-                                            <constraint firstItem="PI9-6d-rWw" firstAttribute="leading" secondItem="yup-ol-uV0" secondAttribute="leading" constant="23" id="FKc-E5-dTb"/>
-                                            <constraint firstItem="odk-qT-Wyt" firstAttribute="top" secondItem="PI9-6d-rWw" secondAttribute="bottom" constant="15" id="M2F-sQ-ZTs"/>
-                                            <constraint firstItem="nIn-OC-me0" firstAttribute="leading" secondItem="yup-ol-uV0" secondAttribute="leading" constant="9" id="UKr-Cz-OFt"/>
-                                            <constraint firstItem="l7N-AZ-MQA" firstAttribute="width" secondItem="odk-qT-Wyt" secondAttribute="width" id="gEu-Vj-36V"/>
-                                            <constraint firstItem="l7N-AZ-MQA" firstAttribute="top" secondItem="odk-qT-Wyt" secondAttribute="bottom" constant="15" id="hr5-MD-Qjb"/>
-                                            <constraint firstItem="PI9-6d-rWw" firstAttribute="top" secondItem="nIn-OC-me0" secondAttribute="bottom" constant="18" id="nUT-yk-Mlb"/>
-                                            <constraint firstAttribute="trailing" secondItem="odk-qT-Wyt" secondAttribute="trailing" constant="24" id="ors-h4-aGq"/>
-                                            <constraint firstItem="odk-qT-Wyt" firstAttribute="leading" secondItem="yup-ol-uV0" secondAttribute="leading" constant="24" id="vE7-nA-TAK"/>
+                                            <constraint firstItem="FE2-el-ytB" firstAttribute="centerY" secondItem="yup-ol-uV0" secondAttribute="centerY" id="KxS-C3-Cu2"/>
+                                            <constraint firstItem="FE2-el-ytB" firstAttribute="centerX" secondItem="yup-ol-uV0" secondAttribute="centerX" id="W3b-fd-mdp"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -547,6 +564,9 @@
                         <outlet property="extruderSlider" destination="odk-qT-Wyt" id="ohn-mR-NOh"/>
                         <outlet property="headerTitle" destination="fGU-3s-eKI" id="NU1-IL-HgL"/>
                         <outlet property="headerView" destination="c2D-d9-JFs" id="wdq-ME-dax"/>
+                        <outlet property="heatbedSlider" destination="xJ5-ps-0pM" id="cgR-9r-d7T"/>
+                        <outlet property="xyPositionSlider" destination="vH0-fv-kMg" id="CZe-YV-2JJ"/>
+                        <outlet property="zPositionSlider" destination="he0-QC-YtU" id="Sdq-3I-fqc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDf-KP-4Yn" userLabel="First Responder" sceneMemberID="firstResponder"/>
