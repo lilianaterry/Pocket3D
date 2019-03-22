@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
     let ui = UIExtensions()
@@ -14,10 +15,15 @@ class LoginViewController: UIViewController {
     @IBOutlet var ipAddressField: TextFieldView!
     @IBOutlet var errorLabel: UILabel!
     
+    var context: NSManagedObjectContext!
+    var settings: NSManagedObject!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = ui.headerBackgroundColor
+        
+        setupCoreData("Settings")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +46,7 @@ class LoginViewController: UIViewController {
                     self.errorLabel.text = "Login info incorrect"
                 }
             }
+            saveToCoreData()
         } else {
             if (!apiKeyField.hasText || apiKeyField.text == "API Key") &&
                 (!ipAddressField.hasText || ipAddressField.text == "IP Address") {
@@ -52,5 +59,36 @@ class LoginViewController: UIViewController {
         }
         
         performSegue(withIdentifier: "tempSegue", sender: self)
+    }
+    
+    // save login information to core data for settings page
+    func saveToCoreData() {
+        settings.setValue(ipAddressField.text, forKey: "ipAddress")
+        settings.setValue(apiKeyField.text, forKey: "apiKey")
+        do {
+            try context.save()
+        } catch  {
+            print("Failed to save login information to Core Data")
+        }
+    }
+    
+    // setup core data to save login information
+    func setupCoreData(_ entity:String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        // fetch settings if any have been made before
+        do {
+            let results = try context.fetch(fetchRequest) as! [NSManagedObject]
+            settings = results[0]
+        // create new settings entity if has not been created yet
+        } catch {
+            settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)
+            settings.setValue(0, forKey: "fileSort")
+            settings.setValue(0, forKey: "posCoord")
+            settings.setValue(0, forKey: "colorMode")
+        }
     }
 }

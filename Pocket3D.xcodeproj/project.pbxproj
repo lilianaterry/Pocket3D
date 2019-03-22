@@ -20,6 +20,9 @@
 		837F45D3223031BB00895817 /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837F45D2223031BB00895817 /* Push.swift */; };
 		B0F94C24ACDDF997EA7B3475 /* Pods_Pocket3D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */; };
 		CE36831D22442FCB005CB878 /* JoystickSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36831C22442FCB005CB878 /* JoystickSlider.swift */; };
+		CE36832022449D12005CB878 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36831F22449D12005CB878 /* SettingsViewController.swift */; };
+		CE36832422453207005CB878 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36832322453207005CB878 /* BubbleButton.swift */; };
+		CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE3683252245644B005CB878 /* Pocket3D.xcdatamodeld */; };
 		CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64172228CD4500771BE3 /* LoginViewController.swift */; };
 		CE7A641A2228CFBD00771BE3 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64192228CFBD00771BE3 /* FilesViewController.swift */; };
 		CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A641B2228D91E00771BE3 /* StatusViewController.swift */; };
@@ -79,6 +82,9 @@
 		837F45D2223031BB00895817 /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
 		CCA0722FDBF771048CF69280 /* Pods-Pocket3DTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE36831C22442FCB005CB878 /* JoystickSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickSlider.swift; sourceTree = "<group>"; };
+		CE36831F22449D12005CB878 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CE36832322453207005CB878 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
+		CE3683262245644B005CB878 /* Pocket3D.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pocket3D.xcdatamodel; sourceTree = "<group>"; };
 		CE7A64172228CD4500771BE3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE7A64192228CFBD00771BE3 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		CE7A641B2228D91E00771BE3 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 		8300E7D82225FF0B004DA31C /* Pocket3D */ = {
 			isa = PBXGroup;
 			children = (
+				CE36831E22449CFA005CB878 /* Settings */,
 				CEAEA46B2242E65800479B27 /* Controls */,
 				8300E80B2225FF21004DA31C /* API */,
 				CEB020BC222CCC23008AE843 /* Files */,
@@ -180,6 +187,7 @@
 				CEB020B3222CC4E5008AE843 /* Login */,
 				CEB020BD222CCC2F008AE843 /* Status */,
 				8300E7D92225FF0B004DA31C /* AppDelegate.swift */,
+				CE3683252245644B005CB878 /* Pocket3D.xcdatamodeld */,
 				8300E7E42225FF0C004DA31C /* Assets.xcassets */,
 				8300E7DD2225FF0B004DA31C /* DataViewController.swift */,
 				8300E7E92225FF0C004DA31C /* Info.plist */,
@@ -218,12 +226,37 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		CE36831E22449CFA005CB878 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CE368321224531AF005CB878 /* UI */,
+				CE36831F22449D12005CB878 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		CE368321224531AF005CB878 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CE36832322453207005CB878 /* BubbleButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CE368322224531C5005CB878 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CEAEA46E2242F76000479B27 /* CustomSlider.swift */,
+				CE36831C22442FCB005CB878 /* JoystickSlider.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		CEAEA46B2242E65800479B27 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				CE368322224531C5005CB878 /* UI */,
 				CEAEA46C2242E67100479B27 /* ControlsViewController.swift */,
-				CEAEA46E2242F76000479B27 /* CustomSlider.swift */,
-				CE36831C22442FCB005CB878 /* JoystickSlider.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -240,7 +273,6 @@
 		CEB020B4222CC5CC008AE843 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CEB020B5222CC5FD008AE843 /* TextFieldView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -250,6 +282,7 @@
 			children = (
 				CEB020BE222CCFA0008AE843 /* Fonts */,
 				CEB020B8222CC61E008AE843 /* ButtonView.swift */,
+				CEB020B5222CC5FD008AE843 /* TextFieldView.swift */,
 				CEB020BA222CC7AE008AE843 /* UIExtensions.swift */,
 			);
 			path = GlobalUI;
@@ -512,10 +545,13 @@
 				8300E7DC2225FF0B004DA31C /* RootViewController.swift in Sources */,
 				837F45D3223031BB00895817 /* Push.swift in Sources */,
 				CE36831D22442FCB005CB878 /* JoystickSlider.swift in Sources */,
+				CE36832422453207005CB878 /* BubbleButton.swift in Sources */,
 				CE7A641A2228CFBD00771BE3 /* FilesViewController.swift in Sources */,
+				CE36832022449D12005CB878 /* SettingsViewController.swift in Sources */,
 				8300E7E02225FF0B004DA31C /* ModelController.swift in Sources */,
 				CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */,
 				8300E7DE2225FF0B004DA31C /* DataViewController.swift in Sources */,
+				CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,
 				CEAEA46D2242E67100479B27 /* ControlsViewController.swift in Sources */,
 				8300E80D2225FF4D004DA31C /* API.swift in Sources */,
@@ -855,6 +891,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CE3683252245644B005CB878 /* Pocket3D.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CE3683262245644B005CB878 /* Pocket3D.xcdatamodel */,
+			);
+			currentVersion = CE3683262245644B005CB878 /* Pocket3D.xcdatamodel */;
+			path = Pocket3D.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8300E7CE2225FF0B004DA31C /* Project object */;
 }

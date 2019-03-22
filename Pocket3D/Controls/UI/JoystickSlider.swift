@@ -62,56 +62,6 @@ class JoystickSlider: UIView {
         }
     }
     
-    func setupLabels() {
-        // bottom left
-        
-        let origin = self.bounds.origin
-        print(self.bounds.origin)
-        
-        var x = origin.x
-        var y = origin.y + bounds.height + 10
-        var frame = CGRect(origin: CGPoint(x: x, y: y), size: bounds.size)
-        bottomLeftLabel = UILabel(frame: frame)
-        bottomLeftLabel.text = String(Int(min))
-        bottomLeftLabel.layer.position = bottomLeftLabel.frame.origin
-        bottomLeftLabel.textColor = ui.textColor
-        self.addSubview(bottomLeftLabel)
-        
-        // bottom right
-        x = origin.x + bounds.width
-        print(origin.x)
-        print(bounds.width)
-        print(x)
-        y = origin.y + bounds.height + 10
-        frame = CGRect(origin: CGPoint(x: x, y: y), size: bounds.size)
-        bottomRightLabel = UILabel(frame: frame)
-        bottomRightLabel.text = String(Int(max))
-        bottomRightLabel.layer.position = self.convert(frame.origin, to: self)
-        bottomRightLabel.textColor = ui.textColor
-        bottomRightLabel.backgroundColor = ui.textColor
-        self.addSubview(bottomRightLabel)
-        
-        // top left
-        x = origin.x
-        y = origin.y - 10
-        frame = CGRect(origin: CGPoint(x: x, y: y), size: bounds.size)
-        topLeftLabel = UILabel(frame: frame)
-        topLeftLabel.text = String(Int(max))
-        topLeftLabel.layer.position = topLeftLabel.frame.origin
-        topLeftLabel.textColor = ui.textColor
-        self.addSubview(topLeftLabel)
-        
-        // top right
-        x = origin.x + frame.width
-        y = origin.y - 10
-        frame = CGRect(origin: CGPoint(x: x, y: y), size: bounds.size)
-        topRightLabel = UILabel(frame: frame)
-        topRightLabel.text = "xy"
-        topRightLabel.layer.position = topRightLabel.frame.origin
-        topRightLabel.textColor = ui.textColor
-        self.addSubview(topRightLabel)
-    }
-    
     // add slider head and hook up gesture recognizer to be able to drag it
     func setupSliderHead() {
         let frame = CGRect(x: 0, y: 0, width: 30, height: 30)
