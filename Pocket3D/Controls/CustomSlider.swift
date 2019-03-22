@@ -212,7 +212,6 @@ class VerticalCustomSlider: UISlider {
     
     // when the slider moves, move the label with it
     func updateLabelPosition() {
-        print("x: \(self.thumbCenterX) y: \(self.thumbCenterY)")
         self.thumbTextLabel.center = CGPoint(x: self.thumbCenterX, y: self.thumbCenterY)
     }
 }
