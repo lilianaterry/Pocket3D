@@ -50,9 +50,9 @@ class HorizontalCustomSlider: UISlider {
         maxLabel.sizeToFit()
         
         // slider head label position
-        thumbTextLabel.layer.position = CGPoint(x: thumbCenterX, y: thumbCenterY - 65)
-        minLabel.layer.position = CGPoint(x: bounds.origin.x, y: bounds.origin.y + 45)
-        maxLabel.layer.position = CGPoint(x: bounds.origin.x + bounds.width, y: bounds.origin.y + 45)
+        thumbTextLabel.layer.position = CGPoint(x: thumbCenterX, y: thumbCenterY - 75)
+        minLabel.layer.position = CGPoint(x: bounds.origin.x, y: bounds.origin.y + 25)
+        maxLabel.layer.position = CGPoint(x: bounds.origin.x + bounds.width, y: bounds.origin.y + 25)
     }
     
     override func awakeFromNib() {
@@ -102,13 +102,6 @@ class HorizontalCustomSlider: UISlider {
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
-    }
-    
-    // when the slider moves, move the label with it
-    func updateLabelPosition() {
-        print("before: x:\(self.thumbTextLabel.center.x) y: \(self.thumbTextLabel.center.x)")
-//        self.thumbTextLabel.center = CGPoint(x: self.thumbCenterX, y: self.thumbCenterY)
-        print("after: x:\(self.thumbTextLabel.center.x) y: \(self.thumbTextLabel.center.x)")
     }
 }
 

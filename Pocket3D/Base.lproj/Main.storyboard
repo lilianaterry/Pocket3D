@@ -441,7 +441,7 @@
             <objects>
                 <viewController id="BPN-1a-BoB" customClass="ControlsViewController" customModule="Pocket3D" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SLO-TH-Q1B">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2D-d9-JFs">
@@ -463,77 +463,186 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9S-WH-Y49">
-                                <rect key="frame" x="0.0" y="140" width="375" height="527"/>
+                                <rect key="frame" x="0.0" y="140" width="375" height="860"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yup-ol-uV0" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="860"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FE2-el-ytB">
-                                                <rect key="frame" x="3.5" y="-23.5" width="368" height="574.5"/>
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="YBy-TO-ipT" userLabel="position stack">
+                                                <rect key="frame" x="8" y="16" width="359" height="539"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znB-8e-Gp3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="81" height="26.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znB-8e-Gp3" userLabel="Position Title">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="26.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-fv-kMg" customClass="JoystickSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="41.5" width="250" height="250"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="tintColor" red="0.35915416480000001" green="0.99286979440000001" blue="0.79679876569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gJR-32-Jzj" userLabel="xy position">
+                                                        <rect key="frame" x="24" y="56.5" width="311" height="374"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-D4-Fvw" userLabel="top labels">
+                                                                <rect key="frame" x="0.0" y="0.0" width="311" height="21.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKr-d3-4JP">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="34" height="21.5"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RZ-XE-clx">
+                                                                        <rect key="frame" x="292" y="0.0" width="19" height="21.5"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-fv-kMg" userLabel="xy Position Slider" customClass="JoystickSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="31.5" width="311" height="311"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="tintColor" red="0.35915416480000001" green="0.99286979440000001" blue="0.79679876569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="vH0-fv-kMg" secondAttribute="height" multiplier="1:1" id="97o-yh-ve3"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CqA-Og-zuz" userLabel="bottom labels">
+                                                                <rect key="frame" x="0.0" y="352.5" width="311" height="21.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DT-nq-2Sh">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="11.5" height="21.5"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnv-Wj-35B">
+                                                                        <rect key="frame" x="277" y="0.0" width="34" height="21.5"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="18"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="vH0-fv-kMg" secondAttribute="height" multiplier="1:1" id="97o-yh-ve3"/>
-                                                            <constraint firstAttribute="height" constant="250" id="eaW-Om-ng3"/>
-                                                            <constraint firstAttribute="width" constant="250" id="nR8-W6-mef"/>
+                                                            <constraint firstAttribute="trailing" secondItem="vH0-fv-kMg" secondAttribute="trailing" id="8Y2-cu-rVW"/>
+                                                            <constraint firstItem="vH0-fv-kMg" firstAttribute="leading" secondItem="gJR-32-Jzj" secondAttribute="leading" id="8kb-B9-S3b"/>
+                                                            <constraint firstItem="1h2-D4-Fvw" firstAttribute="width" secondItem="vH0-fv-kMg" secondAttribute="width" id="GYC-e4-uUw"/>
+                                                            <constraint firstItem="CqA-Og-zuz" firstAttribute="width" secondItem="vH0-fv-kMg" secondAttribute="width" id="M3X-jr-DIq"/>
                                                         </constraints>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Z Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGY-ub-poE">
-                                                        <rect key="frame" x="0.0" y="306.5" width="74.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="he0-QC-YtU" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="342" width="372" height="31"/>
-                                                    </slider>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="CnA-EY-FUZ" userLabel="z slider">
+                                                        <rect key="frame" x="24" y="460.5" width="311" height="78.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="z" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGY-ub-poE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
+                                                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="he0-QC-YtU" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                                <rect key="frame" x="-2" y="48.5" width="315" height="31"/>
+                                                            </slider>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="hGY-ub-poE" firstAttribute="top" secondItem="CnA-EY-FUZ" secondAttribute="top" id="3WV-Rz-q2C"/>
+                                                            <constraint firstItem="he0-QC-YtU" firstAttribute="top" secondItem="hGY-ub-poE" secondAttribute="bottom" constant="28" id="51r-tc-vWy"/>
+                                                            <constraint firstItem="hGY-ub-poE" firstAttribute="leading" secondItem="CnA-EY-FUZ" secondAttribute="leading" id="FLy-cc-wny"/>
+                                                            <constraint firstItem="he0-QC-YtU" firstAttribute="leading" secondItem="CnA-EY-FUZ" secondAttribute="leading" id="Gli-L6-dF8"/>
+                                                            <constraint firstAttribute="trailing" secondItem="he0-QC-YtU" secondAttribute="trailing" id="cRb-ea-Q0X"/>
+                                                            <constraint firstAttribute="trailing" secondItem="hGY-ub-poE" secondAttribute="trailing" id="gHT-sz-Zk7"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="CnA-EY-FUZ" firstAttribute="leading" secondItem="YBy-TO-ipT" secondAttribute="leading" constant="24" id="3nl-aG-ySO"/>
+                                                    <constraint firstItem="znB-8e-Gp3" firstAttribute="top" secondItem="YBy-TO-ipT" secondAttribute="top" id="45q-7c-61t"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CnA-EY-FUZ" secondAttribute="trailing" constant="24" id="Nn3-Cp-Mlq"/>
+                                                    <constraint firstAttribute="trailing" secondItem="znB-8e-Gp3" secondAttribute="trailing" id="QXJ-MK-Szp"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gJR-32-Jzj" secondAttribute="trailing" constant="24" id="mJz-Wa-ZNW"/>
+                                                    <constraint firstItem="znB-8e-Gp3" firstAttribute="leading" secondItem="YBy-TO-ipT" secondAttribute="leading" id="rKj-Mo-Kc1"/>
+                                                    <constraint firstItem="gJR-32-Jzj" firstAttribute="leading" secondItem="YBy-TO-ipT" secondAttribute="leading" constant="24" id="tEJ-FQ-4n5"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="wt4-B6-LC8" userLabel="temperature stack">
+                                                <rect key="frame" x="8" y="585" width="359" height="263.5"/>
+                                                <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIn-OC-me0">
-                                                        <rect key="frame" x="0.0" y="387" width="127.5" height="26.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="26.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extruder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI9-6d-rWw">
-                                                        <rect key="frame" x="0.0" y="428.5" width="64.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="odk-qT-Wyt" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="464" width="371" height="31"/>
-                                                        <connections>
-                                                            <action selector="extruderTempSlider:" destination="BPN-1a-BoB" eventType="valueChanged" id="20t-uN-lzz"/>
-                                                            <action selector="extruderTempSlider:" destination="vCl-gq-8rV" eventType="valueChanged" id="7B1-zs-mzw"/>
-                                                        </connections>
-                                                    </slider>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head Bed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQu-wd-HNa">
-                                                        <rect key="frame" x="0.0" y="509" width="73.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xJ5-ps-0pM" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="544.5" width="371" height="31"/>
-                                                        <connections>
-                                                            <action selector="extruderTempSlider:" destination="BPN-1a-BoB" eventType="valueChanged" id="wBT-X7-9lh"/>
-                                                        </connections>
-                                                    </slider>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="uRY-CO-Mu6" userLabel="temperature_sliders">
+                                                        <rect key="frame" x="24" y="56.5" width="311" height="207"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="wVE-hV-acv" userLabel="extruder">
+                                                                <rect key="frame" x="0.0" y="0.0" width="311" height="78.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extruder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI9-6d-rWw">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="odk-qT-Wyt" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                                        <rect key="frame" x="-2" y="48.5" width="315" height="31"/>
+                                                                        <connections>
+                                                                            <action selector="extruderTempSlider:" destination="vCl-gq-8rV" eventType="valueChanged" id="7B1-zs-mzw"/>
+                                                                        </connections>
+                                                                    </slider>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="PI9-6d-rWw" secondAttribute="trailing" id="0qi-8S-Q9w"/>
+                                                                    <constraint firstItem="PI9-6d-rWw" firstAttribute="leading" secondItem="wVE-hV-acv" secondAttribute="leading" id="5nL-Sc-OrN"/>
+                                                                    <constraint firstItem="odk-qT-Wyt" firstAttribute="leading" secondItem="wVE-hV-acv" secondAttribute="leading" id="5op-NV-vDN"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="odk-qT-Wyt" secondAttribute="trailing" id="gOe-OO-YVY"/>
+                                                                    <constraint firstItem="PI9-6d-rWw" firstAttribute="top" secondItem="wVE-hV-acv" secondAttribute="top" id="kxG-tZ-s2V"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="FHM-da-T97" userLabel="heatbed">
+                                                                <rect key="frame" x="0.0" y="128.5" width="311" height="78.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head Bed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQu-wd-HNa">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="xJ5-ps-0pM" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                                        <rect key="frame" x="-2" y="48.5" width="315" height="31"/>
+                                                                    </slider>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="DQu-wd-HNa" firstAttribute="top" secondItem="FHM-da-T97" secondAttribute="top" id="C0R-SC-DHz"/>
+                                                                    <constraint firstItem="DQu-wd-HNa" firstAttribute="leading" secondItem="FHM-da-T97" secondAttribute="leading" id="ipi-Ko-EkZ"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="xJ5-ps-0pM" secondAttribute="trailing" id="qrX-3h-GRo"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="DQu-wd-HNa" secondAttribute="trailing" id="rvE-Ej-Iqu"/>
+                                                                    <constraint firstItem="xJ5-ps-0pM" firstAttribute="leading" secondItem="FHM-da-T97" secondAttribute="leading" id="yON-Sv-2ZV"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="nIn-OC-me0" secondAttribute="trailing" id="5Sp-Cs-94a"/>
+                                                    <constraint firstItem="nIn-OC-me0" firstAttribute="top" secondItem="wt4-B6-LC8" secondAttribute="top" id="IFT-WX-bEN"/>
+                                                    <constraint firstItem="uRY-CO-Mu6" firstAttribute="leading" secondItem="wt4-B6-LC8" secondAttribute="leading" constant="24" id="VgV-dP-Yjh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uRY-CO-Mu6" secondAttribute="trailing" constant="24" id="VpY-lP-Bo6"/>
+                                                    <constraint firstItem="nIn-OC-me0" firstAttribute="leading" secondItem="wt4-B6-LC8" secondAttribute="leading" id="r4T-Dz-wCJ"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="FE2-el-ytB" firstAttribute="centerY" secondItem="yup-ol-uV0" secondAttribute="centerY" id="KxS-C3-Cu2"/>
-                                            <constraint firstItem="FE2-el-ytB" firstAttribute="centerX" secondItem="yup-ol-uV0" secondAttribute="centerX" id="W3b-fd-mdp"/>
+                                            <constraint firstItem="wt4-B6-LC8" firstAttribute="leading" secondItem="yup-ol-uV0" secondAttribute="leading" constant="8" id="3YH-6l-Gmd"/>
+                                            <constraint firstItem="wt4-B6-LC8" firstAttribute="centerX" secondItem="yup-ol-uV0" secondAttribute="centerX" id="76q-hJ-f24"/>
+                                            <constraint firstItem="YBy-TO-ipT" firstAttribute="centerX" secondItem="yup-ol-uV0" secondAttribute="centerX" id="OZv-FE-JGb"/>
+                                            <constraint firstAttribute="trailing" secondItem="wt4-B6-LC8" secondAttribute="trailing" constant="8" id="bRX-7m-7dl"/>
+                                            <constraint firstAttribute="trailing" secondItem="YBy-TO-ipT" secondAttribute="trailing" constant="8" id="eiF-Vc-yf5"/>
+                                            <constraint firstAttribute="bottom" secondItem="wt4-B6-LC8" secondAttribute="bottom" constant="11.5" id="h7T-GG-WGn"/>
+                                            <constraint firstItem="YBy-TO-ipT" firstAttribute="leading" secondItem="yup-ol-uV0" secondAttribute="leading" constant="8" id="kGr-ZB-l4t"/>
+                                            <constraint firstItem="YBy-TO-ipT" firstAttribute="top" secondItem="yup-ol-uV0" secondAttribute="top" constant="16" id="kgs-bi-Kct"/>
+                                            <constraint firstItem="wt4-B6-LC8" firstAttribute="top" secondItem="YBy-TO-ipT" secondAttribute="bottom" constant="30" id="kz3-6U-2ym"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -559,20 +668,28 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0SF-lz-llw"/>
                     </view>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="contentView" destination="yup-ol-uV0" id="NVK-wr-LMy"/>
                         <outlet property="extruderSlider" destination="odk-qT-Wyt" id="ohn-mR-NOh"/>
+                        <outlet property="extruderTitle" destination="PI9-6d-rWw" id="qGD-Rx-PQt"/>
                         <outlet property="headerTitle" destination="fGU-3s-eKI" id="NU1-IL-HgL"/>
                         <outlet property="headerView" destination="c2D-d9-JFs" id="wdq-ME-dax"/>
                         <outlet property="heatbedSlider" destination="xJ5-ps-0pM" id="cgR-9r-d7T"/>
+                        <outlet property="heatbedTitle" destination="DQu-wd-HNa" id="O94-vn-uqp"/>
+                        <outlet property="posLabelBL" destination="6DT-nq-2Sh" id="aJe-Ft-lSX"/>
+                        <outlet property="posLabelBR" destination="xnv-Wj-35B" id="h4o-M4-toL"/>
+                        <outlet property="posLabelTL" destination="QKr-d3-4JP" id="b9W-jW-gMo"/>
+                        <outlet property="posLabelTR" destination="1RZ-XE-clx" id="v1X-8D-vIs"/>
                         <outlet property="xyPositionSlider" destination="vH0-fv-kMg" id="CZe-YV-2JJ"/>
+                        <outlet property="zPosTitle" destination="hGY-ub-poE" id="dRX-85-IWL"/>
                         <outlet property="zPositionSlider" destination="he0-QC-YtU" id="Sdq-3I-fqc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDf-KP-4Yn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="vCl-gq-8rV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1309.5999999999999" y="439.43028485757122"/>
+            <point key="canvasLocation" x="1310" y="589"/>
         </scene>
     </scenes>
     <resources>
