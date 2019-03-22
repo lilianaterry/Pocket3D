@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class JoystickSlider: UIView {
     
@@ -18,10 +19,10 @@ class JoystickSlider: UIView {
     
     let min: CGFloat = 0
     let max: CGFloat = 500
-    var bottomLeftLabel: UILabel = UILabel()
-    var bottomRightLabel: UILabel = UILabel()
-    var topLeftLabel: UILabel = UILabel()
-    var topRightLabel: UILabel = UILabel()
+
+    var context: NSManagedObjectContext!
+    var settings: NSManagedObject!
+    var request: NSFetchRequest<NSFetchRequestResult>!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +38,23 @@ class JoystickSlider: UIView {
     func setup() {
         self.backgroundColor = UIColor.clear
         setupSliderHead()
+        setupCoreData()
+    }
+    
+    // get core data Settings object
+    func setupCoreData() {
+        // get current core data information
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        context = appDelegate.persistentContainer.viewContext
+        request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request) as! [NSManagedObject]
+            settings = result[0]
+        } catch {
+            print("Failed to retrieve settings from Core Data")
+        }
     }
     
     override func draw(_ rect: CGRect) {
@@ -115,12 +133,18 @@ class JoystickSlider: UIView {
     }
     
     func convertCoordinate(coordinate: CGPoint) -> CGPoint {
+        let inverted = (settings.value(forKey: "posCoord") as! Int) == 1
+        
         let percentX = coordinate.x / self.bounds.width
         let percentY = coordinate.y / self.bounds.height
         
         let x = max * percentX
         let y = max - (max * percentY)
         
-        return CGPoint(x: x, y: y)
+        if (inverted) {
+            return CGPoint(x: y, y: x)
+        } else {
+            return CGPoint(x: x, y: y)
+        }
     }
 }

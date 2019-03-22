@@ -49,7 +49,20 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        setup()
+    }
+    
+    func setup() {
+        setupCoreData()
+        setupViews()
+        setupLabels()
+        setupButtons()
+        setupTextFields()
+    }
+    
+    // get core data Settings object
+    func setupCoreData() {
         // get current core data information
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
@@ -62,17 +75,9 @@ class SettingsViewController: UIViewController {
         } catch {
             print("Failed to retrieve settings from Core Data")
         }
-            
-        setup()
     }
     
-    func setup() {
-        setupViews()
-        setupLabels()
-        setupButtons()
-        setupTextFields()
-    }
-    
+    // add editing recognizers and fill with core data
     func setupTextFields() {
         ipAddressField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
         apiKeyField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
