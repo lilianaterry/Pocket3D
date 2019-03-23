@@ -29,18 +29,29 @@ final class API {
     private var url: URL!
     private var api_key: String!
     
+    private var debug_enabled : Bool = true
+    
     private var headers: [String: String] {
         return ["X-Api-Key": self.api_key]
     }
     
     func setup(url: String, key: String) {
         //Chris's hardcoded shieeeeet
-        self.orig_url = URL(string: "http://70.122.32.48")
-        self.api_key = "B7714E03A6524843BBB26F946D59AE70"
-        // Virtual printer shit maybe fuck it I don't know
-        //self.orig_url = URL(string: "http://localhost:5000")
-        //self.api_key = "589F0038062E48CBAB0191A0CF9CC7AC"
-        self.url = self.orig_url.appendingPathComponent("api")
+        // Use debug stuff if the debug thing above is enabled
+        // and DEBUG is entered in a field
+        if ((url == "DEBUG" || key == "DEBUG") && debug_enabled) {
+            self.orig_url = URL(string: "http://70.122.32.48")
+            self.api_key = "B7714E03A6524843BBB26F946D59AE70"
+            // Virtual printer shit maybe fuck it I don't know
+            //self.orig_url = URL(string: "http://localhost:5000")
+            //self.api_key = "589F0038062E48CBAB0191A0CF9CC7AC"
+            self.url = self.orig_url.appendingPathComponent("api")
+        }
+        else {
+            self.orig_url = URL(string: url)
+            self.api_key = key
+            self.url = self.orig_url.appendingPathComponent("api")
+        }
     }
     
     func login(callback: @escaping JsonCallback) {
@@ -145,6 +156,11 @@ final class API {
         self.performPostDefault(paths: ["printer", "command"],
                                 parameters: ["commands": commands],
                                 callback: callback)
+    }
+    
+    // Probably horrible func name, will fix later or maybe not
+    func performPostPublic(path: String, parameters: [String:Any] = [:]) -> DataRequest {
+        return self.performPost(paths: [path], parameters: parameters)
     }
     
     private func performPost(path: String, parameters: [String: Any] = [:]) -> DataRequest {

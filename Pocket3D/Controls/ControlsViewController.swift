@@ -43,7 +43,7 @@ class ControlsViewController: UIViewController, Observer {
     func notify(message: Notification) {
         print("Notifying I guess")
         let json = message.object! as! JSON
-        //print(json)
+        print(json)
         updateTemperature(temp: 13242)
         
     }
