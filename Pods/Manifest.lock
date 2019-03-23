@@ -1,16 +1,14 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (4.8.1)
   - MJPEGStreamLib (0.2.0)
   - Starscream (3.0.6)
   - SwiftyJSON (4.2.0)
-  - VerticalSlider (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - MJPEGStreamLib
   - Starscream
   - SwiftyJSON (~> 4.0)
-  - VerticalSlider
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -18,15 +16,13 @@ SPEC REPOS:
     - MJPEGStreamLib
     - Starscream
     - SwiftyJSON
-    - VerticalSlider
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   MJPEGStreamLib: b6369fb6370413b9f76ef0df2c1cac985ee34bfa
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  VerticalSlider: 655f2bc3ed062bac13e21c174f5ff93b8308571d
 
-PODFILE CHECKSUM: 2c7359cf570ab67193ae9a3bece8218e659dceaa
+PODFILE CHECKSUM: 6855055dc0a9142fbebf2aa8b79caf8c13d8ba6e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

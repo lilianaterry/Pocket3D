@@ -34,9 +34,13 @@ final class API {
     }
     
     func setup(url: String, key: String) {
+        //Chris's hardcoded shieeeeet
         self.orig_url = URL(string: "http://70.122.32.48")
-        self.url = self.orig_url.appendingPathComponent("api")
         self.api_key = "B7714E03A6524843BBB26F946D59AE70"
+        // Virtual printer shit maybe fuck it I don't know
+        //self.orig_url = URL(string: "http://localhost:5000")
+        //self.api_key = "589F0038062E48CBAB0191A0CF9CC7AC"
+        self.url = self.orig_url.appendingPathComponent("api")
     }
     
     func login(callback: @escaping JsonCallback) {
@@ -47,7 +51,9 @@ final class API {
                 Push.instance.connect(baseUrl: self.orig_url, name: json["name"].stringValue,
                                       sessionKey: json["session"].stringValue)
                 callback(.Ok, json)
+                print("Login apparently successful I guess?")
             } else {
+                print("Login Failure")
                 callback(.Fail, json)
             }
         }

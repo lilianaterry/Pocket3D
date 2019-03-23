@@ -71,24 +71,58 @@ class LoginViewController: UIViewController {
             print("Failed to save login information to Core Data")
         }
     }
-    
     // setup core data to save login information
     func setupCoreData(_ entity:String) {
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         context = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        
         fetchRequest.returnsObjectsAsFaults = false
+        
         // fetch settings if any have been made before
+        
         do {
+            
             let results = try context.fetch(fetchRequest) as! [NSManagedObject]
-            settings = results[0]
-        // create new settings entity if has not been created yet
+            
+            if (results.count > 0) {
+                
+                settings = results[0]
+                
+            } else {
+                
+                createNewDataObject()
+                
+            }
+            
+            // create new settings entity if has not been created yet
+            
         } catch {
-            settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)
-            settings.setValue(0, forKey: "fileSort")
-            settings.setValue(0, forKey: "posCoord")
-            settings.setValue(0, forKey: "colorMode")
+            
+            createNewDataObject()
+            
         }
+        
     }
+    
+    
+    
+    // create and add a new object for Settings
+    
+    func createNewDataObject() {
+        
+        settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)
+        
+        settings.setValue(0, forKey: "fileSort")
+        
+        settings.setValue(0, forKey: "posCoord")
+        
+        settings.setValue(0, forKey: "colorMode")
+        
+    }
+    
+
 }

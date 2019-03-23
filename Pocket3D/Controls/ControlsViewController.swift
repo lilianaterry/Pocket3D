@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ControlsViewController: UIViewController {
     
@@ -37,7 +38,13 @@ class ControlsViewController: UIViewController {
         setup()
     }
     
+    func notify(message: Notification) {
+        let json = message.object! as! JSON
+
+    }
+    
     func setup() {
+        print("SUPP,,,,,,,,,,")
         contentView.backgroundColor = ui.backgroundColor
         
         headerView.backgroundColor = ui.headerBackgroundColor

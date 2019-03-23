@@ -250,6 +250,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginSelected:" destination="6Sp-Qt-7It" eventType="touchUpInside" id="Qi7-k0-ENf"/>
+                                            <segue destination="4sh-2A-TIS" kind="show" identifier="tempSegue" id="nHZ-kA-2v8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -278,7 +279,6 @@
                         <outlet property="apiKeyField" destination="6uI-86-nWt" id="4eD-gq-2g2"/>
                         <outlet property="errorLabel" destination="jGh-QO-KV1" id="gkF-a6-ubL"/>
                         <outlet property="ipAddressField" destination="GpU-3o-eV1" id="pOP-tl-MQZ"/>
-                        <segue destination="FoG-Yg-Tnw" kind="show" identifier="tempSegue" id="I74-PX-w0E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWu-KL-I5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
