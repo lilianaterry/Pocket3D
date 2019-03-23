@@ -250,7 +250,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginSelected:" destination="6Sp-Qt-7It" eventType="touchUpInside" id="Qi7-k0-ENf"/>
-                                            <segue destination="4sh-2A-TIS" kind="show" identifier="tempSegue" id="nHZ-kA-2v8"/>
+                                            <segue destination="BPN-1a-BoB" kind="show" identifier="tempSegue" id="Eef-xn-OQZ"/>
                                         </connections>
                                     </button>
                                 </subviews>

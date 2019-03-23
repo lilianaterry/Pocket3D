@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class ControlsViewController: UIViewController {
+class ControlsViewController: UIViewController, Observer {
     
     let ui = UIExtensions()
 
@@ -36,15 +36,19 @@ class ControlsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         setup()
+        
+        Push.instance.observe(who: self as Observer, topic: Push.current)
     }
     
     func notify(message: Notification) {
+        print("Notifying I guess")
         let json = message.object! as! JSON
-
+        //print(json)
+        updateTemperature(temp: 13242)
+        
     }
     
     func setup() {
-        print("SUPP,,,,,,,,,,")
         contentView.backgroundColor = ui.backgroundColor
         
         headerView.backgroundColor = ui.headerBackgroundColor
@@ -58,6 +62,21 @@ class ControlsViewController: UIViewController {
         zPosTitle.textColor = ui.textColor
         extruderTitle.textColor = ui.textColor
         heatbedTitle.textColor = ui.textColor
+    }
+    
+    // Update functions
+    // "temp" is for "temperature", not "temporary" - the lazy variable name
+    // Doesn't actually do anything yet
+    func updateTemperature(temp: Int) {
+        var json : [String: Any] = [
+        "command": "target",
+        "targets": [
+            "tool0": 220,
+            "tool1": 205
+            ]
+        ]
+        let valid = JSONSerialization.isValidJSONObject(json) // true
+        print(valid)
     }
 }
 
