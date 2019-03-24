@@ -18,12 +18,16 @@ class LoginViewController: UIViewController {
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
     
+    var delegate: SegueDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = ui.headerBackgroundColor
         
         setupCoreData("Settings")
+        
+        delegate = MenuBarView(frame: CGRect())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,8 +44,8 @@ class LoginViewController: UIViewController {
                 print("Got status \(status) from logging in")
                 
                 if status == .Ok {
-                let defaultVC = self.storyboard!.instantiateViewController(withIdentifier: "StatusViewController")
-                self.present(defaultVC, animated: true, completion: nil)
+//                    let defaultVC = self.storyboard!.instantiateViewController(withIdentifier: "Status")
+//                    self.present(defaultVC, animated: true, completion: nil)
                 } else {
                     self.errorLabel.text = "Login info incorrect"
                 }
@@ -58,7 +62,7 @@ class LoginViewController: UIViewController {
             }
         }
         
-        performSegue(withIdentifier: "tempSegue", sender: self)
+        delegate.segue(identifier: "Status")
     }
     
     // save login information to core data for settings page
@@ -82,13 +86,22 @@ class LoginViewController: UIViewController {
         // fetch settings if any have been made before
         do {
             let results = try context.fetch(fetchRequest) as! [NSManagedObject]
-            settings = results[0]
+            if (results.count > 0) {
+                settings = results[0]
+            } else {
+                createNewDataObject()
+            }
         // create new settings entity if has not been created yet
         } catch {
-            settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)
-            settings.setValue(0, forKey: "fileSort")
-            settings.setValue(0, forKey: "posCoord")
-            settings.setValue(0, forKey: "colorMode")
+            createNewDataObject()
         }
+    }
+    
+    // create and add a new object for Settings
+    func createNewDataObject() {
+        settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)
+        settings.setValue(0, forKey: "fileSort")
+        settings.setValue(0, forKey: "posCoord")
+        settings.setValue(0, forKey: "colorMode")
     }
 }

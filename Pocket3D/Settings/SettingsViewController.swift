@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController {
     let ui = UIExtensions()
     
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var menuBar: MenuBarView!
     @IBOutlet weak var saveButton: ButtonView!
     
     @IBOutlet weak var ipAddressField: TextFieldView!
@@ -96,12 +96,6 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    // any change has occured on the page, triggering a blue save button to indicate you need to save
-    @objc func detectChange() {
-        saveButton.backgroundColor = ui.headerTextColor
-        saveButton.isEnabled = true
-    }
-    
     // select buttons that the user has set and saved in settings before
     func setupButtons() {
         let fileButtons = [alphaSortButton, creationSortButton, modifySortButton]
@@ -142,10 +136,18 @@ class SettingsViewController: UIViewController {
         self.view.backgroundColor = ui.backgroundColor
         
         headerView.backgroundColor = ui.headerBackgroundColor
-        headerTitle.textColor = ui.headerTextColor
+        
+        let selectedIndex = IndexPath(item: 3, section: 0)
+        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
         
         saveButton.backgroundColor = ui.textColor
         saveButton.isEnabled = false
+    }
+    
+    // any change has occured on the page, triggering a blue save button to indicate you need to save
+    @objc func detectChange() {
+        saveButton.backgroundColor = ui.headerTextColor
+        saveButton.isEnabled = true
     }
     
     // switched to dark or light mode

@@ -13,6 +13,8 @@ class ControlsViewController: UIViewController {
     
     let ui = UIExtensions()
 
+    @IBOutlet weak var menuBar: MenuBarView!
+    
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerTitle: UILabel!
     
@@ -47,6 +49,9 @@ class ControlsViewController: UIViewController {
     
     // make sure everything is colored beautifully
     func setupViews() {
+        let selectedIndex = IndexPath(item: 0, section: 0)
+        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
+        
         contentView.backgroundColor = ui.backgroundColor
         
         headerView.backgroundColor = ui.headerBackgroundColor

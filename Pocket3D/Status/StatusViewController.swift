@@ -21,7 +21,7 @@ class StatusViewController: UIViewController, Observer {
     }
 
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var menuBar: MenuBarView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var filenameLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
@@ -56,8 +56,9 @@ class StatusViewController: UIViewController, Observer {
     // set font and background colors
     func setup() {
         // header
-        headerTitle.textColor = ui.headerTextColor
         headerView.backgroundColor = ui.headerBackgroundColor
+        let selectedIndex = IndexPath(item: 1, section: 0)
+        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
         
         // body
         self.view.backgroundColor = ui.backgroundColor
