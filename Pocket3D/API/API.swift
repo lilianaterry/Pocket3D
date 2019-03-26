@@ -45,13 +45,12 @@ final class API {
             // Virtual printer shit maybe fuck it I don't know
             //self.orig_url = URL(string: "http://localhost:5000")
             //self.api_key = "589F0038062E48CBAB0191A0CF9CC7AC"
-            self.url = self.orig_url.appendingPathComponent("api")
         }
         else {
             self.orig_url = URL(string: url)
             self.api_key = key
-            self.url = self.orig_url.appendingPathComponent("api")
         }
+        self.url = self.orig_url.appendingPathComponent("api")
     }
     
     func login(callback: @escaping JsonCallback) {
@@ -100,6 +99,9 @@ final class API {
     func home(axes: [String], callback: @escaping Callback) {
         self.performPostDefault(paths: ["printer", "printhead"], parameters: ["axes": axes], callback: callback)
     }
+    
+    // TODO: M114 support
+    // Recv: X:0.000 Y:0.000 Z:59.818 E:40.629
     
     /*
      * If both heat arguments are given, two web requests are performed and

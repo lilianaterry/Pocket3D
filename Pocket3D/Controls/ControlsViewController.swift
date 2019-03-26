@@ -8,11 +8,14 @@
 
 import UIKit
 import SwiftyJSON
+import CoreData
 
 class ControlsViewController: UIViewController, Observer {
     
     let ui = UIExtensions()
 
+    @IBOutlet weak var menuBar: MenuBarView!
+    
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerTitle: UILabel!
     
@@ -22,7 +25,6 @@ class ControlsViewController: UIViewController, Observer {
     @IBOutlet weak var heatbedSlider: UISlider!
     @IBOutlet weak var contentView: UIView!
     
-    
     @IBOutlet weak var posLabelTL: UILabel!
     @IBOutlet weak var posLabelTR: UILabel!
     @IBOutlet weak var posLabelBL: UILabel!
@@ -31,10 +33,13 @@ class ControlsViewController: UIViewController, Observer {
     @IBOutlet weak var extruderTitle: UILabel!
     @IBOutlet weak var heatbedTitle: UILabel!
     
+    var context: NSManagedObjectContext!
+    var settings: NSManagedObject!
+    var request: NSFetchRequest<NSFetchRequestResult>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         setup()
         
         Push.instance.observe(who: self as Observer, topic: Push.current)
@@ -49,6 +54,15 @@ class ControlsViewController: UIViewController, Observer {
     }
     
     func setup() {
+        setupCoreData()
+        setupViews()
+    }
+    
+    // make sure everything is colored beautifully
+    func setupViews() {
+        let selectedIndex = IndexPath(item: 0, section: 0)
+        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
+        
         contentView.backgroundColor = ui.backgroundColor
         
         headerView.backgroundColor = ui.headerBackgroundColor
@@ -62,13 +76,34 @@ class ControlsViewController: UIViewController, Observer {
         zPosTitle.textColor = ui.textColor
         extruderTitle.textColor = ui.textColor
         heatbedTitle.textColor = ui.textColor
+        
+        let inverted = (settings.value(forKey: "posCoord") as! Int) == 1
+        if (inverted) {
+            posLabelTR.text = "yx"
+        }
+    }
+    
+    // get core data Settings object
+    func setupCoreData() {
+        // get current core data information
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        context = appDelegate.persistentContainer.viewContext
+        request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.fetch(request) as! [NSManagedObject]
+            settings = result[0]
+        } catch {
+            print("Failed to retrieve settings from Core Data")
+        }
     }
     
     // Update functions
     // "temp" is for "temperature", not "temporary" - the lazy variable name
     // Doesn't actually do anything yet
     func updateTemperature(temp: Int) {
-        var json : [String: Any] = [
+        let json : [String: Any] = [
         "command": "target",
         "targets": [
             "tool0": 220,

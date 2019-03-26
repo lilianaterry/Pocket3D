@@ -18,12 +18,16 @@ class LoginViewController: UIViewController {
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
     
+    var delegate: SegueDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = ui.headerBackgroundColor
         
         setupCoreData("Settings")
+        
+        delegate = MenuBarView(frame: CGRect())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,13 +44,12 @@ class LoginViewController: UIViewController {
                 print("Got status \(status) from logging in")
                 
                 if status == .Ok {
-                let defaultVC = self.storyboard!.instantiateViewController(withIdentifier: "StatusViewController")
-                self.present(defaultVC, animated: true, completion: nil)
+                    self.saveToCoreData()
+                    self.delegate.segue(identifier: "Status")
                 } else {
                     self.errorLabel.text = "Login info incorrect"
                 }
             }
-            saveToCoreData()
         } else {
             if (!apiKeyField.hasText || apiKeyField.text == "API Key") &&
                 (!ipAddressField.hasText || ipAddressField.text == "IP Address") {
@@ -57,8 +60,6 @@ class LoginViewController: UIViewController {
                 errorLabel.text = "Please provide an IP Address"
             }
         }
-        
-        performSegue(withIdentifier: "tempSegue", sender: self)
     }
     
     // save login information to core data for settings page
@@ -87,7 +88,6 @@ class LoginViewController: UIViewController {
         do {
             
             let results = try context.fetch(fetchRequest) as! [NSManagedObject]
-            
             if (results.count > 0) {
                 
                 settings = results[0]
@@ -109,26 +109,14 @@ class LoginViewController: UIViewController {
         } catch {
             
             createNewDataObject()
-            
         }
-        
     }
-    
-    
-    
-    // create and add a new object for Settings
-    
-    func createNewDataObject() {
-        
-        settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)
-        
-        settings.setValue(0, forKey: "fileSort")
-        
-        settings.setValue(0, forKey: "posCoord")
-        
-        settings.setValue(0, forKey: "colorMode")
-        
-    }
-    
 
+    // create and add a new object for Settings
+    func createNewDataObject() {
+        settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)
+        settings.setValue(0, forKey: "fileSort")
+        settings.setValue(0, forKey: "posCoord")
+        settings.setValue(0, forKey: "colorMode")
+    }
 }

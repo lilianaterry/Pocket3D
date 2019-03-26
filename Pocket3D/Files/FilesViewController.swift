@@ -9,13 +9,20 @@
 import SwiftyJSON
 import UIKit
 
-class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FileCellDelegate {
+    
     @IBOutlet var tableView: UITableView!
     
     var files: [JSON] = []
-    //alpha use only
-    var tempFiles: [tempFile] = []
     var selectedIndexPath : IndexPath?
+    
+    lazy var printTimeFormatter: DateComponentsFormatter = {
+        let f = DateComponentsFormatter()
+        f.unitsStyle = .abbreviated
+        f.allowedUnits = [.hour, .minute ]
+        f.zeroFormattingBehavior = [ .pad ]
+        return f
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,51 +30,42 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        //for Alpha use only
-        let file1 = tempFile(name: "Robot Toy", modDate: "Nov 7 2017", readDate: "Nov 16 2017", estTime: "23h22m")
-        let file2 = tempFile(name: "Toilet", modDate: "Jan 23 2019", readDate: "Jan 23 2019", estTime: "12h35m")
-        let file3 = tempFile(name: "Circle", modDate: "Oct 31 2015", readDate: "Nov 4 2017", estTime: "0h20m")
-        let file4 = tempFile(name: "Square", modDate: "Feb 14 2018", readDate: "Apr 14 2019", estTime: "2h15m")
-        let file5 = tempFile(name: "Triangle", modDate: "Jul 4 1776", readDate: "Jul 4 2017", estTime: "26h30m")
-        let file6 = tempFile(name: "TempFile", modDate: "Nov 7 2017", readDate: "Nov 16 2017", estTime: "0h10m")
-        self.tempFiles = [file1, file2, file3, file4, file5, file6, file6, file6, file6, file6, file6, file6, file6, file6, file6, file6, file6]
-        //self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
-//        API.instance.files { [unowned self] _, json in
-//            self.files = json["files"].arrayValue
-//            print("Got files array of \(self.files.count) from json object")
-//            // TODO: check shared prefernces
-//            self.files.sort(by: { (a, b) -> Bool in
-//                a["date"].int64Value > b["date"].int64Value
-//            })
-//            self.tableView.reloadData()
-//        }
+        API.instance.files { [unowned self] _, json in
+            self.files = json["files"].arrayValue
+            print("Got files array of \(self.files.count) from json object")
+            // TODO: check shared prefernces
+            self.files.sort(by: { (a, b) -> Bool in
+                a["date"].int64Value > b["date"].int64Value
+            })
+            self.tableView.reloadData()
+        }
+    }
+    
+    func printPressed() {
+        API.instance.printFile(file: URL(string: self.files[self.selectedIndexPath!.row]["refs"]["resource"].stringValue)!) { status in
+            print("Starting print: \(status)")
+        }
     }
     
     // MARK: - UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return section == 0 ? self.files.count : 0
-        //alpha use only
-        return section == 0 ? self.tempFiles.count : 0
+        return section == 0 ? self.files.count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FILE_CELL")! as! FileTableViewCell
-        //cell.nameLabel.text = files[indexPath.row]["name"].stringValue
-        //alpha use only
-        cell.nameLabel.text = tempFiles[indexPath.row].name
-        cell.modifiedLabel.text = tempFiles[indexPath.row].modDate
-        cell.readLabel.text = tempFiles[indexPath.row].readDate
-        cell.estTimeLabel.text = tempFiles[indexPath.row].estTime
+        cell.delegate = self
+        cell.nameLabel.text = files[indexPath.row]["name"].stringValue
+        cell.modifiedLabel.text = DateFormatter.localizedString(from: Date(timeIntervalSince1970: files[indexPath.row]["date"].doubleValue), dateStyle: .medium, timeStyle: .medium)
+        cell.estTimeLabel.text = printTimeFormatter.string(from:
+            files[indexPath.row]["gcodeAnalysis"]["estimatedPrintTime"].doubleValue)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        API.instance.printFile(file: URL(string: self.files[indexPath.row]["refs"]["resource"].stringValue)!) { status in
-//            print("Starting print: \(status)")
-//        }
-//    }
         let previousIndexpath = selectedIndexPath
         if indexPath == selectedIndexPath {
             selectedIndexPath = nil
@@ -103,18 +101,8 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
 //    }
 }
 
-class tempFile {
-    let name : String
-    let modDate : String
-    let readDate : String
-    let estTime : String
-    
-    init(name:String, modDate:String, readDate:String, estTime:String){
-        self.name = name
-        self.modDate = modDate
-        self.readDate = readDate
-        self.estTime = estTime
-    }
+protocol FileCellDelegate: class {
+    func printPressed();
 }
 
 class FileTableViewCell: UITableViewCell {
@@ -124,6 +112,9 @@ class FileTableViewCell: UITableViewCell {
     @IBOutlet weak var estTimeLabel: UILabel!
     @IBOutlet weak var labelsStack: UIStackView!
     @IBOutlet weak var printButton: UIButton!
+    
+    weak var delegate: FileCellDelegate!
+    
     class var expandedHeight: CGFloat { get { return 165 } }
     class var defaultHeight: CGFloat { get {return 50 } }
     
@@ -143,6 +134,9 @@ class FileTableViewCell: UITableViewCell {
 //    func ignoreFrameChanges() {
 //        //do nothing
 //    }
+    @IBAction func printButtonPressed(_ sender: Any) {
+            self.delegate.printPressed()
+    }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "frame" {

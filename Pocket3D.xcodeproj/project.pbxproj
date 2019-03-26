@@ -23,11 +23,14 @@
 		CE36832022449D12005CB878 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36831F22449D12005CB878 /* SettingsViewController.swift */; };
 		CE36832422453207005CB878 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36832322453207005CB878 /* BubbleButton.swift */; };
 		CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE3683252245644B005CB878 /* Pocket3D.xcdatamodeld */; };
+		CE36832922458234005CB878 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36832822458234005CB878 /* MenuButton.swift */; };
+		CE3683342246D70A005CB878 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3683332246D70A005CB878 /* MenuBarView.swift */; };
+		CE3683382246F0EE005CB878 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3683372246F0EE005CB878 /* MenuCell.swift */; };
 		CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64172228CD4500771BE3 /* LoginViewController.swift */; };
 		CE7A641A2228CFBD00771BE3 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64192228CFBD00771BE3 /* FilesViewController.swift */; };
 		CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A641B2228D91E00771BE3 /* StatusViewController.swift */; };
 		CEAEA46D2242E67100479B27 /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA46C2242E67100479B27 /* ControlsViewController.swift */; };
-		CEAEA46F2242F76000479B27 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA46E2242F76000479B27 /* CustomSlider.swift */; };
+		CEAEA46F2242F76000479B27 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA46E2242F76000479B27 /* SliderView.swift */; };
 		CEB020B6222CC5FD008AE843 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020B5222CC5FD008AE843 /* TextFieldView.swift */; };
 		CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020B8222CC61E008AE843 /* ButtonView.swift */; };
 		CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020BA222CC7AE008AE843 /* UIExtensions.swift */; };
@@ -85,11 +88,14 @@
 		CE36831F22449D12005CB878 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE36832322453207005CB878 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
 		CE3683262245644B005CB878 /* Pocket3D.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pocket3D.xcdatamodel; sourceTree = "<group>"; };
+		CE36832822458234005CB878 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		CE3683332246D70A005CB878 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		CE3683372246F0EE005CB878 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		CE7A64172228CD4500771BE3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE7A64192228CFBD00771BE3 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		CE7A641B2228D91E00771BE3 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		CEAEA46C2242E67100479B27 /* ControlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewController.swift; sourceTree = "<group>"; };
-		CEAEA46E2242F76000479B27 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		CEAEA46E2242F76000479B27 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		CEB020B5222CC5FD008AE843 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		CEB020B8222CC61E008AE843 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		CEB020BA222CC7AE008AE843 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 		8300E7D82225FF0B004DA31C /* Pocket3D */ = {
 			isa = PBXGroup;
 			children = (
+				CE36832A22458B44005CB878 /* Menu */,
 				CE36831E22449CFA005CB878 /* Settings */,
 				CEAEA46B2242E65800479B27 /* Controls */,
 				8300E80B2225FF21004DA31C /* API */,
@@ -246,10 +253,18 @@
 		CE368322224531C5005CB878 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CEAEA46E2242F76000479B27 /* CustomSlider.swift */,
-				CE36831C22442FCB005CB878 /* JoystickSlider.swift */,
+				CEAEA46E2242F76000479B27 /* SliderView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		CE36832A22458B44005CB878 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				CE3683332246D70A005CB878 /* MenuBarView.swift */,
+				CE3683372246F0EE005CB878 /* MenuCell.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		CEAEA46B2242E65800479B27 /* Controls */ = {
@@ -257,6 +272,7 @@
 			children = (
 				CE368322224531C5005CB878 /* UI */,
 				CEAEA46C2242E67100479B27 /* ControlsViewController.swift */,
+				CE36831C22442FCB005CB878 /* JoystickSlider.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -264,17 +280,9 @@
 		CEB020B3222CC4E5008AE843 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CEB020B4222CC5CC008AE843 /* UI */,
 				CE7A64172228CD4500771BE3 /* LoginViewController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		CEB020B4222CC5CC008AE843 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		CEB020B7222CC605008AE843 /* GlobalUI */ = {
@@ -284,6 +292,7 @@
 				CEB020B8222CC61E008AE843 /* ButtonView.swift */,
 				CEB020B5222CC5FD008AE843 /* TextFieldView.swift */,
 				CEB020BA222CC7AE008AE843 /* UIExtensions.swift */,
+				CE36832822458234005CB878 /* MenuButton.swift */,
 			);
 			path = GlobalUI;
 			sourceTree = "<group>";
@@ -328,6 +337,7 @@
 				8300E7D32225FF0B004DA31C /* Frameworks */,
 				8300E7D42225FF0B004DA31C /* Resources */,
 				D9C648486D800F78C1A3A420 /* [CP] Embed Pods Frameworks */,
+				4E3D44233CE6AD66A8A419BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -346,6 +356,8 @@
 				8300E7EA2225FF0C004DA31C /* Sources */,
 				8300E7EB2225FF0C004DA31C /* Frameworks */,
 				8300E7EC2225FF0C004DA31C /* Resources */,
+				4C8F00667B621F3672244F5B /* [CP] Embed Pods Frameworks */,
+				353702AFAF39FF95C18BA733 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -365,6 +377,8 @@
 				8300E7F52225FF0C004DA31C /* Sources */,
 				8300E7F62225FF0C004DA31C /* Frameworks */,
 				8300E7F72225FF0C004DA31C /* Resources */,
+				BEF7AD63FD12565DA72FD21D /* [CP] Embed Pods Frameworks */,
+				13963944409E410D977332AD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -452,6 +466,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		13963944409E410D977332AD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1D9B06EA4FD6B6E8DFA96CEE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -468,6 +497,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		353702AFAF39FF95C18BA733 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C8F00667B621F3672244F5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E3D44233CE6AD66A8A419BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7D884C159B0BF2E05032110E /* [CP] Check Pods Manifest.lock */ = {
@@ -506,13 +580,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BEF7AD63FD12565DA72FD21D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D9C648486D800F78C1A3A420 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MJPEGStreamLib/MJPEGStreamLib.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
@@ -527,7 +616,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -538,6 +627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */,
+				CE3683382246F0EE005CB878 /* MenuCell.swift in Sources */,
 				CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */,
 				CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */,
 				8300E7DC2225FF0B004DA31C /* RootViewController.swift in Sources */,
@@ -549,12 +639,14 @@
 				8300E7E02225FF0B004DA31C /* ModelController.swift in Sources */,
 				CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */,
 				8300E7DE2225FF0B004DA31C /* DataViewController.swift in Sources */,
+				CE3683342246D70A005CB878 /* MenuBarView.swift in Sources */,
+				CE36832922458234005CB878 /* MenuButton.swift in Sources */,
 				CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,
 				CEAEA46D2242E67100479B27 /* ControlsViewController.swift in Sources */,
 				8300E80D2225FF4D004DA31C /* API.swift in Sources */,
 				CEB020B6222CC5FD008AE843 /* TextFieldView.swift in Sources */,
-				CEAEA46F2242F76000479B27 /* CustomSlider.swift in Sources */,
+				CEAEA46F2242F76000479B27 /* SliderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,10 +825,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -752,10 +841,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -772,11 +858,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -794,11 +876,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -815,11 +893,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -836,11 +910,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
