@@ -30,7 +30,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         let file4 = tempFile(name: "Square", modDate: "Feb 14 2018", readDate: "Apr 14 2019", estTime: "2h15m")
         let file5 = tempFile(name: "Triangle", modDate: "Jul 4 1776", readDate: "Jul 4 2017", estTime: "26h30m")
         let file6 = tempFile(name: "TempFile", modDate: "Nov 7 2017", readDate: "Nov 16 2017", estTime: "0h10m")
-        self.tempFiles = [file1, file2, file3, file4, file5, file6, file6, file6, file6, file6, file6, file6]
+        self.tempFiles = [file1, file2, file3, file4, file5, file6, file6, file6, file6, file6, file6, file6, file6, file6, file6, file6, file6]
         //self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
 //        API.instance.files { [unowned self] _, json in
