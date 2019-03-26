@@ -138,7 +138,7 @@ class JoystickSlider: UIView {
         coordinateLabel.sizeToFit()
         
         if let d = self.delegate {
-            d.headMoved(point: convertCoordinate(coordinate: relativeCoord))
+            d.headMoved(point: relativeCoord)
         }
     }
     

@@ -12,8 +12,6 @@ import UIKit
 class HorizontalCustomSlider: UISlider {
     let ui = UIExtensions()
     
-    let min = 0
-    let max = 500
     let minLabel: UILabel = UILabel()
     let maxLabel: UILabel = UILabel()
     
@@ -44,9 +42,9 @@ class HorizontalCustomSlider: UISlider {
         thumbTextLabel.frame = thumbFrame
         thumbTextLabel.text = String(Int(value.rounded()))
         thumbTextLabel.sizeToFit()
-        minLabel.text = String(min)
+        minLabel.text = String(Int(self.minimumValue))
         minLabel.sizeToFit()
-        maxLabel.text = String(max)
+        maxLabel.text = String(Int(self.maximumValue))
         maxLabel.sizeToFit()
         
         // slider head label position
