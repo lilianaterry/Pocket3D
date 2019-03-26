@@ -101,7 +101,7 @@ final class Push: WebSocketDelegate {
                                               allowLossyConversion: false)!).arrayValue
             for elem in json {
                 for (key, value) in elem {
-                    //print("Parsing \(key) message")
+                    // print("Parsing \(key) message")
                     switch key {
                     case "connected":
                         // there isn't much we need from a connected response

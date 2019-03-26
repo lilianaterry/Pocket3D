@@ -555,7 +555,7 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="he0-QC-YtU" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="he0-QC-YtU" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
                                                                 <rect key="frame" x="-2" y="48.5" width="315" height="31"/>
                                                             </slider>
                                                         </subviews>
@@ -600,7 +600,7 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="odk-qT-Wyt" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="250" translatesAutoresizingMaskIntoConstraints="NO" id="odk-qT-Wyt" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
                                                                         <rect key="frame" x="-2" y="48.5" width="315" height="31"/>
                                                                         <connections>
                                                                             <action selector="extruderTempSlider:" destination="vCl-gq-8rV" eventType="valueChanged" id="7B1-zs-mzw"/>
@@ -624,7 +624,7 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="xJ5-ps-0pM" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
+                                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="xJ5-ps-0pM" customClass="HorizontalCustomSlider" customModule="Pocket3D" customModuleProvider="target">
                                                                         <rect key="frame" x="-2" y="48.5" width="315" height="31"/>
                                                                     </slider>
                                                                 </subviews>

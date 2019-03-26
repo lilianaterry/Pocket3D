@@ -6,32 +6,31 @@
 //  Copyright © 2019 Team 2. All rights reserved.
 //
 
-import UIKit
-import SwiftyJSON
 import CoreData
+import SwiftyJSON
+import UIKit
 
-class ControlsViewController: UIViewController, Observer {
-    
+class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate {
     let ui = UIExtensions()
-
-    @IBOutlet weak var menuBar: MenuBarView!
     
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet var menuBar: MenuBarView!
     
-    @IBOutlet weak var xyPositionSlider: UIView!
-    @IBOutlet weak var zPositionSlider: HorizontalCustomSlider!
-    @IBOutlet weak var extruderSlider: UISlider!
-    @IBOutlet weak var heatbedSlider: UISlider!
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet var headerView: UIView!
+    @IBOutlet var headerTitle: UILabel!
     
-    @IBOutlet weak var posLabelTL: UILabel!
-    @IBOutlet weak var posLabelTR: UILabel!
-    @IBOutlet weak var posLabelBL: UILabel!
-    @IBOutlet weak var posLabelBR: UILabel!
-    @IBOutlet weak var zPosTitle: UILabel!
-    @IBOutlet weak var extruderTitle: UILabel!
-    @IBOutlet weak var heatbedTitle: UILabel!
+    @IBOutlet var xyPositionSlider: JoystickSlider!
+    @IBOutlet var zPositionSlider: HorizontalCustomSlider!
+    @IBOutlet var extruderSlider: UISlider!
+    @IBOutlet var heatbedSlider: UISlider!
+    @IBOutlet var contentView: UIView!
+    
+    @IBOutlet var posLabelTL: UILabel!
+    @IBOutlet var posLabelTR: UILabel!
+    @IBOutlet var posLabelBL: UILabel!
+    @IBOutlet var posLabelBR: UILabel!
+    @IBOutlet var zPosTitle: UILabel!
+    @IBOutlet var extruderTitle: UILabel!
+    @IBOutlet var heatbedTitle: UILabel!
     
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
@@ -39,18 +38,21 @@ class ControlsViewController: UIViewController, Observer {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
-        
         Push.instance.observe(who: self as Observer, topic: Push.current)
+        
+        xyPositionSlider.delegate = self
+        zPositionSlider.isContinuous = false
+        extruderSlider.isContinuous = false
+        heatbedSlider.isContinuous = false
+        zPositionSlider.addTarget(self, action: #selector(zHeightChanged), for: .valueChanged)
+        extruderSlider.addTarget(self, action: #selector(eHeatChanged), for: .valueChanged)
+        heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
     }
     
     func notify(message: Notification) {
         print("Notifying I guess")
         let json = message.object! as! JSON
-        print(json)
-        updateTemperature(temp: 13242)
-        
     }
     
     func setup() {
@@ -78,7 +80,7 @@ class ControlsViewController: UIViewController, Observer {
         heatbedTitle.textColor = ui.textColor
         
         let inverted = (settings.value(forKey: "posCoord") as! Int) == 1
-        if (inverted) {
+        if inverted {
             posLabelTR.text = "yx"
         }
     }
@@ -99,21 +101,25 @@ class ControlsViewController: UIViewController, Observer {
         }
     }
     
-    // Update functions
-    // "temp" is for "temperature", not "temporary" - the lazy variable name
-    // Doesn't actually do anything yet
-    func updateTemperature(temp: Int) {
-        let json : [String: Any] = [
-        "command": "target",
-        "targets": [
-            "tool0": 220,
-            "tool1": 205
-            ]
-        ]
-        let valid = JSONSerialization.isValidJSONObject(json) // true
-        print(valid)
+    @objc func eHeatChanged(_ sender: UISlider) {
+        API.instance.extruderHeat(hotness: sender.value) { (status) in
+        }
+    }
+    
+    @objc func bedHeatChanged(_ sender: UISlider) {
+        API.instance.bedHeat(hotness: sender.value) { (status) in
+        }
+    }
+    
+    @objc func zHeightChanged(_ sender: UISlider) {
+        API.instance.move(x: nil, y: nil, z: sender.value, f: 1000) { (status) in
+            
+        }
+    }
+    
+    func headMoved(point: CGPoint) {
+        API.instance.move(x: Float(point.x), y: Float(point.y), z: nil, f: 10000) { (status) in
+            
+        }
     }
 }
-
-
-

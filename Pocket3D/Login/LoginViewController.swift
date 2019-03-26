@@ -6,8 +6,8 @@
 //  Copyright © 2019 Team 2. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 class LoginViewController: UIViewController {
     let ui = UIExtensions()
@@ -68,13 +68,13 @@ class LoginViewController: UIViewController {
         settings.setValue(apiKeyField.text, forKey: "apiKey")
         do {
             try context.save()
-        } catch  {
+        } catch {
             print("Failed to save login information to Core Data")
         }
     }
+    
     // setup core data to save login information
-    func setupCoreData(_ entity:String) {
-        
+    func setupCoreData(_ entity: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         context = appDelegate.persistentContainer.viewContext
@@ -86,32 +86,26 @@ class LoginViewController: UIViewController {
         // fetch settings if any have been made before
         
         do {
-            
             let results = try context.fetch(fetchRequest) as! [NSManagedObject]
-            if (results.count > 0) {
-                
+            if results.count > 0 {
                 settings = results[0]
                 print("API Key: ")
                 let apiKey = settings.value(forKey: "apiKey") as! String
                 let ipAddress = settings.value(forKey: "ipAddress") as! String
                 apiKeyField.text = apiKey
                 ipAddressField.text = ipAddress
- 
                 
             } else {
-                
                 createNewDataObject()
-                
             }
             
             // create new settings entity if has not been created yet
             
         } catch {
-            
             createNewDataObject()
         }
     }
-
+    
     // create and add a new object for Settings
     func createNewDataObject() {
         settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)

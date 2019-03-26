@@ -9,7 +9,13 @@
 import UIKit
 import CoreData
 
+protocol JoystickSliderDelegate: class {
+    func headMoved(point: CGPoint);
+}
+
 class JoystickSlider: UIView {
+    
+    weak var delegate: JoystickSliderDelegate!
     
     let ui = UIExtensions()
     
@@ -130,6 +136,10 @@ class JoystickSlider: UIView {
         let relativeCoord = convertCoordinate(coordinate: point)
         coordinateLabel.text = "(\(Int(relativeCoord.x.rounded())), \(Int(relativeCoord.y.rounded())))"
         coordinateLabel.sizeToFit()
+        
+        if let d = self.delegate {
+            d.headMoved(point: convertCoordinate(coordinate: relativeCoord))
+        }
     }
     
     func convertCoordinate(coordinate: CGPoint) -> CGPoint {

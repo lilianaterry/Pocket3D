@@ -10,17 +10,16 @@ import SwiftyJSON
 import UIKit
 
 class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FileCellDelegate {
-    
     @IBOutlet var tableView: UITableView!
     
     var files: [JSON] = []
-    var selectedIndexPath : IndexPath?
+    var selectedIndexPath: IndexPath?
     
     lazy var printTimeFormatter: DateComponentsFormatter = {
         let f = DateComponentsFormatter()
         f.unitsStyle = .abbreviated
-        f.allowedUnits = [.hour, .minute ]
-        f.zeroFormattingBehavior = [ .pad ]
+        f.allowedUnits = [.hour, .minute]
+        f.zeroFormattingBehavior = [.pad]
         return f
     }()
     
@@ -34,7 +33,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         API.instance.files { [unowned self] _, json in
             self.files = json["files"].arrayValue
-            print("Got files array of \(self.files.count) from json object")
+//            print("Got files array of \(self.files.count) from json object")
             // TODO: check shared prefernces
             self.files.sort(by: { (a, b) -> Bool in
                 a["date"].int64Value > b["date"].int64Value
@@ -67,12 +66,12 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let previousIndexpath = selectedIndexPath
-        if indexPath == selectedIndexPath {
-            selectedIndexPath = nil
+        if indexPath == self.selectedIndexPath {
+            self.selectedIndexPath = nil
         } else {
-            selectedIndexPath = indexPath
+            self.selectedIndexPath = indexPath
         }
-        var indexPaths : Array<IndexPath> = []
+        var indexPaths: Array<IndexPath> = []
         if let previous = previousIndexpath {
             indexPaths += [previous]
         }
@@ -80,16 +79,16 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
             indexPaths += [current]
         }
         if indexPaths.count > 0 {
-            tableView.reloadRows(at: indexPaths, with: .automatic )
+            tableView.reloadRows(at: indexPaths, with: .automatic)
         }
-        
     }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! FileTableViewCell).watchFrameChanges()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath == selectedIndexPath {
+        if indexPath == self.selectedIndexPath {
             return FileTableViewCell.expandedHeight
         } else {
             return FileTableViewCell.defaultHeight
@@ -102,45 +101,45 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
 }
 
 protocol FileCellDelegate: class {
-    func printPressed();
+    func printPressed()
 }
 
 class FileTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet weak var modifiedLabel: UILabel!
-    @IBOutlet weak var readLabel: UILabel!
-    @IBOutlet weak var estTimeLabel: UILabel!
-    @IBOutlet weak var labelsStack: UIStackView!
-    @IBOutlet weak var printButton: UIButton!
+    @IBOutlet var modifiedLabel: UILabel!
+    @IBOutlet var readLabel: UILabel!
+    @IBOutlet var estTimeLabel: UILabel!
+    @IBOutlet var labelsStack: UIStackView!
+    @IBOutlet var printButton: UIButton!
     
     weak var delegate: FileCellDelegate!
     
-    class var expandedHeight: CGFloat { get { return 165 } }
-    class var defaultHeight: CGFloat { get {return 50 } }
+    class var expandedHeight: CGFloat { return 165 }
+    class var defaultHeight: CGFloat { return 50 }
     
     func checkHeight() {
-        modifiedLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-        readLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-        estTimeLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-        labelsStack.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-        printButton.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+        self.modifiedLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+        self.readLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+        self.estTimeLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+        self.labelsStack.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+        self.printButton.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
     }
     
     func watchFrameChanges() {
         addObserver(self, forKeyPath: "frame", options: .new, context: nil)
-        checkHeight()
+        self.checkHeight()
     }
     
 //    func ignoreFrameChanges() {
 //        //do nothing
 //    }
     @IBAction func printButtonPressed(_ sender: Any) {
-            self.delegate.printPressed()
+        self.delegate.printPressed()
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "frame" {
-            checkHeight()
+            self.checkHeight()
         }
     }
 }

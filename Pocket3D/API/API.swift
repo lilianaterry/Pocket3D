@@ -29,24 +29,23 @@ final class API {
     private var url: URL!
     private var api_key: String!
     
-    private var debug_enabled : Bool = true
+    private var debug_enabled: Bool = true
     
     private var headers: [String: String] {
         return ["X-Api-Key": self.api_key]
     }
     
     func setup(url: String, key: String) {
-        //Chris's hardcoded shieeeeet
+        // Chris's hardcoded shieeeeet
         // Use debug stuff if the debug thing above is enabled
         // and DEBUG is entered in a field
-        if ((url == "DEBUG" || key == "DEBUG") && debug_enabled) {
+        if (url == "DEBUG" || key == "DEBUG") && self.debug_enabled {
             self.orig_url = URL(string: "http://70.122.32.48")
             self.api_key = "B7714E03A6524843BBB26F946D59AE70"
             // Virtual printer shit maybe fuck it I don't know
-            //self.orig_url = URL(string: "http://localhost:5000")
-            //self.api_key = "589F0038062E48CBAB0191A0CF9CC7AC"
-        }
-        else {
+            // self.orig_url = URL(string: "http://localhost:5000")
+            // self.api_key = "589F0038062E48CBAB0191A0CF9CC7AC"
+        } else {
             self.orig_url = URL(string: url)
             self.api_key = key
         }
@@ -54,11 +53,12 @@ final class API {
     }
     
     func login(callback: @escaping JsonCallback) {
-        performPost(path: "login", parameters: ["passive": true]).responseJSON { (res) in
+        self.performPost(path: "login", parameters: ["passive": true]).responseJSON { res in
             let json = JSON(res.data as Any)
             NSLog("Got session key \(json["session"])")
-            if (res.response?.statusCode == 200) {
-                Push.instance.connect(baseUrl: self.orig_url, name: json["name"].stringValue,
+            if res.response?.statusCode == 200 {
+                Push.instance.connect(baseUrl: self.orig_url,
+                                      name: json["name"].stringValue,
                                       sessionKey: json["session"].stringValue)
                 callback(.Ok, json)
                 print("Login apparently successful I guess?")
@@ -79,8 +79,8 @@ final class API {
         return qurl.url
     }
     
-    func move(x: Int? = .none, y: Int? = .none, z: Int? = .none, f: Int? = .none, callback: @escaping Callback) {
-        var params: [String: Any] = [:]
+    func move(x: Float? = .none, y: Float? = .none, z: Float? = .none, f: Float? = .none, callback: @escaping Callback) {
+        var params: [String: Any] = ["command": "jog", "absolute": true]
         if let x = x {
             params["x"] = x
         }
@@ -100,51 +100,26 @@ final class API {
         self.performPostDefault(paths: ["printer", "printhead"], parameters: ["axes": axes], callback: callback)
     }
     
+    func extruderHeat(hotness: Float, callback: @escaping Callback) {
+        self.performPostDefault(paths: ["printer", "tool"],
+                                parameters: ["command": "target", "targets": ["tool0": hotness]],
+                                callback: callback)
+    }
+    
+    func bedHeat(hotness: Float, callback: @escaping Callback) {
+        self.performPostDefault(paths: ["printer", "bed"],
+                                parameters: ["command": "target", "target": hotness],
+                                callback: callback)
+    }
+    
     // TODO: M114 support
     // Recv: X:0.000 Y:0.000 Z:59.818 E:40.629
-    
-    /*
-     * If both heat arguments are given, two web requests are performed and
-     * their results are and-ed
-     *
-     * WEW LADDIE THIS IS INTERESTING
-     */
-    func heat(hotend: Int? = .none, bed: Int? = .none, callback: @escaping Callback) {
-        let d = DispatchQueue(label: "heaterqueue")
-        var hres: Status? = .none
-        var bres: Status? = .none
-        if let h = hotend {
-            Alamofire.request(self.buildMultipath(["printer", "tool"]),
-                              parameters: ["command": "target", "targets": ["tool0": h]],
-                              encoding: JSONEncoding.default,
-                              headers: self.headers).response(queue: d) { response in
-                // yeet
-                hres = response.response?.statusCode == 204 ? .Ok : .Fail
-            }
-        }
-        if let b = bed {
-            Alamofire.request(self.buildMultipath(["printer", "bed"]),
-                              parameters: ["command": "target", "target": b],
-                              encoding: JSONEncoding.default,
-                              headers: self.headers).response(queue: d) { response in
-                // yeet
-                bres = response.response?.statusCode == 204 ? .Ok : .Fail
-            }
-        }
-        d.async {
-            // So the theory is since d is a synchronous dispatch queue, then
-            // this will be queued last and both hres and bres will be updated correctly.
-            // However this is turbo ultra memory unsafe and might not work.
-            // If it does, Dijkstra bless reference counting and closure capture semantics.
-            callback(hres ?? .Ok && bres ?? .Ok)
-        }
-    }
     
     func files(callback: @escaping JsonCallback) {
         Alamofire.request(self.url.appendingPathComponent("files"),
                           headers: self.headers).responseJSON { data in
-                            callback(data.response?.statusCode == 200 ? .Ok : .Fail,
-                                     JSON(data.data!))
+            callback(data.response?.statusCode == 200 ? .Ok : .Fail,
+                     JSON(data.data!))
         }
     }
     
@@ -160,11 +135,6 @@ final class API {
                                 callback: callback)
     }
     
-    // Probably horrible func name, will fix later or maybe not
-    func performPostPublic(path: String, parameters: [String:Any] = [:]) -> DataRequest {
-        return self.performPost(paths: [path], parameters: parameters)
-    }
-    
     private func performPost(path: String, parameters: [String: Any] = [:]) -> DataRequest {
         return self.performPost(paths: [path], parameters: parameters)
     }
@@ -174,8 +144,8 @@ final class API {
     }
     
     private func performPostDefault(paths: [String],
-                            parameters: [String: Any] = [:],
-                            callback: @escaping Callback) {
+                                    parameters: [String: Any] = [:],
+                                    callback: @escaping Callback) {
         self.performPost(paths: paths, parameters: parameters).response(completionHandler: { ddr in
             if ddr.response?.statusCode == 204 {
                 callback(.Ok)
