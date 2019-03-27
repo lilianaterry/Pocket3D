@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navController = UINavigationController(rootViewController: startingVC)
         navController.setNavigationBarHidden(true, animated: false)
         self.window!.rootViewController = navController
+        IQKeyboardManager.shared.enable = true
         // Override point for customization after application launch.
         return true
     }

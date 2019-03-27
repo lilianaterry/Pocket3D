@@ -10,6 +10,7 @@ target 'Pocket3D' do
   pod 'SwiftyJSON', '~> 4.0'
   pod "MJPEGStreamLib"
   pod "Starscream"
+  pod 'IQKeyboardManagerSwift'
 
   target 'Pocket3DTests' do
     inherit! :search_paths

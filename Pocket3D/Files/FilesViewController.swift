@@ -31,14 +31,16 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
-        API.instance.files { [unowned self] _, json in
-            self.files = json["files"].arrayValue
+        API.instance.files { [weak self] _, json in
+            if let self = self {
+                self.files = json["files"].arrayValue
 //            print("Got files array of \(self.files.count) from json object")
-            // TODO: check shared prefernces
-            self.files.sort(by: { (a, b) -> Bool in
-                a["date"].int64Value > b["date"].int64Value
-            })
-            self.tableView.reloadData()
+                // TODO: check shared prefernces
+                self.files.sort(by: { (a, b) -> Bool in
+                    a["date"].int64Value > b["date"].int64Value
+                })
+                self.tableView.reloadData()
+            }
         }
     }
     

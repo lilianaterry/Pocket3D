@@ -57,7 +57,15 @@ class StatusViewController: UIViewController, Observer {
         stream.didFinishLoading = {
             print("MJPEG stream loaded!")
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         stream.play()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        stream.stop()
     }
     
     // set font and background colors

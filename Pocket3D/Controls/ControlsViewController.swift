@@ -51,7 +51,6 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     }
     
     func notify(message: Notification) {
-        print("Notifying I guess")
         let json = message.object! as! JSON
     }
     
