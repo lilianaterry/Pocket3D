@@ -8,9 +8,13 @@
 
 import SwiftyJSON
 import UIKit
+import NVActivityIndicatorView
 
 class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FileCellDelegate {
     @IBOutlet var tableView: UITableView!
+    
+    let ui = UIExtensions()
+    @IBOutlet weak var menuBar: MenuBarView!
     
     var files: [JSON] = []
     var selectedIndexPath: IndexPath?
@@ -26,22 +30,41 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let loadingAnimation = setupLoadingAnimation()
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
+        tableView.backgroundColor = ui.backgroundColor
+        let selectedIndex = IndexPath(item: 2, section: 0)
+        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
+        
         API.instance.files { [weak self] _, json in
             if let self = self {
                 self.files = json["files"].arrayValue
-//            print("Got files array of \(self.files.count) from json object")
                 // TODO: check shared prefernces
                 self.files.sort(by: { (a, b) -> Bool in
                     a["date"].int64Value > b["date"].int64Value
                 })
+                loadingAnimation.stopAnimating()
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    // starts loading animation so that user knows files are on their way!
+    func setupLoadingAnimation() -> NVActivityIndicatorView {
+        let size = CGSize(width: self.view.bounds.width / 4, height: self.view.bounds.height / 4)
+        let center = CGPoint(x: self.view.center.x - size.width / 2, y: self.view.center.y - size.height / 2)
+        let frame = CGRect(origin: center, size: size)
+        let loadingAnimation = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleRippleMultiple, color: ui.textColor)
+        
+        self.view.addSubview(loadingAnimation)
+        
+        loadingAnimation.startAnimating()
+        return loadingAnimation
     }
     
     func printPressed() {
@@ -96,10 +119,6 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
             return FileTableViewCell.defaultHeight
         }
     }
-    
-//    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        (cell as! FileTableViewCell).ignoreFrameChanges()
-//    }
 }
 
 protocol FileCellDelegate: class {
@@ -109,10 +128,9 @@ protocol FileCellDelegate: class {
 class FileTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var modifiedLabel: UILabel!
-    @IBOutlet var readLabel: UILabel!
     @IBOutlet var estTimeLabel: UILabel!
-    @IBOutlet var labelsStack: UIStackView!
     @IBOutlet var printButton: UIButton!
+    @IBOutlet weak var expandedView: UIStackView!
     
     weak var delegate: FileCellDelegate!
     
@@ -120,11 +138,15 @@ class FileTableViewCell: UITableViewCell {
     class var defaultHeight: CGFloat { return 50 }
     
     func checkHeight() {
-        self.modifiedLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-        self.readLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-        self.estTimeLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-        self.labelsStack.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-        self.printButton.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+        self.nameLabel.isHidden = false
+        self.expandedView.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+
+//        self.modifiedLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+//        self.estTimeLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+//        self.printButton.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
+//        print(self.modifiedLabel.isHidden)
+//        print(self.estTimeLabel.isHidden)
+//        print(self.printButton.isHidden)
     }
     
     func watchFrameChanges() {
@@ -132,9 +154,6 @@ class FileTableViewCell: UITableViewCell {
         self.checkHeight()
     }
     
-//    func ignoreFrameChanges() {
-//        //do nothing
-//    }
     @IBAction func printButtonPressed(_ sender: Any) {
         self.delegate.printPressed()
     }

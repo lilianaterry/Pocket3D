@@ -11,6 +11,7 @@ target 'Pocket3D' do
   pod "MJPEGStreamLib"
   pod "Starscream"
   pod 'IQKeyboardManagerSwift'
+  pod 'NVActivityIndicatorView'
 
   target 'Pocket3DTests' do
     inherit! :search_paths

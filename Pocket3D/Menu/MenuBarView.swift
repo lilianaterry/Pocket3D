@@ -18,7 +18,7 @@ class MenuBarView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewD
     let ui = UIExtensions()
     
     let cellId = "menuCell"
-    let screenNames = ["Controls", "Status", "Files", "Settings"]
+    let screenNames = ["Status", "Controls", "Files", "Settings"]
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -45,7 +45,6 @@ class MenuBarView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     
     func setup() {
-        print("setup")
         self.backgroundColor = UIColor.purple
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false

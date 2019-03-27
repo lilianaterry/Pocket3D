@@ -61,7 +61,7 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     
     // make sure everything is colored beautifully
     func setupViews() {
-        let selectedIndex = IndexPath(item: 0, section: 0)
+        let selectedIndex = IndexPath(item: 1, section: 0)
         menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
         
         contentView.backgroundColor = ui.backgroundColor

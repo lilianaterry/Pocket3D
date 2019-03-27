@@ -72,7 +72,7 @@ class StatusViewController: UIViewController, Observer {
     func setup() {
         // header
         headerView.backgroundColor = ui.headerBackgroundColor
-        let selectedIndex = IndexPath(item: 1, section: 0)
+        let selectedIndex = IndexPath(item: 0, section: 0)
         menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
         
         // body
