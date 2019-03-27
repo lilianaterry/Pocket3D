@@ -83,6 +83,17 @@ class JoystickSlider: UIView {
             context.setStrokeColor(ui.textColor.cgColor)
             context.setLineWidth(6.0)
             context.stroke(rect)
+            
+            if i >= 1 {
+                let point = CGPoint(x: x, y: y + rect.height + 4)
+                let frame = CGRect(origin: point, size: CGSize(width: 100, height: 100))
+                let label = UILabel(frame: frame)
+                label.font = ui.sliderSubtitleFont
+                label.textColor = ui.textColor
+                label.text = String(i * 50)
+                label.sizeToFit()
+                self.addSubview(label)
+            }
         }
     }
     

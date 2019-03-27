@@ -23,6 +23,7 @@ class UIExtensions {
     let textFieldTitleFont = UIFont(name: "SFProDisplay-Medium", size: 22.0)
     let buttonTitleFont = UIFont(name: "SFProDisplay-Bold", size: 24.0)
     let sliderTitleFont = UIFont(name: "SFProDisplay-Semibold", size: 18.0)
+    let sliderSubtitleFont = UIFont(name: "SFProDisplay-Semibold", size: 14.0)
     
     let titleSize = 24.0 as CGFloat
     let textSize = 18.0 as CGFloat
