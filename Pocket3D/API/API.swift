@@ -157,6 +157,6 @@ final class API {
     }
 
     private func buildMultipath(_ paths: [String]) -> URL {
-        return paths.reduce(url) { acc, x in acc!.appendingPathComponent(x) } !
+        return paths.reduce(url) { acc, x in acc!.appendingPathComponent(x) }!
     }
 }
