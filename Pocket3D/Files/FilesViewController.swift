@@ -86,6 +86,8 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.modifiedLabel.text = DateFormatter.localizedString(from: Date(timeIntervalSince1970: files[indexPath.row]["date"].doubleValue), dateStyle: .medium, timeStyle: .medium)
         cell.estTimeLabel.text = printTimeFormatter.string(from:
             files[indexPath.row]["gcodeAnalysis"]["estimatedPrintTime"].doubleValue)
+        cell.modifiedLabel.sizeToFit()
+        cell.estTimeLabel.sizeToFit()
         return cell
     }
     

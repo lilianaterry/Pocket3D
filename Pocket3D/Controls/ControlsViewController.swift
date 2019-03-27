@@ -50,6 +50,11 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
     }
     
+    override func viewWillLayoutSubviews() {
+        let max = xyPositionSlider.bounds.height
+        xyPositionSlider.moveHead(location: CGPoint(x: 0, y: max))
+    }
+    
     func notify(message: Notification) {
         let json = message.object! as! JSON
     }
@@ -61,6 +66,8 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     
     // make sure everything is colored beautifully
     func setupViews() {
+        self.view.backgroundColor = ui.backgroundColor
+        
         let selectedIndex = IndexPath(item: 1, section: 0)
         menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
         

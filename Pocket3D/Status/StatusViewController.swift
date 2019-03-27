@@ -34,6 +34,7 @@ class StatusViewController: UIViewController, Observer {
     @IBOutlet var progressLabel: UILabel!
     @IBOutlet var timeRemainingLabel: UILabel!
     @IBOutlet var webcamImageView: UIImageView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     let ui = UIExtensions()
     var stream: MJPEGStreamLib!
@@ -80,6 +81,8 @@ class StatusViewController: UIViewController, Observer {
         filenameLabel.textColor = ui.textColor
         progressLabel.textColor = ui.textColor
         timeRemainingLabel.textColor = ui.textColor
+        
+        errorLabel.layer.zPosition = webcamImageView.layer.zPosition - 1
     }
     
     func updateStatus(status: String, filename: String) {

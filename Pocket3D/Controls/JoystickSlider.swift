@@ -119,9 +119,15 @@ class JoystickSlider: UIView {
     
     // selector to move slider head when Pan Gesture is detected
     @objc func dragHead(sender: UIPanGestureRecognizer) {
-        let head = sender.view!
         let location = sender.location(in: self)
-        
+
+        moveHead(location: location)
+    }
+    
+    // move CALayer to desired location
+    func moveHead(location: CGPoint) {
+        print(location.y)
+        print(bounds.height)
         // keep it in the coordinate space
         var x = location.x >= 0 ? location.x : 0
         var y = location.y >= 0 ? location.y : 0
@@ -130,9 +136,9 @@ class JoystickSlider: UIView {
         
         let point = CGPoint(x: x, y: y)
         
-        head.center = point
+        sliderHeadView!.center = point
         coordinateLabel.center = CGPoint(x: point.x, y: point.y + 35)
-
+        
         let relativeCoord = convertCoordinate(coordinate: point)
         coordinateLabel.text = "(\(Int(relativeCoord.x.rounded())), \(Int(relativeCoord.y.rounded())))"
         coordinateLabel.sizeToFit()
@@ -143,7 +149,10 @@ class JoystickSlider: UIView {
     }
     
     func convertCoordinate(coordinate: CGPoint) -> CGPoint {
-        let inverted = (settings.value(forKey: "posCoord") as! Int) == 1
+        var inverted = false
+        if let setting = settings {
+            inverted = (setting.value(forKey: "posCoord") as! Int == 1)
+        }
         
         let percentX = coordinate.x / self.bounds.width
         let percentY = coordinate.y / self.bounds.height
