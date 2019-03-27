@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "51F1802C83DD46E76AB0A0459CD4441E"
-               BlueprintName = "VerticalSlider"
+               BlueprintIdentifier = "2F56A7E4DFE218C0DAD320699DD11F5C"
+               BlueprintName = "NVActivityIndicatorView"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "VerticalSlider.framework">
+               BuildableName = "NVActivityIndicatorView.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

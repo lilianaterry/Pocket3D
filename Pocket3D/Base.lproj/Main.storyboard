@@ -513,8 +513,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yup-ol-uV0" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="YBy-TO-ipT" userLabel="position stack">
-                                                <rect key="frame" x="8" y="16" width="359" height="579"/>
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="YBy-TO-ipT" userLabel="position stack">
+                                                <rect key="frame" x="8" y="16" width="359" height="539"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znB-8e-Gp3" userLabel="Position Title">
                                                         <rect key="frame" x="8" y="0.0" width="343" height="26.5"/>
@@ -522,8 +522,8 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gJR-32-Jzj" userLabel="xy position">
-                                                        <rect key="frame" x="24" y="76.5" width="311" height="374"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gJR-32-Jzj" userLabel="xy position">
+                                                        <rect key="frame" x="24" y="56.5" width="311" height="374"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-D4-Fvw" userLabel="top labels">
                                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="21.5"/>
@@ -575,8 +575,8 @@
                                                             <constraint firstItem="CqA-Og-zuz" firstAttribute="width" secondItem="vH0-fv-kMg" secondAttribute="width" id="M3X-jr-DIq"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="CnA-EY-FUZ" userLabel="z slider">
-                                                        <rect key="frame" x="24" y="500.5" width="311" height="78.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="CnA-EY-FUZ" userLabel="z slider">
+                                                        <rect key="frame" x="24" y="460.5" width="311" height="78.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="z" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGY-ub-poE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
@@ -608,8 +608,8 @@
                                                     <constraint firstItem="gJR-32-Jzj" firstAttribute="leading" secondItem="YBy-TO-ipT" secondAttribute="leading" constant="24" id="tEJ-FQ-4n5"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="wt4-B6-LC8" userLabel="temperature stack">
-                                                <rect key="frame" x="8" y="585" width="359" height="263.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="wt4-B6-LC8" userLabel="temperature stack">
+                                                <rect key="frame" x="8" y="605" width="359" height="263.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIn-OC-me0">
                                                         <rect key="frame" x="8" y="0.0" width="343" height="26.5"/>
@@ -617,7 +617,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="uRY-CO-Mu6" userLabel="temperature_sliders">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="uRY-CO-Mu6" userLabel="temperature_sliders">
                                                         <rect key="frame" x="24" y="56.5" width="311" height="207"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="wVE-hV-acv" userLabel="extruder">
@@ -647,7 +647,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="FHM-da-T97" userLabel="heatbed">
                                                                 <rect key="frame" x="0.0" y="128.5" width="311" height="78.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head Bed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQu-wd-HNa">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heat Bed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQu-wd-HNa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
                                                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -684,10 +684,9 @@
                                             <constraint firstItem="YBy-TO-ipT" firstAttribute="centerX" secondItem="yup-ol-uV0" secondAttribute="centerX" id="OZv-FE-JGb"/>
                                             <constraint firstAttribute="trailing" secondItem="wt4-B6-LC8" secondAttribute="trailing" constant="8" id="bRX-7m-7dl"/>
                                             <constraint firstAttribute="trailing" secondItem="YBy-TO-ipT" secondAttribute="trailing" constant="8" id="eiF-Vc-yf5"/>
-                                            <constraint firstAttribute="bottom" secondItem="wt4-B6-LC8" secondAttribute="bottom" constant="11.5" id="h7T-GG-WGn"/>
                                             <constraint firstItem="YBy-TO-ipT" firstAttribute="leading" secondItem="yup-ol-uV0" secondAttribute="leading" constant="8" id="kGr-ZB-l4t"/>
                                             <constraint firstItem="YBy-TO-ipT" firstAttribute="top" secondItem="yup-ol-uV0" secondAttribute="top" constant="16" id="kgs-bi-Kct"/>
-                                            <constraint firstItem="wt4-B6-LC8" firstAttribute="top" secondItem="YBy-TO-ipT" secondAttribute="bottom" constant="30" id="kz3-6U-2ym"/>
+                                            <constraint firstItem="wt4-B6-LC8" firstAttribute="top" secondItem="YBy-TO-ipT" secondAttribute="bottom" constant="50" id="ptT-I6-a70"/>
                                         </constraints>
                                     </view>
                                 </subviews>
