@@ -14,35 +14,35 @@ class LoginViewController: UIViewController {
     @IBOutlet var apiKeyField: TextFieldView!
     @IBOutlet var ipAddressField: TextFieldView!
     @IBOutlet var errorLabel: UILabel!
-    
+
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
-    
+
     var delegate: SegueDelegate!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = ui.headerBackgroundColor
-        
+
         setupCoreData("Settings")
-        
+
         delegate = MenuBarView(frame: CGRect())
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    @IBAction func loginSelected(_ sender: Any) {
-        if apiKeyField.hasText && ipAddressField.hasText &&
-            apiKeyField.text != "API Key" && ipAddressField.text != "IP Address" {
+
+    @IBAction func loginSelected(_: Any) {
+        if apiKeyField.hasText, ipAddressField.hasText,
+            apiKeyField.text != "API Key", ipAddressField.text != "IP Address" {
             errorLabel.text = ""
-            
+
             API.instance.setup(url: ipAddressField.text!, key: apiKeyField.text!)
             API.instance.login { [unowned self] status, _ in
                 print("Got status \(status) from logging in")
-                
+
                 if status == .Ok {
                     self.saveToCoreData()
                     self.delegate.segue(identifier: "Status")
@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+
     // save login information to core data for settings page
     func saveToCoreData() {
         settings.setValue(ipAddressField.text, forKey: "ipAddress")
@@ -72,19 +72,19 @@ class LoginViewController: UIViewController {
             print("Failed to save login information to Core Data")
         }
     }
-    
+
     // setup core data to save login information
     func setupCoreData(_ entity: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
+
         context = appDelegate.persistentContainer.viewContext
-        
+
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        
+
         fetchRequest.returnsObjectsAsFaults = false
-        
+
         // fetch settings if any have been made before
-        
+
         do {
             let results = try context.fetch(fetchRequest) as! [NSManagedObject]
             if results.count > 0 {
@@ -94,18 +94,18 @@ class LoginViewController: UIViewController {
                 let ipAddress = settings.value(forKey: "ipAddress") as! String
                 apiKeyField.text = apiKey
                 ipAddressField.text = ipAddress
-                
+
             } else {
                 createNewDataObject()
             }
-            
+
             // create new settings entity if has not been created yet
-            
+
         } catch {
             createNewDataObject()
         }
     }
-    
+
     // create and add a new object for Settings
     func createNewDataObject() {
         settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)

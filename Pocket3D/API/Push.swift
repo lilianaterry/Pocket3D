@@ -26,7 +26,7 @@ typealias Topic = NSNotification.Name
 final class Push: WebSocketDelegate {
     // Singleton
     static let instance = Push()
-    
+
     // topics
     static let connected: Topic = NSNotification.Name("connected")
     static let current: Topic = NSNotification.Name("current")
@@ -34,11 +34,11 @@ final class Push: WebSocketDelegate {
     static let event: Topic = NSNotification.Name("event")
     static let slicingProgress: Topic = NSNotification.Name("slicingProgress")
     static let plugin: Topic = NSNotification.Name("plugin")
-    
+
     var socket: WebSocket!
     var sessionKey: String = ""
     var name: String = ""
-    
+
     func connect(baseUrl: URL, name: String, sessionKey: String) {
         var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true)!
         components.scheme = "ws"
@@ -52,21 +52,21 @@ final class Push: WebSocketDelegate {
         socket.delegate = self
         socket.connect()
     }
-    
+
     func disconnect() {
         socket.disconnect()
     }
-    
+
     func observe(who: Observer, topic: Topic) {
         NotificationCenter.default.addObserver(who,
                                                selector: #selector(Observer.notify(message:)),
                                                name: topic,
                                                object: nil)
     }
-    
+
     func websocketDidConnect(socket: WebSocketClient) {
         // We only get heartbeat packets until correctly authenticated
-        
+
         // Yes, this stupid json object is the correct format. For whatever reason,
         // all outgoing values must be arrays of json formatted strings
         let json = JSON([JSON(["auth": self.name + ":" + self.sessionKey]).rawString()!])
@@ -74,22 +74,22 @@ final class Push: WebSocketDelegate {
         print("Sending auth packet \(authstr)")
         socket.write(string: authstr)
     }
-    
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+
+    func websocketDidDisconnect(socket _: WebSocketClient, error: Error?) {
         print("Websocket error \(String(describing: error))")
     }
-    
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+
+    func websocketDidReceiveData(socket _: WebSocketClient, data: Data) {
         print("Got data frame \(String(describing: String(data: data, encoding: .utf8)))")
     }
-    
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+
+    func websocketDidReceiveMessage(socket _: WebSocketClient, text: String) {
         // From experimentation, everything is a text frame
         // Also wow ok nothing matches the documentation
         // h: a heartbeat packet
         // o: Not sure, maybe connection?
         // a: a json object follows
-        
+
         switch text.first {
         case "o":
             // no clue

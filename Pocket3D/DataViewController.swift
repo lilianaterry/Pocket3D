@@ -9,10 +9,8 @@
 import UIKit
 
 class DataViewController: UIViewController {
-
-    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet var dataLabel: UILabel!
     var dataObject: String = ""
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +19,6 @@ class DataViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.dataLabel!.text = dataObject
+        dataLabel!.text = dataObject
     }
-
-
 }
-

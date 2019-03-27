@@ -18,7 +18,7 @@ class StatusViewController: UIViewController, Observer {
         f.zeroFormattingBehavior = [.pad]
         return f
     }()
-    
+
     func notify(message: Notification) {
         let json = message.object! as! JSON
         updateStatus(status: json["state"]["text"].stringValue,
@@ -26,7 +26,7 @@ class StatusViewController: UIViewController, Observer {
         updateProgress(progress: json["progress"]["completion"].doubleValue)
         updateTimeRemaining(timeRemain: json["progress"]["printTimeLeft"].intValue)
     }
-    
+
     @IBOutlet var headerView: UIView!
     @IBOutlet var menuBar: MenuBarView!
     @IBOutlet var statusLabel: UILabel!
@@ -34,19 +34,19 @@ class StatusViewController: UIViewController, Observer {
     @IBOutlet var progressLabel: UILabel!
     @IBOutlet var timeRemainingLabel: UILabel!
     @IBOutlet var webcamImageView: UIImageView!
-    @IBOutlet weak var errorLabel: UILabel!
-    
+    @IBOutlet var errorLabel: UILabel!
+
     let ui = UIExtensions()
     var stream: MJPEGStreamLib!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
         setup()
-        
+
         Push.instance.observe(who: self as Observer, topic: Push.current)
-        
+
         // TODO: apply settings for imageview mirroring
         webcamImageView.transform = CGAffineTransform(scaleX: -1, y: -1)
         stream = MJPEGStreamLib(imageView: webcamImageView)
@@ -59,32 +59,32 @@ class StatusViewController: UIViewController, Observer {
             print("MJPEG stream loaded!")
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         stream.play()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
+
+    override func viewWillDisappear(_: Bool) {
         stream.stop()
     }
-    
+
     // set font and background colors
     func setup() {
         // header
         headerView.backgroundColor = ui.headerBackgroundColor
         let selectedIndex = IndexPath(item: 0, section: 0)
         menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
-        
+
         // body
         view.backgroundColor = ui.backgroundColor
         filenameLabel.textColor = ui.textColor
         progressLabel.textColor = ui.textColor
         timeRemainingLabel.textColor = ui.textColor
-        
+
         errorLabel.layer.zPosition = webcamImageView.layer.zPosition - 1
     }
-    
+
     func updateStatus(status: String, filename: String) {
         if status == "Printing" {
             statusLabel.text = "Printing:"
@@ -96,12 +96,12 @@ class StatusViewController: UIViewController, Observer {
         statusLabel.sizeToFit()
         filenameLabel.sizeToFit()
     }
-    
+
     func updateProgress(progress: Double) {
         progressLabel.text = NSString(format: "%.2f%%", progress) as String
         progressLabel.sizeToFit()
     }
-    
+
     func updateTimeRemaining(timeRemain: Int) {
         timeRemainingLabel.text = printTimeFormatter.string(from: Double(timeRemain))
         timeRemainingLabel.sizeToFit()

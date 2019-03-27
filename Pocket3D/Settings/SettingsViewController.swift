@@ -6,8 +6,8 @@
 //  Copyright © 2019 Team 2. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 enum SelectedButtonTag: Int {
     case First
@@ -16,43 +16,42 @@ enum SelectedButtonTag: Int {
 }
 
 class SettingsViewController: UIViewController {
-
     let ui = UIExtensions()
-    
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var menuBar: MenuBarView!
-    @IBOutlet weak var saveButton: ButtonView!
-    
-    @IBOutlet weak var ipAddressField: TextFieldView!
-    @IBOutlet weak var apiKeyField: TextFieldView!
-    
-    @IBOutlet weak var colorModeSwitch: UISegmentedControl!
-    
-    @IBOutlet weak var modifySortButton: BubbleButton!
-    @IBOutlet weak var modifyLabel: UILabel!
-    @IBOutlet weak var creationSortButton: BubbleButton!
-    @IBOutlet weak var creationLabel: UILabel!
-    @IBOutlet weak var alphaSortButton: BubbleButton!
-    @IBOutlet weak var alphaLabel: UILabel!
-    
-    @IBOutlet weak var xyCoordButton: BubbleButton!
-    @IBOutlet weak var xyLabel: UILabel!
-    @IBOutlet weak var yxCoordButton: BubbleButton!
-    @IBOutlet weak var yxLabel: UILabel!
-    
+
+    @IBOutlet var headerView: UIView!
+    @IBOutlet var menuBar: MenuBarView!
+    @IBOutlet var saveButton: ButtonView!
+
+    @IBOutlet var ipAddressField: TextFieldView!
+    @IBOutlet var apiKeyField: TextFieldView!
+
+    @IBOutlet var colorModeSwitch: UISegmentedControl!
+
+    @IBOutlet var modifySortButton: BubbleButton!
+    @IBOutlet var modifyLabel: UILabel!
+    @IBOutlet var creationSortButton: BubbleButton!
+    @IBOutlet var creationLabel: UILabel!
+    @IBOutlet var alphaSortButton: BubbleButton!
+    @IBOutlet var alphaLabel: UILabel!
+
+    @IBOutlet var xyCoordButton: BubbleButton!
+    @IBOutlet var xyLabel: UILabel!
+    @IBOutlet var yxCoordButton: BubbleButton!
+    @IBOutlet var yxLabel: UILabel!
+
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
     var request: NSFetchRequest<NSFetchRequestResult>!
-    
+
     var fileSortSelection: Int!
     var xyCoordSelection: Int!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
     }
-    
+
     func setup() {
         setupCoreData()
         setupViews()
@@ -60,7 +59,7 @@ class SettingsViewController: UIViewController {
         setupButtons()
         setupTextFields()
     }
-    
+
     // get core data Settings object
     func setupCoreData() {
         // get current core data information
@@ -68,7 +67,7 @@ class SettingsViewController: UIViewController {
         context = appDelegate.persistentContainer.viewContext
         request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
         request.returnsObjectsAsFaults = false
-        
+
         do {
             let result = try context.fetch(request) as! [NSManagedObject]
             settings = result[0]
@@ -76,7 +75,7 @@ class SettingsViewController: UIViewController {
             print("Failed to retrieve settings from Core Data")
         }
     }
-    
+
     // add editing recognizers and fill with core data
     func setupTextFields() {
         ipAddressField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
@@ -95,7 +94,7 @@ class SettingsViewController: UIViewController {
             print("Setup TextFields: no apiKey found")
         }
     }
-    
+
     // select buttons that the user has set and saved in settings before
     func setupButtons() {
         let fileButtons = [alphaSortButton, creationSortButton, modifySortButton]
@@ -121,7 +120,7 @@ class SettingsViewController: UIViewController {
             print("Setup Buttons: no inDarkMode option found")
         }
     }
-    
+
     // make labels ui.textcolor
     func setupLabels() {
         modifyLabel.textColor = ui.textColor
@@ -130,31 +129,31 @@ class SettingsViewController: UIViewController {
         xyLabel.textColor = ui.textColor
         yxLabel.textColor = ui.textColor
     }
-    
+
     // background coloring/header font
     func setupViews() {
-        self.view.backgroundColor = ui.backgroundColor
-        
+        view.backgroundColor = ui.backgroundColor
+
         headerView.backgroundColor = ui.headerBackgroundColor
-        
+
         let selectedIndex = IndexPath(item: 3, section: 0)
         menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
-        
+
         saveButton.backgroundColor = ui.textColor
         saveButton.isEnabled = false
     }
-    
+
     // any change has occured on the page, triggering a blue save button to indicate you need to save
     @objc func detectChange() {
         saveButton.backgroundColor = ui.headerTextColor
         saveButton.isEnabled = true
     }
-    
+
     // switched to dark or light mode
-    @IBAction func colorModeSelected(_ sender: Any) {
+    @IBAction func colorModeSelected(_: Any) {
         detectChange()
     }
-    
+
     // multiple choice bubble buttons have changed selection for file sorting
     @IBAction func fileSortOptionSelected(_ sender: UIButton) {
         var allOptions = [alphaSortButton, creationSortButton, modifySortButton] as [BubbleButton]
@@ -162,40 +161,40 @@ class SettingsViewController: UIViewController {
         let tag = sender.tag
         let toSelect = allOptions[tag]
         allOptions.remove(at: tag)
-        
-        if (toSelect.isSelected == false) {
+
+        if toSelect.isSelected == false {
             detectChange()
         }
-        
+
         fileSortSelection = toSelect.tag
         toSelect.selectButton(toDeselect: allOptions)
     }
-    
+
     // multiple choice bubble buttons have changed selection for xy coords
     @IBAction func coordOptionSelected(_ sender: UIButton) {
         var allOptions = [xyCoordButton, yxCoordButton] as [BubbleButton]
-        
+
         let tag = sender.tag
         let toSelect = allOptions[tag]
         allOptions.remove(at: tag)
-        
-        if (toSelect.isSelected == false) {
+
+        if toSelect.isSelected == false {
             detectChange()
         }
-        
+
         xyCoordSelection = toSelect.tag
         toSelect.selectButton(toDeselect: allOptions)
     }
-    
+
     // save to core memory if the button color says a change has occured on the page
     @IBAction func saveSelected(_ sender: UIButton) {
-        if (sender.isEnabled) {
+        if sender.isEnabled {
             saveCoreData()
             sender.backgroundColor = ui.textColor
             sender.isEnabled = false
         }
     }
-    
+
     // save any changes to core data so they persist
     func saveCoreData() {
         settings.setValue(ipAddressField.text, forKey: "ipAddress")
@@ -203,10 +202,10 @@ class SettingsViewController: UIViewController {
         settings.setValue(fileSortSelection, forKey: "fileSort")
         settings.setValue(xyCoordSelection, forKey: "posCoord")
         settings.setValue(colorModeSwitch.selectedSegmentIndex, forKey: "colorMode")
-        
+
         do {
             try context.save()
-        } catch  {
+        } catch {
             print("Failed to save login information to Core Data")
         }
     }
