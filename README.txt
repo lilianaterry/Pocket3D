@@ -1,21 +1,21 @@
 *** Contributions: ***
 
-	Dylan Bottoms: 
+	Dylan Bottoms: (10%) 
 		- Files Screen UI/UX
 		- Initial IB elements for Status, Login, and Files screens
 
-	Chris Day:
+	Chris Day: (36%)
 		- The API framework
 		- The websocket framework and observer system
 		- Connected most of the UI to the API
 
-	Jonathan Ray:
+	Jonathan Ray: (18%)
 		- Setup/debugged virtual printer for testing purposes
 		- Added/improved core data functionality for saving inputs
 		- Assisted with API calls for interacting with Octoprint
 		- Pair programmed with Dylan to create Files screen UI and View Controller
 
-	Liliana Terry:
+	Liliana Terry: (36%)
 		- Global UI elements, colors, and fonts
 		- Login Screen UI/UX
 		- Status Screen UI/UX
@@ -29,7 +29,7 @@
 *** Notes for running: ***
 
 	1. Simulator Phone:
-		- We created and tested our UI with the iPhone XR. 
+		- We created and tested our UI with the iPhone XR in portrait mode. 
 		- Behavior/layouts on other screens may work but not all have been tested.
 	2. The Controls screen UIScrollView works on a real phone, but it sometimes misbehaves on 
 		one of our simulators.
