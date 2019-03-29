@@ -76,7 +76,13 @@ final class Push: WebSocketDelegate {
     }
 
     func websocketDidDisconnect(socket _: WebSocketClient, error: Error?) {
-        print("Websocket error \(String(describing: error))")
+        if let err = error {
+            if err.code == 57 {
+                // we got disconnected, try reconnect
+                socket.connect()
+            }
+            print("Unhandled websocket error \(String(describing: error))")
+        }
     }
 
     func websocketDidReceiveData(socket _: WebSocketClient, data: Data) {
@@ -123,4 +129,9 @@ final class Push: WebSocketDelegate {
             print("Unknown message start \(String(describing: text.first))")
         }
     }
+}
+
+extension Error {
+    var code: Int { return (self as NSError).code }
+    var domain: String { return (self as NSError).domain }
 }
