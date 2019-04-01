@@ -60,6 +60,22 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
 
     func notify(message: Notification) {
         let json = message.object! as! JSON
+        if (json["state"]["text"] == "Printing") {
+            // Do something to gray out controls
+            // For now it just hides it which
+            // looks ugly as balls so probably find a way to gray it out
+            // and turn off the controls.
+            // One way would be to have boolean to check if it's enabled
+            // and stop it from sending the command to the printer in the
+            // head moving functions and then just do something ot the view visually
+            xyPositionSlider.isHidden = true
+            zPositionSlider.isHidden = true
+        }
+        else {
+            // Do something to ungray controls
+            xyPositionSlider.isHidden = false
+            zPositionSlider.isHidden = false
+        }
     }
 
     func setup() {
