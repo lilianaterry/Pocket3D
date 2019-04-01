@@ -42,8 +42,7 @@ final class Push: WebSocketDelegate {
     func connect(baseUrl: URL, name: String, sessionKey: String) {
         var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true)!
         components.scheme = "ws"
-        print("SESSION KEY ISSSS: ")
-        print(sessionKey)
+        print("Session key:" + sessionKey)
         components.path = "/sockjs/\(name)/\(sessionKey)/websocket"
         print("Connecting to \(String(describing: components.url))")
         socket = WebSocket(url: components.url!)
