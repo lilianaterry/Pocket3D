@@ -112,38 +112,6 @@ final class API {
                            callback: callback)
     }
 
-    // TODO: M114 support
-    // Recv: ok X:0.000 Y:0.000 Z:59.818 E:40.629
-    
-    // Takes a GCODE command such as M114 as a parameter and sends
-    // it to the printer
-    func sendGCODE(command: String, callback: @escaping Callback) {
-        performPostDefault(paths: ["printer", "command"],
-                           parameters: ["command": command],
-                           callback: callback)
-    }
-    
-    // Get response as string and parse it
-    func parseM114Response(response: String) -> [String:Double] {
-        var resultDict : [String:Double] = ["X":0.0, "Y":0.0, "Z":0.0]
-        // Checks if this is the "right" line
-        if response.hasPrefix("Recv: ok X:") {
-            let responseArray = response.components(separatedBy: " ")
-            var index = 0
-            // 5 because there are 5 tokens to read
-            // Also makes sure not to go out of range
-            while (index < 5 && index < responseArray.count) {
-                var subArray = responseArray[index].components(separatedBy: ":")
-                // If this is in the format Letter:Number
-                if (subArray.count == 2) {
-                    resultDict[subArray[0]] = Double(subArray[1])
-                }
-                index += 1
-            }
-        }
-        return resultDict
-    }
-
     func files(callback: @escaping JsonCallback) {
         Alamofire.request(url.appendingPathComponent("files"),
                           headers: headers).responseJSON { data in

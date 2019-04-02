@@ -27,8 +27,6 @@ class StatusViewController: UIViewController, Observer {
         updateTimeRemaining(timeRemain: json["progress"]["printTimeLeft"].intValue)
     }
 
-    @IBOutlet var headerView: UIView!
-    @IBOutlet var menuBar: MenuBarView!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var filenameLabel: UILabel!
     @IBOutlet var progressLabel: UILabel!
@@ -41,6 +39,8 @@ class StatusViewController: UIViewController, Observer {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)], for: .normal)
 
         // Do any additional setup after loading the view.
         setup()
@@ -71,13 +71,8 @@ class StatusViewController: UIViewController, Observer {
 
     // set font and background colors
     func setup() {
-        // header
-        headerView.backgroundColor = ui.headerBackgroundColor
-        let selectedIndex = IndexPath(item: 0, section: 0)
-        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
 
         // body
-        view.backgroundColor = ui.backgroundColor
         filenameLabel.textColor = ui.textColor
         progressLabel.textColor = ui.textColor
         timeRemainingLabel.textColor = ui.textColor

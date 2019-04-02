@@ -14,7 +14,6 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet var tableView: UITableView!
 
     let ui = UIExtensions()
-    @IBOutlet var menuBar: MenuBarView!
 
     var files: [JSON] = []
     var selectedIndexPath: IndexPath?
@@ -36,10 +35,6 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
 
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-
-        tableView.backgroundColor = ui.backgroundColor
-        let selectedIndex = IndexPath(item: 2, section: 0)
-        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
 
         API.instance.files { [weak self] _, json in
             if let self = self {

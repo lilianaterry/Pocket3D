@@ -18,16 +18,12 @@ class LoginViewController: UIViewController {
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
 
-    var delegate: SegueDelegate!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = ui.headerBackgroundColor
 
         setupCoreData("Settings")
-
-        delegate = MenuBarView(frame: CGRect())
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +41,8 @@ class LoginViewController: UIViewController {
 
                 if status == .Ok {
                     self.saveToCoreData()
-                    self.delegate.segue(identifier: "Status")
+//                    self.delegate.segue(identifier: "Status")
+                    self.performSegue(withIdentifier: "LOGIN", sender: self)
                 } else {
                     self.errorLabel.text = "Login info incorrect"
                 }

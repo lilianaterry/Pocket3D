@@ -24,8 +24,6 @@
 		CE36832422453207005CB878 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36832322453207005CB878 /* BubbleButton.swift */; };
 		CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE3683252245644B005CB878 /* Pocket3D.xcdatamodeld */; };
 		CE36832922458234005CB878 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36832822458234005CB878 /* MenuButton.swift */; };
-		CE3683342246D70A005CB878 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3683332246D70A005CB878 /* MenuBarView.swift */; };
-		CE3683382246F0EE005CB878 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3683372246F0EE005CB878 /* MenuCell.swift */; };
 		CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64172228CD4500771BE3 /* LoginViewController.swift */; };
 		CE7A641A2228CFBD00771BE3 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64192228CFBD00771BE3 /* FilesViewController.swift */; };
 		CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A641B2228D91E00771BE3 /* StatusViewController.swift */; };
@@ -89,8 +87,6 @@
 		CE36832322453207005CB878 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
 		CE3683262245644B005CB878 /* Pocket3D.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pocket3D.xcdatamodel; sourceTree = "<group>"; };
 		CE36832822458234005CB878 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
-		CE3683332246D70A005CB878 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
-		CE3683372246F0EE005CB878 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		CE7A64172228CD4500771BE3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE7A64192228CFBD00771BE3 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		CE7A641B2228D91E00771BE3 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +181,6 @@
 		8300E7D82225FF0B004DA31C /* Pocket3D */ = {
 			isa = PBXGroup;
 			children = (
-				CE36832A22458B44005CB878 /* Menu */,
 				CE36831E22449CFA005CB878 /* Settings */,
 				CEAEA46B2242E65800479B27 /* Controls */,
 				8300E80B2225FF21004DA31C /* API */,
@@ -256,15 +251,6 @@
 				CEAEA46E2242F76000479B27 /* SliderView.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		CE36832A22458B44005CB878 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				CE3683332246D70A005CB878 /* MenuBarView.swift */,
-				CE3683372246F0EE005CB878 /* MenuCell.swift */,
-			);
-			path = Menu;
 			sourceTree = "<group>";
 		};
 		CEAEA46B2242E65800479B27 /* Controls */ = {
@@ -631,7 +617,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */,
-				CE3683382246F0EE005CB878 /* MenuCell.swift in Sources */,
 				CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */,
 				CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */,
 				8300E7DC2225FF0B004DA31C /* RootViewController.swift in Sources */,
@@ -643,7 +628,6 @@
 				8300E7E02225FF0B004DA31C /* ModelController.swift in Sources */,
 				CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */,
 				8300E7DE2225FF0B004DA31C /* DataViewController.swift in Sources */,
-				CE3683342246D70A005CB878 /* MenuBarView.swift in Sources */,
 				CE36832922458234005CB878 /* MenuButton.swift in Sources */,
 				CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,
@@ -829,7 +813,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -845,7 +832,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -862,7 +852,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -880,7 +874,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -897,7 +895,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -914,7 +916,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

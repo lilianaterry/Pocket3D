@@ -38,6 +38,7 @@ final class Push: WebSocketDelegate {
     var socket: WebSocket!
     var sessionKey: String = ""
     var name: String = ""
+    var printerState: JSON?
 
     func connect(baseUrl: URL, name: String, sessionKey: String) {
         var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true)!
@@ -113,7 +114,9 @@ final class Push: WebSocketDelegate {
                         break
                     case "current":
                         NotificationCenter.default.post(name: Push.current, object: value)
-                    case "history": break
+                        self.printerState = value
+                    case "history":
+                        self.printerState = value
                     case "event": break
                     case "slicingProgress": break
                     case "plugin": break

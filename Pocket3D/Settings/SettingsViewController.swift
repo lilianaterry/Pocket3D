@@ -18,8 +18,6 @@ enum SelectedButtonTag: Int {
 class SettingsViewController: UIViewController {
     let ui = UIExtensions()
 
-    @IBOutlet var headerView: UIView!
-    @IBOutlet var menuBar: MenuBarView!
     @IBOutlet var saveButton: ButtonView!
 
     @IBOutlet var ipAddressField: TextFieldView!
@@ -132,13 +130,6 @@ class SettingsViewController: UIViewController {
 
     // background coloring/header font
     func setupViews() {
-        view.backgroundColor = ui.backgroundColor
-
-        headerView.backgroundColor = ui.headerBackgroundColor
-
-        let selectedIndex = IndexPath(item: 3, section: 0)
-        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
-
         saveButton.backgroundColor = ui.textColor
         saveButton.isEnabled = false
     }

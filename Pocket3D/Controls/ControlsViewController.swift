@@ -13,11 +13,6 @@ import UIKit
 class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate {
     let ui = UIExtensions()
 
-    @IBOutlet var menuBar: MenuBarView!
-
-    @IBOutlet var headerView: UIView!
-    @IBOutlet var headerTitle: UILabel!
-
     @IBOutlet var xyPositionSlider: JoystickSlider!
     @IBOutlet var zPositionSlider: HorizontalCustomSlider!
     @IBOutlet var extruderSlider: UISlider!
@@ -48,9 +43,6 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         zPositionSlider.addTarget(self, action: #selector(zHeightChanged), for: .valueChanged)
         extruderSlider.addTarget(self, action: #selector(eHeatChanged), for: .valueChanged)
         heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
-        
-        // Comment this in final build, only here for testing purposes
-        viewDidLoadDebug()
     }
 
     override func viewWillLayoutSubviews() {
@@ -85,17 +77,6 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
 
     // make sure everything is colored beautifully
     func setupViews() {
-        view.backgroundColor = ui.backgroundColor
-
-        let selectedIndex = IndexPath(item: 1, section: 0)
-        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
-
-        contentView.backgroundColor = ui.backgroundColor
-
-        headerView.backgroundColor = ui.headerBackgroundColor
-        headerTitle.font = ui.headerTitleFont
-        headerTitle.textColor = ui.headerTextColor
-
         posLabelTL.textColor = ui.textColor
         posLabelTR.textColor = ui.textColor
         posLabelBL.textColor = ui.textColor
@@ -144,12 +125,5 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     func headMoved(point: CGPoint) {
         API.instance.move(x: Float(point.x), y: Float(point.y), z: nil, f: 10000) { _ in
         }
-    }
-    
-    // Insert into viewDidLoad to test things. Does not actually
-    // do anything in final product.
-    func viewDidLoadDebug () {
-        var dict = API.instance.parseM114Response(response:
-            "Recv: ok X:0.000 Y:0.000 Z:59.818 E:40.629")
     }
 }
