@@ -13,20 +13,12 @@ import UIKit
 class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate {
     let ui = UIExtensions()
 
-    @IBOutlet var xyPositionSlider: JoystickSlider!
-    @IBOutlet var zPositionSlider: HorizontalCustomSlider!
-    @IBOutlet var extruderSlider: UISlider!
-    @IBOutlet var heatbedSlider: UISlider!
-    @IBOutlet var contentView: UIView!
-
-    @IBOutlet var posLabelTL: UILabel!
-    @IBOutlet var posLabelTR: UILabel!
-    @IBOutlet var posLabelBL: UILabel!
-    @IBOutlet var posLabelBR: UILabel!
-    @IBOutlet var zPosTitle: UILabel!
-    @IBOutlet var extruderTitle: UILabel!
-    @IBOutlet var heatbedTitle: UILabel!
-
+    @IBOutlet weak var xyPositionSlider: JoystickSlider!
+    @IBOutlet weak var zPositionSlider: HorizontalCustomSlider!
+    @IBOutlet weak var extruderSlider: UISlider!
+    @IBOutlet weak var heatbedSlider: UISlider!
+    @IBOutlet weak var posLabelTR: UILabel!
+    
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
     var request: NSFetchRequest<NSFetchRequestResult>!
@@ -52,22 +44,22 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
 
     func notify(message: Notification) {
         let json = message.object! as! JSON
-        if (json["state"]["text"] == "Printing") {
-            // Do something to gray out controls
-            // For now it just hides it which
-            // looks ugly as balls so probably find a way to gray it out
-            // and turn off the controls.
-            // One way would be to have boolean to check if it's enabled
-            // and stop it from sending the command to the printer in the
-            // head moving functions and then just do something ot the view visually
-            xyPositionSlider.isHidden = true
-            zPositionSlider.isHidden = true
-        }
-        else {
-            // Do something to ungray controls
-            xyPositionSlider.isHidden = false
-            zPositionSlider.isHidden = false
-        }
+//        if (json["state"]["text"] == "Printing") {
+//            // Do something to gray out controls
+//            // For now it just hides it which
+//            // looks ugly as balls so probably find a way to gray it out
+//            // and turn off the controls.
+//            // One way would be to have boolean to check if it's enabled
+//            // and stop it from sending the command to the printer in the
+//            // head moving functions and then just do something ot the view visually
+//            xyPositionSlider.isHidden = true
+//            zPositionSlider.isHidden = true
+//        }
+//        else {
+//            // Do something to ungray controls
+//            xyPositionSlider.isHidden = false
+//            zPositionSlider.isHidden = false
+//        }
     }
 
     func setup() {
@@ -77,14 +69,6 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
 
     // make sure everything is colored beautifully
     func setupViews() {
-        posLabelTL.textColor = ui.textColor
-        posLabelTR.textColor = ui.textColor
-        posLabelBL.textColor = ui.textColor
-        posLabelBR.textColor = ui.textColor
-        zPosTitle.textColor = ui.textColor
-        extruderTitle.textColor = ui.textColor
-        heatbedTitle.textColor = ui.textColor
-
         let inverted = (settings.value(forKey: "posCoord") as! Int) == 1
         if inverted {
             posLabelTR.text = "yx"
