@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7D92225FF0B004DA31C /* AppDelegate.swift */; };
-		8300E7DC2225FF0B004DA31C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7DB2225FF0B004DA31C /* RootViewController.swift */; };
-		8300E7DE2225FF0B004DA31C /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7DD2225FF0B004DA31C /* DataViewController.swift */; };
-		8300E7E02225FF0B004DA31C /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7DF2225FF0B004DA31C /* ModelController.swift */; };
 		8300E7E32225FF0B004DA31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E12225FF0B004DA31C /* Main.storyboard */; };
 		8300E7E52225FF0C004DA31C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E42225FF0C004DA31C /* Assets.xcassets */; };
 		8300E7E82225FF0C004DA31C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E62225FF0C004DA31C /* LaunchScreen.storyboard */; };
@@ -66,9 +63,6 @@
 		7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3DUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7D62225FF0B004DA31C /* Pocket3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7D92225FF0B004DA31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8300E7DB2225FF0B004DA31C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		8300E7DD2225FF0B004DA31C /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		8300E7DF2225FF0B004DA31C /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		8300E7E22225FF0B004DA31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8300E7E42225FF0C004DA31C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8300E7E72225FF0C004DA31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -191,12 +185,9 @@
 				8300E7D92225FF0B004DA31C /* AppDelegate.swift */,
 				CE3683252245644B005CB878 /* Pocket3D.xcdatamodeld */,
 				8300E7E42225FF0C004DA31C /* Assets.xcassets */,
-				8300E7DD2225FF0B004DA31C /* DataViewController.swift */,
 				8300E7E92225FF0C004DA31C /* Info.plist */,
 				8300E7E62225FF0C004DA31C /* LaunchScreen.storyboard */,
 				8300E7E12225FF0B004DA31C /* Main.storyboard */,
-				8300E7DF2225FF0B004DA31C /* ModelController.swift */,
-				8300E7DB2225FF0B004DA31C /* RootViewController.swift */,
 			);
 			path = Pocket3D;
 			sourceTree = "<group>";
@@ -619,15 +610,12 @@
 				CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */,
 				CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */,
 				CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */,
-				8300E7DC2225FF0B004DA31C /* RootViewController.swift in Sources */,
 				837F45D3223031BB00895817 /* Push.swift in Sources */,
 				CE36831D22442FCB005CB878 /* JoystickSlider.swift in Sources */,
 				CE36832422453207005CB878 /* BubbleButton.swift in Sources */,
 				CE7A641A2228CFBD00771BE3 /* FilesViewController.swift in Sources */,
 				CE36832022449D12005CB878 /* SettingsViewController.swift in Sources */,
-				8300E7E02225FF0B004DA31C /* ModelController.swift in Sources */,
 				CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */,
-				8300E7DE2225FF0B004DA31C /* DataViewController.swift in Sources */,
 				CE36832922458234005CB878 /* MenuButton.swift in Sources */,
 				CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,

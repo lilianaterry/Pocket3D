@@ -9,14 +9,16 @@
 import NVActivityIndicatorView
 import SwiftyJSON
 import UIKit
+import CoreData
 
-class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FileCellDelegate {
+class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FileCellDelegate {
     @IBOutlet var tableView: UITableView!
 
     let ui = UIExtensions()
 
-    var files: [JSON] = []
     var selectedIndexPath: IndexPath?
+    var frc: NSFetchedResultsController<File>!
+    var moc: NSManagedObjectContext!
 
     lazy var printTimeFormatter: DateComponentsFormatter = {
         let f = DateComponentsFormatter()
@@ -30,23 +32,45 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
 
         let loadingAnimation = setupLoadingAnimation()
-
-        tableView.delegate = self
-        tableView.dataSource = self
-
-        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        
+        let req = NSFetchRequest<File>(entityName: "File")
+        let dateSort = NSSortDescriptor(key: "date", ascending: false) // TODO: check shared prefernces
+        req.sortDescriptors = [dateSort]
+        moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        moc.mergePolicy = NSMergePolicy.overwrite
+        frc = NSFetchedResultsController(fetchRequest: req, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "File")
+        
+        do {
+            try frc.performFetch()
+        } catch {
+            fatalError("oops")
+        }
 
         API.instance.files { [weak self] _, json in
             if let self = self {
-                self.files = json["files"].arrayValue
-                // TODO: check shared prefernces
-                self.files.sort(by: { (a, b) -> Bool in
-                    a["date"].int64Value > b["date"].int64Value
-                })
+                for f in json["files"].arrayValue {
+                    if (f["type"] == "folder") {
+                        continue;
+                    }
+                    let of = NSEntityDescription.insertNewObject(forEntityName: "File", into: self.moc) as! File
+                    of.name = f["name"].stringValue
+                    of.display = f["display"].stringValue
+                    of.date = Date(timeIntervalSince1970: f["date"].doubleValue)
+                    of.octoHash = f["hash"].stringValue
+                }
+                try! self.moc.save()
                 loadingAnimation.stopAnimating()
-                self.tableView.reloadData()
             }
         }
+        
+        // this has to go after initialization of core data
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
 
     // starts loading animation so that user knows files are on their way!
@@ -63,24 +87,30 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func printPressed() {
-        API.instance.printFile(file: URL(string: files[self.selectedIndexPath!.row]["refs"]["resource"].stringValue)!) { status in
-            print("Starting print: \(status)")
-        }
+//        API.instance.printFile(file: URL(string: files[self.selectedIndexPath!.row]["refs"]["resource"].stringValue)!) { status in
+//            print("Starting print: \(status)")
+//        }
     }
 
-    // MARK: - UITableView
+    // MARK: - UITableViewDelegate
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return frc.sections?.count ?? 0
+    }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? files.count : 0
+        let res = frc!.sections!
+        return res[section].numberOfObjects
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FILE_CELL")! as! FileTableViewCell
         cell.delegate = self
-        cell.nameLabel.text = files[indexPath.row]["name"].stringValue
-        cell.modifiedLabel.text = DateFormatter.localizedString(from: Date(timeIntervalSince1970: files[indexPath.row]["date"].doubleValue), dateStyle: .medium, timeStyle: .medium)
-        cell.estTimeLabel.text = printTimeFormatter.string(from:
-            files[indexPath.row]["gcodeAnalysis"]["estimatedPrintTime"].doubleValue)
+        let file = frc.object(at: indexPath)
+        cell.nameLabel.text = file.display
+        cell.modifiedLabel.text = DateFormatter.localizedString(from: file.date!, dateStyle: .medium, timeStyle: .medium)
+//        cell.estTimeLabel.text = printTimeFormatter.string(from:
+//            files[indexPath.row]["gcodeAnalysis"]["estimatedPrintTime"].doubleValue)
         cell.modifiedLabel.sizeToFit()
         cell.estTimeLabel.sizeToFit()
         return cell
@@ -115,6 +145,10 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         } else {
             return FileTableViewCell.defaultHeight
         }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadData()
     }
 }
 
