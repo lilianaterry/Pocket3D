@@ -13,12 +13,12 @@ import UIKit
 class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate {
     let ui = UIExtensions()
 
-    @IBOutlet weak var xyPositionSlider: JoystickSlider!
-    @IBOutlet weak var zPositionSlider: HorizontalCustomSlider!
-    @IBOutlet weak var extruderSlider: UISlider!
-    @IBOutlet weak var heatbedSlider: UISlider!
-    @IBOutlet weak var posLabelTR: UILabel!
-    
+    @IBOutlet var xyPositionSlider: JoystickSlider!
+    @IBOutlet var zPositionSlider: HorizontalCustomSlider!
+    @IBOutlet var extruderSlider: UISlider!
+    @IBOutlet var heatbedSlider: UISlider!
+    @IBOutlet var posLabelTR: UILabel!
+
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
     var request: NSFetchRequest<NSFetchRequestResult>!
@@ -37,13 +37,48 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
     }
 
-    override func viewWillLayoutSubviews() {
-        let max = xyPositionSlider.bounds.height
-        xyPositionSlider.moveHead(location: CGPoint(x: 0, y: max))
-    }
+//    override func viewWillLayoutSubviews() {
+//        let max = xyPositionSlider.bounds.height
+//        xyPositionSlider.moveHead(location: CGPoint(x: 0, y: max))
+//    }
 
     func notify(message: Notification) {
         let json = message.object! as! JSON
+        if json["temps"].array?.count != 0 {
+            extruderSlider.value = json["temps"][0]["tool0"]["actual"].floatValue
+            heatbedSlider.value = json["temps"][0]["bed"]["actual"].floatValue
+        }
+        if let z = json["currentZ"].float {
+            zPositionSlider.value = z
+        }
+
+        // try to set the xy control position
+        for l in (json["logs"].arrayObject! as! [String]).filter({ $0.starts(with: "Send:") }) {
+            var split: [Substring]
+            if let star = l.lastIndex(of: "*") {
+                split = l[l.startIndex...l.index(before: star)].split(separator: " ")
+            } else {
+                split = l.split(separator: " ")
+            }
+            if split.count < 2 {
+                continue
+            }
+            if split[2] == "G28" {
+                xyPositionSlider.moveHead(location: xyPositionSlider.invertCoordinate(coord: CGPoint(x: 0, y: 0)))
+            }
+            if  (split[2] == "G0" || split[2] == "G1") {
+                var x = xyPositionSlider.value.x
+                var y = xyPositionSlider.value.y
+                if let tx = split.first(where: { $0.starts(with: "X") }) {
+                    x = CGFloat(Float(String(tx.dropFirst()))!)
+                }
+                if let ty = split.first(where: { $0.starts(with: "Y") }) {
+                    y = CGFloat(Float(String(ty.dropFirst()))!)
+                }
+                xyPositionSlider.moveHead(location: xyPositionSlider.invertCoordinate(coord: CGPoint(x: x, y: y) as PrinterCoordinate), notify: false)
+                break
+            }
+        }
 //        if (json["state"]["text"] == "Printing") {
 //            // Do something to gray out controls
 //            // For now it just hides it which
