@@ -570,11 +570,28 @@
                                             <constraint firstItem="z03-Ij-QoS" firstAttribute="top" secondItem="pFy-mL-TvQ" secondAttribute="top" id="vFo-Xy-RGz"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRW-DO-blt" customClass="GridView" customModule="Pocket3D" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="817.5" width="359" height="128"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" placeholder="YES" id="Wd8-rH-fMr"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rowSize">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="FRW-DO-blt" firstAttribute="leading" secondItem="j9S-WH-Y49" secondAttribute="leadingMargin" id="3TO-7u-DeP"/>
                                     <constraint firstItem="Uj2-so-SeL" firstAttribute="leading" secondItem="7i3-3Q-W6J" secondAttribute="leading" id="3Ug-tA-TYa"/>
                                     <constraint firstItem="7i3-3Q-W6J" firstAttribute="leading" secondItem="K3h-RI-CDB" secondAttribute="leading" id="6Bz-cG-pl3"/>
                                     <constraint firstItem="PB3-nS-p2U" firstAttribute="leading" secondItem="j9S-WH-Y49" secondAttribute="leading" constant="30" id="6LJ-Dm-uuC"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="FRW-DO-blt" secondAttribute="bottom" id="74m-cB-I31"/>
                                     <constraint firstItem="pFy-mL-TvQ" firstAttribute="top" secondItem="PB3-nS-p2U" secondAttribute="bottom" constant="30" id="7kf-qb-kmI"/>
                                     <constraint firstItem="pFy-mL-TvQ" firstAttribute="leading" secondItem="j9S-WH-Y49" secondAttribute="leading" id="8Bo-ne-9YH"/>
                                     <constraint firstItem="7i3-3Q-W6J" firstAttribute="centerX" secondItem="j9S-WH-Y49" secondAttribute="centerX" id="Epy-Fq-vfj"/>
@@ -590,9 +607,10 @@
                                     <constraint firstAttribute="trailing" secondItem="PB3-nS-p2U" secondAttribute="trailing" constant="30" id="eIx-fm-CQR"/>
                                     <constraint firstAttribute="trailing" secondItem="7i3-3Q-W6J" secondAttribute="trailing" constant="30" id="hy5-mA-hja"/>
                                     <constraint firstItem="do7-OA-HBP" firstAttribute="trailing" secondItem="7i3-3Q-W6J" secondAttribute="trailing" id="i75-B4-YVm"/>
-                                    <constraint firstAttribute="bottom" secondItem="pFy-mL-TvQ" secondAttribute="bottom" constant="8" id="khf-X3-iIc"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="FRW-DO-blt" secondAttribute="trailing" id="j9K-2w-snI"/>
                                     <constraint firstAttribute="trailing" secondItem="ZME-4u-OO5" secondAttribute="trailing" id="lDU-4n-nha"/>
                                     <constraint firstItem="Bai-aP-TB1" firstAttribute="trailing" secondItem="7i3-3Q-W6J" secondAttribute="trailing" id="nYk-qD-urS"/>
+                                    <constraint firstItem="FRW-DO-blt" firstAttribute="top" secondItem="pFy-mL-TvQ" secondAttribute="bottom" constant="15" id="t6X-gh-0I2"/>
                                     <constraint firstItem="Bai-aP-TB1" firstAttribute="firstBaseline" secondItem="K3h-RI-CDB" secondAttribute="firstBaseline" id="tQD-7f-3m0"/>
                                 </constraints>
                             </scrollView>
@@ -614,6 +632,7 @@
                         <outlet property="bedTempLabel" destination="xRE-c1-qCV" id="hhQ-bh-xhN"/>
                         <outlet property="extruderSlider" destination="4Ds-B0-2Py" id="7XT-oT-ekT"/>
                         <outlet property="extruderTempLabel" destination="KZi-Gr-7jk" id="Mv6-wc-xb3"/>
+                        <outlet property="gcodeGrid" destination="FRW-DO-blt" id="7U8-2o-IHn"/>
                         <outlet property="heatbedSlider" destination="ibn-Xv-hTh" id="40y-1p-e3C"/>
                         <outlet property="posLabelTR" destination="Bai-aP-TB1" id="nd5-7z-ZSX"/>
                         <outlet property="xyPositionSlider" destination="7i3-3Q-W6J" id="gWK-ER-Ead"/>

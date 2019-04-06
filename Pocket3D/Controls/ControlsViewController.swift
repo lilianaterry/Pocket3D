@@ -10,17 +10,24 @@ import CoreData
 import SwiftyJSON
 import UIKit
 
-class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate {
+class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate, GridViewDelegate {
     let ui = UIExtensions()
 
-    @IBOutlet weak var xyPositionSlider: JoystickSlider!
-    @IBOutlet weak var zPositionSlider: HorizontalCustomSlider!
-    @IBOutlet weak var extruderSlider: UISlider!
-    @IBOutlet weak var heatbedSlider: UISlider!
-    @IBOutlet weak var posLabelTR: UILabel!
-    @IBOutlet weak var extruderTempLabel: UILabel!
-    @IBOutlet weak var bedTempLabel: UILabel!
-    
+    @IBOutlet var xyPositionSlider: JoystickSlider!
+    @IBOutlet var zPositionSlider: HorizontalCustomSlider!
+    @IBOutlet var extruderSlider: UISlider!
+    @IBOutlet var heatbedSlider: UISlider!
+    @IBOutlet var posLabelTR: UILabel!
+    @IBOutlet var extruderTempLabel: UILabel!
+    @IBOutlet var bedTempLabel: UILabel!
+    @IBOutlet var gcodeGrid: GridView!
+
+    var gcodeCommands: [(String, [String])] = [("Home X", ["G28 X"]),
+                                               ("Home Y", ["G28 Y"]),
+                                               ("Home Z", ["G28 Z"]),
+                                               ("Klipper reset", ["firmware_restart", "restart"]),
+                                               ("Test multiple", ["G28 X", "G0 X250 F10000"])]
+
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
     var request: NSFetchRequest<NSFetchRequestResult>!
@@ -37,6 +44,16 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         zPositionSlider.addTarget(self, action: #selector(zHeightChanged), for: .valueChanged)
         extruderSlider.addTarget(self, action: #selector(eHeatChanged), for: .valueChanged)
         heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
+
+        gcodeGrid.delegate = self
+//        if let commands = UserDefaults.standard.array(forKey: "gcode_commands") as! [(String, String)]? {
+//            self.gcodeCommands = commands
+//            self.gcodeGrid.addCell(view: GcodeGridCell(text: "Hello"))
+//            self.gcodeGrid.addCell(view: GcodeGridCell(text: "World"))
+        for c in gcodeCommands {
+            gcodeGrid.addCell(view: GcodeGridCell(text: c.0))
+        }
+//        }
     }
 
 //    override func viewWillLayoutSubviews() {
@@ -64,7 +81,7 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
             } else {
                 split = l.split(separator: " ")
             }
-            if split.count < 2 {
+            if split.count < 3 {
                 continue
             } else if split[2] == "G28" {
                 xyPositionSlider.moveHead(location: xyPositionSlider.invertCoordinate(coord: CGPoint(x: 0, y: 0)))
@@ -144,8 +161,17 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         }
     }
 
+    // MARK: JoystickSliderDelegate
+
     func headMoved(point: CGPoint) {
         API.instance.move(x: Float(point.x), y: Float(point.y), z: nil, f: 10000) { _ in
+        }
+    }
+
+    // MARK: GridViewDelegate
+
+    func gridViewTapped(which: Int) {
+        API.instance.commands(commands: self.gcodeCommands[which].1) { _ in
         }
     }
 }
