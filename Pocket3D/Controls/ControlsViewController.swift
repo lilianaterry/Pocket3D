@@ -13,12 +13,14 @@ import UIKit
 class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate {
     let ui = UIExtensions()
 
-    @IBOutlet var xyPositionSlider: JoystickSlider!
-    @IBOutlet var zPositionSlider: HorizontalCustomSlider!
-    @IBOutlet var extruderSlider: UISlider!
-    @IBOutlet var heatbedSlider: UISlider!
-    @IBOutlet var posLabelTR: UILabel!
-
+    @IBOutlet weak var xyPositionSlider: JoystickSlider!
+    @IBOutlet weak var zPositionSlider: HorizontalCustomSlider!
+    @IBOutlet weak var extruderSlider: UISlider!
+    @IBOutlet weak var heatbedSlider: UISlider!
+    @IBOutlet weak var posLabelTR: UILabel!
+    @IBOutlet weak var extruderTempLabel: UILabel!
+    @IBOutlet weak var bedTempLabel: UILabel!
+    
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
     var request: NSFetchRequest<NSFetchRequestResult>!
@@ -45,8 +47,10 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     func notify(message: Notification) {
         let json = message.object! as! JSON
         if json["temps"].array?.count != 0 {
-            extruderSlider.value = json["temps"][0]["tool0"]["actual"].floatValue
-            heatbedSlider.value = json["temps"][0]["bed"]["actual"].floatValue
+            extruderTempLabel.text = "Extruder: \(json["temps"][0]["tool0"]["actual"].floatValue)°"
+            bedTempLabel.text = "Heat Bed: \(json["temps"][0]["bed"]["actual"].floatValue)°"
+            extruderSlider.value = json["temps"][0]["tool0"]["target"].floatValue
+            heatbedSlider.value = json["temps"][0]["bed"]["target"].floatValue
         }
         if let z = json["currentZ"].float {
             zPositionSlider.value = z
@@ -62,11 +66,10 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
             }
             if split.count < 2 {
                 continue
-            }
-            if split[2] == "G28" {
+            } else if split[2] == "G28" {
                 xyPositionSlider.moveHead(location: xyPositionSlider.invertCoordinate(coord: CGPoint(x: 0, y: 0)))
-            }
-            if  (split[2] == "G0" || split[2] == "G1") {
+                break
+            } else if split[2] == "G0" || split[2] == "G1" {
                 var x = xyPositionSlider.value.x
                 var y = xyPositionSlider.value.y
                 if let tx = split.first(where: { $0.starts(with: "X") }) {

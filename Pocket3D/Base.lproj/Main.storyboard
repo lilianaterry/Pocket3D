@@ -611,7 +611,9 @@
                     </tabBarItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="bedTempLabel" destination="xRE-c1-qCV" id="hhQ-bh-xhN"/>
                         <outlet property="extruderSlider" destination="4Ds-B0-2Py" id="7XT-oT-ekT"/>
+                        <outlet property="extruderTempLabel" destination="KZi-Gr-7jk" id="Mv6-wc-xb3"/>
                         <outlet property="heatbedSlider" destination="ibn-Xv-hTh" id="40y-1p-e3C"/>
                         <outlet property="posLabelTR" destination="Bai-aP-TB1" id="nd5-7z-ZSX"/>
                         <outlet property="xyPositionSlider" destination="7i3-3Q-W6J" id="gWK-ER-Ead"/>
@@ -998,6 +1000,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="P25-Ra-VNk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g9Z-hF-y8d">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.10980392156862745" green="0.16078431372549018" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
