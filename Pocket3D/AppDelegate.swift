@@ -13,16 +13,16 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var navController: UINavigationController!
+//    var navController: UINavigationController!
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        // make sure to set storyboard id in storyboard for these VC
-        let startingVC = storyboard.instantiateViewController(withIdentifier: "Login")
-        navController = UINavigationController(rootViewController: startingVC)
-        navController.setNavigationBarHidden(true, animated: false)
-        window!.rootViewController = navController
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        // make sure to set storyboard id in storyboard for these VC
+//        let startingVC = storyboard.instantiateViewController(withIdentifier: "Login")
+//        navController = UINavigationController(rootViewController: startingVC)
+//        navController.setNavigationBarHidden(true, animated: false)
+//        window!.rootViewController = navController
         IQKeyboardManager.shared.enable = true
         // Override point for customization after application launch.
         return true

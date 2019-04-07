@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7D92225FF0B004DA31C /* AppDelegate.swift */; };
-		8300E7DC2225FF0B004DA31C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7DB2225FF0B004DA31C /* RootViewController.swift */; };
-		8300E7DE2225FF0B004DA31C /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7DD2225FF0B004DA31C /* DataViewController.swift */; };
-		8300E7E02225FF0B004DA31C /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7DF2225FF0B004DA31C /* ModelController.swift */; };
 		8300E7E32225FF0B004DA31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E12225FF0B004DA31C /* Main.storyboard */; };
 		8300E7E52225FF0C004DA31C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E42225FF0C004DA31C /* Assets.xcassets */; };
 		8300E7E82225FF0C004DA31C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E62225FF0C004DA31C /* LaunchScreen.storyboard */; };
 		8300E7F32225FF0C004DA31C /* Pocket3DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7F22225FF0C004DA31C /* Pocket3DTests.swift */; };
 		8300E7FE2225FF0C004DA31C /* Pocket3DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7FD2225FF0C004DA31C /* Pocket3DUITests.swift */; };
 		8300E80D2225FF4D004DA31C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E80C2225FF4D004DA31C /* API.swift */; };
+		8363874C2258343E007C0442 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8363874B2258343E007C0442 /* GridView.swift */; };
+		8363874E22583656007C0442 /* GcodeGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8363874D22583656007C0442 /* GcodeGridCell.swift */; };
 		837F45D3223031BB00895817 /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837F45D2223031BB00895817 /* Push.swift */; };
 		B0F94C24ACDDF997EA7B3475 /* Pods_Pocket3D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */; };
 		CE36831D22442FCB005CB878 /* JoystickSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36831C22442FCB005CB878 /* JoystickSlider.swift */; };
@@ -24,8 +23,6 @@
 		CE36832422453207005CB878 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36832322453207005CB878 /* BubbleButton.swift */; };
 		CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE3683252245644B005CB878 /* Pocket3D.xcdatamodeld */; };
 		CE36832922458234005CB878 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36832822458234005CB878 /* MenuButton.swift */; };
-		CE3683342246D70A005CB878 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3683332246D70A005CB878 /* MenuBarView.swift */; };
-		CE3683382246F0EE005CB878 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3683372246F0EE005CB878 /* MenuCell.swift */; };
 		CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64172228CD4500771BE3 /* LoginViewController.swift */; };
 		CE7A641A2228CFBD00771BE3 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64192228CFBD00771BE3 /* FilesViewController.swift */; };
 		CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A641B2228D91E00771BE3 /* StatusViewController.swift */; };
@@ -68,9 +65,6 @@
 		7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3DUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7D62225FF0B004DA31C /* Pocket3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7D92225FF0B004DA31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8300E7DB2225FF0B004DA31C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		8300E7DD2225FF0B004DA31C /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		8300E7DF2225FF0B004DA31C /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		8300E7E22225FF0B004DA31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8300E7E42225FF0C004DA31C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8300E7E72225FF0C004DA31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,6 +76,8 @@
 		8300E7FD2225FF0C004DA31C /* Pocket3DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocket3DUITests.swift; sourceTree = "<group>"; };
 		8300E7FF2225FF0C004DA31C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8300E80C2225FF4D004DA31C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		8363874B2258343E007C0442 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		8363874D22583656007C0442 /* GcodeGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GcodeGridCell.swift; sourceTree = "<group>"; };
 		837F45D2223031BB00895817 /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
 		CCA0722FDBF771048CF69280 /* Pods-Pocket3DTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE36831C22442FCB005CB878 /* JoystickSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickSlider.swift; sourceTree = "<group>"; };
@@ -89,8 +85,6 @@
 		CE36832322453207005CB878 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
 		CE3683262245644B005CB878 /* Pocket3D.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pocket3D.xcdatamodel; sourceTree = "<group>"; };
 		CE36832822458234005CB878 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
-		CE3683332246D70A005CB878 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
-		CE3683372246F0EE005CB878 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		CE7A64172228CD4500771BE3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE7A64192228CFBD00771BE3 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		CE7A641B2228D91E00771BE3 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +179,6 @@
 		8300E7D82225FF0B004DA31C /* Pocket3D */ = {
 			isa = PBXGroup;
 			children = (
-				CE36832A22458B44005CB878 /* Menu */,
 				CE36831E22449CFA005CB878 /* Settings */,
 				CEAEA46B2242E65800479B27 /* Controls */,
 				8300E80B2225FF21004DA31C /* API */,
@@ -196,12 +189,9 @@
 				8300E7D92225FF0B004DA31C /* AppDelegate.swift */,
 				CE3683252245644B005CB878 /* Pocket3D.xcdatamodeld */,
 				8300E7E42225FF0C004DA31C /* Assets.xcassets */,
-				8300E7DD2225FF0B004DA31C /* DataViewController.swift */,
 				8300E7E92225FF0C004DA31C /* Info.plist */,
 				8300E7E62225FF0C004DA31C /* LaunchScreen.storyboard */,
 				8300E7E12225FF0B004DA31C /* Main.storyboard */,
-				8300E7DF2225FF0B004DA31C /* ModelController.swift */,
-				8300E7DB2225FF0B004DA31C /* RootViewController.swift */,
 			);
 			path = Pocket3D;
 			sourceTree = "<group>";
@@ -253,18 +243,12 @@
 		CE368322224531C5005CB878 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CE36831C22442FCB005CB878 /* JoystickSlider.swift */,
 				CEAEA46E2242F76000479B27 /* SliderView.swift */,
+				8363874B2258343E007C0442 /* GridView.swift */,
+				8363874D22583656007C0442 /* GcodeGridCell.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		CE36832A22458B44005CB878 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				CE3683332246D70A005CB878 /* MenuBarView.swift */,
-				CE3683372246F0EE005CB878 /* MenuCell.swift */,
-			);
-			path = Menu;
 			sourceTree = "<group>";
 		};
 		CEAEA46B2242E65800479B27 /* Controls */ = {
@@ -272,7 +256,6 @@
 			children = (
 				CE368322224531C5005CB878 /* UI */,
 				CEAEA46C2242E67100479B27 /* ControlsViewController.swift */,
-				CE36831C22442FCB005CB878 /* JoystickSlider.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -631,21 +614,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */,
-				CE3683382246F0EE005CB878 /* MenuCell.swift in Sources */,
 				CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */,
 				CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */,
-				8300E7DC2225FF0B004DA31C /* RootViewController.swift in Sources */,
 				837F45D3223031BB00895817 /* Push.swift in Sources */,
 				CE36831D22442FCB005CB878 /* JoystickSlider.swift in Sources */,
 				CE36832422453207005CB878 /* BubbleButton.swift in Sources */,
 				CE7A641A2228CFBD00771BE3 /* FilesViewController.swift in Sources */,
 				CE36832022449D12005CB878 /* SettingsViewController.swift in Sources */,
-				8300E7E02225FF0B004DA31C /* ModelController.swift in Sources */,
 				CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */,
-				8300E7DE2225FF0B004DA31C /* DataViewController.swift in Sources */,
-				CE3683342246D70A005CB878 /* MenuBarView.swift in Sources */,
 				CE36832922458234005CB878 /* MenuButton.swift in Sources */,
+				8363874C2258343E007C0442 /* GridView.swift in Sources */,
 				CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */,
+				8363874E22583656007C0442 /* GcodeGridCell.swift in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,
 				CEAEA46D2242E67100479B27 /* ControlsViewController.swift in Sources */,
 				8300E80D2225FF4D004DA31C /* API.swift in Sources */,
@@ -829,7 +809,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -845,7 +828,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -862,7 +848,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -880,7 +870,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -897,7 +891,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -914,7 +912,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3DUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3DUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

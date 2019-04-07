@@ -10,27 +10,23 @@ import CoreData
 import SwiftyJSON
 import UIKit
 
-class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate {
+class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate, GridViewDelegate {
     let ui = UIExtensions()
-
-    @IBOutlet var menuBar: MenuBarView!
-
-    @IBOutlet var headerView: UIView!
-    @IBOutlet var headerTitle: UILabel!
 
     @IBOutlet var xyPositionSlider: JoystickSlider!
     @IBOutlet var zPositionSlider: HorizontalCustomSlider!
     @IBOutlet var extruderSlider: UISlider!
     @IBOutlet var heatbedSlider: UISlider!
-    @IBOutlet var contentView: UIView!
-
-    @IBOutlet var posLabelTL: UILabel!
     @IBOutlet var posLabelTR: UILabel!
-    @IBOutlet var posLabelBL: UILabel!
-    @IBOutlet var posLabelBR: UILabel!
-    @IBOutlet var zPosTitle: UILabel!
-    @IBOutlet var extruderTitle: UILabel!
-    @IBOutlet var heatbedTitle: UILabel!
+    @IBOutlet var extruderTempLabel: UILabel!
+    @IBOutlet var bedTempLabel: UILabel!
+    @IBOutlet var gcodeGrid: GridView!
+
+    var gcodeCommands: [(String, [String])] = [("Home X", ["G28 X"]),
+                                               ("Home Y", ["G28 Y"]),
+                                               ("Home Z", ["G28 Z"]),
+                                               ("Klipper reset", ["firmware_restart", "restart"]),
+                                               ("Test multiple", ["G28 X", "G0 X250 F10000"])]
 
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
@@ -48,34 +44,77 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         zPositionSlider.addTarget(self, action: #selector(zHeightChanged), for: .valueChanged)
         extruderSlider.addTarget(self, action: #selector(eHeatChanged), for: .valueChanged)
         heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
-        
-        // Comment this in final build, only here for testing purposes
-        viewDidLoadDebug()
+
+        gcodeGrid.delegate = self
+//        if let commands = UserDefaults.standard.array(forKey: "gcode_commands") as! [(String, String)]? {
+//            self.gcodeCommands = commands
+//            self.gcodeGrid.addCell(view: GcodeGridCell(text: "Hello"))
+//            self.gcodeGrid.addCell(view: GcodeGridCell(text: "World"))
+        for c in gcodeCommands {
+            gcodeGrid.addCell(view: GcodeGridCell(text: c.0))
+        }
+//        }
     }
 
-    override func viewWillLayoutSubviews() {
-        let max = xyPositionSlider.bounds.height
-        xyPositionSlider.moveHead(location: CGPoint(x: 0, y: max))
-    }
+//    override func viewWillLayoutSubviews() {
+//        let max = xyPositionSlider.bounds.height
+//        xyPositionSlider.moveHead(location: CGPoint(x: 0, y: max))
+//    }
 
     func notify(message: Notification) {
         let json = message.object! as! JSON
-        if (json["state"]["text"] == "Printing") {
-            // Do something to gray out controls
-            // For now it just hides it which
-            // looks ugly as balls so probably find a way to gray it out
-            // and turn off the controls.
-            // One way would be to have boolean to check if it's enabled
-            // and stop it from sending the command to the printer in the
-            // head moving functions and then just do something ot the view visually
-            xyPositionSlider.isHidden = true
-            zPositionSlider.isHidden = true
+        if json["temps"].array?.count != 0 {
+            extruderTempLabel.text = "Extruder: \(json["temps"][0]["tool0"]["actual"].floatValue)°"
+            bedTempLabel.text = "Heat Bed: \(json["temps"][0]["bed"]["actual"].floatValue)°"
+            extruderSlider.value = json["temps"][0]["tool0"]["target"].floatValue
+            heatbedSlider.value = json["temps"][0]["bed"]["target"].floatValue
         }
-        else {
-            // Do something to ungray controls
-            xyPositionSlider.isHidden = false
-            zPositionSlider.isHidden = false
+        if let z = json["currentZ"].float {
+            zPositionSlider.value = z
         }
+
+        // try to set the xy control position
+        for l in (json["logs"].arrayObject! as! [String]).filter({ $0.starts(with: "Send:") }) {
+            var split: [Substring]
+            if let star = l.lastIndex(of: "*") {
+                split = l[l.startIndex...l.index(before: star)].split(separator: " ")
+            } else {
+                split = l.split(separator: " ")
+            }
+            if split.count < 3 {
+                continue
+            } else if split[2] == "G28" {
+                xyPositionSlider.moveHead(location: xyPositionSlider.invertCoordinate(coord: CGPoint(x: 0, y: 0)))
+                break
+            } else if split[2] == "G0" || split[2] == "G1" {
+                var x = xyPositionSlider.value.x
+                var y = xyPositionSlider.value.y
+                if let tx = split.first(where: { $0.starts(with: "X") }) {
+                    x = CGFloat(Float(String(tx.dropFirst()))!)
+                }
+                if let ty = split.first(where: { $0.starts(with: "Y") }) {
+                    y = CGFloat(Float(String(ty.dropFirst()))!)
+                }
+                xyPositionSlider.moveHead(location: xyPositionSlider.invertCoordinate(coord: CGPoint(x: x, y: y) as PrinterCoordinate), notify: false)
+                break
+            }
+        }
+//        if (json["state"]["text"] == "Printing") {
+//            // Do something to gray out controls
+//            // For now it just hides it which
+//            // looks ugly as balls so probably find a way to gray it out
+//            // and turn off the controls.
+//            // One way would be to have boolean to check if it's enabled
+//            // and stop it from sending the command to the printer in the
+//            // head moving functions and then just do something ot the view visually
+//            xyPositionSlider.isHidden = true
+//            zPositionSlider.isHidden = true
+//        }
+//        else {
+//            // Do something to ungray controls
+//            xyPositionSlider.isHidden = false
+//            zPositionSlider.isHidden = false
+//        }
     }
 
     func setup() {
@@ -85,25 +124,6 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
 
     // make sure everything is colored beautifully
     func setupViews() {
-        view.backgroundColor = ui.backgroundColor
-
-        let selectedIndex = IndexPath(item: 1, section: 0)
-        menuBar.collectionView.selectItem(at: selectedIndex, animated: false, scrollPosition: [])
-
-        contentView.backgroundColor = ui.backgroundColor
-
-        headerView.backgroundColor = ui.headerBackgroundColor
-        headerTitle.font = ui.headerTitleFont
-        headerTitle.textColor = ui.headerTextColor
-
-        posLabelTL.textColor = ui.textColor
-        posLabelTR.textColor = ui.textColor
-        posLabelBL.textColor = ui.textColor
-        posLabelBR.textColor = ui.textColor
-        zPosTitle.textColor = ui.textColor
-        extruderTitle.textColor = ui.textColor
-        heatbedTitle.textColor = ui.textColor
-
         let inverted = (settings.value(forKey: "posCoord") as! Int) == 1
         if inverted {
             posLabelTR.text = "yx"
@@ -141,15 +161,17 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         }
     }
 
+    // MARK: JoystickSliderDelegate
+
     func headMoved(point: CGPoint) {
         API.instance.move(x: Float(point.x), y: Float(point.y), z: nil, f: 10000) { _ in
         }
     }
-    
-    // Insert into viewDidLoad to test things. Does not actually
-    // do anything in final product.
-    func viewDidLoadDebug () {
-        var dict = API.instance.parseM114Response(response:
-            "Recv: ok X:0.000 Y:0.000 Z:59.818 E:40.629")
+
+    // MARK: GridViewDelegate
+
+    func gridViewTapped(which: Int) {
+        API.instance.commands(commands: self.gcodeCommands[which].1) { _ in
+        }
     }
 }

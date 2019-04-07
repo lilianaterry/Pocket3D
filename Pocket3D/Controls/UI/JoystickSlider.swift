@@ -10,8 +10,11 @@ import CoreData
 import UIKit
 
 protocol JoystickSliderDelegate: class {
-    func headMoved(point: CGPoint)
+    func headMoved(point: PrinterCoordinate)
 }
+
+typealias PrinterCoordinate = CGPoint
+typealias ViewCoordinate = CGPoint
 
 class JoystickSlider: UIView {
     weak var delegate: JoystickSliderDelegate!
@@ -22,8 +25,10 @@ class JoystickSlider: UIView {
     var coordinateLabel: UILabel = UILabel()
     var panGesture = UIPanGestureRecognizer()
 
-    let min: CGFloat = 0
-    let max: CGFloat = 500
+    static let min: CGFloat = 0
+    static let max: CGFloat = 500
+    
+    var value: PrinterCoordinate = CGPoint(x: min, y: max) as PrinterCoordinate
 
     var context: NSManagedObjectContext!
     var settings: NSManagedObject!
@@ -135,40 +140,56 @@ class JoystickSlider: UIView {
     }
 
     // move CALayer to desired location
-    func moveHead(location: CGPoint) {
-        print(location.y)
-        print(bounds.height)
+    func moveHead(location: CGPoint, notify: Bool = true) {
         // keep it in the coordinate space
         var x = location.x >= 0 ? location.x : 0
         var y = location.y >= 0 ? location.y : 0
         x = x <= bounds.width ? x : bounds.width
         y = y <= bounds.height ? y : bounds.height
 
-        let point = CGPoint(x: x, y: y)
+        let point = CGPoint(x: x, y: y) as ViewCoordinate
 
         sliderHeadView!.center = point
         coordinateLabel.center = CGPoint(x: point.x, y: point.y + 35)
 
-        let relativeCoord = convertCoordinate(coordinate: point)
+        let relativeCoord = convertCoordinate(coord: point)
+        self.value = relativeCoord
         coordinateLabel.text = "(\(Int(relativeCoord.x.rounded())), \(Int(relativeCoord.y.rounded())))"
         coordinateLabel.sizeToFit()
 
-        if let d = self.delegate {
+        if notify, let d = self.delegate {
             d.headMoved(point: relativeCoord)
         }
     }
+    
+    func invertCoordinate(coord: PrinterCoordinate) -> ViewCoordinate {
+        var inverted = false
+        if let setting = settings {
+            inverted = (setting.value(forKey: "posCoord") as! Int == 1)
+        }
+        
+        var px = coord.x / JoystickSlider.max
+        var py = coord.y / JoystickSlider.max
+        if (inverted) {
+            swap(&px, &py)
+        }
+        
+        let x = px * bounds.width
+        let y = (1 - py) * bounds.height
+        return CGPoint(x: x, y:y)
+    }
 
-    func convertCoordinate(coordinate: CGPoint) -> CGPoint {
+    func convertCoordinate(coord: ViewCoordinate) -> PrinterCoordinate {
         var inverted = false
         if let setting = settings {
             inverted = (setting.value(forKey: "posCoord") as! Int == 1)
         }
 
-        let percentX = coordinate.x / bounds.width
-        let percentY = coordinate.y / bounds.height
+        let percentX = coord.x / bounds.width
+        let percentY = coord.y / bounds.height
 
-        let x = max * percentX
-        let y = max - (max * percentY)
+        let x = JoystickSlider.max * percentX
+        let y = JoystickSlider.max - (JoystickSlider.max * percentY)
 
         if inverted {
             return CGPoint(x: y, y: x)
