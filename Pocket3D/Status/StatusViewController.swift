@@ -34,6 +34,9 @@ class StatusViewController: UIViewController, Observer {
     @IBOutlet var webcamImageView: UIImageView!
     @IBOutlet var errorLabel: UILabel!
 
+    @IBOutlet weak var pauseButton: ButtonView!
+    @IBOutlet weak var cancelButton: ButtonView!
+    
     let ui = UIExtensions()
     var stream: MJPEGStreamLib!
 
@@ -71,22 +74,43 @@ class StatusViewController: UIViewController, Observer {
 
     // set font and background colors
     func setup() {
-
         // body
         filenameLabel.textColor = ui.textColor
         progressLabel.textColor = ui.textColor
         timeRemainingLabel.textColor = ui.textColor
 
         errorLabel.layer.zPosition = webcamImageView.layer.zPosition - 1
+        
+        toggleButtons(turnOn: false)
+    }
+    
+    func toggleButtons(turnOn: Bool) {
+        if (turnOn) {
+            pauseButton.isEnabled = true
+            cancelButton.isEnabled = true
+            pauseButton.backgroundColor = ui.headerTextColor
+            cancelButton.backgroundColor = ui.headerTextColor
+            pauseButton.alpha = 1.0
+            cancelButton.alpha = 1.0
+        } else {
+            pauseButton.isEnabled = false
+            cancelButton.isEnabled = false
+            pauseButton.backgroundColor = ui.textColor
+            cancelButton.backgroundColor = ui.textColor
+            pauseButton.alpha = 0.5
+            cancelButton.alpha = 0.5
+        }
     }
 
     func updateStatus(status: String, filename: String) {
         if status == "Printing" {
             statusLabel.text = "Printing:"
             filenameLabel.text = filename
+            toggleButtons(turnOn: true)
         } else {
             statusLabel.text = status
-            filenameLabel.text = ""
+            filenameLabel.text = "-"
+            toggleButtons(turnOn: false)
         }
         statusLabel.sizeToFit()
         filenameLabel.sizeToFit()
