@@ -28,8 +28,11 @@ class StatusViewController: UIViewController, Observer {
     }
 
     @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var filenameText: UILabel!
+    @IBOutlet var progressText: UILabel!
     @IBOutlet var filenameLabel: UILabel!
     @IBOutlet var progressLabel: UILabel!
+    @IBOutlet var timeText: UILabel!
     @IBOutlet var timeRemainingLabel: UILabel!
     @IBOutlet var webcamImageView: UIImageView!
     @IBOutlet var errorLabel: UILabel!
@@ -75,6 +78,13 @@ class StatusViewController: UIViewController, Observer {
     // set font and background colors
     func setup() {
         // body
+        self.view.backgroundColor = ui.backgroundColor
+        
+        statusLabel.textColor = ui.titleColor
+        filenameText.textColor = ui.titleColor
+        progressText.textColor = ui.titleColor
+        timeText.textColor = ui.titleColor
+        
         filenameLabel.textColor = ui.textColor
         progressLabel.textColor = ui.textColor
         timeRemainingLabel.textColor = ui.textColor
@@ -95,8 +105,8 @@ class StatusViewController: UIViewController, Observer {
         } else {
             pauseButton.isEnabled = false
             cancelButton.isEnabled = false
-            pauseButton.backgroundColor = ui.textColor
-            cancelButton.backgroundColor = ui.textColor
+            pauseButton.backgroundColor = ui.bodyElementColor
+            cancelButton.backgroundColor = ui.bodyElementColor
             pauseButton.alpha = 0.5
             cancelButton.alpha = 0.5
         }

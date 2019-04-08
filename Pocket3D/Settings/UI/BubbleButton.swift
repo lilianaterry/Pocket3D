@@ -42,7 +42,7 @@ class BubbleButton: UIButton {
 
     // circular button UI
     func setup() {
-        layer.borderColor = ui.textColor.cgColor
+        layer.borderColor = ui.bodyElementColor.cgColor
         layer.borderWidth = 4.0
         cornerRadius = bounds.width / 2
         layer.backgroundColor = UIColor.clear.cgColor
@@ -50,7 +50,7 @@ class BubbleButton: UIButton {
 
     // selects the target button by filling it in and deselecting all others
     func selectButton(toDeselect: [UIButton]) {
-        layer.backgroundColor = UIColor.white.cgColor
+        layer.backgroundColor = ui.titleColor.cgColor
         isSelected = true
 
         for button in toDeselect {

@@ -12,7 +12,14 @@ import UIKit
 
 class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate, GridViewDelegate {
     let ui = UIExtensions()
-
+    
+    @IBOutlet var positionText: UILabel!
+    @IBOutlet var temperatureText: UILabel!
+    @IBOutlet var topLeftText: UILabel!
+    @IBOutlet var bottomLeftText: UILabel!
+    @IBOutlet var bottomRightText: UILabel!
+    @IBOutlet var zText: UILabel!
+    
     @IBOutlet var xyPositionSlider: JoystickSlider!
     @IBOutlet var zPositionSlider: HorizontalCustomSlider!
     @IBOutlet var extruderSlider: UISlider!
@@ -128,6 +135,20 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         if inverted {
             posLabelTR.text = "yx"
         }
+        
+        positionText.textColor = ui.titleColor
+        temperatureText.textColor = ui.titleColor
+        
+        topLeftText.textColor = ui.titleColor
+        bottomLeftText.textColor = ui.titleColor
+        posLabelTR.textColor = ui.titleColor
+        bottomRightText.textColor = ui.titleColor
+        
+        zText.textColor = ui.titleColor
+        extruderTempLabel.textColor = ui.titleColor
+        bedTempLabel.textColor = ui.titleColor
+        
+        self.view.backgroundColor = ui.backgroundColor
     }
 
     // get core data Settings object

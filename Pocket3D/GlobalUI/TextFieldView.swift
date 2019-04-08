@@ -38,15 +38,32 @@ open class TextFieldView: UITextField {
         let border = CALayer()
         let width = CGFloat(2.0)
         border.borderColor = ui.titleColor.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
         
         border.borderWidth = width
+        border.name = "border"
         self.layer.addSublayer(border)
         self.layer.masksToBounds = true
     }
     
     func setupFont() {
         self.font = ui.textFieldTitleFont
-        self.textColor = ui.textColor
+        self.textColor = ui.titleColor
+    }
+    
+    func updateBorder() {
+        let newBorder = CALayer()
+        let width = CGFloat(2.0)
+        newBorder.borderColor = ui.titleColor.cgColor
+        newBorder.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
+        
+        newBorder.borderWidth = width
+        newBorder.name = "border"
+        
+        for oldLayer in self.layer.sublayers! {
+            if oldLayer.name == "border" {
+                self.layer.replaceSublayer(oldLayer, with: newBorder)
+            }
+        }
     }
 }

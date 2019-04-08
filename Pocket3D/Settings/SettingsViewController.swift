@@ -20,6 +20,12 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet var saveButton: ButtonView!
 
+    @IBOutlet var ipAddressText: UILabel!
+    @IBOutlet var apiKeyText: UILabel!
+    @IBOutlet var colorModeText: UILabel!
+    @IBOutlet var sortFilesText: UILabel!
+    @IBOutlet var posText: UILabel!
+    
     @IBOutlet var ipAddressField: TextFieldView!
     @IBOutlet var apiKeyField: TextFieldView!
 
@@ -76,6 +82,9 @@ class SettingsViewController: UIViewController {
 
     // add editing recognizers and fill with core data
     func setupTextFields() {
+        ipAddressField.setNeedsLayout()
+        apiKeyField.setNeedsLayout()
+        
         ipAddressField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
         apiKeyField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
 
@@ -126,11 +135,21 @@ class SettingsViewController: UIViewController {
         alphaLabel.textColor = ui.textColor
         xyLabel.textColor = ui.textColor
         yxLabel.textColor = ui.textColor
+        
+        ipAddressText.textColor = ui.titleColor
+        apiKeyText.textColor = ui.titleColor
+        colorModeText.textColor = ui.titleColor
+        sortFilesText.textColor = ui.titleColor
+        posText.textColor = ui.titleColor
+        
+        colorModeSwitch.tintColor = ui.titleColor
     }
 
     // background coloring/header font
     func setupViews() {
-        saveButton.backgroundColor = ui.textColor
+        self.view.backgroundColor = ui.backgroundColor
+        
+        saveButton.backgroundColor = ui.bodyElementColor
         saveButton.isEnabled = false
     }
 
@@ -181,7 +200,7 @@ class SettingsViewController: UIViewController {
     @IBAction func saveSelected(_ sender: UIButton) {
         if sender.isEnabled {
             saveCoreData()
-            sender.backgroundColor = ui.textColor
+            sender.backgroundColor = ui.bodyElementColor
             sender.isEnabled = false
         }
     }

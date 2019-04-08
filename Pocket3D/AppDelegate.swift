@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        navController.setNavigationBarHidden(true, animated: false)
 //        window!.rootViewController = navController
         IQKeyboardManager.shared.enable = true
+        UserDefaults.standard.set(true, forKey: "isDarkMode")
         // Override point for customization after application launch.
         return true
     }

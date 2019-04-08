@@ -84,7 +84,7 @@ class JoystickSlider: UIView {
 
             let rect = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: size, height: size))
 
-            context.setStrokeColor(ui.textColor.cgColor)
+            context.setStrokeColor(ui.bodyElementColor.cgColor)
             context.setLineWidth(6.0)
             context.stroke(rect)
 
@@ -109,7 +109,11 @@ class JoystickSlider: UIView {
         // make circle shape
         let circle = CAShapeLayer()
         circle.path = UIBezierPath(roundedRect: frame, cornerRadius: 15).cgPath
-        circle.fillColor = UIColor.white.cgColor
+        circle.fillColor = ui.titleColor.cgColor
+        circle.shadowColor = ui.headerShadowColor.cgColor
+        circle.shadowOffset = CGSize(width: 2, height: 2)
+        circle.shadowRadius = 5
+        circle.shadowOpacity = 0.3
         sliderHeadView?.layer.addSublayer(circle)
 
         // add gesture recognizer to view so we can move the head around

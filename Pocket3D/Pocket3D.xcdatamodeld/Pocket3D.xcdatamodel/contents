@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="File" representedClassName="File" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="display" optional="YES" attributeType="String" syncable="YES"/>
@@ -34,9 +34,9 @@
         <attribute name="posCoord" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Settings" positionX="-29.4375" positionY="-108.609375" width="128" height="120"/>
         <element name="File" positionX="-328.11328125" positionY="-113.171875" width="128" height="208"/>
-        <element name="References" positionX="-366.0703125" positionY="214.17578125" width="128" height="90"/>
         <element name="GcodeAnalysis" positionX="-330.3984375" positionY="127.51953125" width="128" height="60"/>
+        <element name="References" positionX="-366.0703125" positionY="214.17578125" width="128" height="90"/>
+        <element name="Settings" positionX="-29.4375" positionY="-108.609375" width="128" height="120"/>
     </elements>
 </model>

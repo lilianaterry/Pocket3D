@@ -30,6 +30,8 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = ui.backgroundColor
 
         let loadingAnimation = setupLoadingAnimation()
         
@@ -78,7 +80,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         let size = CGSize(width: view.bounds.width / 4, height: view.bounds.height / 4)
         let center = CGPoint(x: view.center.x - size.width / 2, y: view.center.y - size.height / 2)
         let frame = CGRect(origin: center, size: size)
-        let loadingAnimation = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleRippleMultiple, color: ui.textColor)
+        let loadingAnimation = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleRippleMultiple, color: ui.bodyElementColor)
 
         view.addSubview(loadingAnimation)
 
@@ -157,8 +159,14 @@ protocol FileCellDelegate: class {
 }
 
 class FileTableViewCell: UITableViewCell {
+    
+    let ui = UIExtensions()
+    
+    @IBOutlet var expandedBackground: UIView!
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var modifiedText: UILabel!
     @IBOutlet var modifiedLabel: UILabel!
+    @IBOutlet var estText: UILabel!
     @IBOutlet var estTimeLabel: UILabel!
     @IBOutlet var printButton: UIButton!
     @IBOutlet var expandedView: UIStackView!
@@ -168,16 +176,27 @@ class FileTableViewCell: UITableViewCell {
     class var expandedHeight: CGFloat { return 165 }
     class var defaultHeight: CGFloat { return 50 }
 
+    override func awakeFromNib() {
+        expandedBackground.backgroundColor = ui.headerBackgroundColor
+        
+        nameLabel.textColor = ui.filesExpandedColor
+        modifiedLabel.textColor = ui.filesExpandedColor
+        estTimeLabel.textColor = ui.filesExpandedColor
+        
+        modifiedText.textColor = ui.filesExpandedColor
+        estText.textColor = ui.filesExpandedColor
+        
+        modifiedLabel.font = ui.fileExpandedFont
+        estTimeLabel.font = ui.fileExpandedFont
+        
+        modifiedText.font = ui.fileExpandedFont
+        estText.font = ui.fileExpandedFont
+    }
+    
     func checkHeight() {
         nameLabel.isHidden = false
+        expandedBackground.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
         expandedView.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-
-//        self.modifiedLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-//        self.estTimeLabel.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-//        self.printButton.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)
-//        print(self.modifiedLabel.isHidden)
-//        print(self.estTimeLabel.isHidden)
-//        print(self.printButton.isHidden)
     }
 
     func watchFrameChanges() {

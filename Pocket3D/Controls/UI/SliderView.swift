@@ -66,12 +66,14 @@ class HorizontalCustomSlider: UISlider {
 
     // customize text, color, and appearance of the slider
     func setup() {
+        self.thumbTintColor = ui.titleColor
+        
         // track color
-        minimumTrackTintColor = ui.textColor
-        maximumTrackTintColor = ui.textColor
+        minimumTrackTintColor = ui.bodyElementColor
+        maximumTrackTintColor = ui.bodyElementColor
 
         // make end of track square instead of round
-        let endImage = getImageWithColor(color: ui.textColor, size: frame.size)
+        let endImage = getImageWithColor(color: ui.bodyElementColor, size: frame.size)
         setMinimumTrackImage(endImage, for: .normal)
         setMaximumTrackImage(endImage, for: .normal)
 
@@ -164,11 +166,11 @@ class VerticalCustomSlider: UISlider {
     // customize text, color, and appearance of the slider
     func setup() {
         // track color
-        minimumTrackTintColor = ui.textColor
-        maximumTrackTintColor = ui.textColor
+        minimumTrackTintColor = ui.bodyElementColor
+        maximumTrackTintColor = ui.bodyElementColor
 
         // make end of track square instead of round
-        let endImage = getImageWithColor(color: ui.textColor, size: frame.size)
+        let endImage = getImageWithColor(color: ui.bodyElementColor, size: frame.size)
         setMinimumTrackImage(endImage, for: .normal)
         setMaximumTrackImage(endImage, for: .normal)
 
@@ -177,9 +179,9 @@ class VerticalCustomSlider: UISlider {
         thumbTextLabel.font = ui.sliderTitleFont
         thumbTextLabel.textColor = ui.titleColor
         minLabel.font = ui.sliderTitleFont
-        minLabel.textColor = ui.textColor
+        minLabel.textColor = ui.bodyElementColor
         maxLabel.font = ui.sliderTitleFont
-        maxLabel.textColor = ui.textColor
+        maxLabel.textColor = ui.bodyElementColor
     }
 
     // customize width of slider tacking line

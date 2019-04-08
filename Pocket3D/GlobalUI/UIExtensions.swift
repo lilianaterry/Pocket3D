@@ -10,13 +10,14 @@ import UIKit
 
 class UIExtensions {
     // dark color pallete
-    let headerBackgroundColor = UIColor.init(hex: 0x1C2937)
-    let headerTextColor = UIColor.init(hex: 0x1B88CB)
+    var headerBackgroundColor: UIColor
+    var headerTextColor: UIColor
     let headerShadowColor = UIColor.init(hex: 0x000000)
-    
-    let backgroundColor = UIColor.init(hex: 0x15202B)
-    let titleColor = UIColor.init(hex: 0xFFFFFF)
-    let textColor = UIColor.init(hex: 0x8899A6)
+
+    var backgroundColor: UIColor
+    var titleColor: UIColor
+    var textColor: UIColor
+    var bodyElementColor: UIColor
     
     // text
     let headerTitleFont = UIFont(name: "SFProDisplay-Bold", size: 34.0)
@@ -25,8 +26,37 @@ class UIExtensions {
     let sliderTitleFont = UIFont(name: "SFProDisplay-Semibold", size: 18.0)
     let sliderSubtitleFont = UIFont(name: "SFProDisplay-Semibold", size: 14.0)
     
+    // files text page
+    var filesExpandedColor: UIColor
+    let fileExpandedFont = UIFont(name: "SFProDisplay-Semibold", size: 12.0)
+
     let titleSize = 24.0 as CGFloat
     let textSize = 18.0 as CGFloat
+    
+    init() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        if (isDarkMode) {
+            headerBackgroundColor = UIColor.init(hex: 0x1C2937)
+            headerTextColor = UIColor.init(hex: 0x1B88CB)
+            
+            backgroundColor = UIColor.init(hex: 0x15202B)
+            titleColor = UIColor.init(hex: 0xFFFFFF)
+            textColor = UIColor.init(hex: 0x8899A6)
+            bodyElementColor = UIColor.init(hex: 0x8899A6)
+            
+            filesExpandedColor = UIColor.init(hex: 0x8899A6)
+        } else {
+            headerBackgroundColor = UIColor.init(hex: 0xE2E2E2)
+            headerTextColor = UIColor.init(hex: 0x000000)
+            
+            backgroundColor = UIColor.init(hex: 0xFFFFFF)
+            titleColor = UIColor.init(hex: 0x000000)
+            textColor = UIColor.init(hex: 0x000000)
+            bodyElementColor = UIColor.init(hex: 0xB2B2B2)
+            
+            filesExpandedColor = UIColor.init(hex: 0x000000)
+        }
+    }
 }
 
 // create UI color from hex code

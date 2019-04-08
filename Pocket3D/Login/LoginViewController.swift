@@ -11,6 +11,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     let ui = UIExtensions()
+    
+    @IBOutlet weak var welcomeText: UILabel!
+    @IBOutlet weak var signinText: UILabel!
     @IBOutlet var apiKeyField: TextFieldView!
     @IBOutlet var ipAddressField: TextFieldView!
     @IBOutlet var errorLabel: UILabel!
@@ -21,9 +24,18 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = ui.headerBackgroundColor
 
+        setup()
+    }
+    
+    // setup data and UI
+    func setup() {
         setupCoreData("Settings")
+        
+        view.backgroundColor = ui.backgroundColor
+        
+        welcomeText.textColor = ui.titleColor
+        signinText.textColor = ui.titleColor
     }
 
     override func viewWillAppear(_ animated: Bool) {
