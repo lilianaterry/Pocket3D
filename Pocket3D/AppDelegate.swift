@@ -13,18 +13,15 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-//    var navController: UINavigationController!
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        // make sure to set storyboard id in storyboard for these VC
-//        let startingVC = storyboard.instantiateViewController(withIdentifier: "Login")
-//        navController = UINavigationController(rootViewController: startingVC)
-//        navController.setNavigationBarHidden(true, animated: false)
-//        window!.rootViewController = navController
-        IQKeyboardManager.shared.enable = true
+        
         UserDefaults.standard.set(true, forKey: "isDarkMode")
+        let ui = UIExtensions()
+        let size = CGSize(width: (self.window?.frame.size.width)! / 4, height: 48)
+        let lineSize = CGSize(width: size.width, height: 2)
+        UITabBar.appearance().selectionIndicatorImage = getUnderline(color: ui.headerTextColor, size: size, lineSize: lineSize)
+        IQKeyboardManager.shared.enable = true
         // Override point for customization after application launch.
         return true
     }
@@ -40,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_: UIApplication) {
+
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
@@ -84,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data Saving support
 
-    func saveContext() {
+    func saveContext() {        
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

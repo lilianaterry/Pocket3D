@@ -178,7 +178,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pcr-E9-YPe"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Files" id="8q8-lS-hd6">
+                    <tabBarItem key="tabBarItem" title="Files" id="8q8-lS-hd6" customClass="MenuButton" customModule="Pocket3D" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
                     </tabBarItem>
                     <connections>
@@ -478,7 +478,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hgc-rb-258"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Status" id="gVd-AG-SxB">
+                    <tabBarItem key="tabBarItem" title="Status" id="gVd-AG-SxB" customClass="MenuButton" customModule="Pocket3D" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="Dp3-jD-SqG">
@@ -697,7 +697,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0SF-lz-llw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Controls" id="ioL-ox-i1B">
+                    <tabBarItem key="tabBarItem" title="Controls" id="ioL-ox-i1B" customClass="MenuButton" customModule="Pocket3D" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
                     </tabBarItem>
                     <size key="freeformSize" width="375" height="1000"/>
@@ -803,7 +803,7 @@
                                                 </segments>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <action selector="colorModeSelected:" destination="FoG-Yg-Tnw" eventType="valueChanged" id="OJh-3M-tSI"/>
+                                                    <action selector="colorModeSelectedWithSender:" destination="FoG-Yg-Tnw" eventType="valueChanged" id="Sxb-mG-bZo"/>
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
@@ -1072,7 +1072,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G5Z-8u-QSV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="AaQ-oj-WQS">
+                    <tabBarItem key="tabBarItem" title="Settings" id="AaQ-oj-WQS" customClass="MenuButton" customModule="Pocket3D" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
                     </tabBarItem>
                     <size key="freeformSize" width="375" height="800"/>
@@ -1102,19 +1102,21 @@
             </objects>
             <point key="canvasLocation" x="3668" y="621"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar-->
         <scene sceneID="ffQ-TS-vm1">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="P25-Ra-VNk" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="P25-Ra-VNk" customClass="CustomTabBar" customModule="Pocket3D" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g9Z-hF-y8d">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.10980392156862745" green="0.16078431372549018" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" red="0.10588235294117647" green="0.53333333333333333" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <outlet property="navBackground" destination="g9Z-hF-y8d" id="dxN-fh-kNa"/>
                         <segue destination="4sh-2A-TIS" kind="relationship" relationship="viewControllers" id="9BZ-26-ShW"/>
                         <segue destination="BPN-1a-BoB" kind="relationship" relationship="viewControllers" id="72N-jc-4KL"/>
                         <segue destination="c34-au-Rp3" kind="relationship" relationship="viewControllers" id="Dbu-Pu-Aj3"/>

@@ -26,16 +26,18 @@
 		CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64172228CD4500771BE3 /* LoginViewController.swift */; };
 		CE7A641A2228CFBD00771BE3 /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A64192228CFBD00771BE3 /* FilesViewController.swift */; };
 		CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A641B2228D91E00771BE3 /* StatusViewController.swift */; };
+		CE82402B225ACB33002F2E4B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82402A225ACB33002F2E4B /* CustomTabBar.swift */; };
+		CE824036225ACD74002F2E4B /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE824032225ACCB4002F2E4B /* SF-Pro-Display-Bold.otf */; };
+		CE824037225ACD77002F2E4B /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE824035225ACCD1002F2E4B /* SF-Pro-Display-Light.otf */; };
+		CE824038225ACD77002F2E4B /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE824031225ACCB4002F2E4B /* SF-Pro-Display-Heavy.otf */; };
+		CE824039225ACD77002F2E4B /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE824034225ACCB5002F2E4B /* SF-Pro-Display-Medium.otf */; };
+		CE82403A225ACD77002F2E4B /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE824033225ACCB5002F2E4B /* SF-Pro-Display-Regular.otf */; };
+		CE82403B225ACD77002F2E4B /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE82402F225ACCB4002F2E4B /* SF-Pro-Display-Semibold.otf */; };
 		CEAEA46D2242E67100479B27 /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA46C2242E67100479B27 /* ControlsViewController.swift */; };
 		CEAEA46F2242F76000479B27 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA46E2242F76000479B27 /* SliderView.swift */; };
 		CEB020B6222CC5FD008AE843 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020B5222CC5FD008AE843 /* TextFieldView.swift */; };
 		CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020B8222CC61E008AE843 /* ButtonView.swift */; };
 		CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020BA222CC7AE008AE843 /* UIExtensions.swift */; };
-		CEB020C4222D6A19008AE843 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEB020BF222CCFAF008AE843 /* SF-Pro-Display-Heavy.otf */; };
-		CEB020C5222D6A19008AE843 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEB020C1222CCFC6008AE843 /* SF-Pro-Display-Bold.otf */; };
-		CEB020C6222D6A19008AE843 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEB020C2222CCFDC008AE843 /* SF-Pro-Display-Semibold.otf */; };
-		CEB020C7222D6A19008AE843 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEB020C3222CCFF3008AE843 /* SF-Pro-Display-Medium.otf */; };
-		CEB020C8222D6A19008AE843 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEB020C0222CCFB7008AE843 /* SF-Pro-Display-Light.otf */; };
 		F76D79F31FF9E34944F726EB /* Pods_Pocket3DTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F265130983652F3D43D16F7 /* Pods_Pocket3DTests.framework */; };
 		FFA16124A32EF6B49F6DCE38 /* Pods_Pocket3DUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */; };
 /* End PBXBuildFile section */
@@ -88,16 +90,18 @@
 		CE7A64172228CD4500771BE3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE7A64192228CFBD00771BE3 /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		CE7A641B2228D91E00771BE3 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		CE82402A225ACB33002F2E4B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		CE82402F225ACCB4002F2E4B /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		CE824031225ACCB4002F2E4B /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		CE824032225ACCB4002F2E4B /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		CE824033225ACCB5002F2E4B /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		CE824034225ACCB5002F2E4B /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		CE824035225ACCD1002F2E4B /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		CEAEA46C2242E67100479B27 /* ControlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewController.swift; sourceTree = "<group>"; };
 		CEAEA46E2242F76000479B27 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		CEB020B5222CC5FD008AE843 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		CEB020B8222CC61E008AE843 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		CEB020BA222CC7AE008AE843 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
-		CEB020BF222CCFAF008AE843 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
-		CEB020C0222CCFB7008AE843 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
-		CEB020C1222CCFC6008AE843 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
-		CEB020C2222CCFDC008AE843 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
-		CEB020C3222CCFF3008AE843 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		EAB6F072A660FDD343D6E992 /* Pods-Pocket3D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D.release.xcconfig"; sourceTree = "<group>"; };
 		EE5BE617055E6F8A20F9E253 /* Pods-Pocket3DTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF6A78D9265D9A6EB825877D /* Pods-Pocket3DUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +255,28 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		CE824029225AC9FB002F2E4B /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				CE36832822458234005CB878 /* MenuButton.swift */,
+				CE82402A225ACB33002F2E4B /* CustomTabBar.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		CE82402E225ACC8D002F2E4B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CE824032225ACCB4002F2E4B /* SF-Pro-Display-Bold.otf */,
+				CE824035225ACCD1002F2E4B /* SF-Pro-Display-Light.otf */,
+				CE824031225ACCB4002F2E4B /* SF-Pro-Display-Heavy.otf */,
+				CE824034225ACCB5002F2E4B /* SF-Pro-Display-Medium.otf */,
+				CE824033225ACCB5002F2E4B /* SF-Pro-Display-Regular.otf */,
+				CE82402F225ACCB4002F2E4B /* SF-Pro-Display-Semibold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		CEAEA46B2242E65800479B27 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,11 +297,11 @@
 		CEB020B7222CC605008AE843 /* GlobalUI */ = {
 			isa = PBXGroup;
 			children = (
-				CEB020BE222CCFA0008AE843 /* Fonts */,
+				CE82402E225ACC8D002F2E4B /* Fonts */,
+				CE824029225AC9FB002F2E4B /* Menu */,
 				CEB020B8222CC61E008AE843 /* ButtonView.swift */,
 				CEB020B5222CC5FD008AE843 /* TextFieldView.swift */,
 				CEB020BA222CC7AE008AE843 /* UIExtensions.swift */,
-				CE36832822458234005CB878 /* MenuButton.swift */,
 			);
 			path = GlobalUI;
 			sourceTree = "<group>";
@@ -294,18 +320,6 @@
 				CE7A641B2228D91E00771BE3 /* StatusViewController.swift */,
 			);
 			path = Status;
-			sourceTree = "<group>";
-		};
-		CEB020BE222CCFA0008AE843 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				CEB020BF222CCFAF008AE843 /* SF-Pro-Display-Heavy.otf */,
-				CEB020C1222CCFC6008AE843 /* SF-Pro-Display-Bold.otf */,
-				CEB020C2222CCFDC008AE843 /* SF-Pro-Display-Semibold.otf */,
-				CEB020C3222CCFF3008AE843 /* SF-Pro-Display-Medium.otf */,
-				CEB020C0222CCFB7008AE843 /* SF-Pro-Display-Light.otf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,14 +435,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB020C4222D6A19008AE843 /* SF-Pro-Display-Heavy.otf in Resources */,
-				CEB020C5222D6A19008AE843 /* SF-Pro-Display-Bold.otf in Resources */,
-				CEB020C6222D6A19008AE843 /* SF-Pro-Display-Semibold.otf in Resources */,
-				CEB020C7222D6A19008AE843 /* SF-Pro-Display-Medium.otf in Resources */,
-				CEB020C8222D6A19008AE843 /* SF-Pro-Display-Light.otf in Resources */,
 				8300E7E82225FF0C004DA31C /* LaunchScreen.storyboard in Resources */,
+				CE824037225ACD77002F2E4B /* SF-Pro-Display-Light.otf in Resources */,
+				CE82403A225ACD77002F2E4B /* SF-Pro-Display-Regular.otf in Resources */,
 				8300E7E52225FF0C004DA31C /* Assets.xcassets in Resources */,
+				CE824036225ACD74002F2E4B /* SF-Pro-Display-Bold.otf in Resources */,
 				8300E7E32225FF0B004DA31C /* Main.storyboard in Resources */,
+				CE82403B225ACD77002F2E4B /* SF-Pro-Display-Semibold.otf in Resources */,
+				CE824038225ACD77002F2E4B /* SF-Pro-Display-Heavy.otf in Resources */,
+				CE824039225ACD77002F2E4B /* SF-Pro-Display-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +630,7 @@
 			files = (
 				CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */,
 				CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */,
+				CE82402B225ACB33002F2E4B /* CustomTabBar.swift in Sources */,
 				CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */,
 				837F45D3223031BB00895817 /* Push.swift in Sources */,
 				CE36831D22442FCB005CB878 /* JoystickSlider.swift in Sources */,
@@ -807,7 +823,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EKB2653XGR;
+				DEVELOPMENT_TEAM = C7F665E2YD;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -826,7 +842,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EKB2653XGR;
+				DEVELOPMENT_TEAM = C7F665E2YD;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

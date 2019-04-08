@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 open class TextFieldView: UITextField {
     
-    let ui = UIExtensions()
+    var ui = UIExtensions()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

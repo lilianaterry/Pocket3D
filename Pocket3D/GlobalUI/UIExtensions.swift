@@ -25,6 +25,7 @@ class UIExtensions {
     let buttonTitleFont = UIFont(name: "SFProDisplay-Bold", size: 24.0)
     let sliderTitleFont = UIFont(name: "SFProDisplay-Semibold", size: 18.0)
     let sliderSubtitleFont = UIFont(name: "SFProDisplay-Semibold", size: 14.0)
+    let menuFont = UIFont(name: "SFProDisplay-Bold", size: 16.0)
     
     // files text page
     var filesExpandedColor: UIColor

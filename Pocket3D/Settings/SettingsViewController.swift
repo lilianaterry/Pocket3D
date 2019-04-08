@@ -16,8 +16,10 @@ enum SelectedButtonTag: Int {
 }
 
 class SettingsViewController: UIViewController {
-    let ui = UIExtensions()
-
+    var ui = UIExtensions()
+    
+    var delegate: CustomTabBar?
+    
     @IBOutlet var saveButton: ButtonView!
 
     @IBOutlet var ipAddressText: UILabel!
@@ -55,13 +57,23 @@ class SettingsViewController: UIViewController {
 
         setup()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setup()
+    }
 
     func setup() {
+        ui = UIExtensions()
+
         setupCoreData()
         setupViews()
         setupLabels()
         setupButtons()
         setupTextFields()
+        
+        self.delegate = self.tabBarController as? CustomTabBar
     }
 
     // get core data Settings object
@@ -160,7 +172,7 @@ class SettingsViewController: UIViewController {
     }
 
     // switched to dark or light mode
-    @IBAction func colorModeSelected(_: Any) {
+    @IBAction func colorModeSelected(sender: UISegmentedControl) {
         detectChange()
     }
 
@@ -202,6 +214,12 @@ class SettingsViewController: UIViewController {
             saveCoreData()
             sender.backgroundColor = ui.bodyElementColor
             sender.isEnabled = false
+            
+            let mode = self.colorModeSwitch.selectedSegmentIndex == 0 ? true : false
+            UserDefaults.standard.set(mode, forKey: "isDarkMode")
+            
+            setup()
+            delegate!.switchColorMode()
         }
     }
 
