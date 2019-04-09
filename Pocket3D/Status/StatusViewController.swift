@@ -52,9 +52,13 @@ class StatusViewController: UIViewController, Observer {
         setup()
 
         Push.instance.observe(who: self as Observer, topic: Push.current)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(settingsChanged),
+                                               name: NSNotification.Name(rawValue: "settings_changed"), object: nil)
 
         // TODO: apply settings for imageview mirroring
         webcamImageView.transform = CGAffineTransform(scaleX: -1, y: -1)
+        
         stream = MJPEGStreamLib(imageView: webcamImageView)
         stream.contentURL = API.instance.stream()
         print("Playing mjpeg stream \(String(describing: stream.contentURL))")
@@ -64,6 +68,15 @@ class StatusViewController: UIViewController, Observer {
         stream.didFinishLoading = {
             print("MJPEG stream loaded!")
         }
+    }
+    
+    // Save button was selected on Settings Page and
+    @objc func settingsChanged() {
+        print("settings changed in Status")
+        let x = UserDefaults.standard.float(forKey: "mirrorX")
+        let y = UserDefaults.standard.float(forKey: "mirrorY")
+
+        webcamImageView.transform = CGAffineTransform(scaleX: CGFloat(x), y: CGFloat(y))
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -119,7 +132,7 @@ class StatusViewController: UIViewController, Observer {
             toggleButtons(turnOn: true)
         } else {
             statusLabel.text = status
-            filenameLabel.text = "-"
+            filenameLabel.text = ""
             toggleButtons(turnOn: false)
         }
         statusLabel.sizeToFit()

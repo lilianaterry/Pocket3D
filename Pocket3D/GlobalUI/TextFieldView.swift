@@ -48,7 +48,7 @@ open class TextFieldView: UITextField {
     
     func setupFont() {
         self.font = ui.textFieldTitleFont
-        self.textColor = ui.titleColor
+        self.textColor = ui.textColor
     }
     
     func updateBorder() {

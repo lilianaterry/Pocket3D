@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UserDefaults.standard.set(true, forKey: "isDarkMode")
         let ui = UIExtensions()
-        let size = CGSize(width: (self.window?.frame.size.width)! / 4, height: 48)
+        let size = CGSize(width: (self.window?.frame.size.width)! / 4, height: 49)
         let lineSize = CGSize(width: size.width, height: 2)
         UITabBar.appearance().selectionIndicatorImage = getUnderline(color: ui.headerTextColor, size: size, lineSize: lineSize)
         IQKeyboardManager.shared.enable = true

@@ -8,6 +8,7 @@
 
 import CoreData
 import UIKit
+import Foundation
 
 enum SelectedButtonTag: Int {
     case First
@@ -18,7 +19,7 @@ enum SelectedButtonTag: Int {
 class SettingsViewController: UIViewController {
     var ui = UIExtensions()
     
-    var delegate: CustomTabBar?
+    let settings = UserDefaults.standard
     
     @IBOutlet var saveButton: ButtonView!
 
@@ -44,11 +45,23 @@ class SettingsViewController: UIViewController {
     @IBOutlet var xyLabel: UILabel!
     @IBOutlet var yxCoordButton: BubbleButton!
     @IBOutlet var yxLabel: UILabel!
-
-    var context: NSManagedObjectContext!
-    var settings: NSManagedObject!
-    var request: NSFetchRequest<NSFetchRequestResult>!
-
+    
+    @IBOutlet var extruderMinLabel: UILabel!
+    @IBOutlet var extruderMinField: TextFieldView!
+    @IBOutlet var extruderMaxLabel: UILabel!
+    @IBOutlet var extruderMaxField: TextFieldView!
+    @IBOutlet var bedMinLabel: UILabel!
+    @IBOutlet var bedMinField: TextFieldView!
+    @IBOutlet var bedMaxLabel: UILabel!
+    @IBOutlet var bedMaxField: TextFieldView!
+    
+    @IBOutlet var mirroringXLabel: UILabel!
+    @IBOutlet var mirroringXField: TextFieldView!
+    @IBOutlet var mirroringYLabel: UILabel!
+    @IBOutlet var mirroringYField: TextFieldView!
+    
+    @IBOutlet var gcodeTable: UITableView!
+    
     var fileSortSelection: Int!
     var xyCoordSelection: Int!
 
@@ -67,51 +80,64 @@ class SettingsViewController: UIViewController {
     func setup() {
         ui = UIExtensions()
 
-        setupCoreData()
         setupViews()
         setupLabels()
         setupButtons()
-        setupTextFields()
-        
-        self.delegate = self.tabBarController as? CustomTabBar
-    }
-
-    // get core data Settings object
-    func setupCoreData() {
-        // get current core data information
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        context = appDelegate.persistentContainer.viewContext
-        request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
-        request.returnsObjectsAsFaults = false
-
-        do {
-            let result = try context.fetch(request) as! [NSManagedObject]
-            settings = result[0]
-        } catch {
-            print("Failed to retrieve settings from Core Data")
-        }
+        setupTextFields()        
     }
 
     // add editing recognizers and fill with core data
     func setupTextFields() {
-        ipAddressField.setNeedsLayout()
-        apiKeyField.setNeedsLayout()
+        // re-constrain after loading view
+        ipAddressField.updateBorder()
+        apiKeyField.updateBorder()
         
+        bedMaxField.updateBorder()
+        bedMinField.updateBorder()
+        
+        extruderMaxField.updateBorder()
+        extruderMinField.updateBorder()
+        
+        mirroringXField.updateBorder()
+        mirroringYField.updateBorder()
+        
+        // add selectors to detec editing
         ipAddressField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
         apiKeyField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
+        bedMaxField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
+        bedMinField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
+        extruderMaxField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
+        extruderMinField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
+        mirroringXField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
+        mirroringYField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
 
+        
         // current IP address
         if let ipAddress = settings.value(forKey: "ipAddress") as? String {
             ipAddressField.text = ipAddress
         } else {
             print("Setup TextFields: no ipAddress found")
         }
+        
         // current API Key
         if let apiKey = settings.value(forKey: "apiKey") as? String {
             apiKeyField.text = apiKey
         } else {
-            print("Setup TextFields: no apiKey found")
+            print("Setup TextFields: no ipAddress found")
         }
+        
+        // current extruder fields
+        if let extruderMin = settings.value(forKey: "extruderMin") as? String {
+            extruderMinField.text = extruderMin
+        } else {
+            print("Setup TextFields: no extruder min found")
+        }
+        
+        if let extruderMax = settings.value(forKey: "extruderMax") as? String {
+            extruderMaxField.text = extruderMax
+        } else {
+            print("Setup TextFields: no extruder max found")
+        }te
     }
 
     // select buttons that the user has set and saved in settings before
@@ -153,6 +179,20 @@ class SettingsViewController: UIViewController {
         colorModeText.textColor = ui.titleColor
         sortFilesText.textColor = ui.titleColor
         posText.textColor = ui.titleColor
+        
+        extruderMaxLabel.textColor = ui.textColor
+        extruderMinLabel.textColor = ui.textColor
+        bedMinLabel.textColor = ui.textColor
+        bedMaxLabel.textColor = ui.textColor
+        mirroringXLabel.textColor = ui.textColor
+        mirroringYLabel.textColor = ui.textColor
+        
+        extruderMaxLabel.font = ui.sliderTitleFont
+        extruderMinLabel.font = ui.sliderTitleFont
+        bedMinLabel.font = ui.sliderTitleFont
+        bedMaxLabel.font = ui.sliderTitleFont
+        mirroringXLabel.font = ui.sliderTitleFont
+        mirroringYLabel.font = ui.sliderTitleFont
         
         colorModeSwitch.tintColor = ui.titleColor
     }
@@ -211,30 +251,32 @@ class SettingsViewController: UIViewController {
     // save to core memory if the button color says a change has occured on the page
     @IBAction func saveSelected(_ sender: UIButton) {
         if sender.isEnabled {
-            saveCoreData()
+            saveUserDefaults()
             sender.backgroundColor = ui.bodyElementColor
             sender.isEnabled = false
-            
-            let mode = self.colorModeSwitch.selectedSegmentIndex == 0 ? true : false
-            UserDefaults.standard.set(mode, forKey: "isDarkMode")
-            
-            setup()
-            delegate!.switchColorMode()
         }
     }
 
     // save any changes to core data so they persist
-    func saveCoreData() {
-        settings.setValue(ipAddressField.text, forKey: "ipAddress")
-        settings.setValue(apiKeyField.text, forKey: "apiKey")
-        settings.setValue(fileSortSelection, forKey: "fileSort")
-        settings.setValue(xyCoordSelection, forKey: "posCoord")
-        settings.setValue(colorModeSwitch.selectedSegmentIndex, forKey: "colorMode")
+    func saveUserDefaults() {
+        let usrDefault = UserDefaults.standard
+        usrDefault.set(ipAddressField.text, forKey: "ipAddress")
+        usrDefault.set(apiKeyField.text, forKey: "apiKey")
+        usrDefault.set(colorModeSwitch.selectedSegmentIndex, forKey: "colorMode")
+        usrDefault.set(fileSortSelection, forKey: "fileSort")
+        usrDefault.set(xyCoordSelection, forKey: "posCoord")
+        usrDefault.set(extruderMinField.text, forKey: "extruderMin")
+        usrDefault.set(extruderMaxField.text, forKey: "extruderMax")
+        usrDefault.set(bedMinField.text, forKey: "bedMin")
+        usrDefault.set(bedMaxField.text, forKey: "bedMax")
+        usrDefault.set(mirroringXField.text, forKey: "mirrorX")
+        usrDefault.set(mirroringYField.text, forKey: "mirrorY")
+        
+        print("In settings, just saved user defaults")
+        
+        let settingsChanged = Notification.Name("settings_changed")
+        NotificationCenter.default.post(name: settingsChanged, object: nil)
 
-        do {
-            try context.save()
-        } catch {
-            print("Failed to save login information to Core Data")
-        }
+        print("In settings, just sent notification")
     }
 }

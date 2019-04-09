@@ -8,6 +8,7 @@
         <attribute name="origin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="typePath" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="gcodeAnalysis" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GcodeAnalysis" syncable="YES"/>
@@ -34,7 +35,7 @@
         <attribute name="posCoord" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="File" positionX="-328.11328125" positionY="-113.171875" width="128" height="208"/>
+        <element name="File" positionX="-328.11328125" positionY="-113.171875" width="128" height="225"/>
         <element name="GcodeAnalysis" positionX="-330.3984375" positionY="127.51953125" width="128" height="60"/>
         <element name="References" positionX="-366.0703125" positionY="214.17578125" width="128" height="90"/>
         <element name="Settings" positionX="-29.4375" positionY="-108.609375" width="128" height="120"/>

@@ -8,11 +8,7 @@
 
 import UIKit
 
-protocol ColorModeDelegate {
-    func switchColorMode()
-}
-
-class CustomTabBar: UITabBarController, ColorModeDelegate {
+class CustomTabBar: UITabBarController {
 
     var ui = UIExtensions()
     
@@ -28,11 +24,5 @@ class CustomTabBar: UITabBarController, ColorModeDelegate {
         navBackground.layer.shadowRadius = 5
         navBackground.layer.shadowOpacity = 0.2
         navBackground.layer.masksToBounds = false
-    }
-    
-    func switchColorMode() {
-        ui = UIExtensions()
-        self.viewDidLoad()
-        self.tabBar.awakeFromNib()
     }
 }

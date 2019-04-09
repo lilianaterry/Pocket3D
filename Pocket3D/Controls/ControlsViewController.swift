@@ -30,6 +30,11 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     @IBOutlet var gcodeGrid: GridView!
 
     var gcodeCommands: [(String, [String])] = [("Home X", ["G28 X"]),
+                                                ("Home X", ["G28 X"]),
+                                                ("Home X", ["G28 X"]),
+                                                ("Home X", ["G28 X"]),
+                                                ("Home X", ["G28 X"]),
+                                                ("Home X", ["G28 X"]),
                                                ("Home Y", ["G28 Y"]),
                                                ("Home Z", ["G28 Z"]),
                                                ("Klipper reset", ["firmware_restart", "restart"]),
@@ -42,7 +47,14 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
         Push.instance.observe(who: self as Observer, topic: Push.current)
+        
+        print("In controls, adding listener to notification center")
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(settingsChanged),
+                                               name: NSNotification.Name(rawValue: "settings_changed"), object: nil)
 
         xyPositionSlider.delegate = self
         zPositionSlider.isContinuous = false
@@ -61,6 +73,21 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
             gcodeGrid.addCell(view: GcodeGridCell(text: c.0))
         }
 //        }
+    }
+    
+    // Save button was selected on Settings Page and Sliders/Buttons need to be updated
+    @objc func settingsChanged() {
+        print("In controls, entered settings changed method")
+        
+        let usrDefault = UserDefaults.standard
+        // TODO, actually change coordinate field
+        posLabelTR.text = usrDefault.integer(forKey: "posCoord") == 0 ? "xy" : "yx"
+        extruderSlider.minimumValue = usrDefault.float(forKey: "extruderMin")
+        extruderSlider.maximumValue = usrDefault.float(forKey: "extruderMax")
+        heatbedSlider.minimumValue = usrDefault.float(forKey: "bedMin")
+        heatbedSlider.maximumValue = usrDefault.float(forKey: "bedMax")
+        
+        print("In controls, just set slider to user defaults")
     }
 
 //    override func viewWillLayoutSubviews() {

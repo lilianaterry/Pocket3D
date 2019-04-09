@@ -8,10 +8,28 @@
 
 import UIKit
 
+protocol SliderSettingsDelegate {
+    func updateMaxMin(min: Float, max: Float)
+}
+
 @IBDesignable
-class HorizontalCustomSlider: UISlider {
+class HorizontalCustomSlider: UISlider, SliderSettingsDelegate {
     let ui = UIExtensions()
 
+    override var minimumValue: Float {
+        didSet {
+            print("set min label: \(minimumValue)")
+            minLabel.text = String(Int(minimumValue))
+        }
+    }
+    
+    override var maximumValue: Float {
+        didSet {
+            print("set max label: \(maximumValue)")
+            maxLabel.text = String(Int(maximumValue))
+        }
+    }
+    
     let minLabel: UILabel = UILabel()
     let maxLabel: UILabel = UILabel()
 
@@ -102,6 +120,14 @@ class HorizontalCustomSlider: UISlider {
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
+    }
+    
+    // settings have changed the max and min values of this slider
+    func updateMaxMin(min: Float, max: Float) {
+        self.minimumValue = min
+        self.maximumValue = max
+        self.minLabel.text = String(min.rounded())
+        self.maxLabel.text = String(min.rounded())
     }
 }
 

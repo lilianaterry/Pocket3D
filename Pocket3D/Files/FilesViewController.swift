@@ -59,6 +59,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
                         continue;
                     }
                     let of = NSEntityDescription.insertNewObject(forEntityName: "File", into: self.moc) as! File
+                    of.time = Int64(f["gcodeAnalysis"]["estimatedPrintTime"].intValue)
                     of.name = f["name"].stringValue
                     of.display = f["display"].stringValue
                     of.date = Date(timeIntervalSince1970: f["date"].doubleValue)
@@ -109,10 +110,10 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "FILE_CELL")! as! FileTableViewCell
         cell.delegate = self
         let file = frc.object(at: indexPath)
+        
         cell.nameLabel.text = file.display
         cell.modifiedLabel.text = DateFormatter.localizedString(from: file.date!, dateStyle: .medium, timeStyle: .medium)
-//        cell.estTimeLabel.text = printTimeFormatter.string(from:
-//            files[indexPath.row]["gcodeAnalysis"]["estimatedPrintTime"].doubleValue)
+        cell.estTimeLabel.text = printTimeFormatter.string(from: Double(file.time))
         cell.modifiedLabel.sizeToFit()
         cell.estTimeLabel.sizeToFit()
         return cell
