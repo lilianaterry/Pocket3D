@@ -129,6 +129,12 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     
     func editButton(index: Int, name: String, code: [String]) {
         print("EDIT BUTTON")
+        gcodeGrid.clearCells()
+        gcodeCommands[index] = ("NEW!!", code)
+        
+        for command in gcodeCommands {
+            gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
+        }
     }
     
     func addButton(index: Int, name: String, code: [String]) {

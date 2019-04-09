@@ -70,6 +70,10 @@ class GridView: UIStackView {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(childTapped)))
     }
     
+    func updateCell(index: Int, name: String) {
+        cells[index] = GcodeGridCell(text: name)
+    }
+    
     // clean out all gcode buttons when settings page has been updated 
     func clearCells() {
         cells = []
