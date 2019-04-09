@@ -38,6 +38,7 @@
 		CEB020B6222CC5FD008AE843 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020B5222CC5FD008AE843 /* TextFieldView.swift */; };
 		CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020B8222CC61E008AE843 /* ButtonView.swift */; };
 		CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020BA222CC7AE008AE843 /* UIExtensions.swift */; };
+		CEEF1F1E225C7C7600E7CC26 /* EditButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF1F1D225C7C7600E7CC26 /* EditButtonViewController.swift */; };
 		F76D79F31FF9E34944F726EB /* Pods_Pocket3DTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F265130983652F3D43D16F7 /* Pods_Pocket3DTests.framework */; };
 		FFA16124A32EF6B49F6DCE38 /* Pods_Pocket3DUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */; };
 /* End PBXBuildFile section */
@@ -102,6 +103,7 @@
 		CEB020B5222CC5FD008AE843 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		CEB020B8222CC61E008AE843 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		CEB020BA222CC7AE008AE843 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		CEEF1F1D225C7C7600E7CC26 /* EditButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonViewController.swift; sourceTree = "<group>"; };
 		EAB6F072A660FDD343D6E992 /* Pods-Pocket3D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D.release.xcconfig"; sourceTree = "<group>"; };
 		EE5BE617055E6F8A20F9E253 /* Pods-Pocket3DTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF6A78D9265D9A6EB825877D /* Pods-Pocket3DUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				CE368321224531AF005CB878 /* UI */,
 				CE36831F22449D12005CB878 /* SettingsViewController.swift */,
+				CEEF1F1D225C7C7600E7CC26 /* EditButtonViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 			files = (
 				CE7A641C2228D91E00771BE3 /* StatusViewController.swift in Sources */,
 				CE7A64182228CD4500771BE3 /* LoginViewController.swift in Sources */,
+				CEEF1F1E225C7C7600E7CC26 /* EditButtonViewController.swift in Sources */,
 				CE82402B225ACB33002F2E4B /* CustomTabBar.swift in Sources */,
 				CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */,
 				837F45D3223031BB00895817 /* Push.swift in Sources */,

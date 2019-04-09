@@ -15,8 +15,8 @@ enum SelectedButtonTag: Int {
     case Third
 }
 
-class SettingsViewController: UIViewController, GridViewDelegate {
-    
+class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDelegate {
+
     var ui = UIExtensions()
     
     let settings = UserDefaults.standard
@@ -62,28 +62,15 @@ class SettingsViewController: UIViewController, GridViewDelegate {
     
     @IBOutlet var gcodeGrid: GridView!
     
-    var gcodeCommands: [(String, [String])] = [("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home X", ["G28 X"]),
-                                                 ("Home Y", ["G28 Y"]),
-                                                 ("Home Z", ["G28 Z"]),
-                                                 ("Klipper reset", ["firmware_restart", "restart"]),
-                                                 ("Test multiple", ["G28 X", "G0 X250 F10000"])]
+    var gcodeCommands: [(String, [String])] = []
     
     var fileSortSelection: Int!
     var xyCoordSelection: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupGridView()
+        
+        gcodeGrid.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -99,11 +86,23 @@ class SettingsViewController: UIViewController, GridViewDelegate {
         setupLabels()
         setupButtons()
         setupTextFields()
+        setupGridView()
     }
     
+    // Get GCode button information from UserDefaults
     func setupGridView() {
-        gcodeGrid.delegate = self
+        // clear out old information
+        self.gcodeCommands = []
         gcodeGrid.clearCells()
+        
+        // merge gcode arrays back together
+        let commandNames = settings.object(forKey: "gcodeNames") as! [String]
+        let commands = settings.object(forKey: "gcodeCommands") as! [[String]]
+        
+        for index in 0...commandNames.count - 1 {
+            let gcodeCommand = (commandNames[index], commands[index])
+            self.gcodeCommands.append(gcodeCommand)
+        }
         
         for command in gcodeCommands {
             gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
@@ -116,13 +115,28 @@ class SettingsViewController: UIViewController, GridViewDelegate {
         let newCell = GcodeGridCell(text: "New Button")
         gcodeGrid.addCell(view: newCell)
         gcodeCommands.append(("New Button", ["new_button"]))
+        
+        performSegue(withIdentifier: "addButtonSegue", sender: nil)
         detectChange()
     }
+    
     // cell is selected in gcode grid view to edit or make new button
     func gridViewTapped(which: Int) {
         // LILIANA_TODO
-        // trigger popover to edit button
+        performSegue(withIdentifier: "addButtonSegue", sender: which)
         detectChange()
+    }
+    
+    func editButton(index: Int, name: String, code: [String]) {
+        print("EDIT BUTTON")
+    }
+    
+    func addButton(index: Int, name: String, code: [String]) {
+        print("ADD BUTTON")
+    }
+    
+    func deleteButton(index: Int) {
+        print("DELETE BUTTON")
     }
 
     // add editing recognizers and fill with core data
@@ -323,5 +337,19 @@ class SettingsViewController: UIViewController, GridViewDelegate {
         
         let settingsChanged = Notification.Name("settings_changed")
         NotificationCenter.default.post(name: settingsChanged, object: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addButtonSegue" {
+            let dest = segue.destination as! EditButtonViewController
+            dest.delegate = self
+            if sender != nil {
+                dest.currIndex = sender as? Int
+                dest.newButton = false
+            } else {
+                dest.currIndex = gcodeCommands.count - 1
+                dest.newButton = true
+            }
+        }
     }
 }

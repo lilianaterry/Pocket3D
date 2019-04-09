@@ -1368,11 +1368,121 @@
                         <outlet property="xyLabel" destination="Mac-u6-BTS" id="z9N-3B-x90"/>
                         <outlet property="yxCoordButton" destination="QCn-fY-qtM" id="gJT-yY-5Bp"/>
                         <outlet property="yxLabel" destination="aDw-0m-OEb" id="kgI-l3-Usm"/>
+                        <segue destination="saK-lT-NoW" kind="presentation" identifier="addButtonSegue" animates="NO" id="Awz-6I-tEy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="734-QF-hth" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3668" y="620.68965517241384"/>
+        </scene>
+        <!--Edit Button View Controller-->
+        <scene sceneID="CvH-Cv-fKk">
+            <objects>
+                <viewController id="saK-lT-NoW" customClass="EditButtonViewController" customModule="Pocket3D" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="odg-LZ-hCT">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AZv-3i-oun">
+                                <rect key="frame" x="16" y="16" width="268" height="218"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7dH-4n-4a6" userLabel="name">
+                                        <rect key="frame" x="0.0" y="0.0" width="268" height="72.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrc-yU-E20">
+                                                <rect key="frame" x="0.0" y="0.0" width="137" height="26.5"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OuE-VU-L1S" customClass="TextFieldView" customModule="Pocket3D" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="42.5" width="268" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="OuE-VU-L1S" firstAttribute="leading" secondItem="7dH-4n-4a6" secondAttribute="leading" id="IyS-5p-3K0"/>
+                                            <constraint firstAttribute="trailing" secondItem="OuE-VU-L1S" secondAttribute="trailing" id="u7i-0U-5od"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4pF-2G-MlB" userLabel="code">
+                                        <rect key="frame" x="0.0" y="92" width="268" height="72.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCV-cy-QnV">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="26.5"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXb-fi-JbZ" customClass="TextFieldView" customModule="Pocket3D" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="42.5" width="268" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="KXb-fi-JbZ" secondAttribute="trailing" id="PMj-Fo-5Rw"/>
+                                            <constraint firstItem="KXb-fi-JbZ" firstAttribute="leading" secondItem="4pF-2G-MlB" secondAttribute="leading" id="ntg-XG-yIO"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ERw-7A-hhS" userLabel="buttons">
+                                        <rect key="frame" x="0.0" y="184" width="268" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eT-Zx-8ld" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelSelected:" destination="saK-lT-NoW" eventType="touchUpInside" id="tiD-6o-smX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqP-W7-0R8" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
+                                                <rect key="frame" x="115.5" y="0.0" width="40" height="34"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveSelected:" destination="saK-lT-NoW" eventType="touchUpInside" id="5Ei-Uo-Hvr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c25-p6-ki1" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
+                                                <rect key="frame" x="215" y="0.0" width="53" height="34"/>
+                                                <state key="normal" title="Delete"/>
+                                                <connections>
+                                                    <action selector="deleteSelected:" destination="saK-lT-NoW" eventType="touchUpInside" id="y5D-AZ-fKU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ERw-7A-hhS" firstAttribute="leading" secondItem="AZv-3i-oun" secondAttribute="leading" id="5bp-KC-J0o"/>
+                                    <constraint firstAttribute="trailing" secondItem="4pF-2G-MlB" secondAttribute="trailing" id="BsY-wv-1Bl"/>
+                                    <constraint firstItem="4pF-2G-MlB" firstAttribute="leading" secondItem="AZv-3i-oun" secondAttribute="leading" id="M15-xS-I4Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="7dH-4n-4a6" secondAttribute="trailing" id="aT2-99-vrX"/>
+                                    <constraint firstAttribute="trailing" secondItem="ERw-7A-hhS" secondAttribute="trailing" id="gwf-6k-9xa"/>
+                                    <constraint firstItem="7dH-4n-4a6" firstAttribute="leading" secondItem="AZv-3i-oun" secondAttribute="leading" id="ibs-SR-Evl"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AZv-3i-oun" secondAttribute="trailing" constant="16" id="9vd-HV-aw3"/>
+                            <constraint firstItem="AZv-3i-oun" firstAttribute="top" secondItem="Xl1-06-F7H" secondAttribute="top" constant="16" id="K7g-AN-twv"/>
+                            <constraint firstItem="AZv-3i-oun" firstAttribute="leading" secondItem="Xl1-06-F7H" secondAttribute="leading" constant="16" id="cwL-gC-bdT"/>
+                            <constraint firstItem="Xl1-06-F7H" firstAttribute="bottom" secondItem="AZv-3i-oun" secondAttribute="bottom" constant="16" id="xri-Hp-bU3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xl1-06-F7H"/>
+                    </view>
+                    <size key="freeformSize" width="300" height="250"/>
+                    <connections>
+                        <outlet property="codeField" destination="KXb-fi-JbZ" id="Iej-Mw-Wiw"/>
+                        <outlet property="nameField" destination="OuE-VU-L1S" id="dmE-3B-Cze"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e7C-du-Kgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4418" y="621"/>
         </scene>
         <!--Custom Tab Bar-->
         <scene sceneID="ffQ-TS-vm1">
