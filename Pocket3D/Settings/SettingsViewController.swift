@@ -6,7 +6,6 @@
 //  Copyright © 2019 Team 2. All rights reserved.
 //
 
-import CoreData
 import UIKit
 import Foundation
 
@@ -16,7 +15,8 @@ enum SelectedButtonTag: Int {
     case Third
 }
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, GridViewDelegate {
+    
     var ui = UIExtensions()
     
     let settings = UserDefaults.standard
@@ -60,7 +60,22 @@ class SettingsViewController: UIViewController {
     @IBOutlet var mirroringYLabel: UILabel!
     @IBOutlet var mirroringYField: TextFieldView!
     
-    @IBOutlet var gcodeTable: UITableView!
+    @IBOutlet var gcodeGrid: GridView!
+    
+    var gcodeCommands: [(String, [String])] = [("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home X", ["G28 X"]),
+                                                 ("Home Y", ["G28 Y"]),
+                                                 ("Home Z", ["G28 Z"]),
+                                                 ("Klipper reset", ["firmware_restart", "restart"]),
+                                                 ("Test multiple", ["G28 X", "G0 X250 F10000"])]
     
     var fileSortSelection: Int!
     var xyCoordSelection: Int!
@@ -68,7 +83,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setup()
+        setupGridView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -83,7 +98,32 @@ class SettingsViewController: UIViewController {
         setupViews()
         setupLabels()
         setupButtons()
-        setupTextFields()        
+        setupTextFields()
+    }
+    
+    func setupGridView() {
+        gcodeGrid.delegate = self
+        gcodeGrid.clearCells()
+        
+        for command in gcodeCommands {
+            gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
+        }
+        
+        let addButton = GcodeGridCell(text: "Add Button")
+        addButton.backgroundColor = ui.headerTextColor
+        gcodeGrid.addCell(view: addButton)
+        gcodeCommands.append(("Add Button", ["add_button"]))
+    }
+    
+    // cell is selected in gcode grid view to edit or make new button
+    func gridViewTapped(which: Int) {
+        let command = gcodeCommands[which].1[0] as String
+        
+        if command == "add_button" {
+            // add button popover
+        } else {
+            // edit button popover
+        }
     }
 
     // add editing recognizers and fill with core data
@@ -137,7 +177,7 @@ class SettingsViewController: UIViewController {
             extruderMaxField.text = extruderMax
         } else {
             print("Setup TextFields: no extruder max found")
-        }te
+        }
     }
 
     // select buttons that the user has set and saved in settings before
@@ -271,6 +311,17 @@ class SettingsViewController: UIViewController {
         usrDefault.set(bedMaxField.text, forKey: "bedMax")
         usrDefault.set(mirroringXField.text, forKey: "mirrorX")
         usrDefault.set(mirroringYField.text, forKey: "mirrorY")
+        
+        // save buttons by splitting array in half
+        gcodeCommands.remove(at: gcodeCommands.count - 1)
+        let commandNames = gcodeCommands.map { (element) -> String in
+            return element.0
+        }
+        let commands = gcodeCommands.map { (element) -> [String] in
+            return element.1
+        }
+        usrDefault.set(commandNames, forKey: "gcodeNames")
+        usrDefault.set(commands, forKey: "gcodeCommands")
         
         print("In settings, just saved user defaults")
         

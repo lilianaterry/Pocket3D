@@ -70,6 +70,10 @@ class GridView: UIStackView {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(childTapped)))
     }
     
+    func clearCells() {
+        cells = []
+    }
+    
     @objc
     func childTapped(sender: UITapGestureRecognizer) {
         if let tapped = self.cells.index(of: sender.view!) {

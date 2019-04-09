@@ -30,11 +30,15 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     @IBOutlet var gcodeGrid: GridView!
 
     var gcodeCommands: [(String, [String])] = [("Home X", ["G28 X"]),
-                                                ("Home X", ["G28 X"]),
-                                                ("Home X", ["G28 X"]),
-                                                ("Home X", ["G28 X"]),
-                                                ("Home X", ["G28 X"]),
-                                                ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
+                                               ("Home X", ["G28 X"]),
                                                ("Home Y", ["G28 Y"]),
                                                ("Home Z", ["G28 Z"]),
                                                ("Klipper reset", ["firmware_restart", "restart"]),
@@ -86,6 +90,21 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         extruderSlider.maximumValue = usrDefault.float(forKey: "extruderMax")
         heatbedSlider.minimumValue = usrDefault.float(forKey: "bedMin")
         heatbedSlider.maximumValue = usrDefault.float(forKey: "bedMax")
+        
+        // merge gcode arrays back together
+        print("Getting Gcode button info and clearing")
+        let commandNames = usrDefault.object(forKey: "gcodeNames") as! [String]
+        let commands = usrDefault.object(forKey: "gcodeCommands") as! [[String]]
+        
+        for index in 0...commandNames.count - 1 {
+            let gcodeCommand = (commandNames[index], commands[index])
+            gcodeCommands.append(gcodeCommand)
+        }
+        
+        gcodeGrid.clearCells()
+        for command in gcodeCommands {
+            gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
+        }
         
         print("In controls, just set slider to user defaults")
     }
