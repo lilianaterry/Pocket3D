@@ -108,22 +108,21 @@ class SettingsViewController: UIViewController, GridViewDelegate {
         for command in gcodeCommands {
             gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
         }
-        
-        let addButton = GcodeGridCell(text: "Add Button")
-        addButton.backgroundColor = ui.headerTextColor
-        gcodeGrid.addCell(view: addButton)
-        gcodeCommands.append(("Add Button", ["add_button"]))
     }
     
+    @IBAction func addNewButtonTapped(_ sender: Any) {
+        // LILIANA_TODO
+        // trigger popover to create new button
+        let newCell = GcodeGridCell(text: "New Button")
+        gcodeGrid.addCell(view: newCell)
+        gcodeCommands.append(("New Button", ["new_button"]))
+        detectChange()
+    }
     // cell is selected in gcode grid view to edit or make new button
     func gridViewTapped(which: Int) {
-        let command = gcodeCommands[which].1[0] as String
-        
-        if command == "add_button" {
-            // add button popover
-        } else {
-            // edit button popover
-        }
+        // LILIANA_TODO
+        // trigger popover to edit button
+        detectChange()
     }
 
     // add editing recognizers and fill with core data
@@ -313,7 +312,6 @@ class SettingsViewController: UIViewController, GridViewDelegate {
         usrDefault.set(mirroringYField.text, forKey: "mirrorY")
         
         // save buttons by splitting array in half
-        gcodeCommands.remove(at: gcodeCommands.count - 1)
         let commandNames = gcodeCommands.map { (element) -> String in
             return element.0
         }
@@ -323,11 +321,7 @@ class SettingsViewController: UIViewController, GridViewDelegate {
         usrDefault.set(commandNames, forKey: "gcodeNames")
         usrDefault.set(commands, forKey: "gcodeCommands")
         
-        print("In settings, just saved user defaults")
-        
         let settingsChanged = Notification.Name("settings_changed")
         NotificationCenter.default.post(name: settingsChanged, object: nil)
-
-        print("In settings, just sent notification")
     }
 }

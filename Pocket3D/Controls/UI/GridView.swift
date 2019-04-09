@@ -34,7 +34,7 @@ class GridView: UIStackView {
         self.distribution = .fillEqually
     }
     
-    private func preapreRow() -> UIStackView {
+    private func prepareRow() -> UIStackView {
         let row = UIStackView(arrangedSubviews: [])
         row.translatesAutoresizingMaskIntoConstraints = false
         row.axis = .horizontal
@@ -49,7 +49,7 @@ class GridView: UIStackView {
         
         let firstCellInRow = self.cells.count % self.columns == 0
         if self.currentRow == nil || firstCellInRow {
-            self.currentRow = self.preapreRow()
+            self.currentRow = self.prepareRow()
             self.addArrangedSubview(self.currentRow!)
         }
         
@@ -70,8 +70,12 @@ class GridView: UIStackView {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(childTapped)))
     }
     
+    // clean out all gcode buttons when settings page has been updated 
     func clearCells() {
         cells = []
+        for subview in self.subviews {
+            subview.removeFromSuperview()
+        }
     }
     
     @objc

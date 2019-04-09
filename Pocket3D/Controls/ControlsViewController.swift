@@ -13,6 +13,8 @@ import UIKit
 class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate, GridViewDelegate {
     let ui = UIExtensions()
     
+    let usrDefault = UserDefaults.standard
+    
     @IBOutlet var positionText: UILabel!
     @IBOutlet var temperatureText: UILabel!
     @IBOutlet var topLeftText: UILabel!
@@ -29,24 +31,7 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     @IBOutlet var bedTempLabel: UILabel!
     @IBOutlet var gcodeGrid: GridView!
 
-    var gcodeCommands: [(String, [String])] = [("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home X", ["G28 X"]),
-                                               ("Home Y", ["G28 Y"]),
-                                               ("Home Z", ["G28 Z"]),
-                                               ("Klipper reset", ["firmware_restart", "restart"]),
-                                               ("Test multiple", ["G28 X", "G0 X250 F10000"])]
-
-    var context: NSManagedObjectContext!
-    var settings: NSManagedObject!
-    var request: NSFetchRequest<NSFetchRequestResult>!
+    var gcodeCommands: [(String, [String])] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,21 +54,31 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
 
         gcodeGrid.delegate = self
-//        if let commands = UserDefaults.standard.array(forKey: "gcode_commands") as! [(String, String)]? {
-//            self.gcodeCommands = commands
-//            self.gcodeGrid.addCell(view: GcodeGridCell(text: "Hello"))
-//            self.gcodeGrid.addCell(view: GcodeGridCell(text: "World"))
-        for c in gcodeCommands {
-            gcodeGrid.addCell(view: GcodeGridCell(text: c.0))
+        updateGcodeCells()
+    }
+
+    // Get GCode button information from UserDefaults
+    func updateGcodeCells() {
+        // clear out old information
+        self.gcodeCommands = []
+        gcodeGrid.clearCells()
+        
+        // merge gcode arrays back together
+        let commandNames = usrDefault.object(forKey: "gcodeNames") as! [String]
+        let commands = usrDefault.object(forKey: "gcodeCommands") as! [[String]]
+        
+        for index in 0...commandNames.count - 1 {
+            let gcodeCommand = (commandNames[index], commands[index])
+            self.gcodeCommands.append(gcodeCommand)
         }
-//        }
+        
+        for command in gcodeCommands {
+            gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
+        }
     }
     
     // Save button was selected on Settings Page and Sliders/Buttons need to be updated
     @objc func settingsChanged() {
-        print("In controls, entered settings changed method")
-        
-        let usrDefault = UserDefaults.standard
         // TODO, actually change coordinate field
         posLabelTR.text = usrDefault.integer(forKey: "posCoord") == 0 ? "xy" : "yx"
         extruderSlider.minimumValue = usrDefault.float(forKey: "extruderMin")
@@ -92,21 +87,7 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         heatbedSlider.maximumValue = usrDefault.float(forKey: "bedMax")
         
         // merge gcode arrays back together
-        print("Getting Gcode button info and clearing")
-        let commandNames = usrDefault.object(forKey: "gcodeNames") as! [String]
-        let commands = usrDefault.object(forKey: "gcodeCommands") as! [[String]]
-        
-        for index in 0...commandNames.count - 1 {
-            let gcodeCommand = (commandNames[index], commands[index])
-            gcodeCommands.append(gcodeCommand)
-        }
-        
-        gcodeGrid.clearCells()
-        for command in gcodeCommands {
-            gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
-        }
-        
-        print("In controls, just set slider to user defaults")
+        updateGcodeCells()        
     }
 
 //    override func viewWillLayoutSubviews() {
@@ -170,14 +151,9 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
 //        }
     }
 
-    func setup() {
-        setupCoreData()
-        setupViews()
-    }
-
     // make sure everything is colored beautifully
-    func setupViews() {
-        let inverted = (settings.value(forKey: "posCoord") as! Int) == 1
+    func setup() {
+        let inverted = (usrDefault.value(forKey: "posCoord") as! Int) == 1
         if inverted {
             posLabelTR.text = "yx"
         }
@@ -195,22 +171,6 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         bedTempLabel.textColor = ui.titleColor
         
         self.view.backgroundColor = ui.backgroundColor
-    }
-
-    // get core data Settings object
-    func setupCoreData() {
-        // get current core data information
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        context = appDelegate.persistentContainer.viewContext
-        request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
-        request.returnsObjectsAsFaults = false
-
-        do {
-            let result = try context.fetch(request) as! [NSManagedObject]
-            settings = result[0]
-        } catch {
-            print("Failed to retrieve settings from Core Data")
-        }
     }
 
     @objc func eHeatChanged(_ sender: UISlider) {
