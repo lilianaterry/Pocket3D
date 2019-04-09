@@ -166,8 +166,11 @@ class JoystickSlider: UIView {
         }
     }
     
+    // printer bed location -> view location
     func invertCoordinate(coord: PrinterCoordinate) -> ViewCoordinate {
         var inverted = false
+        
+        // LILIANA_TODO: get position from UserDefaults
         if let setting = settings {
             inverted = (setting.value(forKey: "posCoord") as! Int == 1)
         }
@@ -183,8 +186,11 @@ class JoystickSlider: UIView {
         return CGPoint(x: x, y:y)
     }
 
+    // view location -> printer bed location
     func convertCoordinate(coord: ViewCoordinate) -> PrinterCoordinate {
         var inverted = false
+        
+        // LILIANA_TODO: get position from UserDefaults
         if let setting = settings {
             inverted = (setting.value(forKey: "posCoord") as! Int == 1)
         }

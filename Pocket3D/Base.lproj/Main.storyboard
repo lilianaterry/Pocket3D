@@ -1368,7 +1368,7 @@
                         <outlet property="xyLabel" destination="Mac-u6-BTS" id="z9N-3B-x90"/>
                         <outlet property="yxCoordButton" destination="QCn-fY-qtM" id="gJT-yY-5Bp"/>
                         <outlet property="yxLabel" destination="aDw-0m-OEb" id="kgI-l3-Usm"/>
-                        <segue destination="saK-lT-NoW" kind="presentation" identifier="addButtonSegue" animates="NO" id="Awz-6I-tEy"/>
+                        <segue destination="saK-lT-NoW" kind="show" identifier="addButtonSegue" id="Jyu-xA-u2Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="734-QF-hth" userLabel="First Responder" sceneMemberID="firstResponder"/>

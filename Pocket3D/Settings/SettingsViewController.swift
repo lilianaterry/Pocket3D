@@ -71,6 +71,7 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         super.viewDidLoad()
         
         gcodeGrid.delegate = self
+        setupGridView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,7 +87,6 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         setupLabels()
         setupButtons()
         setupTextFields()
-        setupGridView()
     }
     
     // Get GCode button information from UserDefaults
