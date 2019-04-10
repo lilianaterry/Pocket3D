@@ -33,8 +33,6 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     
     @IBOutlet var colorModeSwitch: UISegmentedControl!
     
-    @IBOutlet var modifySortButton: BubbleButton!
-    @IBOutlet var modifyLabel: UILabel!
     @IBOutlet var creationSortButton: BubbleButton!
     @IBOutlet var creationLabel: UILabel!
     @IBOutlet var alphaSortButton: BubbleButton!
@@ -222,7 +220,7 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     
     // select buttons that the user has set and saved in settings before
     func setupButtons() {
-        let fileButtons = [alphaSortButton, creationSortButton, modifySortButton]
+        let fileButtons = [alphaSortButton, creationSortButton]
         let xyCoordButtons = [xyCoordButton, yxCoordButton]
         
         if let fileSort = settings.value(forKey: "fileSort") as? Int {
@@ -248,7 +246,6 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     
     // make labels ui.textcolor
     func setupLabels() {
-        modifyLabel.textColor = ui.textColor
         creationLabel.textColor = ui.textColor
         alphaLabel.textColor = ui.textColor
         xyLabel.textColor = ui.textColor
@@ -300,7 +297,7 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     
     // multiple choice bubble buttons have changed selection for file sorting
     @IBAction func fileSortOptionSelected(_ sender: UIButton) {
-        var allOptions = [alphaSortButton, creationSortButton, modifySortButton] as [BubbleButton]
+        var allOptions = [alphaSortButton, creationSortButton] as [BubbleButton]
         
         let tag = sender.tag
         let toSelect = allOptions[tag]

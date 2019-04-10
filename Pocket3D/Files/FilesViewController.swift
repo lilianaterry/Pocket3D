@@ -6,10 +6,10 @@
 //  Copyright © 2019 Team 2. All rights reserved.
 //
 
+import CoreData
 import NVActivityIndicatorView
 import SwiftyJSON
 import UIKit
-import CoreData
 
 class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FileCellDelegate {
     @IBOutlet var tableView: UITableView!
@@ -30,30 +30,22 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = ui.backgroundColor
+
+        view.backgroundColor = ui.backgroundColor
 
         let loadingAnimation = setupLoadingAnimation()
-        
-        let req = NSFetchRequest<File>(entityName: "File")
-        let dateSort = NSSortDescriptor(key: "date", ascending: false) // TODO: check shared prefernces
-        req.sortDescriptors = [dateSort]
+        NotificationCenter.default.addObserver(self, selector: #selector(settingsChanged),
+                                               name: NSNotification.Name(rawValue: "settings_changed"), object: nil)
+
         moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         moc.mergePolicy = NSMergePolicy.overwrite
-        frc = NSFetchedResultsController(fetchRequest: req, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
-        frc.delegate = self
-        
-        do {
-            try frc.performFetch()
-        } catch {
-            fatalError("oops")
-        }
+        reloadFrc()
 
         API.instance.files { [weak self] _, json in
             if let self = self {
                 for f in json["files"].arrayValue {
-                    if (f["type"] == "folder") {
-                        continue;
+                    if f["type"] == "folder" {
+                        continue
                     }
                     let of = NSEntityDescription.insertNewObject(forEntityName: "File", into: self.moc) as! File
                     of.time = Int64(f["gcodeAnalysis"]["estimatedPrintTime"].intValue)
@@ -67,7 +59,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
                 loadingAnimation.stopAnimating()
             }
         }
-        
+
         // this has to go after initialization of core data
         tableView.delegate = self
         tableView.dataSource = self
@@ -86,16 +78,36 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         loadingAnimation.startAnimating()
         return loadingAnimation
     }
+    
+    @objc
+    func settingsChanged() {
+        reloadFrc()
+    }
+    
+    func reloadFrc() {
+        let req = NSFetchRequest<File>(entityName: "File")
+        let sort = NSSortDescriptor(key: UserDefaults.standard.integer(forKey: "fileSort") == 0 ? "name" : "date", ascending: false)
+        req.sortDescriptors = [sort]
+        frc = NSFetchedResultsController(fetchRequest: req, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        
+        do {
+            try frc.performFetch()
+            self.tableView.reloadData()
+        } catch {
+            fatalError("oops")
+        }
+    }
 
     func printPressed() {
-        let file = frc.object(at: self.selectedIndexPath!)
-        API.instance.printFile(file: URL(string: file.refs_resource!)!) { (status) in
+        let file = frc.object(at: selectedIndexPath!)
+        API.instance.printFile(file: URL(string: file.refs_resource!)!) { _ in
         }
     }
 
     // MARK: - UITableViewDelegate
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+
+    func numberOfSections(in _: UITableView) -> Int {
         return frc.sections?.count ?? 0
     }
 
@@ -108,7 +120,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "FILE_CELL")! as! FileTableViewCell
         cell.delegate = self
         let file = frc.object(at: indexPath)
-        
+
         cell.nameLabel.text = file.display
         cell.modifiedLabel.text = DateFormatter.localizedString(from: file.date!, dateStyle: .medium, timeStyle: .medium)
         cell.estTimeLabel.text = printTimeFormatter.string(from: Double(file.time))
@@ -147,8 +159,8 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
             return FileTableViewCell.defaultHeight
         }
     }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+
+    func controllerDidChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
     }
 }
@@ -158,9 +170,8 @@ protocol FileCellDelegate: class {
 }
 
 class FileTableViewCell: UITableViewCell {
-    
     let ui = UIExtensions()
-    
+
     @IBOutlet var expandedBackground: UIView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var modifiedText: UILabel!
@@ -177,21 +188,21 @@ class FileTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         expandedBackground.backgroundColor = ui.headerBackgroundColor
-        
+
         nameLabel.textColor = ui.filesExpandedColor
         modifiedLabel.textColor = ui.filesExpandedColor
         estTimeLabel.textColor = ui.filesExpandedColor
-        
+
         modifiedText.textColor = ui.filesExpandedColor
         estText.textColor = ui.filesExpandedColor
-        
+
         modifiedLabel.font = ui.fileExpandedFont
         estTimeLabel.font = ui.fileExpandedFont
-        
+
         modifiedText.font = ui.fileExpandedFont
         estText.font = ui.fileExpandedFont
     }
-    
+
     func checkHeight() {
         nameLabel.isHidden = false
         expandedBackground.isHidden = (frame.size.height < FileTableViewCell.expandedHeight)

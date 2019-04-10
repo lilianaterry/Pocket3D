@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13C7B9855394BD5C1B76A826A596AD05"
+               BlueprintIdentifier = "6AA25D1A791E918D77C5E18F4CE1A7A8"
+               BuildableName = "MJPEGStreamLib.framework"
                BlueprintName = "MJPEGStreamLib"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "MJPEGStreamLib.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

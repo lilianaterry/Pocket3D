@@ -1,12 +1,12 @@
 PODS:
-  - Alamofire (4.7.3)
-  - IQKeyboardManagerSwift (6.2.0)
+  - Alamofire (4.8.2)
+  - IQKeyboardManagerSwift (6.2.1)
   - MJPEGStreamLib (0.2.0)
-  - NVActivityIndicatorView (4.6.1):
-    - NVActivityIndicatorView/Presenter (= 4.6.1)
-  - NVActivityIndicatorView/Presenter (4.6.1)
-  - Starscream (3.0.6)
-  - SwiftyJSON (4.2.0)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
+  - Starscream (3.1.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -16,14 +16,23 @@ DEPENDENCIES:
   - Starscream
   - SwiftyJSON (~> 4.0)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - MJPEGStreamLib
+    - NVActivityIndicatorView
+    - Starscream
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   MJPEGStreamLib: b6369fb6370413b9f76ef0df2c1cac985ee34bfa
-  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
-  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
 PODFILE CHECKSUM: c14671dd39edd40f452da0852e80975e79367a19
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.1

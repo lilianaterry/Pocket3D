@@ -315,7 +315,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Feed Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBi-ef-LvC">
-                                                        <rect key="frame" x="133.5" y="97" width="108" height="17"/>
+                                                        <rect key="frame" x="131" y="97" width="113.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="14"/>
                                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         <nil key="highlightedColor"/>
@@ -333,19 +333,19 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="VpL-G3-fac">
-                                                <rect key="frame" x="16" y="319" width="343" height="129.5"/>
+                                                <rect key="frame" x="16" y="318" width="343" height="128"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleAspectFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="STm-TF-WQb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="26"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Filename:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvd-ca-xvz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="313" height="26.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="313" height="26"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" text="—" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.14999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="8xZ-la-6vh">
-                                                                <rect key="frame" x="321" y="0.0" width="22" height="26.5"/>
+                                                                <rect key="frame" x="321" y="0.0" width="22" height="26"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="22"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -357,16 +357,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleAspectFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6GB-h8-fzv">
-                                                        <rect key="frame" x="0.0" y="51.5" width="343" height="26.5"/>
+                                                        <rect key="frame" x="0.0" y="51" width="343" height="26"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Progress:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMK-WD-ruQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="313" height="26.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="313" height="26"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="—" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kh-f5-FLe">
-                                                                <rect key="frame" x="321" y="0.0" width="22" height="26.5"/>
+                                                                <rect key="frame" x="321" y="0.0" width="22" height="26"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="22"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -378,16 +378,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleAspectFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="loH-xe-0j0">
-                                                        <rect key="frame" x="0.0" y="103" width="343" height="26.5"/>
+                                                        <rect key="frame" x="0.0" y="102" width="343" height="26"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Time Remaining:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SU-QH-afc">
-                                                                <rect key="frame" x="0.0" y="0.0" width="313" height="26.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="313" height="26"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="—" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbT-vo-ufv">
-                                                                <rect key="frame" x="321" y="0.0" width="22" height="26.5"/>
+                                                                <rect key="frame" x="321" y="0.0" width="22" height="26"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="22"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -409,13 +409,13 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBA-Nj-lTt">
-                                                <rect key="frame" x="16" y="241" width="343" height="48"/>
+                                                <rect key="frame" x="16" y="241" width="343" height="47"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="40"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="center" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iEe-O0-mJJ">
-                                                <rect key="frame" x="27.5" y="498.5" width="320" height="50"/>
+                                                <rect key="frame" x="27.5" y="496" width="320" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOk-4A-3pJ" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
@@ -746,7 +746,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="1231"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3z-BX-d0u">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1207.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1169.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="tgM-m3-z4O" userLabel="ip address">
                                                 <rect key="frame" x="16" y="0.0" width="343" height="81.5"/>
@@ -822,7 +822,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="46R-4x-6WI" userLabel="file sort">
-                                                <rect key="frame" x="16" y="287" width="343" height="147.5"/>
+                                                <rect key="frame" x="16" y="287" width="343" height="109.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Files By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiq-Eg-hR4">
                                                         <rect key="frame" x="0.0" y="0.0" width="123.5" height="26.5"/>
@@ -831,7 +831,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a8L-2j-8JQ" userLabel="options">
-                                                        <rect key="frame" x="0.0" y="41.5" width="178.5" height="106"/>
+                                                        <rect key="frame" x="0.0" y="41.5" width="178.5" height="68"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wmu-L2-Ph2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="165" height="30"/>
@@ -903,41 +903,6 @@
                                                                     </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="caA-rq-Yo8">
-                                                                <rect key="frame" x="0.0" y="76" width="163.5" height="30"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPL-Qc-EWp" customClass="BubbleButton" customModule="Pocket3D" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="30" id="5JP-Ay-jtf"/>
-                                                                            <constraint firstAttribute="width" constant="30" id="y1Z-UU-YPL"/>
-                                                                        </constraints>
-                                                                        <state key="normal">
-                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="15"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                <real key="value" value="4"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="tag">
-                                                                                <integer key="value" value="2"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                        <connections>
-                                                                            <action selector="fileSortOptionSelected:" destination="FoG-Yg-Tnw" eventType="touchUpInside" id="tUP-or-MoD"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modify Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bg-dg-0he">
-                                                                        <rect key="frame" x="46" y="0.0" width="117.5" height="30"/>
-                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="22"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="wmu-L2-Ph2" firstAttribute="leading" secondItem="a8L-2j-8JQ" secondAttribute="leading" id="3QG-XM-xBg"/>
@@ -953,7 +918,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MbG-74-sAj" userLabel="coord position">
-                                                <rect key="frame" x="16" y="466.5" width="343" height="109.5"/>
+                                                <rect key="frame" x="16" y="428.5" width="343" height="109.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XY Coordinate Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrC-Ye-jo3">
                                                         <rect key="frame" x="0.0" y="0.0" width="231" height="26.5"/>
@@ -1044,7 +1009,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-ul-LR9" userLabel="extruder">
-                                                <rect key="frame" x="16" y="608" width="343" height="71.5"/>
+                                                <rect key="frame" x="16" y="570" width="343" height="71.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extruder Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1di-BY-rEz">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
@@ -1103,7 +1068,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JgG-RY-7CC" userLabel="heat bed">
-                                                <rect key="frame" x="16" y="711.5" width="343" height="71.5"/>
+                                                <rect key="frame" x="16" y="673.5" width="343" height="71.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heat Bed Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWj-0m-OXF">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
@@ -1162,7 +1127,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AeO-Nu-00K" userLabel="image mirroring">
-                                                <rect key="frame" x="16" y="815" width="343" height="71.5"/>
+                                                <rect key="frame" x="16" y="777" width="343" height="71.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Webcam Image Mirroring" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flF-vw-TaC">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
@@ -1221,7 +1186,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ek3-no-EFf" userLabel="GCODE buttons">
-                                                <rect key="frame" x="16" y="918.5" width="343" height="177"/>
+                                                <rect key="frame" x="16" y="880.5" width="343" height="177"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="VqR-DQ-cuC" userLabel="header">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
@@ -1263,7 +1228,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSJ-r7-ftt" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
-                                                <rect key="frame" x="112.5" y="1125.5" width="150" height="50"/>
+                                                <rect key="frame" x="112.5" y="1087.5" width="150" height="50"/>
                                                 <color key="backgroundColor" red="0.1161970571" green="0.53316992519999995" blue="0.99837404490000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="IaE-Fk-dcz"/>
@@ -1359,8 +1324,6 @@
                         <outlet property="mirroringXLabel" destination="xDr-XT-d5I" id="cQi-tE-HCE"/>
                         <outlet property="mirroringYField" destination="0dz-SD-kNQ" id="mE7-29-bst"/>
                         <outlet property="mirroringYLabel" destination="ka8-aA-OfP" id="PQS-yw-wCl"/>
-                        <outlet property="modifyLabel" destination="3bg-dg-0he" id="Tvs-De-lyM"/>
-                        <outlet property="modifySortButton" destination="WPL-Qc-EWp" id="enA-Yg-YMo"/>
                         <outlet property="posText" destination="xrC-Ye-jo3" id="8hC-NS-sWm"/>
                         <outlet property="saveButton" destination="HSJ-r7-ftt" id="ZZI-BL-ofH"/>
                         <outlet property="sortFilesText" destination="eiq-Eg-hR4" id="P8t-qM-Pi9"/>
