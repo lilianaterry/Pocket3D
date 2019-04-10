@@ -16,7 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UserDefaults.standard.set(true, forKey: "isDarkMode")
+        if UserDefaults.standard.bool(forKey: "hasLaunched") == false {
+            // set up settings to sane defaults
+            let usrDefault = UserDefaults.standard
+            usrDefault.set(true, forKey: "hasLaunched")
+            usrDefault.set(0, forKey: "colorMode")
+            usrDefault.set(0, forKey: "fileSort")
+            usrDefault.set(0, forKey: "posCoord")
+            usrDefault.set(0, forKey: "extruderMin")
+            usrDefault.set(250, forKey: "extruderMax")
+            usrDefault.set(0, forKey: "bedMin")
+            usrDefault.set(120, forKey: "bedMax")
+            usrDefault.set(1.0, forKey: "mirrorX")
+            usrDefault.set(1.0, forKey: "mirrorY")
+            usrDefault.set([], forKey: "gcodeNames")
+            usrDefault.set([], forKey: "gcodeCommands")
+            UserDefaults.standard.set(true, forKey: "isDarkMode")
+        }
+
         let ui = UIExtensions()
         let size = CGSize(width: (self.window?.frame.size.width)! / 4, height: 49)
         let lineSize = CGSize(width: size.width, height: 2)

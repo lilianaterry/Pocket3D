@@ -43,9 +43,6 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         frc = NSFetchedResultsController(fetchRequest: req, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         
-        // Create Fetch Request
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "File")
-        
         do {
             try frc.performFetch()
         } catch {
@@ -64,6 +61,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
                     of.display = f["display"].stringValue
                     of.date = Date(timeIntervalSince1970: f["date"].doubleValue)
                     of.octoHash = f["hash"].stringValue
+                    of.refs_resource = f["refs"]["resource"].stringValue
                 }
                 try! self.moc.save()
                 loadingAnimation.stopAnimating()
@@ -90,9 +88,9 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func printPressed() {
-//        API.instance.printFile(file: URL(string: files[self.selectedIndexPath!.row]["refs"]["resource"].stringValue)!) { status in
-//            print("Starting print: \(status)")
-//        }
+        let file = frc.object(at: self.selectedIndexPath!)
+        API.instance.printFile(file: URL(string: file.refs_resource!)!) { (status) in
+        }
     }
 
     // MARK: - UITableViewDelegate

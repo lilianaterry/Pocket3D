@@ -26,12 +26,15 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         setup()
+        
+        if let key = UserDefaults.standard.string(forKey: "apiKey"), let ip = UserDefaults.standard.string(forKey: "ipAddress") {
+            apiKeyField.text = key
+            ipAddressField.text = ip
+        }
     }
     
     // setup data and UI
     func setup() {
-        setupCoreData("Settings")
-        
         view.backgroundColor = ui.backgroundColor
         
         welcomeText.textColor = ui.titleColor
@@ -52,7 +55,8 @@ class LoginViewController: UIViewController {
                 print("Got status \(status) from logging in")
 
                 if status == .Ok {
-                    self.saveToCoreData()
+                    UserDefaults.standard.set(self.apiKeyField.text!, forKey: "apiKey")
+                    UserDefaults.standard.set(self.ipAddressField.text!, forKey: "ipAddress")
 //                    self.delegate.segue(identifier: "Status")
                     self.performSegue(withIdentifier: "LOGIN", sender: self)
                 } else {
@@ -69,53 +73,5 @@ class LoginViewController: UIViewController {
                 errorLabel.text = "Please provide an IP Address"
             }
         }
-    }
-
-    // save login information to core data for settings page
-    func saveToCoreData() {
-        settings.setValue(ipAddressField.text, forKey: "ipAddress")
-        settings.setValue(apiKeyField.text, forKey: "apiKey")
-        do {
-            try context.save()
-        } catch {
-            print("Failed to save login information to Core Data")
-        }
-    }
-
-    // setup core data to save login information
-    func setupCoreData(_ entity: String) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-        context = appDelegate.persistentContainer.viewContext
-
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-
-        fetchRequest.returnsObjectsAsFaults = false
-
-        // fetch settings if any have been made before
-
-        do {
-            let results = try context.fetch(fetchRequest) as! [NSManagedObject]
-            if results.count > 0 {
-                settings = results[0]
-                let apiKey = settings.value(forKey: "apiKey") as! String
-                let ipAddress = settings.value(forKey: "ipAddress") as! String
-                apiKeyField.text = apiKey
-                ipAddressField.text = ipAddress
-
-            } else {
-                createNewDataObject()
-            }
-        } catch {
-            createNewDataObject()
-        }
-    }
-
-    // create and add a new object for Settings
-    func createNewDataObject() {
-        settings = NSEntityDescription.insertNewObject(forEntityName: "Settings", into: context)
-        settings.setValue(0, forKey: "fileSort")
-        settings.setValue(0, forKey: "posCoord")
-        settings.setValue(0, forKey: "colorMode")
     }
 }

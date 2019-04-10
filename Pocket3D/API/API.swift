@@ -112,6 +112,16 @@ final class API {
                            callback: callback)
     }
 
+    func pause(callback: @escaping Callback) {
+        performPostDefault(paths: ["job"],
+                           parameters: ["command": "pause", "action": "toggle"],
+                           callback: callback)
+    }
+
+    func cancel(callback: @escaping Callback) {
+        performPostDefault(paths: ["job"], parameters: ["command": "cancel"], callback: callback)
+    }
+
     func files(callback: @escaping JsonCallback) {
         Alamofire.request(url.appendingPathComponent("files"),
                           headers: headers).responseJSON { data in

@@ -18,15 +18,15 @@ class StatusViewController: UIViewController, Observer {
         f.zeroFormattingBehavior = [.pad]
         return f
     }()
-
+    
     func notify(message: Notification) {
         let json = message.object! as! JSON
-        updateStatus(status: json["state"]["text"].stringValue,
-                     filename: json["job"]["file"]["name"].stringValue)
-        updateProgress(progress: json["progress"]["completion"].doubleValue)
-        updateTimeRemaining(timeRemain: json["progress"]["printTimeLeft"].intValue)
+        updateFields(status: json["state"]["text"].stringValue,
+                     filename: json["job"]["file"]["name"].stringValue,
+                     progress: json["progress"]["completion"].doubleValue,
+                     timeRemain: json["progress"]["printTimeLeft"].intValue)
     }
-
+    
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var filenameText: UILabel!
     @IBOutlet var progressText: UILabel!
@@ -36,28 +36,29 @@ class StatusViewController: UIViewController, Observer {
     @IBOutlet var timeRemainingLabel: UILabel!
     @IBOutlet var webcamImageView: UIImageView!
     @IBOutlet var errorLabel: UILabel!
-
-    @IBOutlet weak var pauseButton: ButtonView!
-    @IBOutlet weak var cancelButton: ButtonView!
+    
+    @IBOutlet var pauseButton: ButtonView!
+    @IBOutlet var cancelButton: ButtonView!
     
     let ui = UIExtensions()
     var stream: MJPEGStreamLib!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)], for: .normal)
-
+        
         // Do any additional setup after loading the view.
         setup()
-
+        
         Push.instance.observe(who: self as Observer, topic: Push.current)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(settingsChanged),
                                                name: NSNotification.Name(rawValue: "settings_changed"), object: nil)
-
-        // TODO: apply settings for imageview mirroring
-        webcamImageView.transform = CGAffineTransform(scaleX: -1, y: -1)
+        settingsChanged()
+        
+        pauseButton.addTarget(self, action: #selector(pausePressed), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
         
         stream = MJPEGStreamLib(imageView: webcamImageView)
         stream.contentURL = API.instance.stream()
@@ -74,23 +75,34 @@ class StatusViewController: UIViewController, Observer {
     @objc func settingsChanged() {
         let x = UserDefaults.standard.float(forKey: "mirrorX")
         let y = UserDefaults.standard.float(forKey: "mirrorY")
-
+        
         webcamImageView.transform = CGAffineTransform(scaleX: CGFloat(x), y: CGFloat(y))
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         stream.play()
     }
-
+    
     override func viewWillDisappear(_: Bool) {
         stream.stop()
     }
-
+    
+    @objc
+    func pausePressed(sender: UIButton) {
+        API.instance.pause { _ in
+        }
+    }
+    
+    @objc func cancelPressed(sender: UIButton) {
+        API.instance.cancel { _ in
+        }
+    }
+    
     // set font and background colors
     func setup() {
         // body
-        self.view.backgroundColor = ui.backgroundColor
+        view.backgroundColor = ui.backgroundColor
         
         statusLabel.textColor = ui.titleColor
         filenameText.textColor = ui.titleColor
@@ -100,7 +112,7 @@ class StatusViewController: UIViewController, Observer {
         filenameLabel.textColor = ui.textColor
         progressLabel.textColor = ui.textColor
         timeRemainingLabel.textColor = ui.textColor
-
+        
         filenameLabel.adjustsFontSizeToFitWidth = true
         
         errorLabel.layer.zPosition = webcamImageView.layer.zPosition - 1
@@ -109,7 +121,7 @@ class StatusViewController: UIViewController, Observer {
     }
     
     func toggleButtons(turnOn: Bool) {
-        if (turnOn) {
+        if turnOn {
             pauseButton.isEnabled = true
             cancelButton.isEnabled = true
             pauseButton.backgroundColor = ui.headerTextColor
@@ -125,27 +137,23 @@ class StatusViewController: UIViewController, Observer {
             cancelButton.alpha = 0.5
         }
     }
-
-    func updateStatus(status: String, filename: String) {
-        if status == "Printing" {
-            statusLabel.text = "Printing:"
-            filenameLabel.text = filename
-            toggleButtons(turnOn: true)
+    
+    func updateFields(status: String, filename: String, progress: Double, timeRemain: Int) {
+        statusLabel.text = status
+        
+        if status == "Operational" {
+            filenameLabel.text = "—"
+            progressLabel.text = "—"
+            timeRemainingLabel.text = "—"
         } else {
-            statusLabel.text = status
-            filenameLabel.text = ""
-            toggleButtons(turnOn: false)
+            filenameLabel.text = filename
+            progressLabel.text = NSString(format: "%.2f%%", progress) as String
+            timeRemainingLabel.text = printTimeFormatter.string(from: Double(timeRemain))
         }
+        toggleButtons(turnOn: status != "Operational")
+        
         statusLabel.sizeToFit()
-    }
-
-    func updateProgress(progress: Double) {
-        progressLabel.text = NSString(format: "%.2f%%", progress) as String
         progressLabel.sizeToFit()
-    }
-
-    func updateTimeRemaining(timeRemain: Int) {
-        timeRemainingLabel.text = printTimeFormatter.string(from: Double(timeRemain))
         timeRemainingLabel.sizeToFit()
     }
 }

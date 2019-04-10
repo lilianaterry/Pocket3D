@@ -37,8 +37,4 @@ class GcodeGridCell: UIView {
         label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
-    
-    override func layoutSubviews() {
-        self.bounds = self.bounds.insetBy(dx: 3, dy: 3)
-    }
 }

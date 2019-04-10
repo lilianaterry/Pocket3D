@@ -54,6 +54,19 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
 
         gcodeGrid.delegate = self
+        settingsChanged()
+    }
+    
+    // Save button was selected on Settings Page and Sliders/Buttons need to be updated
+    @objc func settingsChanged() {
+        // TODO, actually change coordinate field
+        posLabelTR.text = usrDefault.integer(forKey: "posCoord") == 0 ? "xy" : "yx"
+        extruderSlider.minimumValue = usrDefault.float(forKey: "extruderMin")
+        extruderSlider.maximumValue = usrDefault.float(forKey: "extruderMax")
+        heatbedSlider.minimumValue = usrDefault.float(forKey: "bedMin")
+        heatbedSlider.maximumValue = usrDefault.float(forKey: "bedMax")
+        
+        // merge gcode arrays back together
         updateGcodeCells()
     }
 
@@ -67,33 +80,12 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         let commandNames = usrDefault.object(forKey: "gcodeNames") as! [String]
         let commands = usrDefault.object(forKey: "gcodeCommands") as! [[String]]
         
-        for index in 0...commandNames.count - 1 {
-            let gcodeCommand = (commandNames[index], commands[index])
-            self.gcodeCommands.append(gcodeCommand)
-        }
+        self.gcodeCommands = Array(zip(commandNames, commands))
         
         for command in gcodeCommands {
             gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
         }
     }
-    
-    // Save button was selected on Settings Page and Sliders/Buttons need to be updated
-    @objc func settingsChanged() {
-        // TODO, actually change coordinate field
-        posLabelTR.text = usrDefault.integer(forKey: "posCoord") == 0 ? "xy" : "yx"
-        extruderSlider.minimumValue = usrDefault.float(forKey: "extruderMin")
-        extruderSlider.maximumValue = usrDefault.float(forKey: "extruderMax")
-        heatbedSlider.minimumValue = usrDefault.float(forKey: "bedMin")
-        heatbedSlider.maximumValue = usrDefault.float(forKey: "bedMax")
-        
-        // merge gcode arrays back together
-        updateGcodeCells()        
-    }
-
-//    override func viewWillLayoutSubviews() {
-//        let max = xyPositionSlider.bounds.height
-//        xyPositionSlider.moveHead(location: CGPoint(x: 0, y: max))
-//    }
 
     func notify(message: Notification) {
         let json = message.object! as! JSON
@@ -133,22 +125,9 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
                 break
             }
         }
-//        if (json["state"]["text"] == "Printing") {
-//            // Do something to gray out controls
-//            // For now it just hides it which
-//            // looks ugly as balls so probably find a way to gray it out
-//            // and turn off the controls.
-//            // One way would be to have boolean to check if it's enabled
-//            // and stop it from sending the command to the printer in the
-//            // head moving functions and then just do something ot the view visually
-//            xyPositionSlider.isHidden = true
-//            zPositionSlider.isHidden = true
-//        }
-//        else {
-//            // Do something to ungray controls
-//            xyPositionSlider.isHidden = false
-//            zPositionSlider.isHidden = false
-//        }
+        let locked = !(json["state"]["text"] == "Printing");
+        self.zPositionSlider.isEnabled = locked
+        // TODO: disable xyPositionSlider
     }
 
     // make sure everything is colored beautifully

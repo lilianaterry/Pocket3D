@@ -96,8 +96,8 @@ class JoystickSlider: UIView {
         sliderHeadView?.layer.addSublayer(circle)
 
         // add gesture recognizer to view so we can move the head around
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(JoystickSlider.dragHead))
-        sliderHeadView?.addGestureRecognizer(panGesture)
+        sliderHeadView?.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dragHead)))
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dragHead)))
         sliderHeadView?.isUserInteractionEnabled = true
 
         // add coordinate label
@@ -116,7 +116,7 @@ class JoystickSlider: UIView {
     }
 
     // selector to move slider head when Pan Gesture is detected
-    @objc func dragHead(sender: UIPanGestureRecognizer) {
+    @objc func dragHead(sender: UIGestureRecognizer) {
         let location = sender.location(in: self)
 
         moveHead(location: location)

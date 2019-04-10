@@ -32,6 +32,7 @@ class GridView: UIStackView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.axis = .vertical
         self.distribution = .fillEqually
+        self.spacing = 15.0
     }
     
     private func prepareRow() -> UIStackView {
@@ -39,6 +40,7 @@ class GridView: UIStackView {
         row.translatesAutoresizingMaskIntoConstraints = false
         row.axis = .horizontal
         row.distribution = .fillEqually
+        row.spacing = 15.0
         return row
     }
     
