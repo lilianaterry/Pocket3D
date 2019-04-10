@@ -72,7 +72,6 @@ class StatusViewController: UIViewController, Observer {
     
     // Save button was selected on Settings Page and
     @objc func settingsChanged() {
-        print("settings changed in Status")
         let x = UserDefaults.standard.float(forKey: "mirrorX")
         let y = UserDefaults.standard.float(forKey: "mirrorY")
 

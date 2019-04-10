@@ -115,41 +115,28 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     
     // cell is selected in gcode grid view to edit or make new button
     func gridViewTapped(which: Int) {
-        // LILIANA_TODO
         performSegue(withIdentifier: "addButtonSegue", sender: which)
         detectChange()
     }
     
     // edit existing button
     func editButton(index: Int, name: String, code: [String]) {
-        print("EDIT BUTTON")
         gcodeCommands[index].0 = name
         gcodeCommands[index].1 = code
-        
         updateGCodeGrid()
-        
-        detectChange()
     }
     
     // add new button
     func addButton(index: Int, name: String, code: [String]) {
-        print("ADD BUTTON")
-        
         let newCell = (name, code)
         gcodeCommands.append(newCell)
         updateGCodeGrid()
-        
-        detectChange()
     }
     
     // remove button at index
     func deleteButton(index: Int) {
-        print("DELETE BUTTON")
-        
         gcodeCommands.remove(at: index)
         updateGCodeGrid()
-        
-        detectChange()
     }
     
     // refresh grid view based on new gcodeCommands list
@@ -159,6 +146,7 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         for command in gcodeCommands {
             gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
         }
+        detectChange()
     }
 
     // add editing recognizers and fill with core data
@@ -213,6 +201,32 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         } else {
             print("Setup TextFields: no extruder max found")
         }
+        
+        // current heat bed fields
+        if let bedMin = settings.value(forKey: "bedMin") as? String {
+            bedMinField.text = bedMin
+        } else {
+            print("Setup TextFields: no extruder min found")
+        }
+        
+        if let bedMax = settings.value(forKey: "bedMax") as? String {
+            bedMaxField.text = bedMax
+        } else {
+            print("Setup TextFields: no extruder min found")
+        }
+        
+        // current mirroring fields
+        if let mirrorX = settings.value(forKey: "mirrorX") as? String {
+            mirroringXField.text = mirrorX
+        } else {
+            print("Setup TextFields: no mirroring found for X")
+        }
+        
+        if let mirrorY = settings.value(forKey: "mirrorY") as? String {
+            mirroringYField.text = mirrorY
+        } else {
+            print("Setup TextFields: no mirroring found for Y")
+        }
     }
 
     // select buttons that the user has set and saved in settings before
@@ -251,7 +265,6 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         
         ipAddressText.textColor = ui.titleColor
         apiKeyText.textColor = ui.titleColor
-        colorModeText.textColor = ui.titleColor
         sortFilesText.textColor = ui.titleColor
         posText.textColor = ui.titleColor
         
@@ -270,6 +283,9 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         mirroringYLabel.font = ui.sliderTitleFont
         
         colorModeSwitch.tintColor = ui.titleColor
+        
+        // LILIANA_TODO: change this back to enabled
+        colorModeText.textColor = ui.textColor
     }
 
     // background coloring/header font

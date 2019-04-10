@@ -30,10 +30,6 @@ class JoystickSlider: UIView {
     
     var value: PrinterCoordinate = CGPoint(x: min, y: max) as PrinterCoordinate
 
-    var context: NSManagedObjectContext!
-    var settings: NSManagedObject!
-    var request: NSFetchRequest<NSFetchRequestResult>!
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -48,23 +44,6 @@ class JoystickSlider: UIView {
     func setup() {
         backgroundColor = UIColor.clear
         setupSliderHead()
-        setupCoreData()
-    }
-
-    // get core data Settings object
-    func setupCoreData() {
-        // get current core data information
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        context = appDelegate.persistentContainer.viewContext
-        request = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
-        request.returnsObjectsAsFaults = false
-
-        do {
-            let result = try context.fetch(request) as! [NSManagedObject]
-            settings = result[0]
-        } catch {
-            print("Failed to retrieve settings from Core Data")
-        }
     }
 
     override func draw(_ rect: CGRect) {
@@ -170,10 +149,7 @@ class JoystickSlider: UIView {
     func invertCoordinate(coord: PrinterCoordinate) -> ViewCoordinate {
         var inverted = false
         
-        // LILIANA_TODO: get position from UserDefaults
-        if let setting = settings {
-            inverted = (setting.value(forKey: "posCoord") as! Int == 1)
-        }
+        inverted = (UserDefaults.standard.value(forKey: "posCoord") as! Int == 1)
         
         var px = coord.x / JoystickSlider.max
         var py = coord.y / JoystickSlider.max
@@ -190,10 +166,7 @@ class JoystickSlider: UIView {
     func convertCoordinate(coord: ViewCoordinate) -> PrinterCoordinate {
         var inverted = false
         
-        // LILIANA_TODO: get position from UserDefaults
-        if let setting = settings {
-            inverted = (setting.value(forKey: "posCoord") as! Int == 1)
-        }
+        inverted = (UserDefaults.standard.value(forKey: "posCoord") as! Int == 1)
 
         let percentX = coord.x / bounds.width
         let percentY = coord.y / bounds.height
