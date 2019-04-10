@@ -102,6 +102,8 @@ class StatusViewController: UIViewController, Observer {
         progressLabel.textColor = ui.textColor
         timeRemainingLabel.textColor = ui.textColor
 
+        filenameLabel.adjustsFontSizeToFitWidth = true
+        
         errorLabel.layer.zPosition = webcamImageView.layer.zPosition - 1
         
         toggleButtons(turnOn: false)
@@ -136,7 +138,6 @@ class StatusViewController: UIViewController, Observer {
             toggleButtons(turnOn: false)
         }
         statusLabel.sizeToFit()
-        filenameLabel.sizeToFit()
     }
 
     func updateProgress(progress: Double) {

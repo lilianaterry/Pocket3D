@@ -110,14 +110,7 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     }
     
     @IBAction func addNewButtonTapped(_ sender: Any) {
-        // LILIANA_TODO
-        // trigger popover to create new button
-        let newCell = GcodeGridCell(text: "New Button")
-        gcodeGrid.addCell(view: newCell)
-        gcodeCommands.append(("New Button", ["new_button"]))
-        
         performSegue(withIdentifier: "addButtonSegue", sender: nil)
-        detectChange()
     }
     
     // cell is selected in gcode grid view to edit or make new button
@@ -127,22 +120,45 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         detectChange()
     }
     
+    // edit existing button
     func editButton(index: Int, name: String, code: [String]) {
         print("EDIT BUTTON")
+        gcodeCommands[index].0 = name
+        gcodeCommands[index].1 = code
+        
+        updateGCodeGrid()
+        
+        detectChange()
+    }
+    
+    // add new button
+    func addButton(index: Int, name: String, code: [String]) {
+        print("ADD BUTTON")
+        
+        let newCell = (name, code)
+        gcodeCommands.append(newCell)
+        updateGCodeGrid()
+        
+        detectChange()
+    }
+    
+    // remove button at index
+    func deleteButton(index: Int) {
+        print("DELETE BUTTON")
+        
+        gcodeCommands.remove(at: index)
+        updateGCodeGrid()
+        
+        detectChange()
+    }
+    
+    // refresh grid view based on new gcodeCommands list
+    func updateGCodeGrid() {
         gcodeGrid.clearCells()
-        gcodeCommands[index] = ("NEW!!", code)
         
         for command in gcodeCommands {
             gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
         }
-    }
-    
-    func addButton(index: Int, name: String, code: [String]) {
-        print("ADD BUTTON")
-    }
-    
-    func deleteButton(index: Int) {
-        print("DELETE BUTTON")
     }
 
     // add editing recognizers and fill with core data
@@ -352,6 +368,8 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
             if sender != nil {
                 dest.currIndex = sender as? Int
                 dest.newButton = false
+                dest.currName = gcodeCommands[sender as! Int].0
+                dest.currCode = gcodeCommands[sender as! Int].1
             } else {
                 dest.currIndex = gcodeCommands.count - 1
                 dest.newButton = true

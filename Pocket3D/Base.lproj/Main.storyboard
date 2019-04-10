@@ -339,13 +339,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Filename:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvd-ca-xvz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="26.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="258" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Loading" textAlignment="right" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.14999999999999999" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xZ-la-6vh">
-                                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="26.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" text="Loading" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.14999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="8xZ-la-6vh">
+                                                                <rect key="frame" x="266" y="0.0" width="77" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="22"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1383,11 +1383,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZG-ZL-ro2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKG-Dh-AyH">
                                 <rect key="frame" x="16" y="183.5" width="343" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AZv-3i-oun">
-                                        <rect key="frame" x="24" y="32" width="295" height="236"/>
+                                        <rect key="frame" x="24" y="32" width="295" height="170"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7dH-4n-4a6" userLabel="name">
                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="72.5"/>
@@ -1414,7 +1418,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4pF-2G-MlB" userLabel="code">
-                                                <rect key="frame" x="0.0" y="101" width="295" height="72.5"/>
+                                                <rect key="frame" x="0.0" y="97.5" width="295" height="72.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCV-cy-QnV">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="26.5"/>
@@ -1437,47 +1441,37 @@
                                                     <constraint firstItem="KXb-fi-JbZ" firstAttribute="leading" secondItem="4pF-2G-MlB" secondAttribute="leading" id="ntg-XG-yIO"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ERw-7A-hhS" userLabel="buttons">
-                                                <rect key="frame" x="0.0" y="202" width="295" height="34"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eT-Zx-8ld" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="eRg-rH-bQS"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Cancel"/>
-                                                        <connections>
-                                                            <action selector="cancelSelected:" destination="saK-lT-NoW" eventType="touchUpInside" id="tiD-6o-smX"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqP-W7-0R8" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="107.5" y="0.0" width="80" height="34"/>
-                                                        <state key="normal" title="Save"/>
-                                                        <connections>
-                                                            <action selector="saveSelected:" destination="saK-lT-NoW" eventType="touchUpInside" id="5Ei-Uo-Hvr"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c25-p6-ki1" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
-                                                        <rect key="frame" x="215" y="0.0" width="80" height="34"/>
-                                                        <state key="normal" title="Delete"/>
-                                                        <connections>
-                                                            <action selector="deleteSelected:" destination="saK-lT-NoW" eventType="touchUpInside" id="y5D-AZ-fKU"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="c25-p6-ki1" firstAttribute="width" secondItem="2eT-Zx-8ld" secondAttribute="width" id="gaJ-ME-ODc"/>
-                                                    <constraint firstItem="IqP-W7-0R8" firstAttribute="width" secondItem="2eT-Zx-8ld" secondAttribute="width" id="hAb-Co-WbX"/>
-                                                </constraints>
-                                            </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="4pF-2G-MlB" secondAttribute="trailing" id="BsY-wv-1Bl"/>
                                             <constraint firstItem="7dH-4n-4a6" firstAttribute="leading" secondItem="AZv-3i-oun" secondAttribute="leading" id="PjM-2d-Lhs"/>
                                             <constraint firstItem="4pF-2G-MlB" firstAttribute="leading" secondItem="AZv-3i-oun" secondAttribute="leading" id="TEB-7r-h4N"/>
                                             <constraint firstAttribute="trailing" secondItem="7dH-4n-4a6" secondAttribute="trailing" id="aT2-99-vrX"/>
-                                            <constraint firstItem="ERw-7A-hhS" firstAttribute="leading" secondItem="AZv-3i-oun" secondAttribute="leading" id="iIe-Dg-Dp6"/>
-                                            <constraint firstAttribute="trailing" secondItem="ERw-7A-hhS" secondAttribute="trailing" id="p4F-ra-83l"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="ERw-7A-hhS" userLabel="buttons">
+                                        <rect key="frame" x="75.5" y="234" width="192" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c25-p6-ki1" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="DS0-rc-7Jh"/>
+                                                </constraints>
+                                                <state key="normal" title="Delete"/>
+                                                <connections>
+                                                    <action selector="deleteSelected:" destination="saK-lT-NoW" eventType="touchUpInside" id="y5D-AZ-fKU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqP-W7-0R8" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
+                                                <rect key="frame" x="112" y="0.0" width="80" height="34"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveSelected:" destination="saK-lT-NoW" eventType="touchUpInside" id="5Ei-Uo-Hvr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="IqP-W7-0R8" firstAttribute="width" secondItem="c25-p6-ki1" secondAttribute="width" id="1c8-cr-kjS"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -1485,9 +1479,11 @@
                                 <constraints>
                                     <constraint firstItem="AZv-3i-oun" firstAttribute="top" secondItem="aKG-Dh-AyH" secondAttribute="top" constant="32" id="80x-4o-sdD"/>
                                     <constraint firstItem="AZv-3i-oun" firstAttribute="leading" secondItem="aKG-Dh-AyH" secondAttribute="leading" constant="24" id="Gtg-JW-i8F"/>
-                                    <constraint firstAttribute="bottom" secondItem="AZv-3i-oun" secondAttribute="bottom" constant="32" id="TmN-tp-KaN"/>
+                                    <constraint firstAttribute="bottom" secondItem="ERw-7A-hhS" secondAttribute="bottom" constant="32" id="KOF-KJ-FRT"/>
                                     <constraint firstAttribute="height" constant="300" id="UdM-qB-JaZ"/>
+                                    <constraint firstItem="ERw-7A-hhS" firstAttribute="centerX" secondItem="aKG-Dh-AyH" secondAttribute="centerX" id="WGc-E1-K2T"/>
                                     <constraint firstAttribute="trailing" secondItem="AZv-3i-oun" secondAttribute="trailing" constant="24" id="dr3-Bn-Waz"/>
+                                    <constraint firstItem="ERw-7A-hhS" firstAttribute="top" secondItem="AZv-3i-oun" secondAttribute="bottom" constant="32" id="k8I-qi-Yhf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1497,10 +1493,15 @@
                             <constraint firstItem="aKG-Dh-AyH" firstAttribute="centerX" secondItem="odg-LZ-hCT" secondAttribute="centerX" id="5tA-oJ-e5z"/>
                             <constraint firstItem="Xl1-06-F7H" firstAttribute="trailing" secondItem="aKG-Dh-AyH" secondAttribute="trailing" constant="16" id="9mT-4g-4MW"/>
                             <constraint firstItem="aKG-Dh-AyH" firstAttribute="leading" secondItem="Xl1-06-F7H" secondAttribute="leading" constant="16" id="W82-2P-67X"/>
+                            <constraint firstItem="Xl1-06-F7H" firstAttribute="trailing" secondItem="5ZG-ZL-ro2" secondAttribute="trailing" id="ZaH-g5-egY"/>
+                            <constraint firstItem="5ZG-ZL-ro2" firstAttribute="top" secondItem="Xl1-06-F7H" secondAttribute="top" id="mEB-IY-upg"/>
+                            <constraint firstItem="5ZG-ZL-ro2" firstAttribute="leading" secondItem="Xl1-06-F7H" secondAttribute="leading" id="mG4-lz-Eb0"/>
+                            <constraint firstItem="Xl1-06-F7H" firstAttribute="bottom" secondItem="5ZG-ZL-ro2" secondAttribute="bottom" id="qDp-IE-4I7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xl1-06-F7H"/>
                     </view>
                     <connections>
+                        <outlet property="background" destination="5ZG-ZL-ro2" id="NUk-fG-OAi"/>
                         <outlet property="codeField" destination="KXb-fi-JbZ" id="Iej-Mw-Wiw"/>
                         <outlet property="nameField" destination="OuE-VU-L1S" id="dmE-3B-Cze"/>
                         <outlet property="popupWindow" destination="aKG-Dh-AyH" id="Jec-yW-IoU"/>
