@@ -98,7 +98,6 @@ class LoginViewController: UIViewController {
             let results = try context.fetch(fetchRequest) as! [NSManagedObject]
             if results.count > 0 {
                 settings = results[0]
-                print("API Key: ")
                 let apiKey = settings.value(forKey: "apiKey") as! String
                 let ipAddress = settings.value(forKey: "ipAddress") as! String
                 apiKeyField.text = apiKey
@@ -107,9 +106,6 @@ class LoginViewController: UIViewController {
             } else {
                 createNewDataObject()
             }
-
-            // create new settings entity if has not been created yet
-
         } catch {
             createNewDataObject()
         }

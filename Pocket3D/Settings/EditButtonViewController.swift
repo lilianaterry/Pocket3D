@@ -20,6 +20,8 @@ class EditButtonViewController: UIViewController {
     @IBOutlet var nameField: TextFieldView!
     @IBOutlet var codeField: TextFieldView!
     
+    @IBOutlet var popupWindow: UIView!
+    
     var delegate: GCodeButtonDelegate?
     
     var currIndex: Int?
@@ -27,11 +29,25 @@ class EditButtonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = ui.headerBackgroundColor
+        
+        self.view.backgroundColor = self.ui.textColor.withAlphaComponent(0.5)
+        
+        popupWindow.layer.cornerRadius = 5.0
+        popupWindow.backgroundColor = ui.headerBackgroundColor
+        
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(cancelSelected(_:)))
+        self.view.addGestureRecognizer(tapRecognizer)
     }
     
-    @IBAction func cancelSelected(_ sender: Any) {
+    override func viewDidAppear(_ animated: Bool) {
+        nameField.updateBorder()
+        codeField.updateBorder()
+    }
+    
+    
+    // if user taps off of popup window, go back to previous screen
+    @objc @IBAction func cancelSelected(_ sender: Any) {
         if (newButton!) {
             delegate?.deleteButton(index: currIndex!)
         }
