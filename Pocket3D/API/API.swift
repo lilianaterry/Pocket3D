@@ -41,7 +41,7 @@ final class API {
         // and DEBUG is entered in a field
         if url == "DEBUG" || key == "DEBUG", debug_enabled {
             orig_url = URL(string: "http://70.122.32.48")
-            api_key = "B7714E03A6524843BBB26F946D59AE70"
+            api_key = "0A49A641E031463790A0F5261282AD02"
             // Virtual printer shit maybe fuck it I don't know
             // self.orig_url = URL(string: "http://localhost:5000")
             // self.api_key = "589F0038062E48CBAB0191A0CF9CC7AC"
