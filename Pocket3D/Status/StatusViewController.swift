@@ -151,6 +151,13 @@ class StatusViewController: UIViewController, Observer {
             timeRemainingLabel.text = printTimeFormatter.string(from: Double(timeRemain))
         }
         toggleButtons(turnOn: status != "Operational")
+        if (status == "Paused") {
+            pauseButton.setTitle("Resume", for: UIControl.State.normal)
+        }
+        else {
+            pauseButton.setTitle("Pause", for: UIControl.State.normal)
+
+        }
         
         statusLabel.sizeToFit()
         progressLabel.sizeToFit()
