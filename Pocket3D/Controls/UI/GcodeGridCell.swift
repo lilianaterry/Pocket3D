@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 class GcodeGridCell: UIView {
+    
+    let ui = UIExtensions()
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -22,7 +25,7 @@ class GcodeGridCell: UIView {
         self.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
+        self.backgroundColor = ui.headerTextColor
         self.layer.cornerRadius = 4
         self.layer.masksToBounds = true
         

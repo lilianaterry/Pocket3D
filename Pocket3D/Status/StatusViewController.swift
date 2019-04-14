@@ -138,6 +138,15 @@ class StatusViewController: UIViewController, Observer {
         }
     }
     
+    func setPauseButtonLabel(status: String) {
+        if (status == "Paused") {
+            pauseButton.setTitle("Resume", for: UIControl.State.normal)
+        }
+        else {
+            pauseButton.setTitle("Pause", for: UIControl.State.normal)
+        }
+    }
+    
     func updateFields(status: String, filename: String, progress: Double, timeRemain: Int) {
         statusLabel.text = status
         
@@ -151,14 +160,7 @@ class StatusViewController: UIViewController, Observer {
             timeRemainingLabel.text = printTimeFormatter.string(from: Double(timeRemain))
         }
         toggleButtons(turnOn: status != "Operational")
-        if (status == "Paused") {
-            pauseButton.setTitle("Resume", for: UIControl.State.normal)
-        }
-        else {
-            pauseButton.setTitle("Pause", for: UIControl.State.normal)
-
-        }
-        
+        setPauseButtonLabel(status: status)
         statusLabel.sizeToFit()
         progressLabel.sizeToFit()
         timeRemainingLabel.sizeToFit()
