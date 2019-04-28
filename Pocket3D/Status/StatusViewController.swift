@@ -21,10 +21,19 @@ class StatusViewController: UIViewController, Observer {
     
     func notify(message: Notification) {
         let json = message.object! as! JSON
+        //print(json)
         updateFields(status: json["state"]["text"].stringValue,
                      filename: json["job"]["file"]["name"].stringValue,
                      progress: json["progress"]["completion"].doubleValue,
                      timeRemain: json["progress"]["printTimeLeft"].intValue)
+        
+        
+        if json["state"]["text"] == "Operational" {
+            NotificationData.currentTimeRemaining = -1
+        } else {
+            NotificationData.currentFileName = json["job"]["file"]["name"].stringValue
+            NotificationData.currentTimeRemaining = json["progress"]["printTimeLeft"].intValue
+        }
     }
     
     @IBOutlet var statusLabel: UILabel!

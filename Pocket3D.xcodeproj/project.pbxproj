@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71AE0DC72275B48500A6A8A5 /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE0DC62275B48500A6A8A5 /* NotificationData.swift */; };
 		8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7D92225FF0B004DA31C /* AppDelegate.swift */; };
 		8300E7E32225FF0B004DA31C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E12225FF0B004DA31C /* Main.storyboard */; };
 		8300E7E52225FF0C004DA31C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E42225FF0C004DA31C /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		324C801A375BE291DD9C1A9F /* Pods-Pocket3DUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests.release.xcconfig"; sourceTree = "<group>"; };
 		642CFEBD14E025ACDF76CC6A /* Pods-Pocket3D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3D.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D.debug.xcconfig"; sourceTree = "<group>"; };
 		7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71AE0DC62275B48500A6A8A5 /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3DUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7D62225FF0B004DA31C /* Pocket3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pocket3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8300E7D92225FF0B004DA31C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				8300E80C2225FF4D004DA31C /* API.swift */,
 				837F45D2223031BB00895817 /* Push.swift */,
+				71AE0DC62275B48500A6A8A5 /* NotificationData.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */,
 				CE36832922458234005CB878 /* MenuButton.swift in Sources */,
 				8363874C2258343E007C0442 /* GridView.swift in Sources */,
+				71AE0DC72275B48500A6A8A5 /* NotificationData.swift in Sources */,
 				CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */,
 				8363874E22583656007C0442 /* GcodeGridCell.swift in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,

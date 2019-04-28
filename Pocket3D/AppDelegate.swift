@@ -9,6 +9,7 @@
 import CoreData
 import IQKeyboardManagerSwift
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(true, forKey: "isDarkMode")
         }
 
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert], completionHandler: {
+            (success, error) in
+            if success {
+                print("Yea")
+            } else {
+                print("O no")
+            }
+        })
         let ui = UIExtensions()
         let size = CGSize(width: (self.window?.frame.size.width)! / 4, height: 49)
         let lineSize = CGSize(width: size.width, height: 2)
@@ -46,20 +55,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        handleNotification()
     }
 
     func applicationDidEnterBackground(_: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        handleNotification()
     }
 
     func applicationWillEnterForeground(_: UIApplication) {
 
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
     func applicationDidBecomeActive(_: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
     func applicationWillTerminate(_: UIApplication) {
@@ -112,4 +126,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    // Code adapted from class demo snippets
+    func handleNotification() {
+        print("Attempting to make a notification")
+        let notification = UNMutableNotificationContent()
+        notification.title = "Your print job should be finished or near finished."
+        notification.subtitle = "Based on estimated time - may not be accurate."
+        notification.body = "Job: " + NotificationData.currentFileName
+        notification.badge = 9001
+        
+        let time = NotificationData.currentTimeRemaining
+        print(time)
+        if (time > 0) {
+            print("Time is valid")
+            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(time), repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(time), repeats: false)
+            let request = UNNotificationRequest(identifier: "clickNotification",
+                                                content: notification,
+                                                trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { (error) in
+                print("Error",error as Any)
+            }
+        }
+
+    }
+
 }
