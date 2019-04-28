@@ -18,7 +18,7 @@ enum SelectedButtonTag: Int {
 class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDelegate {
     var ui = UIExtensions()
     
-    let settings = UserDefaults.standard
+    var settings = UserDefaults.standard
     
     @IBOutlet var saveButton: ButtonView!
     
@@ -79,12 +79,14 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         super.viewDidAppear(animated)
         
         setup()
+        settings = UserDefaults.standard
     }
     
     func setup() {
         ui = UIExtensions()
         
-        setupViews()
+        view.backgroundColor = ui.backgroundColor
+
         setupLabels()
         setupButtons()
         setupTextFields()
@@ -110,7 +112,7 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     // cell is selected in gcode grid view to edit or make new button
     func gridViewTapped(which: Int) {
         performSegue(withIdentifier: "addButtonSegue", sender: which)
-        detectChange()
+        saveUserDefaults()
     }
     
     // edit existing button
@@ -140,7 +142,7 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         for command in gcodeCommands {
             gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
         }
-        detectChange()
+        saveUserDefaults()
     }
     
     // add editing recognizers and fill with core data
@@ -156,12 +158,12 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         extruderMinField.updateBorder()
         
         // add selectors to detec editing
-        ipAddressField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
-        apiKeyField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
-        bedMaxField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
-        bedMinField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
-        extruderMaxField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
-        extruderMinField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
+        ipAddressField.addTarget(self, action: #selector(SettingsViewController.detectTextFieldChange(sender:)), for: .editingDidEnd)
+        apiKeyField.addTarget(self, action: #selector(SettingsViewController.detectTextFieldChange(sender:)), for: .editingDidEnd)
+        bedMaxField.addTarget(self, action: #selector(SettingsViewController.detectTextFieldChange(sender:)), for: .editingDidEnd)
+        bedMinField.addTarget(self, action: #selector(SettingsViewController.detectTextFieldChange(sender:)), for: .editingDidEnd)
+        extruderMaxField.addTarget(self, action: #selector(SettingsViewController.detectTextFieldChange(sender:)), for: .editingDidEnd)
+        extruderMinField.addTarget(self, action: #selector(SettingsViewController.detectTextFieldChange(sender:)), for: .editingDidEnd)
         
         // current IP address
         if let ipAddress = settings.value(forKey: "ipAddress") as? String {
@@ -210,8 +212,6 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         self.xyCoordSelection = ButtonGroupController(buttons: [xyCoordButton, yxCoordButton])
         self.mirroringXSelection = ButtonGroupController(buttons: [posXButton, negXButton])
         self.mirroringYSelection = ButtonGroupController(buttons: [posYButton, negYButton])
-
-        print("setupButtons")
         
         // file sorting settings
         if let fileSortIndex = settings.value(forKey: "fileSort") as? Int {
@@ -274,57 +274,48 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         bedMaxLabel.font = ui.sliderTitleFont
         mirroringXLabel.font = ui.sliderTitleFont
         mirroringYLabel.font = ui.sliderTitleFont
-    }
-    
-    // background coloring/header font
-    func setupViews() {
-        view.backgroundColor = ui.backgroundColor
-        
-        saveButton.backgroundColor = ui.bodyElementColor
-        saveButton.isEnabled = false
-    }
-    
-    // any change has occured on the page, triggering a blue save button to indicate you need to save
-    @objc func detectChange() {
-        saveButton.backgroundColor = ui.headerTextColor
-        saveButton.isEnabled = true
+        mirroringNegXLabel.font = ui.sliderTitleFont
+        mirroringNegYLabel.font = ui.sliderTitleFont
     }
     
     // multiple choice bubble buttons have changed selection for file sorting
     @IBAction func fileSortOptionSelected(_ sender: BubbleButton) {
+        let changeDetected = sender.isSelected == false
         fileSortSelection.selectButton(sender: sender)
         
-        if sender.isSelected == false {
-            detectChange()
+        if changeDetected {
+            saveUserDefaults()
         }
     }
     
     // multiple choice bubble buttons have changed selection for xy coords
     @IBAction func coordOptionSelected(_ sender: BubbleButton) {
+        let changeDetected = sender.isSelected == false
         xyCoordSelection.selectButton(sender: sender)
         
-        if sender.isSelected == false {
-            detectChange()
+        if changeDetected {
+            saveUserDefaults()
         }
     }
     
     // multiple choice bubble buttons have changed selected for mirroring in the x direction
     @IBAction func mirroringXSelected(_ sender: BubbleButton) {
-        if sender.isSelected == false {
-            print("Detect change")
-            detectChange()
-        }
+        let changeDetected = sender.isSelected == false
         mirroringXSelection.selectButton(sender: sender)
+        
+        if changeDetected {
+            saveUserDefaults()
+        }
     }
     
     // multiple choice bubble buttons have changed selected for mirroring in the y direction
     @IBAction func mirroringYSelected(_ sender: BubbleButton) {
-        if sender.isSelected == false {
-            print("Detect change")
-
-            detectChange()
-        }
+        let changeDetected = sender.isSelected == false
         mirroringYSelection.selectButton(sender: sender)
+        
+        if changeDetected {
+            saveUserDefaults()
+        }
     }
     
     // save to core memory if the button color says a change has occured on the page
@@ -336,8 +327,18 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         }
     }
     
+    // make sure an empty text field doesn't try to save an undefined value
+    @objc func detectTextFieldChange(sender: UITextField) {
+        if (sender.text == nil || sender.text?.count == 0) {
+            sender.text = "0"
+            print("Error: saved an undefined value in a settings text field")
+        }
+    
+        saveUserDefaults()
+    }
+    
     // save any changes to core data so they persist
-    func saveUserDefaults() {
+    @objc func saveUserDefaults() {
         let usrDefault = UserDefaults.standard
         usrDefault.set(ipAddressField.text, forKey: "ipAddress")
         usrDefault.set(apiKeyField.text, forKey: "apiKey")

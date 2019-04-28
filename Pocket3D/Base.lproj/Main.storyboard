@@ -746,7 +746,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="1231"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3z-BX-d0u">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1268"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1072.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="tgM-m3-z4O" userLabel="ip address">
                                                 <rect key="frame" x="16" y="0.0" width="343" height="81.5"/>
@@ -1277,21 +1277,6 @@
                                                     <constraint firstItem="lTf-7O-1mi" firstAttribute="leading" secondItem="JgG-RY-7CC" secondAttribute="leading" id="z1q-1i-sso"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSJ-r7-ftt" customClass="ButtonView" customModule="Pocket3D" customModuleProvider="target">
-                                                <rect key="frame" x="112.5" y="1072.5" width="150" height="50"/>
-                                                <color key="backgroundColor" red="0.1161970571" green="0.53316992519999995" blue="0.99837404490000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="IaE-Fk-dcz"/>
-                                                    <constraint firstAttribute="height" constant="50" id="WGp-nL-i4s"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="16"/>
-                                                <state key="normal" title="Save">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="saveSelected:" destination="FoG-Yg-Tnw" eventType="touchUpInside" id="4Nw-fg-Su0"/>
-                                                </connections>
-                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ek3-no-EFf" userLabel="GCODE buttons">
                                                 <rect key="frame" x="16" y="865.5" width="343" height="177"/>
                                                 <subviews>
@@ -1338,13 +1323,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="AeO-Nu-00K" secondAttribute="trailing" constant="16" id="1Qj-kV-jhf"/>
+                                            <constraint firstAttribute="bottom" secondItem="ek3-no-EFf" secondAttribute="bottom" constant="30" id="B1H-Ov-pTz"/>
                                             <constraint firstItem="tgM-m3-z4O" firstAttribute="leading" secondItem="X3z-BX-d0u" secondAttribute="leading" constant="16" id="Bgy-yb-94A"/>
                                             <constraint firstItem="tgM-m3-z4O" firstAttribute="top" secondItem="X3z-BX-d0u" secondAttribute="top" id="Cjh-eG-H8c"/>
                                             <constraint firstAttribute="trailing" secondItem="FSC-ul-LR9" secondAttribute="trailing" constant="16" id="Dxx-F5-T6F"/>
                                             <constraint firstItem="AeO-Nu-00K" firstAttribute="leading" secondItem="X3z-BX-d0u" secondAttribute="leading" constant="16" id="Ebx-Ic-yEM"/>
                                             <constraint firstItem="ek3-no-EFf" firstAttribute="leading" secondItem="X3z-BX-d0u" secondAttribute="leading" constant="16" id="Ho0-Hd-7zF"/>
                                             <constraint firstItem="ek3-no-EFf" firstAttribute="top" secondItem="JgG-RY-7CC" secondAttribute="bottom" constant="32" id="Kf5-R3-mgW"/>
-                                            <constraint firstItem="HSJ-r7-ftt" firstAttribute="centerX" secondItem="X3z-BX-d0u" secondAttribute="centerX" id="Krn-52-gDn"/>
                                             <constraint firstItem="FSC-ul-LR9" firstAttribute="leading" secondItem="X3z-BX-d0u" secondAttribute="leading" constant="16" id="PJD-a0-d8A"/>
                                             <constraint firstAttribute="trailing" secondItem="MbG-74-sAj" secondAttribute="trailing" constant="16" id="PL8-tk-1Cj"/>
                                             <constraint firstItem="AeO-Nu-00K" firstAttribute="top" secondItem="MbG-74-sAj" secondAttribute="bottom" constant="32" id="SPv-yN-hSe"/>
@@ -1356,10 +1341,8 @@
                                             <constraint firstAttribute="trailing" secondItem="ek3-no-EFf" secondAttribute="trailing" constant="16" id="dFV-mw-ZCs"/>
                                             <constraint firstItem="46R-4x-6WI" firstAttribute="leading" secondItem="X3z-BX-d0u" secondAttribute="leading" constant="16" id="fsP-Xj-Dkv"/>
                                             <constraint firstItem="MbG-74-sAj" firstAttribute="leading" secondItem="X3z-BX-d0u" secondAttribute="leading" constant="16" id="hLr-2f-82C"/>
-                                            <constraint firstAttribute="bottom" secondItem="HSJ-r7-ftt" secondAttribute="bottom" constant="145.5" id="hPg-GN-3Yj"/>
                                             <constraint firstItem="MbG-74-sAj" firstAttribute="top" secondItem="46R-4x-6WI" secondAttribute="bottom" constant="32" id="j6n-Pk-S7e"/>
                                             <constraint firstAttribute="trailing" secondItem="tgM-m3-z4O" secondAttribute="trailing" constant="16" id="kmS-7Z-pma"/>
-                                            <constraint firstItem="HSJ-r7-ftt" firstAttribute="top" secondItem="ek3-no-EFf" secondAttribute="bottom" constant="30" id="mSQ-Qr-VHe"/>
                                             <constraint firstItem="FSC-ul-LR9" firstAttribute="top" secondItem="AeO-Nu-00K" secondAttribute="bottom" constant="32" id="mau-By-TzE"/>
                                             <constraint firstAttribute="trailing" secondItem="46R-4x-6WI" secondAttribute="trailing" constant="16" id="ra2-jt-6xd"/>
                                             <constraint firstItem="JgG-RY-7CC" firstAttribute="leading" secondItem="X3z-BX-d0u" secondAttribute="leading" constant="16" id="vCJ-CA-UZ5"/>
@@ -1416,7 +1399,6 @@
                         <outlet property="posText" destination="xrC-Ye-jo3" id="8hC-NS-sWm"/>
                         <outlet property="posXButton" destination="cVB-v1-PtU" id="ED6-Nt-2Ro"/>
                         <outlet property="posYButton" destination="1bJ-My-xe1" id="DIq-GY-gWP"/>
-                        <outlet property="saveButton" destination="HSJ-r7-ftt" id="ZZI-BL-ofH"/>
                         <outlet property="sortFilesText" destination="eiq-Eg-hR4" id="P8t-qM-Pi9"/>
                         <outlet property="xyCoordButton" destination="3UW-DG-3jJ" id="rPO-9q-6qE"/>
                         <outlet property="xyLabel" destination="Mac-u6-BTS" id="z9N-3B-x90"/>

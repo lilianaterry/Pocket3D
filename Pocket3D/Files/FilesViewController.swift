@@ -86,7 +86,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func reloadFrc() {
         let req = NSFetchRequest<File>(entityName: "File")
-        let sort = NSSortDescriptor(key: UserDefaults.standard.integer(forKey: "fileSort") == 0 ? "name" : "date", ascending: false)
+        let sort = NSSortDescriptor(key: UserDefaults.standard.integer(forKey: "fileSort") == 0 ? "name" : "date", ascending: true)
         req.sortDescriptors = [sort]
         frc = NSFetchedResultsController(fetchRequest: req, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
