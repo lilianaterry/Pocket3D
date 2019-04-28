@@ -28,6 +28,13 @@ class JoystickSlider: UIView {
     static let min: CGFloat = 0
     static let max: CGFloat = 500
     
+    var isEnabled: Bool = true {
+        didSet {
+            if isEnabled { enable() }
+            else { disable() }
+        }
+    }
+    
     var value: PrinterCoordinate = CGPoint(x: min, y: max) as PrinterCoordinate
 
     override init(frame: CGRect) {
@@ -179,5 +186,27 @@ class JoystickSlider: UIView {
         } else {
             return CGPoint(x: x, y: y)
         }
+    }
+    
+    // stop head from moving and grey out view
+    func disable() {
+        print("DISABLE NOW!")
+        let recognizers = self.sliderHeadView?.gestureRecognizers
+        for recognizer in recognizers! {
+            recognizer.isEnabled = false
+        }
+        
+        self.alpha = 0.5
+    }
+    
+    // activate joystick ui and functionality
+    func enable() {
+        print("ENABLE NOW!")
+        let recognizers = self.sliderHeadView?.gestureRecognizers
+        for recognizer in recognizers! {
+            recognizer.isEnabled = true
+        }
+        
+        self.alpha = 1.0
     }
 }

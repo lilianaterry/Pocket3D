@@ -521,7 +521,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZME-4u-OO5" userLabel="Position Title">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZME-4u-OO5" userLabel="Position Title">
                                         <rect key="frame" x="16" y="0.0" width="359" height="26.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -678,6 +678,7 @@
                                     <constraint firstItem="pFy-mL-TvQ" firstAttribute="leading" secondItem="j9S-WH-Y49" secondAttribute="leading" id="8Bo-ne-9YH"/>
                                     <constraint firstItem="7i3-3Q-W6J" firstAttribute="centerX" secondItem="j9S-WH-Y49" secondAttribute="centerX" id="Epy-Fq-vfj"/>
                                     <constraint firstItem="Uj2-so-SeL" firstAttribute="top" secondItem="7i3-3Q-W6J" secondAttribute="bottom" constant="8" id="Gr5-a8-rV0"/>
+                                    <constraint firstItem="do7-OA-HBP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Uj2-so-SeL" secondAttribute="trailing" constant="8" symbolic="YES" id="LOO-0E-LTp"/>
                                     <constraint firstItem="ZME-4u-OO5" firstAttribute="top" secondItem="j9S-WH-Y49" secondAttribute="top" id="MpL-AO-g9y"/>
                                     <constraint firstItem="7i3-3Q-W6J" firstAttribute="top" secondItem="Bai-aP-TB1" secondAttribute="bottom" constant="8" id="PVB-CY-eOG"/>
                                     <constraint firstItem="K3h-RI-CDB" firstAttribute="top" secondItem="ZME-4u-OO5" secondAttribute="bottom" constant="15" id="QhN-HW-9ER"/>
@@ -689,6 +690,7 @@
                                     <constraint firstAttribute="trailing" secondItem="PB3-nS-p2U" secondAttribute="trailing" constant="30" id="eIx-fm-CQR"/>
                                     <constraint firstAttribute="trailing" secondItem="7i3-3Q-W6J" secondAttribute="trailing" constant="30" id="hy5-mA-hja"/>
                                     <constraint firstItem="do7-OA-HBP" firstAttribute="trailing" secondItem="7i3-3Q-W6J" secondAttribute="trailing" id="i75-B4-YVm"/>
+                                    <constraint firstItem="Bai-aP-TB1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="K3h-RI-CDB" secondAttribute="trailing" constant="8" symbolic="YES" id="kXY-od-i5Y"/>
                                     <constraint firstAttribute="trailing" secondItem="ZME-4u-OO5" secondAttribute="trailing" id="lDU-4n-nha"/>
                                     <constraint firstItem="JN3-0p-BhA" firstAttribute="leading" secondItem="j9S-WH-Y49" secondAttribute="leading" constant="15" id="nLA-1s-mRS"/>
                                     <constraint firstItem="Bai-aP-TB1" firstAttribute="trailing" secondItem="7i3-3Q-W6J" secondAttribute="trailing" id="nYk-qD-urS"/>

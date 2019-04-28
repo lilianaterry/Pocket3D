@@ -30,17 +30,21 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     @IBOutlet var extruderTempLabel: UILabel!
     @IBOutlet var bedTempLabel: UILabel!
     @IBOutlet var gcodeGrid: GridView!
+    
+    var didSetInitialValues: Bool!
 
     var gcodeCommands: [(String, [String])] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
         
         Push.instance.observe(who: self as Observer, topic: Push.current)
         
         print("In controls, adding listener to notification center")
         
+        didSetInitialValues = false
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(settingsChanged),
                                                name: NSNotification.Name(rawValue: "settings_changed"), object: nil)
@@ -55,6 +59,10 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
 
         gcodeGrid.delegate = self
         settingsChanged()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        didSetInitialValues = false
     }
     
     // Save button was selected on Settings Page and Sliders/Buttons need to be updated
@@ -89,12 +97,20 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
 
     func notify(message: Notification) {
         let json = message.object! as! JSON
+        
+        // update temperature labels with live temperature not intended
         if json["temps"].array?.count != 0 {
             extruderTempLabel.text = "Extruder: \(json["temps"][0]["tool0"]["actual"].floatValue)°"
             bedTempLabel.text = "Heat Bed: \(json["temps"][0]["bed"]["actual"].floatValue)°"
-            extruderSlider.value = json["temps"][0]["tool0"]["target"].floatValue
-            heatbedSlider.value = json["temps"][0]["bed"]["target"].floatValue
+            
+            // only update the slider head when the view appears to avoid user confusion
+            if (!didSetInitialValues) {
+                extruderSlider.value = json["temps"][0]["tool0"]["actual"].floatValue
+                heatbedSlider.value = json["temps"][0]["bed"]["actual"].floatValue
+            }
         }
+        
+        // update z position
         if let z = json["currentZ"].float {
             zPositionSlider.value = z
         }
@@ -125,9 +141,29 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
                 break
             }
         }
-        let locked = !(json["state"]["text"] == "Printing");
-        self.zPositionSlider.isEnabled = locked
-        // TODO: disable xyPositionSlider
+        
+        // grey out controls if print is in progress
+        if json["state"].array?.count != 0 {
+            let printInProgress = json["state"]["flags"]["printing"].boolValue
+            var alpha: CGFloat = 0
+            if printInProgress && self.zPositionSlider.isEnabled {
+                self.zPositionSlider.isEnabled = false
+                self.xyPositionSlider.isEnabled = false
+                alpha = 0.25 as CGFloat
+                self.positionText.text = "Print in progress."
+                self.positionText.sizeToFit()
+            } else if !printInProgress && !self.zPositionSlider.isEnabled {
+                self.zPositionSlider.isEnabled = true
+                self.xyPositionSlider.isEnabled = true
+                alpha = 1.0 as CGFloat
+                self.positionText.text = "Position"
+                self.positionText.sizeToFit()
+            }
+            
+            self.topLeftText.alpha = alpha
+            self.bottomLeftText.alpha = alpha
+            self.bottomRightText.alpha = alpha
+        }
     }
 
     // make sure everything is colored beautifully
