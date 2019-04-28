@@ -35,28 +35,15 @@ class UIExtensions {
     let textSize = 18.0 as CGFloat
     
     init() {
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        if (isDarkMode) {
-            headerBackgroundColor = UIColor.init(hex: 0x1C2937)
-            headerTextColor = UIColor.init(hex: 0x1B88CB)
-            
-            backgroundColor = UIColor.init(hex: 0x15202B)
-            titleColor = UIColor.init(hex: 0xFFFFFF)
-            textColor = UIColor.init(hex: 0x8899A6)
-            bodyElementColor = UIColor.init(hex: 0x8899A6)
-            
-            filesExpandedColor = UIColor.init(hex: 0x8899A6)
-        } else {
-            headerBackgroundColor = UIColor.init(hex: 0xE2E2E2)
-            headerTextColor = UIColor.init(hex: 0x000000)
-            
-            backgroundColor = UIColor.init(hex: 0xFFFFFF)
-            titleColor = UIColor.init(hex: 0x000000)
-            textColor = UIColor.init(hex: 0x000000)
-            bodyElementColor = UIColor.init(hex: 0xB2B2B2)
-            
-            filesExpandedColor = UIColor.init(hex: 0x000000)
-        }
+        headerBackgroundColor = UIColor.init(hex: 0x1C2937)
+        headerTextColor = UIColor.init(hex: 0x1B88CB)
+        
+        backgroundColor = UIColor.init(hex: 0x15202B)
+        titleColor = UIColor.init(hex: 0xFFFFFF)
+        textColor = UIColor.init(hex: 0x8899A6)
+        bodyElementColor = UIColor.init(hex: 0x8899A6)
+        
+        filesExpandedColor = UIColor.init(hex: 0x8899A6)
     }
 }
 

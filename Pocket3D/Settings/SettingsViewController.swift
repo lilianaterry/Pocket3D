@@ -24,14 +24,11 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     
     @IBOutlet var ipAddressText: UILabel!
     @IBOutlet var apiKeyText: UILabel!
-    @IBOutlet var colorModeText: UILabel!
     @IBOutlet var sortFilesText: UILabel!
     @IBOutlet var posText: UILabel!
     
     @IBOutlet var ipAddressField: TextFieldView!
     @IBOutlet var apiKeyField: TextFieldView!
-    
-    @IBOutlet var colorModeSwitch: UISegmentedControl!
     
     @IBOutlet var creationSortButton: BubbleButton!
     @IBOutlet var creationLabel: UILabel!
@@ -53,16 +50,23 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
     @IBOutlet var bedMaxField: TextFieldView!
     
     @IBOutlet var mirroringXLabel: UILabel!
-    @IBOutlet var mirroringXField: TextFieldView!
     @IBOutlet var mirroringYLabel: UILabel!
-    @IBOutlet var mirroringYField: TextFieldView!
+    @IBOutlet var mirroringNegXLabel: UILabel!
+    @IBOutlet var mirroringNegYLabel: UILabel!
+    @IBOutlet var posXButton: BubbleButton!
+    @IBOutlet var negXButton: BubbleButton!
+    @IBOutlet var posYButton: BubbleButton!
+    @IBOutlet var negYButton: BubbleButton!
+    
     
     @IBOutlet var gcodeGrid: GridView!
     
     var gcodeCommands: [(String, [String])] = []
     
-    var fileSortSelection: Int!
-    var xyCoordSelection: Int!
+    var fileSortSelection: ButtonGroupController!
+    var xyCoordSelection: ButtonGroupController!
+    var mirroringXSelection: ButtonGroupController!
+    var mirroringYSelection: ButtonGroupController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,9 +155,6 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         extruderMaxField.updateBorder()
         extruderMinField.updateBorder()
         
-        mirroringXField.updateBorder()
-        mirroringYField.updateBorder()
-        
         // add selectors to detec editing
         ipAddressField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
         apiKeyField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
@@ -161,8 +162,6 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         bedMinField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
         extruderMaxField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
         extruderMinField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
-        mirroringXField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
-        mirroringYField.addTarget(self, action: #selector(SettingsViewController.detectChange), for: .editingChanged)
         
         // current IP address
         if let ipAddress = settings.value(forKey: "ipAddress") as? String {
@@ -203,44 +202,48 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         } else {
             print("Setup TextFields: no extruder min found")
         }
-        
-        // current mirroring fields
-        if let mirrorX = settings.value(forKey: "mirrorX") as? Float {
-            mirroringXField.text = String(mirrorX)
-        } else {
-            print("Setup TextFields: no mirroring found for X")
-        }
-        
-        if let mirrorY = settings.value(forKey: "mirrorY") as? Float {
-            mirroringYField.text = String(mirrorY)
-        } else {
-            print("Setup TextFields: no mirroring found for Y")
-        }
     }
     
     // select buttons that the user has set and saved in settings before
     func setupButtons() {
-        let fileButtons = [alphaSortButton, creationSortButton]
-        let xyCoordButtons = [xyCoordButton, yxCoordButton]
+        self.fileSortSelection = ButtonGroupController(buttons: [alphaSortButton, creationSortButton])
+        self.xyCoordSelection = ButtonGroupController(buttons: [xyCoordButton, yxCoordButton])
+        self.mirroringXSelection = ButtonGroupController(buttons: [posXButton, negXButton])
+        self.mirroringYSelection = ButtonGroupController(buttons: [posYButton, negYButton])
+
+        print("setupButtons")
         
-        if let fileSort = settings.value(forKey: "fileSort") as? Int {
-            fileButtons[fileSort]!.selectButton(toDeselect: [])
-            fileSortSelection = fileSort
+        // file sorting settings
+        if let fileSortIndex = settings.value(forKey: "fileSort") as? Int {
+            let selected = fileSortSelection.buttons[fileSortIndex]
+            fileSortSelection.selectButton(sender: selected)
         } else {
             print("Setup Buttons: no fileSort option found")
         }
+        
         // xy coordinate inversion setting
-        if let posCoord = settings.value(forKey: "posCoord") as? Int {
-            xyCoordButtons[posCoord]!.selectButton(toDeselect: [])
-            xyCoordSelection = posCoord
+        if let posCoordIndex = settings.value(forKey: "posCoord") as? Int {
+            let selected = xyCoordSelection.buttons[posCoordIndex]
+            xyCoordSelection.selectButton(sender: selected)
         } else {
             print("Setup Buttons: no posCoord option found")
         }
-        // color mode setting
-        if let colorMode = settings.value(forKey: "colorMode") as? Int {
-            colorModeSwitch.selectedSegmentIndex = colorMode
+        
+        // current mirroring fields
+        if let mirrorX = settings.value(forKey: "mirrorX") as? Float {
+            let index = mirrorX == 1.0 ? 0 : 1
+            let selected = mirroringXSelection.buttons[index]
+            mirroringXSelection.selectButton(sender: selected)
         } else {
-            print("Setup Buttons: no inDarkMode option found")
+            print("Setup Buttons: no mirroring found for X")
+        }
+        
+        if let mirrorY = settings.value(forKey: "mirrorY") as? Float {
+            let index = mirrorY == 1.0 ? 0 : 1
+            let selected = mirroringYSelection.buttons[index]
+            mirroringYSelection.selectButton(sender: selected)
+        } else {
+            print("Setup Buttons: no mirroring found for Y")
         }
     }
     
@@ -262,6 +265,8 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         bedMaxLabel.textColor = ui.textColor
         mirroringXLabel.textColor = ui.textColor
         mirroringYLabel.textColor = ui.textColor
+        mirroringNegXLabel.textColor = ui.textColor
+        mirroringNegYLabel.textColor = ui.textColor
         
         extruderMaxLabel.font = ui.sliderTitleFont
         extruderMinLabel.font = ui.sliderTitleFont
@@ -269,11 +274,6 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         bedMaxLabel.font = ui.sliderTitleFont
         mirroringXLabel.font = ui.sliderTitleFont
         mirroringYLabel.font = ui.sliderTitleFont
-        
-        colorModeSwitch.tintColor = ui.titleColor
-        
-        // LILIANA_TODO: change this back to enabled
-        colorModeText.textColor = ui.textColor
     }
     
     // background coloring/header font
@@ -290,41 +290,41 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         saveButton.isEnabled = true
     }
     
-    // switched to dark or light mode
-    @IBAction func colorModeSelected(sender: UISegmentedControl) {
-        detectChange()
-    }
-    
     // multiple choice bubble buttons have changed selection for file sorting
-    @IBAction func fileSortOptionSelected(_ sender: UIButton) {
-        var allOptions = [alphaSortButton, creationSortButton] as [BubbleButton]
+    @IBAction func fileSortOptionSelected(_ sender: BubbleButton) {
+        fileSortSelection.selectButton(sender: sender)
         
-        let tag = sender.tag
-        let toSelect = allOptions[tag]
-        allOptions.remove(at: tag)
-        
-        if toSelect.isSelected == false {
+        if sender.isSelected == false {
             detectChange()
         }
-        
-        fileSortSelection = toSelect.tag
-        toSelect.selectButton(toDeselect: allOptions)
     }
     
     // multiple choice bubble buttons have changed selection for xy coords
-    @IBAction func coordOptionSelected(_ sender: UIButton) {
-        var allOptions = [xyCoordButton, yxCoordButton] as [BubbleButton]
+    @IBAction func coordOptionSelected(_ sender: BubbleButton) {
+        xyCoordSelection.selectButton(sender: sender)
         
-        let tag = sender.tag
-        let toSelect = allOptions[tag]
-        allOptions.remove(at: tag)
-        
-        if toSelect.isSelected == false {
+        if sender.isSelected == false {
             detectChange()
         }
-        
-        xyCoordSelection = toSelect.tag
-        toSelect.selectButton(toDeselect: allOptions)
+    }
+    
+    // multiple choice bubble buttons have changed selected for mirroring in the x direction
+    @IBAction func mirroringXSelected(_ sender: BubbleButton) {
+        if sender.isSelected == false {
+            print("Detect change")
+            detectChange()
+        }
+        mirroringXSelection.selectButton(sender: sender)
+    }
+    
+    // multiple choice bubble buttons have changed selected for mirroring in the y direction
+    @IBAction func mirroringYSelected(_ sender: BubbleButton) {
+        if sender.isSelected == false {
+            print("Detect change")
+
+            detectChange()
+        }
+        mirroringYSelection.selectButton(sender: sender)
     }
     
     // save to core memory if the button color says a change has occured on the page
@@ -341,15 +341,17 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
         let usrDefault = UserDefaults.standard
         usrDefault.set(ipAddressField.text, forKey: "ipAddress")
         usrDefault.set(apiKeyField.text, forKey: "apiKey")
-        usrDefault.set(colorModeSwitch.selectedSegmentIndex, forKey: "colorMode")
-        usrDefault.set(fileSortSelection, forKey: "fileSort")
-        usrDefault.set(xyCoordSelection, forKey: "posCoord")
+        usrDefault.set(fileSortSelection.currSelection, forKey: "fileSort")
+        usrDefault.set(xyCoordSelection.currSelection, forKey: "posCoord")
         usrDefault.set(Int(String(extruderMinField.text!))!, forKey: "extruderMin")
         usrDefault.set(Int(String(extruderMaxField.text!))!, forKey: "extruderMax")
         usrDefault.set(Int(String(bedMinField.text!))!, forKey: "bedMin")
         usrDefault.set(Int(String(bedMaxField.text!))!, forKey: "bedMax")
-        usrDefault.set(Float(String(mirroringXField.text!))!, forKey: "mirrorX")
-        usrDefault.set(Float(String(mirroringYField.text!))!, forKey: "mirrorY")
+        
+        let xSelection = mirroringXSelection.currSelection == 0 ? 1.0 : -1.0 as Float
+        let ySelection = mirroringYSelection.currSelection == 0 ? 1.0 : -1.0 as Float
+        usrDefault.set(xSelection, forKey: "mirrorX")
+        usrDefault.set(ySelection, forKey: "mirrorY")
         
         // save buttons by splitting array in half
         usrDefault.set(gcodeCommands.map { (element) -> String in

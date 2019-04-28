@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // set up settings to sane defaults
             let usrDefault = UserDefaults.standard
             usrDefault.set(true, forKey: "hasLaunched")
-            usrDefault.set(0, forKey: "colorMode")
             usrDefault.set(0, forKey: "fileSort")
             usrDefault.set(0, forKey: "posCoord")
             usrDefault.set(0, forKey: "extruderMin")
@@ -43,10 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("O no")
             }
         })
-        let ui = UIExtensions()
-        let size = CGSize(width: (self.window?.frame.size.width)! / 4, height: 49)
-        let lineSize = CGSize(width: size.width, height: 2)
-        UITabBar.appearance().selectionIndicatorImage = getUnderline(color: ui.headerTextColor, size: size, lineSize: lineSize)
         IQKeyboardManager.shared.enable = true
         // Override point for customization after application launch.
         return true

@@ -49,13 +49,13 @@ class BubbleButton: UIButton {
     }
 
     // selects the target button by filling it in and deselecting all others
-    func selectButton(toDeselect: [UIButton]) {
+    func selectButton() {
         layer.backgroundColor = ui.titleColor.cgColor
         isSelected = true
-
-        for button in toDeselect {
-            button.layer.backgroundColor = UIColor.clear.cgColor
-            button.isSelected = false
-        }
+    }
+    
+    func deselectButton() {
+        layer.backgroundColor = UIColor.clear.cgColor
+        isSelected = false
     }
 }

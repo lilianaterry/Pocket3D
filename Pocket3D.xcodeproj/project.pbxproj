@@ -39,6 +39,7 @@
 		CEB020B6222CC5FD008AE843 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020B5222CC5FD008AE843 /* TextFieldView.swift */; };
 		CEB020B9222CC61E008AE843 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020B8222CC61E008AE843 /* ButtonView.swift */; };
 		CEB020BB222CC7AE008AE843 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB020BA222CC7AE008AE843 /* UIExtensions.swift */; };
+		CEBED2DA2276380B00E650C7 /* ButtonGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2D92276380B00E650C7 /* ButtonGroupController.swift */; };
 		CEEF1F1E225C7C7600E7CC26 /* EditButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF1F1D225C7C7600E7CC26 /* EditButtonViewController.swift */; };
 		F76D79F31FF9E34944F726EB /* Pods_Pocket3DTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F265130983652F3D43D16F7 /* Pods_Pocket3DTests.framework */; };
 		FFA16124A32EF6B49F6DCE38 /* Pods_Pocket3DUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */; };
@@ -105,6 +106,7 @@
 		CEB020B5222CC5FD008AE843 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		CEB020B8222CC61E008AE843 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		CEB020BA222CC7AE008AE843 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		CEBED2D92276380B00E650C7 /* ButtonGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGroupController.swift; sourceTree = "<group>"; };
 		CEEF1F1D225C7C7600E7CC26 /* EditButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonViewController.swift; sourceTree = "<group>"; };
 		EAB6F072A660FDD343D6E992 /* Pods-Pocket3D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D.release.xcconfig"; sourceTree = "<group>"; };
 		EE5BE617055E6F8A20F9E253 /* Pods-Pocket3DTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				CE36832322453207005CB878 /* BubbleButton.swift */,
+				CEBED2D92276380B00E650C7 /* ButtonGroupController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				8363874C2258343E007C0442 /* GridView.swift in Sources */,
 				71AE0DC72275B48500A6A8A5 /* NotificationData.swift in Sources */,
 				CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */,
+				CEBED2DA2276380B00E650C7 /* ButtonGroupController.swift in Sources */,
 				8363874E22583656007C0442 /* GcodeGridCell.swift in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,
 				CEAEA46D2242E67100479B27 /* ControlsViewController.swift in Sources */,
@@ -751,7 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EKB2653XGR;
+				DEVELOPMENT_TEAM = C7F665E2YD;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -770,7 +774,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EKB2653XGR;
+				DEVELOPMENT_TEAM = C7F665E2YD;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
