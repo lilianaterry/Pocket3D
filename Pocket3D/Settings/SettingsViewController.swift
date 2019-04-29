@@ -378,6 +378,7 @@ class SettingsViewController: UIViewController, GridViewDelegate, GCodeButtonDel
             } else {
                 dest.currIndex = gcodeCommands.count - 1
                 dest.newButton = true
+                dest.currCode = ["GCODE1 123", "GCODE2 123", "GCODE2 123", "GCODE2 123", "GCODE2 123", "GCODE2 123"]
             }
         }
     }
