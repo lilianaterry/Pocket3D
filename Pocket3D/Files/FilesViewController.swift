@@ -11,7 +11,30 @@ import NVActivityIndicatorView
 import SwiftyJSON
 import UIKit
 
-class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FileCellDelegate {
+class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FileCellDelegate, Observer {
+    
+    var lastState: String = ""
+    var jobFileName: String = ""
+    var status: String = ""
+    
+    func notify(message: Notification) {
+        let json = message.object! as! JSON
+        status = json["state"]["text"].stringValue
+        if (status != "Operational") {
+            jobFileName = json["job"]["file"]["name"].stringValue
+        }
+        else {
+            jobFileName = ""
+        }
+        if (lastState != status) {
+            print (jobFileName)
+            self.tableView.reloadData()
+            print("State update")
+        }
+
+        lastState = status
+    }
+    
     @IBOutlet var tableView: UITableView!
 
     let ui = UIExtensions()
@@ -32,6 +55,8 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
 
         view.backgroundColor = ui.backgroundColor
+        
+        Push.instance.observe(who: self as Observer, topic: Push.current)
 
         let loadingAnimation = setupLoadingAnimation()
         NotificationCenter.default.addObserver(self, selector: #selector(settingsChanged),
@@ -122,10 +147,24 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         let file = frc.object(at: indexPath)
 
         cell.nameLabel.text = file.display
+        print("Hello")
+        print(jobFileName)
+        if (cell.nameLabel.text == jobFileName) {
+            cell.nameLabel.text = (cell.nameLabel.text ?? "") + " (PRINTING)"
+            print("MATCH")
+        }
         cell.modifiedLabel.text = DateFormatter.localizedString(from: file.date!, dateStyle: .medium, timeStyle: .medium)
         cell.estTimeLabel.text = printTimeFormatter.string(from: Double(file.time))
         cell.modifiedLabel.sizeToFit()
         cell.estTimeLabel.sizeToFit()
+        if (status != "Operational") {
+            cell.printButton.backgroundColor = ui.bodyElementColor
+            cell.printButton.alpha = 0.5
+        }
+        else {
+            cell.printButton.backgroundColor = ui.headerTextColor
+            cell.printButton.alpha = 1
+        }
         return cell
     }
 
