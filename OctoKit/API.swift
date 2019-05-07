@@ -9,10 +9,10 @@
 import Alamofire
 import SwiftyJSON
 
-final class API {
-    enum ResponseType { case String, JSON }
+public final class API {
+    public enum ResponseType { case String, JSON }
 
-    enum Status {
+    public enum Status {
         case Ok, Fail
 
         static func && (lhs: Status, rhs: Status) -> Status {
@@ -20,46 +20,40 @@ final class API {
         }
     }
 
-    typealias JsonCallback = (Status, JSON) -> Void
-    typealias Callback = (Status) -> Void
+    public typealias JsonCallback = (Status, JSON) -> Void
+    public typealias Callback = (Status) -> Void
 
-    static let instance = API()
+    public static let instance = API()
 
     private var orig_url: URL!
     private var url: URL!
     private var api_key: String!
 
-    private var debug_enabled: Bool = true
-
     private var headers: [String: String] {
         return ["X-Api-Key": self.api_key]
     }
-
-    func setup(url: String, key: String) {
-        // Chris's hardcoded shieeeeet
-        // Use debug stuff if the debug thing above is enabled
-        // and DEBUG is entered in a field
-        if url == "DEBUG" || key == "DEBUG", debug_enabled {
-            orig_url = URL(string: "http://70.122.32.48")
-            api_key = "0A49A641E031463790A0F5261282AD02"
-            // Virtual printer shit maybe fuck it I don't know
-            // self.orig_url = URL(string: "http://localhost:5000")
-            // self.api_key = "589F0038062E48CBAB0191A0CF9CC7AC"
-        } else {
-            orig_url = URL(string: url)
-            api_key = key
+    
+    init() {
+        if let ip = UserDefaults.standard.string(forKey: "ipAddress"),
+            let api = UserDefaults.standard.string(forKey: "apiKey") {
+            // we can initialize without setup being called
+            self.orig_url = URL(string: ip)!
+            self.url = self.orig_url.appendingPathComponent("api")
+            self.api_key = api;
         }
+    }
+
+    public func setup(url: String, key: String) {
+        orig_url = URL(string: url)
+        api_key = key
         self.url = orig_url.appendingPathComponent("api")
     }
 
-    func login(callback: @escaping JsonCallback) {
+    public func login(callback: @escaping JsonCallback) {
         performPost(path: "login", parameters: ["passive": true]).responseJSON { res in
             let json = JSON(res.data as Any)
             NSLog("Got session key \(json["session"])")
             if res.response?.statusCode == 200 {
-                Push.instance.connect(baseUrl: self.orig_url,
-                                      name: json["name"].stringValue,
-                                      sessionKey: json["session"].stringValue)
                 callback(.Ok, json)
                 print("Login apparently successful I guess?")
             } else {
@@ -69,7 +63,7 @@ final class API {
         }
     }
 
-    func stream() -> URL? {
+    public func stream() -> URL? {
         var qurl = URLComponents(url: orig_url, resolvingAgainstBaseURL: true)!
         var qi = qurl.queryItems ?? []
         // TODO: this is the default, add to settings at some point
@@ -79,7 +73,7 @@ final class API {
         return qurl.url
     }
 
-    func move(x: Float? = .none, y: Float? = .none, z: Float? = .none, f: Float? = .none, callback: @escaping Callback) {
+    public func move(x: Float? = .none, y: Float? = .none, z: Float? = .none, f: Float? = .none, callback: @escaping Callback) {
         var params: [String: Any] = ["command": "jog", "absolute": true]
         if let x = x {
             params["x"] = x
@@ -96,33 +90,42 @@ final class API {
         performPostDefault(paths: ["printer", "printhead"], parameters: params, callback: callback)
     }
 
-    func home(axes: [String], callback: @escaping Callback) {
+    public func home(axes: [String], callback: @escaping Callback) {
         performPostDefault(paths: ["printer", "printhead"], parameters: ["axes": axes], callback: callback)
     }
 
-    func extruderHeat(hotness: Float, callback: @escaping Callback) {
+    public func extruderHeat(hotness: Float, callback: @escaping Callback) {
         performPostDefault(paths: ["printer", "tool"],
                            parameters: ["command": "target", "targets": ["tool0": hotness]],
                            callback: callback)
     }
 
-    func bedHeat(hotness: Float, callback: @escaping Callback) {
+    public func bedHeat(hotness: Float, callback: @escaping Callback) {
         performPostDefault(paths: ["printer", "bed"],
                            parameters: ["command": "target", "target": hotness],
                            callback: callback)
     }
+    
+    // this function is different because intent compilation
+    // breaks swiftjson which is sick
+    public func status(callback: @escaping (Status, String, NSNumber, String) -> Void) {
+        Alamofire.request(url.appendingPathComponent("job"), headers: headers).responseJSON { (data) in
+            let js = JSON(data.data!)
+            callback(data.response?.statusCode == 200 ? .Ok : .Fail, js["job"]["file"]["name"].stringValue, js["progress"]["completion"].numberValue, "Not yet")
+        }
+    }
 
-    func pause(callback: @escaping Callback) {
+    public func pause(callback: @escaping Callback) {
         performPostDefault(paths: ["job"],
                            parameters: ["command": "pause", "action": "toggle"],
                            callback: callback)
     }
 
-    func cancel(callback: @escaping Callback) {
+    public func cancel(callback: @escaping Callback) {
         performPostDefault(paths: ["job"], parameters: ["command": "cancel"], callback: callback)
     }
 
-    func files(callback: @escaping JsonCallback) {
+    public func files(callback: @escaping JsonCallback) {
         Alamofire.request(url.appendingPathComponent("files"),
                           headers: headers).responseJSON { data in
             callback(data.response?.statusCode == 200 ? .Ok : .Fail,
@@ -130,13 +133,13 @@ final class API {
         }
     }
 
-    func printFile(file: URL, callback: @escaping Callback) {
+    public func printFile(file: URL, callback: @escaping Callback) {
         performPostDefault(paths: Array(file.pathComponents[2...]),
                            parameters: ["command": "select", "print": true],
                            callback: callback)
     }
 
-    func commands(commands: [String], callback: @escaping Callback) {
+    public func commands(commands: [String], callback: @escaping Callback) {
         performPostDefault(paths: ["printer", "command"],
                            parameters: ["commands": commands],
                            callback: callback)

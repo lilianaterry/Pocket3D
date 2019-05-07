@@ -9,6 +9,7 @@
 import CoreData
 import SwiftyJSON
 import UIKit
+import OctoKit
 
 class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate, GridViewDelegate {
     let ui = UIExtensions()
@@ -32,9 +33,11 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     @IBOutlet var gcodeGrid: GridView!
     
     var didSetInitialValues: Bool!
-
+    
     var gcodeCommands: [(String, [String])] = []
-
+    
+    var tempUpdateCounter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +51,7 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(settingsChanged),
                                                name: NSNotification.Name(rawValue: "settings_changed"), object: nil)
-
+        
         xyPositionSlider.delegate = self
         zPositionSlider.isContinuous = false
         extruderSlider.isContinuous = false
@@ -56,7 +59,7 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         zPositionSlider.addTarget(self, action: #selector(zHeightChanged), for: .valueChanged)
         extruderSlider.addTarget(self, action: #selector(eHeatChanged), for: .valueChanged)
         heatbedSlider.addTarget(self, action: #selector(bedHeatChanged), for: .valueChanged)
-
+        
         gcodeGrid.delegate = self
         settingsChanged()
     }
@@ -77,24 +80,24 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         // merge gcode arrays back together
         updateGcodeCells()
     }
-
+    
     // Get GCode button information from UserDefaults
     func updateGcodeCells() {
         // clear out old information
-        self.gcodeCommands = []
+        gcodeCommands = []
         gcodeGrid.clearCells()
         
         // merge gcode arrays back together
         let commandNames = usrDefault.object(forKey: "gcodeNames") as! [String]
         let commands = usrDefault.object(forKey: "gcodeCommands") as! [[String]]
         
-        self.gcodeCommands = Array(zip(commandNames, commands))
+        gcodeCommands = Array(zip(commandNames, commands))
         
         for command in gcodeCommands {
             gcodeGrid.addCell(view: GcodeGridCell(text: command.0))
         }
     }
-
+    
     func notify(message: Notification) {
         let json = message.object! as! JSON
         
@@ -104,17 +107,18 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
             bedTempLabel.text = "Heat Bed: \(json["temps"][0]["bed"]["actual"].floatValue)°"
             
             // only update the slider head when the view appears to avoid user confusion
-            if (!didSetInitialValues) {
-                extruderSlider.value = json["temps"][0]["tool0"]["actual"].floatValue
-                heatbedSlider.value = json["temps"][0]["bed"]["actual"].floatValue
+            if (!extruderSlider.isTracking && tempUpdateCounter <= 0) {
+                extruderSlider.value = json["temps"][0]["tool0"]["target"].floatValue
+                heatbedSlider.value = json["temps"][0]["bed"]["target"].floatValue
             }
+            tempUpdateCounter -= 1;
         }
         
         // update z position
         if let z = json["currentZ"].float {
             zPositionSlider.value = z
         }
-
+        
         // try to set the xy control position
         for l in (json["logs"].arrayObject! as! [String]).filter({ $0.starts(with: "Send:") }) {
             var split: [Substring]
@@ -146,26 +150,26 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         if json["state"].array?.count != 0 {
             let printInProgress = json["state"]["flags"]["printing"].boolValue
             var alpha: CGFloat = 0
-            if printInProgress && self.zPositionSlider.isEnabled {
-                self.zPositionSlider.isEnabled = false
-                self.xyPositionSlider.isEnabled = false
+            if printInProgress && zPositionSlider.isEnabled {
+                zPositionSlider.isEnabled = false
+                xyPositionSlider.isEnabled = false
                 alpha = 0.25 as CGFloat
-                self.positionText.text = "Print in progress."
-                self.positionText.sizeToFit()
-            } else if !printInProgress && !self.zPositionSlider.isEnabled {
-                self.zPositionSlider.isEnabled = true
-                self.xyPositionSlider.isEnabled = true
+                positionText.text = "Print in progress."
+                positionText.sizeToFit()
+            } else if !printInProgress && !zPositionSlider.isEnabled {
+                zPositionSlider.isEnabled = true
+                xyPositionSlider.isEnabled = true
                 alpha = 1.0 as CGFloat
-                self.positionText.text = "Position"
-                self.positionText.sizeToFit()
+                positionText.text = "Position"
+                positionText.sizeToFit()
             }
             
-            self.topLeftText.alpha = alpha
-            self.bottomLeftText.alpha = alpha
-            self.bottomRightText.alpha = alpha
+            topLeftText.alpha = alpha
+            bottomLeftText.alpha = alpha
+            bottomRightText.alpha = alpha
         }
     }
-
+    
     // make sure everything is colored beautifully
     func setup() {
         let inverted = (usrDefault.value(forKey: "posCoord") as! Int) == 1
@@ -185,35 +189,38 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
         extruderTempLabel.textColor = ui.titleColor
         bedTempLabel.textColor = ui.titleColor
         
-        self.view.backgroundColor = ui.backgroundColor
+        view.backgroundColor = ui.backgroundColor
     }
-
+    
     @objc func eHeatChanged(_ sender: UISlider) {
+        tempUpdateCounter = 2
+
         API.instance.extruderHeat(hotness: sender.value) { _ in
         }
     }
-
+    
     @objc func bedHeatChanged(_ sender: UISlider) {
+        tempUpdateCounter = 2
         API.instance.bedHeat(hotness: sender.value) { _ in
         }
     }
-
+    
     @objc func zHeightChanged(_ sender: UISlider) {
         API.instance.move(x: nil, y: nil, z: sender.value, f: 1000) { _ in
         }
     }
-
+    
     // MARK: JoystickSliderDelegate
-
+    
     func headMoved(point: CGPoint) {
         API.instance.move(x: Float(point.x), y: Float(point.y), z: nil, f: 10000) { _ in
         }
     }
-
+    
     // MARK: GridViewDelegate
-
+    
     func gridViewTapped(which: Int) {
-        API.instance.commands(commands: self.gcodeCommands[which].1) { _ in
+        API.instance.commands(commands: gcodeCommands[which].1) { _ in
         }
     }
 }

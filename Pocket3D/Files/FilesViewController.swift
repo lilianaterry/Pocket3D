@@ -10,6 +10,7 @@ import CoreData
 import NVActivityIndicatorView
 import SwiftyJSON
 import UIKit
+import OctoKit
 
 class FilesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FileCellDelegate, Observer {
     
@@ -111,7 +112,7 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func reloadFrc() {
         let req = NSFetchRequest<File>(entityName: "File")
-        let sort = NSSortDescriptor(key: UserDefaults.standard.integer(forKey: "fileSort") == 0 ? "name" : "date", ascending: true)
+        let sort = NSSortDescriptor(key: UserDefaults.standard.integer(forKey: "fileSort") == 0 ? "name" : "date", ascending: UserDefaults.standard.integer(forKey: "fileSort") == 0)
         req.sortDescriptors = [sort]
         frc = NSFetchedResultsController(fetchRequest: req, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
@@ -147,7 +148,6 @@ class FilesViewController: UIViewController, UITableViewDataSource, UITableViewD
         let file = frc.object(at: indexPath)
 
         cell.nameLabel.text = file.display
-        print("Hello")
         print(jobFileName)
         if (cell.nameLabel.text == jobFileName) {
             cell.nameLabel.text = (cell.nameLabel.text ?? "") + " (PRINTING)"

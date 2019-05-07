@@ -9,6 +9,7 @@
 import MJPEGStreamLib
 import SwiftyJSON
 import UIKit
+import OctoKit
 
 class StatusViewController: UIViewController, Observer {
     lazy var printTimeFormatter: DateComponentsFormatter = {

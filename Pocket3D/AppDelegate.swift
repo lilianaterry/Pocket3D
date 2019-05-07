@@ -10,6 +10,7 @@ import CoreData
 import IQKeyboardManagerSwift
 import UIKit
 import UserNotifications
+import Intents
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             usrDefault.set([], forKey: "gcodeCommands")
             UserDefaults.standard.set(true, forKey: "isDarkMode")
         }
+// LMAOOOOO 
+//        INPreferences.requestSiriAuthorization { (status) in
+//        }
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert], completionHandler: {
             (success, error) in
@@ -75,6 +79,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         saveContext()
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        guard userActivity.interaction == nil else {
+            return false
+        }
+        return true // I guess?
     }
 
     // MARK: - Core Data stack

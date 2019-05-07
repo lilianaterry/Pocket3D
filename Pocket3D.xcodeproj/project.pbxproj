@@ -14,10 +14,18 @@
 		8300E7E82225FF0C004DA31C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8300E7E62225FF0C004DA31C /* LaunchScreen.storyboard */; };
 		8300E7F32225FF0C004DA31C /* Pocket3DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7F22225FF0C004DA31C /* Pocket3DTests.swift */; };
 		8300E7FE2225FF0C004DA31C /* Pocket3DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E7FD2225FF0C004DA31C /* Pocket3DUITests.swift */; };
-		8300E80D2225FF4D004DA31C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E80C2225FF4D004DA31C /* API.swift */; };
+		835A4AB72277772400CE7AD1 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835A4AB62277772400CE7AD1 /* IntentHandler.swift */; };
+		835A4ABB2277772400CE7AD1 /* StatusIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 835A4AB42277772300CE7AD1 /* StatusIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		835A4AC62277795300CE7AD1 /* StatusIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 835A4AC52277795300CE7AD1 /* StatusIntents.intentdefinition */; };
+		835A4AC72277795300CE7AD1 /* StatusIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 835A4AC52277795300CE7AD1 /* StatusIntents.intentdefinition */; };
 		8363874C2258343E007C0442 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8363874B2258343E007C0442 /* GridView.swift */; };
 		8363874E22583656007C0442 /* GcodeGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8363874D22583656007C0442 /* GcodeGridCell.swift */; };
 		837F45D3223031BB00895817 /* Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837F45D2223031BB00895817 /* Push.swift */; };
+		83A089152281FD8F0076EAEF /* OctoKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 83A089132281FD8F0076EAEF /* OctoKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83A089182281FD8F0076EAEF /* OctoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A089112281FD8F0076EAEF /* OctoKit.framework */; };
+		83A089192281FD8F0076EAEF /* OctoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83A089112281FD8F0076EAEF /* OctoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83A0891E2281FE030076EAEF /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8300E80C2225FF4D004DA31C /* API.swift */; };
+		9F3BFC3064D04B5652EA7702 /* Pods_OctoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C72713FF7B997ED5A71A57 /* Pods_OctoKit.framework */; };
 		B0F94C24ACDDF997EA7B3475 /* Pods_Pocket3D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */; };
 		CE36831D22442FCB005CB878 /* JoystickSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36831C22442FCB005CB878 /* JoystickSlider.swift */; };
 		CE36832022449D12005CB878 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36831F22449D12005CB878 /* SettingsViewController.swift */; };
@@ -60,11 +68,51 @@
 			remoteGlobalIDString = 8300E7D52225FF0B004DA31C;
 			remoteInfo = Pocket3D;
 		};
+		835A4AB92277772400CE7AD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8300E7CE2225FF0B004DA31C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 835A4AB32277772300CE7AD1;
+			remoteInfo = StatusIntents;
+		};
+		83A089162281FD8F0076EAEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8300E7CE2225FF0B004DA31C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83A089102281FD8F0076EAEF;
+			remoteInfo = OctoKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		835A4ABF2277772400CE7AD1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				835A4ABB2277772400CE7AD1 /* StatusIntents.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83A0891D2281FD8F0076EAEF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				83A089192281FD8F0076EAEF /* OctoKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2F265130983652F3D43D16F7 /* Pods_Pocket3DTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3DTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		324C801A375BE291DD9C1A9F /* Pods-Pocket3DUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests.release.xcconfig"; sourceTree = "<group>"; };
+		36C72713FF7B997ED5A71A57 /* Pods_OctoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OctoKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		642CFEBD14E025ACDF76CC6A /* Pods-Pocket3D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3D.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D.debug.xcconfig"; sourceTree = "<group>"; };
 		7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pocket3D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AE0DC62275B48500A6A8A5 /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
@@ -82,9 +130,19 @@
 		8300E7FD2225FF0C004DA31C /* Pocket3DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocket3DUITests.swift; sourceTree = "<group>"; };
 		8300E7FF2225FF0C004DA31C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8300E80C2225FF4D004DA31C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		835A4AB42277772300CE7AD1 /* StatusIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StatusIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		835A4AB62277772400CE7AD1 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		835A4AB82277772400CE7AD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		835A4AC02277778900CE7AD1 /* Pocket3D.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pocket3D.entitlements; sourceTree = "<group>"; };
+		835A4AC12277779200CE7AD1 /* StatusIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatusIntents.entitlements; sourceTree = "<group>"; };
+		835A4AC52277795300CE7AD1 /* StatusIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = StatusIntents.intentdefinition; sourceTree = "<group>"; };
 		8363874B2258343E007C0442 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		8363874D22583656007C0442 /* GcodeGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GcodeGridCell.swift; sourceTree = "<group>"; };
 		837F45D2223031BB00895817 /* Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Push.swift; sourceTree = "<group>"; };
+		83A089112281FD8F0076EAEF /* OctoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OctoKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83A089132281FD8F0076EAEF /* OctoKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OctoKit.h; sourceTree = "<group>"; };
+		83A089142281FD8F0076EAEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94406A75F678B7740DBA6CA7 /* Pods-OctoKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-OctoKit/Pods-OctoKit.release.xcconfig"; sourceTree = "<group>"; };
 		CCA0722FDBF771048CF69280 /* Pods-Pocket3DTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE36831C22442FCB005CB878 /* JoystickSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickSlider.swift; sourceTree = "<group>"; };
 		CE36831F22449D12005CB878 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +166,7 @@
 		CEB020BA222CC7AE008AE843 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		CEBED2D92276380B00E650C7 /* ButtonGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGroupController.swift; sourceTree = "<group>"; };
 		CEEF1F1D225C7C7600E7CC26 /* EditButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonViewController.swift; sourceTree = "<group>"; };
+		DA171C60A6A1D0B902171538 /* Pods-OctoKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OctoKit/Pods-OctoKit.debug.xcconfig"; sourceTree = "<group>"; };
 		EAB6F072A660FDD343D6E992 /* Pods-Pocket3D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3D/Pods-Pocket3D.release.xcconfig"; sourceTree = "<group>"; };
 		EE5BE617055E6F8A20F9E253 /* Pods-Pocket3DTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DTests/Pods-Pocket3DTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF6A78D9265D9A6EB825877D /* Pods-Pocket3DUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pocket3DUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pocket3DUITests/Pods-Pocket3DUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A089182281FD8F0076EAEF /* OctoKit.framework in Frameworks */,
 				B0F94C24ACDDF997EA7B3475 /* Pods_Pocket3D.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +198,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		835A4AB12277772300CE7AD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83A0890E2281FD8F0076EAEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F3BFC3064D04B5652EA7702 /* Pods_OctoKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -147,6 +222,7 @@
 				7156480BC8DF13711F7061F0 /* Pods_Pocket3D.framework */,
 				2F265130983652F3D43D16F7 /* Pods_Pocket3DTests.framework */,
 				7222E2AB59DF0740DB4CF028 /* Pods_Pocket3DUITests.framework */,
+				36C72713FF7B997ED5A71A57 /* Pods_OctoKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,6 +236,8 @@
 				EE5BE617055E6F8A20F9E253 /* Pods-Pocket3DTests.release.xcconfig */,
 				FF6A78D9265D9A6EB825877D /* Pods-Pocket3DUITests.debug.xcconfig */,
 				324C801A375BE291DD9C1A9F /* Pods-Pocket3DUITests.release.xcconfig */,
+				DA171C60A6A1D0B902171538 /* Pods-OctoKit.debug.xcconfig */,
+				94406A75F678B7740DBA6CA7 /* Pods-OctoKit.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -170,6 +248,8 @@
 				8300E7D82225FF0B004DA31C /* Pocket3D */,
 				8300E7F12225FF0C004DA31C /* Pocket3DTests */,
 				8300E7FC2225FF0C004DA31C /* Pocket3DUITests */,
+				835A4AB52277772400CE7AD1 /* StatusIntents */,
+				83A089122281FD8F0076EAEF /* OctoKit */,
 				8300E7D72225FF0B004DA31C /* Products */,
 				3A92BE4221788CB4EA37CFAF /* Pods */,
 				371B95191B3A7BCDCE79FE12 /* Frameworks */,
@@ -182,6 +262,8 @@
 				8300E7D62225FF0B004DA31C /* Pocket3D.app */,
 				8300E7EE2225FF0C004DA31C /* Pocket3DTests.xctest */,
 				8300E7F92225FF0C004DA31C /* Pocket3DUITests.xctest */,
+				835A4AB42277772300CE7AD1 /* StatusIntents.appex */,
+				83A089112281FD8F0076EAEF /* OctoKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,6 +271,7 @@
 		8300E7D82225FF0B004DA31C /* Pocket3D */ = {
 			isa = PBXGroup;
 			children = (
+				835A4AC02277778900CE7AD1 /* Pocket3D.entitlements */,
 				CE36831E22449CFA005CB878 /* Settings */,
 				CEAEA46B2242E65800479B27 /* Controls */,
 				8300E80B2225FF21004DA31C /* API */,
@@ -227,11 +310,31 @@
 		8300E80B2225FF21004DA31C /* API */ = {
 			isa = PBXGroup;
 			children = (
-				8300E80C2225FF4D004DA31C /* API.swift */,
 				837F45D2223031BB00895817 /* Push.swift */,
 				71AE0DC62275B48500A6A8A5 /* NotificationData.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		835A4AB52277772400CE7AD1 /* StatusIntents */ = {
+			isa = PBXGroup;
+			children = (
+				835A4AC12277779200CE7AD1 /* StatusIntents.entitlements */,
+				835A4AB62277772400CE7AD1 /* IntentHandler.swift */,
+				835A4AB82277772400CE7AD1 /* Info.plist */,
+				835A4AC52277795300CE7AD1 /* StatusIntents.intentdefinition */,
+			);
+			path = StatusIntents;
+			sourceTree = "<group>";
+		};
+		83A089122281FD8F0076EAEF /* OctoKit */ = {
+			isa = PBXGroup;
+			children = (
+				8300E80C2225FF4D004DA31C /* API.swift */,
+				83A089132281FD8F0076EAEF /* OctoKit.h */,
+				83A089142281FD8F0076EAEF /* Info.plist */,
+			);
+			path = OctoKit;
 			sourceTree = "<group>";
 		};
 		CE36831E22449CFA005CB878 /* Settings */ = {
@@ -333,6 +436,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		83A0890C2281FD8F0076EAEF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83A089152281FD8F0076EAEF /* OctoKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		8300E7D52225FF0B004DA31C /* Pocket3D */ = {
 			isa = PBXNativeTarget;
@@ -343,10 +457,14 @@
 				8300E7D32225FF0B004DA31C /* Frameworks */,
 				8300E7D42225FF0B004DA31C /* Resources */,
 				D9C648486D800F78C1A3A420 /* [CP] Embed Pods Frameworks */,
+				835A4ABF2277772400CE7AD1 /* Embed App Extensions */,
+				83A0891D2281FD8F0076EAEF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				835A4ABA2277772400CE7AD1 /* PBXTargetDependency */,
+				83A089172281FD8F0076EAEF /* PBXTargetDependency */,
 			);
 			name = Pocket3D;
 			productName = Pocket3D;
@@ -391,18 +509,59 @@
 			productReference = 8300E7F92225FF0C004DA31C /* Pocket3DUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		835A4AB32277772300CE7AD1 /* StatusIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 835A4ABE2277772400CE7AD1 /* Build configuration list for PBXNativeTarget "StatusIntents" */;
+			buildPhases = (
+				835A4AB02277772300CE7AD1 /* Sources */,
+				835A4AB12277772300CE7AD1 /* Frameworks */,
+				835A4AB22277772300CE7AD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StatusIntents;
+			productName = StatusIntents;
+			productReference = 835A4AB42277772300CE7AD1 /* StatusIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		83A089102281FD8F0076EAEF /* OctoKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83A0891C2281FD8F0076EAEF /* Build configuration list for PBXNativeTarget "OctoKit" */;
+			buildPhases = (
+				7982C22AC5ED6EC356A2A1F2 /* [CP] Check Pods Manifest.lock */,
+				83A0890C2281FD8F0076EAEF /* Headers */,
+				83A0890D2281FD8F0076EAEF /* Sources */,
+				83A0890E2281FD8F0076EAEF /* Frameworks */,
+				83A0890F2281FD8F0076EAEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OctoKit;
+			productName = OctoKit;
+			productReference = 83A089112281FD8F0076EAEF /* OctoKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		8300E7CE2225FF0B004DA31C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Team 2";
 				TargetAttributes = {
 					8300E7D52225FF0B004DA31C = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					8300E7ED2225FF0C004DA31C = {
 						CreatedOnToolsVersion = 10.1;
@@ -411,6 +570,17 @@
 					8300E7F82225FF0C004DA31C = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 8300E7D52225FF0B004DA31C;
+					};
+					835A4AB32277772300CE7AD1 = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					83A089102281FD8F0076EAEF = {
+						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
 			};
@@ -430,6 +600,8 @@
 				8300E7D52225FF0B004DA31C /* Pocket3D */,
 				8300E7ED2225FF0C004DA31C /* Pocket3DTests */,
 				8300E7F82225FF0C004DA31C /* Pocket3DUITests */,
+				835A4AB32277772300CE7AD1 /* StatusIntents */,
+				83A089102281FD8F0076EAEF /* OctoKit */,
 			);
 		};
 /* End PBXProject section */
@@ -465,6 +637,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		835A4AB22277772300CE7AD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83A0890F2281FD8F0076EAEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -480,6 +666,28 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Pocket3DTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7982C22AC5ED6EC356A2A1F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OctoKit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -529,20 +737,20 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Pocket3D/Pods-Pocket3D-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MJPEGStreamLib/MJPEGStreamLib.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJPEGStreamLib.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,11 +780,11 @@
 				8363874C2258343E007C0442 /* GridView.swift in Sources */,
 				71AE0DC72275B48500A6A8A5 /* NotificationData.swift in Sources */,
 				CE3683272245644B005CB878 /* Pocket3D.xcdatamodeld in Sources */,
+				835A4AC62277795300CE7AD1 /* StatusIntents.intentdefinition in Sources */,
 				CEBED2DA2276380B00E650C7 /* ButtonGroupController.swift in Sources */,
 				8363874E22583656007C0442 /* GcodeGridCell.swift in Sources */,
 				8300E7DA2225FF0B004DA31C /* AppDelegate.swift in Sources */,
 				CEAEA46D2242E67100479B27 /* ControlsViewController.swift in Sources */,
-				8300E80D2225FF4D004DA31C /* API.swift in Sources */,
 				CEB020B6222CC5FD008AE843 /* TextFieldView.swift in Sources */,
 				CEAEA46F2242F76000479B27 /* SliderView.swift in Sources */,
 			);
@@ -598,6 +806,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		835A4AB02277772300CE7AD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				835A4AC72277795300CE7AD1 /* StatusIntents.intentdefinition in Sources */,
+				835A4AB72277772400CE7AD1 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83A0890D2281FD8F0076EAEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83A0891E2281FE030076EAEF /* API.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -610,6 +835,16 @@
 			isa = PBXTargetDependency;
 			target = 8300E7D52225FF0B004DA31C /* Pocket3D */;
 			targetProxy = 8300E7FA2225FF0C004DA31C /* PBXContainerItemProxy */;
+		};
+		835A4ABA2277772400CE7AD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 835A4AB32277772300CE7AD1 /* StatusIntents */;
+			targetProxy = 835A4AB92277772400CE7AD1 /* PBXContainerItemProxy */;
+		};
+		83A089172281FD8F0076EAEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83A089102281FD8F0076EAEF /* OctoKit */;
+			targetProxy = 83A089162281FD8F0076EAEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -753,9 +988,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 642CFEBD14E025ACDF76CC6A /* Pods-Pocket3D.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pocket3D/Pocket3D.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C7F665E2YD;
+				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -772,9 +1009,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EAB6F072A660FDD343D6E992 /* Pods-Pocket3D.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pocket3D/Pocket3D.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C7F665E2YD;
+				DEVELOPMENT_TEAM = EKB2653XGR;
 				INFOPLIST_FILE = Pocket3D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -873,6 +1112,110 @@
 			};
 			name = Release;
 		};
+		835A4ABC2277772400CE7AD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StatusIntents/StatusIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EKB2653XGR;
+				INFOPLIST_FILE = StatusIntents/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D.StatusIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		835A4ABD2277772400CE7AD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StatusIntents/StatusIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EKB2653XGR;
+				INFOPLIST_FILE = StatusIntents/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.Pocket3D.StatusIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		83A0891A2281FD8F0076EAEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA171C60A6A1D0B902171538 /* Pods-OctoKit.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EKB2653XGR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OctoKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.OctoKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		83A0891B2281FD8F0076EAEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94406A75F678B7740DBA6CA7 /* Pods-OctoKit.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EKB2653XGR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OctoKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.OctoKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -908,6 +1251,24 @@
 			buildConfigurations = (
 				8300E8092225FF0C004DA31C /* Debug */,
 				8300E80A2225FF0C004DA31C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		835A4ABE2277772400CE7AD1 /* Build configuration list for PBXNativeTarget "StatusIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				835A4ABC2277772400CE7AD1 /* Debug */,
+				835A4ABD2277772400CE7AD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83A0891C2281FD8F0076EAEF /* Build configuration list for PBXNativeTarget "OctoKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83A0891A2281FD8F0076EAEF /* Debug */,
+				83A0891B2281FD8F0076EAEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

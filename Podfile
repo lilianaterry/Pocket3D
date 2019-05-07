@@ -6,8 +6,6 @@ target 'Pocket3D' do
   use_frameworks!
 
   # Pods for Pocket3D
-  pod 'Alamofire', '~> 4.7'
-  pod 'SwiftyJSON', '~> 4.0'
   pod "MJPEGStreamLib"
   pod "Starscream"
   pod 'IQKeyboardManagerSwift'
@@ -22,6 +20,13 @@ target 'Pocket3D' do
     inherit! :search_paths
     # Pods for testing
   end
+end
+
+target 'OctoKit' do
+  use_frameworks!
+
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
 end
 
 pre_install do |installer|
