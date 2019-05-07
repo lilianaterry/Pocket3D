@@ -9,6 +9,7 @@
 import CoreData
 import SwiftyJSON
 import UIKit
+import OctoKit
 
 class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate, GridViewDelegate {
     let ui = UIExtensions()
@@ -193,6 +194,7 @@ class ControlsViewController: UIViewController, Observer, JoystickSliderDelegate
     
     @objc func eHeatChanged(_ sender: UISlider) {
         tempUpdateCounter = 2
+
         API.instance.extruderHeat(hotness: sender.value) { _ in
         }
     }
