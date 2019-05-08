@@ -71,7 +71,7 @@
 					</dict>
 					<dict>
 						<key>INIntentResponseCodeFormatString</key>
-						<string>Your print of ${filename} is ${completion}% and will finish around ${finishTime}.</string>
+						<string>Your print of ${filename} is ${completion}% complete and will finish in around ${finishTime}.</string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>9EQ5tO</string>
 						<key>INIntentResponseCodeName</key>
