@@ -34,8 +34,9 @@ public final class API {
     }
     
     init() {
-        if let ip = UserDefaults.standard.string(forKey: "ipAddress"),
-            let api = UserDefaults.standard.string(forKey: "apiKey") {
+        let ud = UserDefaults.init(suiteName: "group.utexas.cs371.team2.Pocket3D")!
+        if let ip = ud.string(forKey: "ipAddress"),
+            let api = ud.string(forKey: "apiKey") {
             // we can initialize without setup being called
             self.orig_url = URL(string: ip)!
             self.url = self.orig_url.appendingPathComponent("api")
@@ -108,10 +109,10 @@ public final class API {
     
     // this function is different because intent compilation
     // breaks swiftjson which is sick
-    public func status(callback: @escaping (Status, String, NSNumber, String) -> Void) {
+    public func status(callback: @escaping (Status, String, NSNumber, NSNumber) -> Void) {
         Alamofire.request(url.appendingPathComponent("job"), headers: headers).responseJSON { (data) in
             let js = JSON(data.data!)
-            callback(data.response?.statusCode == 200 ? .Ok : .Fail, js["job"]["file"]["name"].stringValue, js["progress"]["completion"].numberValue, "Not yet")
+            callback(data.response?.statusCode == 200 ? .Ok : .Fail, js["job"]["file"]["name"].stringValue, js["progress"]["completion"].numberValue, js["progress"]["printTimeLeft"].numberValue)
         }
     }
 

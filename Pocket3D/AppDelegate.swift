@@ -35,8 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(true, forKey: "isDarkMode")
         }
 // LMAOOOOO 
-//        INPreferences.requestSiriAuthorization { (status) in
-//        }
+        INPreferences.requestSiriAuthorization { (status) in
+            if (status == .authorized) {
+                let intent = PrintStatusIntent()
+                let interaction = INInteraction(intent: intent, response: nil)
+                print("Intent donated")
+                interaction.donate(completion: nil)
+            }
+        }
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert], completionHandler: {
             (success, error) in

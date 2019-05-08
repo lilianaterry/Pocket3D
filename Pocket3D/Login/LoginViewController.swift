@@ -58,6 +58,9 @@ class LoginViewController: UIViewController {
                 if status == .Ok {
                     UserDefaults.standard.set(self.apiKeyField.text!, forKey: "apiKey")
                     UserDefaults.standard.set(self.ipAddressField.text!, forKey: "ipAddress")
+                    let ud = UserDefaults.init(suiteName: "group.utexas.cs371.team2.Pocket3D")!
+                    ud.set(self.apiKeyField.text!, forKey: "apiKey")
+                    ud.set(self.ipAddressField.text!, forKey: "ipAddress")
                     Push.instance.connect(baseUrl: URL(string: self.ipAddressField.text!)!,
                                           name: json["name"].stringValue,
                                           sessionKey: json["session"].stringValue)

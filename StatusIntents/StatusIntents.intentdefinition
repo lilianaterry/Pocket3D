@@ -61,7 +61,7 @@
 					</dict>
 					<dict>
 						<key>INIntentResponseCodeFormatString</key>
-						<string>Your print of "${filename}" is ${completion}% done.</string>
+						<string>Your print of ${filename} has finished.</string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>kv41m2</string>
 						<key>INIntentResponseCodeName</key>
@@ -69,9 +69,19 @@
 						<key>INIntentResponseCodeSuccess</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Your print of ${filename} is ${completion}% and will finish around ${finishTime}.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>9EQ5tO</string>
+						<key>INIntentResponseCodeName</key>
+						<string>stillPrinting</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>5</integer>
+				<integer>6</integer>
 				<key>INIntentResponseParameters</key>
 				<array>
 					<dict>
@@ -107,6 +117,18 @@
 						<false/>
 						<key>INIntentResponseParameterTag</key>
 						<integer>5</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>4</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>finishTime</string>
+						<key>INIntentResponseParameterSupportsMultipleValues</key>
+						<false/>
+						<key>INIntentResponseParameterTag</key>
+						<integer>6</integer>
 						<key>INIntentResponseParameterType</key>
 						<string>String</string>
 					</dict>
