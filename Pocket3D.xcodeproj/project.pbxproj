@@ -463,8 +463,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				835A4ABA2277772400CE7AD1 /* PBXTargetDependency */,
 				83A089172281FD8F0076EAEF /* PBXTargetDependency */,
+				835A4ABA2277772400CE7AD1 /* PBXTargetDependency */,
 			);
 			name = Pocket3D;
 			productName = Pocket3D;
@@ -557,6 +557,7 @@
 				TargetAttributes = {
 					8300E7D52225FF0B004DA31C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1005,7 +1006,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.team2.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1028,7 +1029,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = utexas.cs371.team2.Pocket3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

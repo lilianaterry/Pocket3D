@@ -6,7 +6,7 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.7.0)
   - NVActivityIndicatorView/Presenter (4.7.0)
   - Starscream (3.1.0)
-  - SwiftyJSON (4.3.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -31,8 +31,8 @@ SPEC CHECKSUMS:
   MJPEGStreamLib: b6369fb6370413b9f76ef0df2c1cac985ee34bfa
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: fae7c1925394b181e7731ae705ae30c5f8c03442
+PODFILE CHECKSUM: 6d90ebb223197a5ea71b63568afad2156b610c43
 
 COCOAPODS: 1.6.1

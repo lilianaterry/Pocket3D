@@ -86,7 +86,7 @@ class GridView: UIStackView {
     
     @objc
     func childTapped(sender: UITapGestureRecognizer) {
-        if let tapped = self.cells.index(of: sender.view!) {
+        if let tapped = self.cells.firstIndex(of: sender.view!) {
             self.delegate?.gridViewTapped(which: tapped)
         }
     }

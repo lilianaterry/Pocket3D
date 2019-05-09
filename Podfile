@@ -25,12 +25,12 @@ end
 target 'OctoKit' do
   use_frameworks!
 
-  pod 'Alamofire'
-  pod 'SwiftyJSON'
+  pod 'Alamofire' #, '~> 4.0'
+  pod 'SwiftyJSON' #, '~> 4.0'
 end
 
-pre_install do |installer|
-  installer.analysis_result.specifications.each do |s|
-    s.swift_version = '4.2' unless s.swift_version
-  end
-end
+#pre_install do |installer|
+#  installer.analysis_result.specifications.each do |s|
+#    s.swift_version = '4.2' unless s.swift_version
+#  end
+#end
